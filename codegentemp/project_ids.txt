@@ -1,0 +1,6 @@
+D:\H_da\Winter Semester\MM03 Advanced Microcontroller Systems and Embedded Operating Systems\Lecture Prof. Fromm\workspace\workspace_psoc\Smart_Volume\Smart_Volume.cydsn\Smart_Volume.cyprj|61dfdc57-319b-4a51-a1a3-90ed89692608
+C:\Users\Reza\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|04a40ebb-f821-4eb3-adc3-f679fde70f5d
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|ff84b1ed-0ab4-4ec8-a26e-43983cdc9511
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|5cb4b237-cb3f-40f9-892f-e02dd83b992c
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|ef407262-5169-462d-acc6-1d6285c8e538
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|1d53fde6-682b-45d7-9cb0-57e4cd55a205

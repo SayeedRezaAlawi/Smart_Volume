@@ -1,0 +1,2617 @@
+Archive member included to satisfy reference by file (symbol)
+
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_activate.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (EE_oo_ActivateTask)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alcancel.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.o (EE_oo_CancelAlarm)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alsetrel.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (EE_oo_SetRelAlarm)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_altick.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alsetrel.o) (EE_oo_counter_object_insert)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evclear.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (EE_oo_ClearEvent)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evget.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (EE_oo_GetEvent)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evset.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (EE_oo_SetEvent)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evwait.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (EE_oo_WaitEvent)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_irqendin.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (EE_IRQ_end_post_stub)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_lookup.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_irqendin.o) (EE_oo_IRQ_disable_count)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_exchg.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_activate.o) (EE_rq2stk_exchange)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_first.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_activate.o) (EE_rq_queryfirst)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_inser.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_activate.o) (EE_rq_insert)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_startos.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (EE_oo_StartOS)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_terminat.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (EE_oo_TerminateTask)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_utils.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (EE_system_init)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_common_ee_hal_structs.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_irqendin.o) (EE_std_endcycle_next_tid)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_eecfg.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_startos.o) (EE_oo_autostart_task_data)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_DP.o)
+                              .\CortexM3\ARM_GCC_541\Debug\seven.o (SEVEN_DP_Write)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_SELECT.o)
+                              .\CortexM3\ARM_GCC_541\Debug\seven.o (SEVEN_SELECT_Write)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_reg.o)
+                              .\CortexM3\ARM_GCC_541\Debug\seven.o (SEVEN_reg_Write)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_1.o)
+                              .\CortexM3\ARM_GCC_541\Debug\button.o (BUTTON_1_Read)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+                              .\CortexM3\ARM_GCC_541\Debug\button.o (isr_Button_StartEx)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_2.o)
+                              .\CortexM3\ARM_GCC_541\Debug\button.o (BUTTON_2_Read)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_3.o)
+                              .\CortexM3\ARM_GCC_541\Debug\button.o (BUTTON_3_Read)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_4.o)
+                              .\CortexM3\ARM_GCC_541\Debug\button.o (BUTTON_4_Read)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_red.o)
+                              .\CortexM3\ARM_GCC_541\Debug\led.o (LED_red_Write)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_yellow.o)
+                              .\CortexM3\ARM_GCC_541\Debug\led.o (LED_yellow_Write)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_green.o)
+                              .\CortexM3\ARM_GCC_541\Debug\led.o (LED_green_Write)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (UART_LOG_Start)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_INT.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o) (UART_LOG_TXISR)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+                              .\CortexM3\ARM_GCC_541\Debug\led.o (RGB_PWM_red_WriteCompare)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+                              .\CortexM3\ARM_GCC_541\Debug\led.o (RGB_PWM_green_WriteCompare)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+                              .\CortexM3\ARM_GCC_541\Debug\led.o (RGB_PWM_blue_WriteCompare)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (SOUND_PWM_WriteCompare)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM_CLOCK.o)
+                              .\CortexM3\ARM_GCC_541\Debug\sound.o (SOUND_PWM_CLOCK_Start)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_Control.o)
+                              .\CortexM3\ARM_GCC_541\Debug\sound.o (SOUND_Control_Write)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_ENABLE.o)
+                              .\CortexM3\ARM_GCC_541\Debug\sound.o (SOUND_ENABLE_Write)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (SOUND_SAMPLE_Start)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE_CLOCK.o)
+                              .\CortexM3\ARM_GCC_541\Debug\sound.o (SOUND_SAMPLE_CLOCK_Start)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_IntClock.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o) (UART_LOG_IntClock_Start)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o (CyHalt)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o) (CyPmReadStatus)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_change_context_isr.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (EE_switch_context)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_irq_stack.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (EE_cortex_mx_change_IRQ_stack)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_multi_context.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_activate.o) (EE_cortex_mx_change_context)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_oo.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_terminat.o) (EE_hal_terminate_task)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyBootAsmGnu.o)
+                              .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o (CyDelayCycles)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tnterm.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_oo.o) (EE_thread_not_terminated)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tstub.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_eecfg.o) (EE_oo_thread_stub)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_context.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_multi_context.o) (EE_std_run_task_code)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o) (CyFlash_SetWaitCycles)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o) (CySpcStart)
+.\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_thendin.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_context.o) (EE_thread_end_instance)
+c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o (__errno)
+c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+                              c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o (exit)
+c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                              c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o) (_global_impure_ptr)
+c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+                              c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o (__libc_init_array)
+c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+                              .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o (memcpy)
+c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+                              c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o (memset)
+
+Allocating common symbols
+Common symbol       size              file
+
+EE_oo_IRQ_disable_count
+                    0x4               .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_lookup.o)
+EE_cortex_mx_stack_3
+                    0xc8              .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_eecfg.o)
+EE_rq_pairs_tid     0xc               .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_eecfg.o)
+EE_terminate_data   0xc               .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_eecfg.o)
+EE_oo_counter_object_RAM
+                    0x50              .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_eecfg.o)
+EE_oo_started       0x4               .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_startos.o)
+EE_IRQ_nesting_level
+                    0x4               .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_common_ee_hal_structs.o)
+UART_LOG_txBuffer   0xc8              .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+EE_ApplicationMode  0x4               .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_eecfg.o)
+EE_std_endcycle_next_tid
+                    0x4               .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_common_ee_hal_structs.o)
+dieTemperature      0x2               .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+EE_oo_IRQ_suspend_status
+                    0x4               .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_lookup.o)
+EE_cortex_mx_stack_9
+                    0x200             .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_eecfg.o)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+ .data          0x00000000        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .text          0x00000000       0x74 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .ARM.extab     0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .ARM.exidx     0x00000000        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .text.soundTest1
+                0x00000000       0x3c .\CortexM3\ARM_GCC_541\Debug\main.o
+ .text.soundTest2
+                0x00000000       0x44 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .text.unhandledException
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\sound.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\sound.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\sound_data.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\sound_data.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\sound_data.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\CastleOfGlass.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\CastleOfGlass.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\CastleOfGlass.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\valerie.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\valerie.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\valerie.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\mp3.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\mp3.o
+ .text.MP3__showEventAndState
+                0x00000000       0x94 .\CortexM3\ARM_GCC_541\Debug\mp3.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\button.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\button.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\button.o
+ .text.BUTTON_Init
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\button.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\led.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\led.o
+ .text.LED_Toggle
+                0x00000000       0x84 .\CortexM3\ARM_GCC_541\Debug\led.o
+ .text.LED_RGB_Set
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\led.o
+ .rodata        0x00000000      0x200 .\CortexM3\ARM_GCC_541\Debug\led.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\seven.o
+ .text.SEVEN_Get
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\seven.o
+ .text.SEVEN_SetHex
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\seven.o
+ .text.SEVEN_SetDP
+                0x00000000       0x3c .\CortexM3\ARM_GCC_541\Debug\seven.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text.SetAnalogRoutingPumps
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .data          0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .text._exit    0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .text._sbrk    0x00000000       0x30 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_activate.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_activate.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_activate.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alcancel.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alcancel.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alcancel.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alsetrel.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alsetrel.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alsetrel.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_altick.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_altick.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_altick.o)
+ .text.EE_oo_IncrementCounterHardware
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_altick.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evclear.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evclear.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evclear.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evget.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evget.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evget.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evset.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evset.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evset.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evwait.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evwait.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evwait.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_irqendin.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_irqendin.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_irqendin.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_lookup.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_lookup.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_lookup.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_exchg.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_exchg.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_exchg.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_first.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_first.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_first.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_inser.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_inser.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_inser.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_startos.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_startos.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_startos.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_terminat.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_terminat.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_terminat.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_utils.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_utils.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_utils.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_common_ee_hal_structs.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_common_ee_hal_structs.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_common_ee_hal_structs.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_eecfg.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_DP.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_DP.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_DP.o)
+ .text.SEVEN_DP_Write
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_DP.o)
+ .text.SEVEN_DP_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_DP.o)
+ .text.SEVEN_DP_Read
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_DP.o)
+ .text.SEVEN_DP_ReadDataReg
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_DP.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_SELECT.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_SELECT.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_SELECT.o)
+ .text.SEVEN_SELECT_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_SELECT.o)
+ .text.SEVEN_SELECT_Read
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_SELECT.o)
+ .text.SEVEN_SELECT_ReadDataReg
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_SELECT.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_reg.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_reg.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_reg.o)
+ .text.SEVEN_reg_Read
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_reg.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_1.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_1.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_1.o)
+ .text.BUTTON_1_Write
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_1.o)
+ .text.BUTTON_1_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_1.o)
+ .text.BUTTON_1_ReadDataReg
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_1.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+ .text.isr_Button_Interrupt
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+ .text.isr_Button_SetVector
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+ .text.isr_Button_GetVector
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+ .text.isr_Button_SetPriority
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+ .text.isr_Button_GetPriority
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+ .text.isr_Button_Enable
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+ .text.isr_Button_GetState
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+ .text.isr_Button_Disable
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+ .text.isr_Button_Start
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+ .text.isr_Button_StartEx
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+ .text.isr_Button_Stop
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+ .text.isr_Button_SetPending
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_2.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_2.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_2.o)
+ .text.BUTTON_2_Write
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_2.o)
+ .text.BUTTON_2_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_2.o)
+ .text.BUTTON_2_ReadDataReg
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_2.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_3.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_3.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_3.o)
+ .text.BUTTON_3_Write
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_3.o)
+ .text.BUTTON_3_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_3.o)
+ .text.BUTTON_3_ReadDataReg
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_3.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_4.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_4.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_4.o)
+ .text.BUTTON_4_Write
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_4.o)
+ .text.BUTTON_4_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_4.o)
+ .text.BUTTON_4_ReadDataReg
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_4.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_red.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_red.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_red.o)
+ .text.LED_red_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_red.o)
+ .text.LED_red_Read
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_red.o)
+ .text.LED_red_ReadDataReg
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_red.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_yellow.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_yellow.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_yellow.o)
+ .text.LED_yellow_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_yellow.o)
+ .text.LED_yellow_Read
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_yellow.o)
+ .text.LED_yellow_ReadDataReg
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_yellow.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_green.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_green.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_green.o)
+ .text.LED_green_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_green.o)
+ .text.LED_green_Read
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_green.o)
+ .text.LED_green_ReadDataReg
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_green.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .text.UART_LOG_Stop
+                0x00000000       0x44 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .text.UART_LOG_ReadControlRegister
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .text.UART_LOG_WriteControlRegister
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .text.UART_LOG_SetRxInterruptMode
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .text.UART_LOG_ReadRxData
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .text.UART_LOG_ReadRxStatus
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .text.UART_LOG_GetChar
+                0x00000000       0x2c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .text.UART_LOG_GetByte
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .text.UART_LOG_GetRxBufferSize
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .text.UART_LOG_ClearRxBuffer
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .text.UART_LOG_SetRxAddressMode
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .text.UART_LOG_SetRxAddress1
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .text.UART_LOG_SetRxAddress2
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .text.UART_LOG_SetTxInterruptMode
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .text.UART_LOG_WriteTxData
+                0x00000000       0x60 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .text.UART_LOG_ReadTxStatus
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .text.UART_LOG_PutArray
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .text.UART_LOG_PutCRLF
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .text.UART_LOG_GetTxBufferSize
+                0x00000000       0x48 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .text.UART_LOG_ClearTxBuffer
+                0x00000000       0x40 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .text.UART_LOG_SendBreak
+                0x00000000       0x58 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .text.UART_LOG_SetTxAddressMode
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_INT.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_INT.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_INT.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+ .text.RGB_PWM_red_Stop
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+ .text.RGB_PWM_red_ReadCounter
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+ .text.RGB_PWM_red_ReadControlRegister
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+ .text.RGB_PWM_red_WriteControlRegister
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+ .text.RGB_PWM_red_ReadCapture
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+ .text.RGB_PWM_red_ReadCompare
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+ .text.RGB_PWM_red_ReadPeriod
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+ .text.RGB_PWM_green_Stop
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+ .text.RGB_PWM_green_ReadCounter
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+ .text.RGB_PWM_green_ReadControlRegister
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+ .text.RGB_PWM_green_WriteControlRegister
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+ .text.RGB_PWM_green_ReadCapture
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+ .text.RGB_PWM_green_ReadCompare
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+ .text.RGB_PWM_green_ReadPeriod
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+ .text.RGB_PWM_blue_Stop
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+ .text.RGB_PWM_blue_ReadCounter
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+ .text.RGB_PWM_blue_ReadControlRegister
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+ .text.RGB_PWM_blue_WriteControlRegister
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+ .text.RGB_PWM_blue_ReadCapture
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+ .text.RGB_PWM_blue_ReadCompare
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+ .text.RGB_PWM_blue_ReadPeriod
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+ .text.SOUND_PWM_Stop
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+ .text.SOUND_PWM_ReadCounter
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+ .text.SOUND_PWM_ReadControlRegister
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+ .text.SOUND_PWM_WriteControlRegister
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+ .text.SOUND_PWM_ReadCompare
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+ .text.SOUND_PWM_ReadPeriod
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM_CLOCK.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM_CLOCK.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM_CLOCK.o)
+ .text.SOUND_PWM_CLOCK_Stop
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM_CLOCK.o)
+ .text.SOUND_PWM_CLOCK_StopBlock
+                0x00000000       0x6c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM_CLOCK.o)
+ .text.SOUND_PWM_CLOCK_StandbyPower
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM_CLOCK.o)
+ .text.SOUND_PWM_CLOCK_GetDividerRegister
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM_CLOCK.o)
+ .text.SOUND_PWM_CLOCK_SetModeRegister
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM_CLOCK.o)
+ .text.SOUND_PWM_CLOCK_ClearModeRegister
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM_CLOCK.o)
+ .text.SOUND_PWM_CLOCK_GetModeRegister
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM_CLOCK.o)
+ .text.SOUND_PWM_CLOCK_GetSourceRegister
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM_CLOCK.o)
+ .text.SOUND_PWM_CLOCK_SetDividerRegister
+                0x00000000       0xd8 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM_CLOCK.o)
+ .text.SOUND_PWM_CLOCK_SetSourceRegister
+                0x00000000       0x5c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM_CLOCK.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_Control.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_Control.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_Control.o)
+ .text.SOUND_Control_Read
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_Control.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_ENABLE.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_ENABLE.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_ENABLE.o)
+ .text.SOUND_ENABLE_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_ENABLE.o)
+ .text.SOUND_ENABLE_Read
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_ENABLE.o)
+ .text.SOUND_ENABLE_ReadDataReg
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_ENABLE.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+ .text.SOUND_SAMPLE_Stop
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+ .text.SOUND_SAMPLE_ReadStatusRegister
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+ .text.SOUND_SAMPLE_ReadControlRegister
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+ .text.SOUND_SAMPLE_WriteControlRegister
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+ .text.SOUND_SAMPLE_ReadCounter
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+ .text.SOUND_SAMPLE_ReadCapture
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+ .text.SOUND_SAMPLE_ReadPeriod
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE_CLOCK.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE_CLOCK.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE_CLOCK.o)
+ .text.SOUND_SAMPLE_CLOCK_StopBlock
+                0x00000000       0x6c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE_CLOCK.o)
+ .text.SOUND_SAMPLE_CLOCK_StandbyPower
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE_CLOCK.o)
+ .text.SOUND_SAMPLE_CLOCK_GetDividerRegister
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE_CLOCK.o)
+ .text.SOUND_SAMPLE_CLOCK_SetModeRegister
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE_CLOCK.o)
+ .text.SOUND_SAMPLE_CLOCK_ClearModeRegister
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE_CLOCK.o)
+ .text.SOUND_SAMPLE_CLOCK_GetModeRegister
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE_CLOCK.o)
+ .text.SOUND_SAMPLE_CLOCK_GetSourceRegister
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE_CLOCK.o)
+ .text.SOUND_SAMPLE_CLOCK_SetDividerRegister
+                0x00000000       0xdc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE_CLOCK.o)
+ .text.SOUND_SAMPLE_CLOCK_SetSourceRegister
+                0x00000000       0x5c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE_CLOCK.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_IntClock.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_IntClock.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_Stop
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_StopBlock
+                0x00000000       0x6c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_StandbyPower
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_GetDividerRegister
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_SetModeRegister
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_ClearModeRegister
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_GetModeRegister
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_GetSourceRegister
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_SetDividerRegister
+                0x00000000       0xdc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_SetSourceRegister
+                0x00000000       0x5c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_IntClock.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .data          0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .bss           0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyUSB_PowerOnCheck
+                0x00000000       0x48 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyBusClk_Internal_SetDivider
+                0x00000000       0x48 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyPLL_OUT_Stop
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyIMO_Stop
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyIMO_EnableDoubler
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyIMO_DisableDoubler
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyMasterClk_SetSource
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyMasterClk_SetDivider
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyBusClk_SetDivider
+                0x00000000       0x70 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyUsbClk_SetSource
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyILO_Start1K
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyILO_Stop1K
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyILO_Start100K
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyILO_Stop100K
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyPLL_OUT_Start
+                0x00000000       0x78 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyIMO_Start
+                0x00000000       0x60 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyILO_Enable33K
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyILO_Disable33K
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyILO_SetSource
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyILO_SetPowerMode
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyXTAL_32KHZ_Stop
+                0x00000000       0x30 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyXTAL_32KHZ_ReadStatus
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyXTAL_Start
+                0x00000000       0xac .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyXTAL_Stop
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyXTAL_EnableErrStatus
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyXTAL_DisableErrStatus
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyXTAL_ReadStatus
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyXTAL_EnableFaultRecovery
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyXTAL_DisableFaultRecovery
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyXTAL_SetStartup
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyXTAL_SetFbVoltage
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyXTAL_SetWdVoltage
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyPLL_OUT_SetPQ
+                0x00000000       0x60 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyPLL_OUT_SetSource
+                0x00000000       0x34 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyIMO_SetTrimValue
+                0x00000000       0xcc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyIMO_SetFreq
+                0x00000000       0xf4 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyIMO_SetSource
+                0x00000000       0x58 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CySoftwareReset
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyDelay  0x00000000       0x2c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyDelayUs
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyXTAL_32KHZ_SetPowerMode
+                0x00000000       0x84 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyXTAL_32KHZ_Start
+                0x00000000       0x74 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyDelayFreq
+                0x00000000       0x4c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyWdtStart
+                0x00000000       0x40 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyWdtClear
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyVdStickyStatus
+                0x00000000       0x2c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyVdLvDigitEnable
+                0x00000000       0x84 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyVdLvAnalogEnable
+                0x00000000       0x80 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyVdLvDigitDisable
+                0x00000000       0x30 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyVdLvAnalogDisable
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyVdHvAnalogEnable
+                0x00000000       0x54 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyVdHvAnalogDisable
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyVdRealTimeStatus
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyDisableInts
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyEnableInts
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyFlushCache
+                0x00000000       0x44 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyIntSetSysVector
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyIntGetSysVector
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyIntGetVector
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyIntGetPriority
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyIntGetState
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CySysTickStop
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CySysTickEnableInterrupt
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CySysTickEnable
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CySysTickDisableInterrupt
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CySysTickSetReload
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CySysTickGetReload
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CySysTickGetValue
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CySysTickSetClockSource
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CySysTickGetClockSource
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CySysTickGetCountFlag
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CySysTickServiceCallbacks
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CySysTickClear
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CySysTickInit
+                0x00000000       0x58 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CySysTickStart
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CySysTickSetCallback
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CySysTickGetCallback
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text.CyGetUniqueId
+                0x00000000       0x70 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .bss           0x00000000       0x43 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .text.CyPmHibSlpSaveSet
+                0x00000000      0x1dc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .text.CyPmHibSlpRestore
+                0x00000000       0xd8 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .text.CyPmHviLviSaveDisable
+                0x00000000       0xa0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .text.CyPmHibSaveSet
+                0x00000000       0x98 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .text.CyPmHviLviRestore
+                0x00000000       0x48 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .text.CyPmHibRestore
+                0x00000000       0x60 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .text.CyPmSaveClocks
+                0x00000000      0x218 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .text.CyPmRestoreClocks
+                0x00000000      0x24c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .text.CyPmAltAct
+                0x00000000       0x6c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .text.CyPmSleep
+                0x00000000       0xf4 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .text.CyPmHibernateEx
+                0x00000000       0xf4 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .text.CyPmHibernate
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .text.CyPmReadStatus
+                0x00000000       0x30 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .text.CyPmCtwSetInterval
+                0x00000000       0x5c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .text.CyPmOppsSet
+                0x00000000       0x2c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .text.CyPmFtwSetInterval
+                0x00000000       0x5c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .rodata        0x00000000        0xf .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_change_context_isr.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_change_context_isr.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_irq_stack.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_multi_context.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_multi_context.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_oo.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_oo.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyBootAsmGnu.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyBootAsmGnu.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tnterm.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tnterm.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tnterm.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tstub.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tstub.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tstub.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_context.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_context.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_context.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .text.CySetTempInt
+                0x00000000       0x60 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .text.CyFlash_Start
+                0x00000000       0x54 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .text.CyFlash_Stop
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .text.CyFlash_EraseRow
+                0x00000000       0x78 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .text.CyFlashGetSpcAlgorithm
+                0x00000000       0x4c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .text.CySetTemp
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .text.CySetFlashEEBuffer
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .text.CyWriteRowFull
+                0x00000000       0xf8 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .text.CyWriteRowData
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .text.CyFlash_SetWaitCycles
+                0x00000000       0x7c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .text.CyEEPROM_Start
+                0x00000000       0x54 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .text.CyEEPROM_Stop
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .text.CyEEPROM_ReadReserve
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .text.CyEEPROM_ReadRelease
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ COMMON         0x00000000        0x2 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+ .bss           0x00000000        0x8 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+ .text.CySpcStart
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+ .text.CySpcStop
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+ .text.CySpcReadData
+                0x00000000       0x34 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+ .text.CySpcLoadMultiByte
+                0x00000000       0x78 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+ .text.CySpcLoadRow
+                0x00000000       0x50 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+ .text.CySpcLoadRowFull
+                0x00000000       0x80 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+ .text.CySpcWriteRow
+                0x00000000       0x4c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+ .text.CySpcEraseSector
+                0x00000000       0x3c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+ .text.CySpcEraseRow
+                0x00000000       0x4c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+ .text.CySpcGetTemp
+                0x00000000       0x3c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+ .text.CySpcLock
+                0x00000000       0x4c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+ .text.CySpcUnlock
+                0x00000000       0x38 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+ .text.CySpcGetAlgorithm
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_thendin.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_thendin.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_thendin.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+ .text.exit     0x00000000       0x28 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+ .rodata._global_impure_ptr
+                0x00000000        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+rom              0x00000000         0x00040000         xr
+ram              0x1fff8000         0x00010000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+LOAD c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+LOAD c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+START GROUP
+LOAD .\CortexM3\ARM_GCC_541\Debug\main.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\sound.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\sound_data.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\CastleOfGlass.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\valerie.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\mp3.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\button.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\led.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\seven.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a
+LOAD C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_541\Debug\CyComponentLibrary.a
+END GROUP
+START GROUP
+LOAD c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a
+LOAD c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a
+LOAD c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc_nano.a
+END GROUP
+START GROUP
+LOAD c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a
+LOAD c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc_nano.a
+END GROUP
+LOAD c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+LOAD c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+START GROUP
+LOAD c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a
+LOAD c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a
+LOAD c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libnosys.a
+END GROUP
+                0x00000000                CY_APPL_ORIGIN = 0x0
+                0x00000100                CY_FLASH_ROW_SIZE = 0x100
+                0x00000020                CY_ECC_ROW_SIZE = 0x20
+                0x00000000                CY_EE_IN_BTLDR = 0x0
+                0x00000000                CY_APPL_LOADABLE = 0x0
+                0x00000800                CY_EE_SIZE = 0x800
+                0x00000001                CY_APPL_NUM = 0x1
+                0x00000001                CY_APPL_MAX = 0x1
+                0x00000040                CY_METADATA_SIZE = 0x40
+                0x00000000                CY_APPL_LOADABLE = 0x0
+                0x00000000                CY_CHECKSUM_EXCLUDE_SIZE = ALIGN (0x0, CY_FLASH_ROW_SIZE)
+                [!provide]                PROVIDE (__cy_heap_start, _end)
+                0x00000001                PROVIDE (__cy_region_num, ((__cy_regions_end - __cy_regions) / 0x10))
+                0x20008000                PROVIDE (__cy_stack, (ORIGIN (ram) + LENGTH (ram)))
+                [!provide]                PROVIDE (__cy_heap_end, (__cy_stack - 0x800))
+
+.cybootloader   0x00000000        0x0
+ *(.cybootloader)
+                0x00000000                appl1_start = CY_APPL_ORIGIN?CY_APPL_ORIGIN:ALIGN (CY_FLASH_ROW_SIZE)
+                0x0001ff00                appl2_start = (appl1_start + ALIGN ((((LENGTH (rom) - appl1_start) - (0x2 * CY_FLASH_ROW_SIZE)) / 0x2), CY_FLASH_ROW_SIZE))
+                0x00000000                appl_start = (CY_APPL_NUM == 0x1)?appl1_start:appl2_start
+                0x00000000                ecc_offset = ((appl_start / CY_FLASH_ROW_SIZE) * CY_ECC_ROW_SIZE)
+                0x00000000                ee_offset = (CY_APPL_LOADABLE && ! (CY_EE_IN_BTLDR))?((CY_EE_SIZE / CY_APPL_MAX) * (CY_APPL_NUM - 0x1)):0x0
+                0x00000800                ee_size = (CY_APPL_LOADABLE && ! (CY_EE_IN_BTLDR))?(CY_EE_SIZE / CY_APPL_MAX):CY_EE_SIZE
+                [!provide]                PROVIDE (CY_ECC_OFFSET, ecc_offset)
+
+.text           0x00000000     0x23ae
+ CREATE_OBJECT_SYMBOLS
+                0x00000000                PROVIDE (__cy_interrupt_vector, RomVectors)
+ *(.romvectors)
+ .romvectors    0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00000000                RomVectors
+                0x00000001                ASSERT ((. != __cy_interrupt_vector), No interrupt vector)
+                0x00000001                ASSERT (CY_APPL_ORIGIN?(SIZEOF (.cybootloader) <= CY_APPL_ORIGIN):0x1, Wrong image location)
+                0x00000010                PROVIDE (__cy_reset, Reset)
+ *(.text.Reset)
+ .text.Reset    0x00000010       0x18 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00000010                Reset
+                0x00000001                ASSERT ((. != __cy_reset), No reset code)
+ *(.dma_init)
+                0x00000001                ASSERT ((((appl_start + .) <= 0x10000) || 0x1), DMA Init must be within the first 64k of flash)
+ *(.text .text.* .gnu.linkonce.t.*)
+ .text          0x00000028       0x5c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .text.ISR2_systick_handler
+                0x00000084        0xc .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000084                ISR2_systick_handler
+ .text.systick_handler
+                0x00000090       0x98 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000090                systick_handler
+ .text.main     0x00000128       0x2c .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000128                main
+ .text.GetAndClearHighestEvent
+                0x00000154       0x24 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000154                GetAndClearHighestEvent
+ .text.Functsk_init
+                0x00000178       0x48 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000178                Functsk_init
+ .text.Functsk_control
+                0x000001c0       0x34 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x000001c0                Functsk_control
+ .text.Functsk_background
+                0x000001f4        0x4 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x000001f4                Functsk_background
+ .text.ISR2_isr_Button
+                0x000001f8       0x48 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x000001f8                ISR2_isr_Button
+ .text.isr_Button
+                0x00000240       0x98 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000240                isr_Button
+ .text.ISR2_isr_Timer
+                0x000002d8        0x8 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x000002d8                ISR2_isr_Timer
+ .text.isr_Timer
+                0x000002e0       0x98 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x000002e0                isr_Timer
+ .text.SOUND_StartPlay
+                0x00000378        0xc .\CortexM3\ARM_GCC_541\Debug\sound.o
+                0x00000378                SOUND_StartPlay
+ .text.SOUND_StopPlay
+                0x00000384        0xc .\CortexM3\ARM_GCC_541\Debug\sound.o
+                0x00000384                SOUND_StopPlay
+ .text.SOUND_Init
+                0x00000390       0x24 .\CortexM3\ARM_GCC_541\Debug\sound.o
+                0x00000390                SOUND_Init
+ .text.SOUND_SetSong
+                0x000003b4       0x10 .\CortexM3\ARM_GCC_541\Debug\sound.o
+                0x000003b4                SOUND_SetSong
+ .text.SOUND_SetVolume
+                0x000003c4       0x14 .\CortexM3\ARM_GCC_541\Debug\sound.o
+                0x000003c4                SOUND_SetVolume
+ .text.SOUND_isr
+                0x000003d8       0x48 .\CortexM3\ARM_GCC_541\Debug\sound.o
+                0x000003d8                SOUND_isr
+ .text.MP3__nextSong
+                0x00000420       0x1c .\CortexM3\ARM_GCC_541\Debug\mp3.o
+                0x00000420                MP3__nextSong
+ .text.MP3__prevSong
+                0x0000043c       0x1c .\CortexM3\ARM_GCC_541\Debug\mp3.o
+                0x0000043c                MP3__prevSong
+ .text.MP3__increaseVolume
+                0x00000458       0x40 .\CortexM3\ARM_GCC_541\Debug\mp3.o
+                0x00000458                MP3__increaseVolume
+ .text.MP3__decreaseVolume
+                0x00000498       0x40 .\CortexM3\ARM_GCC_541\Debug\mp3.o
+                0x00000498                MP3__decreaseVolume
+ .text.MP3__playSong
+                0x000004d8       0x28 .\CortexM3\ARM_GCC_541\Debug\mp3.o
+                0x000004d8                MP3__playSong
+ .text.MP3__stopSong
+                0x00000500        0x8 .\CortexM3\ARM_GCC_541\Debug\mp3.o
+                0x00000500                MP3__stopSong
+ .text.MP3__pauseSong
+                0x00000508        0x8 .\CortexM3\ARM_GCC_541\Debug\mp3.o
+                0x00000508                MP3__pauseSong
+ .text.MP3__resumeSong
+                0x00000510        0x8 .\CortexM3\ARM_GCC_541\Debug\mp3.o
+                0x00000510                MP3__resumeSong
+ .text.MP3__showSong
+                0x00000518       0x58 .\CortexM3\ARM_GCC_541\Debug\mp3.o
+                0x00000518                MP3__showSong
+ .text.MP3_Init
+                0x00000570       0x50 .\CortexM3\ARM_GCC_541\Debug\mp3.o
+                0x00000570                MP3_Init
+ .text.MP3__showRemainingPlaytime
+                0x000005c0       0x10 .\CortexM3\ARM_GCC_541\Debug\mp3.o
+                0x000005c0                MP3__showRemainingPlaytime
+ .text.MP3__songEnded
+                0x000005d0       0x10 .\CortexM3\ARM_GCC_541\Debug\mp3.o
+                0x000005d0                MP3__songEnded
+ .text.MP3_ProcessEvent
+                0x000005e0       0xf0 .\CortexM3\ARM_GCC_541\Debug\mp3.o
+                0x000005e0                MP3_ProcessEvent
+ .text.MP3__increaseSmartVolume
+                0x000006d0      0x11c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.o
+                0x000006d0                MP3__increaseSmartVolume
+ .text.MP3__decreaseSmartVolume
+                0x000007ec      0x110 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.o
+                0x000007ec                MP3__decreaseSmartVolume
+ .text.BUTTON_IsPressed
+                0x000008fc       0x54 .\CortexM3\ARM_GCC_541\Debug\button.o
+                0x000008fc                BUTTON_IsPressed
+ .text.LED_Set  0x00000950       0x60 .\CortexM3\ARM_GCC_541\Debug\led.o
+                0x00000950                LED_Set
+ .text.LED_Init
+                0x000009b0       0x34 .\CortexM3\ARM_GCC_541\Debug\led.o
+                0x000009b0                LED_Init
+ .text.SEVEN_Set
+                0x000009e4       0x34 .\CortexM3\ARM_GCC_541\Debug\seven.o
+                0x000009e4                SEVEN_Set
+ .text.SEVEN_Clear
+                0x00000a18       0x1c .\CortexM3\ARM_GCC_541\Debug\seven.o
+                0x00000a18                SEVEN_Clear
+ .text.SEVEN_Init
+                0x00000a34       0x14 .\CortexM3\ARM_GCC_541\Debug\seven.o
+                0x00000a34                SEVEN_Init
+ .text.CyClockStartupError
+                0x00000a48        0x4 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text.cfg_write_bytes32
+                0x00000a4c       0x34 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text.AnalogSetDefault
+                0x00000a80       0x28 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text.CYMEMZERO
+                0x00000aa8        0xc .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text.ClockSetup
+                0x00000ab4       0xdc .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text.CYCONFIGCPY
+                0x00000b90        0x8 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text.cyfitter_cfg
+                0x00000b98      0x124 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00000b98                cyfitter_cfg
+ .text.IntDefaultHandler
+                0x00000cbc       0x10 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00000cbc                IntDefaultHandler
+ .text.Start_c  0x00000ccc       0x4c .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00000ccc                Start_c
+ .text.initialize_psoc
+                0x00000d18       0x68 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00000d18                initialize_psoc
+ .text.EE_oo_ActivateTask
+                0x00000d80       0xe8 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_activate.o)
+                0x00000d80                EE_oo_ActivateTask
+ .text.EE_oo_CancelAlarm
+                0x00000e68       0xa4 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alcancel.o)
+                0x00000e68                EE_oo_CancelAlarm
+ .text.EE_oo_SetRelAlarm
+                0x00000f0c       0x80 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alsetrel.o)
+                0x00000f0c                EE_oo_SetRelAlarm
+ .text.EE_oo_handle_action_callback
+                0x00000f8c        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_altick.o)
+ .text.EE_oo_handle_action_task
+                0x00000f98       0x4c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_altick.o)
+ .text.EE_oo_handle_action_event
+                0x00000fe4       0x60 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_altick.o)
+ .text.EE_oo_handle_action
+                0x00001044       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_altick.o)
+ .text.EE_oo_counter_object_insert
+                0x0000106c       0x9c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_altick.o)
+                0x0000106c                EE_oo_counter_object_insert
+ .text.EE_oo_IncrementCounterImplementation
+                0x00001108      0x100 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_altick.o)
+                0x00001108                EE_oo_IncrementCounterImplementation
+ .text.EE_oo_IncrementCounter
+                0x00001208       0xb0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_altick.o)
+                0x00001208                EE_oo_IncrementCounter
+ .text.EE_oo_ClearEvent
+                0x000012b8       0x5c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evclear.o)
+                0x000012b8                EE_oo_ClearEvent
+ .text.EE_oo_GetEvent
+                0x00001314       0x40 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evget.o)
+                0x00001314                EE_oo_GetEvent
+ .text.EE_oo_SetEvent
+                0x00001354      0x100 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evset.o)
+                0x00001354                EE_oo_SetEvent
+ .text.EE_oo_WaitEvent
+                0x00001454      0x110 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evwait.o)
+                0x00001454                EE_oo_WaitEvent
+ .text.EE_IRQ_run_next_task
+                0x00001564       0x30 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_irqendin.o)
+ .text.EE_IRQ_end_instance
+                0x00001594       0x68 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_irqendin.o)
+                0x00001594                EE_IRQ_end_instance
+ .text.EE_IRQ_end_post_stub
+                0x000015fc       0x14 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_irqendin.o)
+                0x000015fc                EE_IRQ_end_post_stub
+ .text.EE_rq2stk_exchange
+                0x00001610       0x88 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_exchg.o)
+                0x00001610                EE_rq2stk_exchange
+ .text.EE_rq_queryfirst
+                0x00001698       0x44 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_first.o)
+                0x00001698                EE_rq_queryfirst
+ .text.EE_rq_insert
+                0x000016dc       0x74 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_inser.o)
+                0x000016dc                EE_rq_insert
+ .text.compute_task_tid
+                0x00001750       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_startos.o)
+ .text.EE_oo_start_os
+                0x00001760        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_startos.o)
+ .text.EE_oo_autostart_tasks
+                0x0000176c       0x60 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_startos.o)
+ .text.EE_oo_autostart_os
+                0x000017cc        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_startos.o)
+ .text.EE_oo_StartOS
+                0x000017d8       0x8c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_startos.o)
+                0x000017d8                EE_oo_StartOS
+ .text.EE_oo_TerminateTask
+                0x00001864       0x3c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_terminat.o)
+                0x00001864                EE_oo_TerminateTask
+ .text.EE_system_init
+                0x000018a0       0x7c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_utils.o)
+                0x000018a0                EE_system_init
+ .text.SEVEN_SELECT_Write
+                0x0000191c       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_SELECT.o)
+                0x0000191c                SEVEN_SELECT_Write
+ .text.SEVEN_reg_Write
+                0x00001934        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_reg.o)
+                0x00001934                SEVEN_reg_Write
+ .text.BUTTON_1_Read
+                0x00001940       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_1.o)
+                0x00001940                BUTTON_1_Read
+ .text.isr_Button_ClearPending
+                0x00001950        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+                0x00001950                isr_Button_ClearPending
+ .text.BUTTON_2_Read
+                0x0000195c       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_2.o)
+                0x0000195c                BUTTON_2_Read
+ .text.BUTTON_3_Read
+                0x0000196c       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_3.o)
+                0x0000196c                BUTTON_3_Read
+ .text.BUTTON_4_Read
+                0x0000197c       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_4.o)
+                0x0000197c                BUTTON_4_Read
+ .text.LED_red_Write
+                0x0000198c       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_red.o)
+                0x0000198c                LED_red_Write
+ .text.LED_yellow_Write
+                0x000019a4       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_yellow.o)
+                0x000019a4                LED_yellow_Write
+ .text.LED_green_Write
+                0x000019bc       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_green.o)
+                0x000019bc                LED_green_Write
+ .text.UART_LOG_Init
+                0x000019d4       0x40 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+                0x000019d4                UART_LOG_Init
+ .text.UART_LOG_Enable
+                0x00001a14       0x48 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+                0x00001a14                UART_LOG_Enable
+ .text.UART_LOG_Start
+                0x00001a5c       0x1c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+                0x00001a5c                UART_LOG_Start
+ .text.UART_LOG_PutChar
+                0x00001a78       0x70 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+                0x00001a78                UART_LOG_PutChar
+ .text.UART_LOG_PutString
+                0x00001ae8       0x24 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+                0x00001ae8                UART_LOG_PutString
+ .text.UART_LOG_TXISR
+                0x00001b0c       0x58 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_INT.o)
+                0x00001b0c                UART_LOG_TXISR
+ .text.RGB_PWM_red_Enable
+                0x00001b64       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+                0x00001b64                RGB_PWM_red_Enable
+ .text.RGB_PWM_red_WriteCounter
+                0x00001b74        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+                0x00001b74                RGB_PWM_red_WriteCounter
+ .text.RGB_PWM_red_WritePeriod
+                0x00001b80        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+                0x00001b80                RGB_PWM_red_WritePeriod
+ .text.RGB_PWM_red_WriteCompare
+                0x00001b8c        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+                0x00001b8c                RGB_PWM_red_WriteCompare
+ .text.RGB_PWM_red_Init
+                0x00001b98       0x40 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+                0x00001b98                RGB_PWM_red_Init
+ .text.RGB_PWM_red_Start
+                0x00001bd8       0x1c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+                0x00001bd8                RGB_PWM_red_Start
+ .text.RGB_PWM_green_Enable
+                0x00001bf4       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+                0x00001bf4                RGB_PWM_green_Enable
+ .text.RGB_PWM_green_WriteCounter
+                0x00001c04        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+                0x00001c04                RGB_PWM_green_WriteCounter
+ .text.RGB_PWM_green_WritePeriod
+                0x00001c10        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+                0x00001c10                RGB_PWM_green_WritePeriod
+ .text.RGB_PWM_green_WriteCompare
+                0x00001c1c        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+                0x00001c1c                RGB_PWM_green_WriteCompare
+ .text.RGB_PWM_green_Init
+                0x00001c28       0x40 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+                0x00001c28                RGB_PWM_green_Init
+ .text.RGB_PWM_green_Start
+                0x00001c68       0x1c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+                0x00001c68                RGB_PWM_green_Start
+ .text.RGB_PWM_blue_Enable
+                0x00001c84       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+                0x00001c84                RGB_PWM_blue_Enable
+ .text.RGB_PWM_blue_WriteCounter
+                0x00001c94        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+                0x00001c94                RGB_PWM_blue_WriteCounter
+ .text.RGB_PWM_blue_WritePeriod
+                0x00001ca0        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+                0x00001ca0                RGB_PWM_blue_WritePeriod
+ .text.RGB_PWM_blue_WriteCompare
+                0x00001cac        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+                0x00001cac                RGB_PWM_blue_WriteCompare
+ .text.RGB_PWM_blue_Init
+                0x00001cb8       0x40 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+                0x00001cb8                RGB_PWM_blue_Init
+ .text.RGB_PWM_blue_Start
+                0x00001cf8       0x1c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+                0x00001cf8                RGB_PWM_blue_Start
+ .text.SOUND_PWM_Enable
+                0x00001d14       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+                0x00001d14                SOUND_PWM_Enable
+ .text.SOUND_PWM_WriteCounter
+                0x00001d24        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+                0x00001d24                SOUND_PWM_WriteCounter
+ .text.SOUND_PWM_WritePeriod
+                0x00001d30        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+                0x00001d30                SOUND_PWM_WritePeriod
+ .text.SOUND_PWM_WriteCompare
+                0x00001d3c        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+                0x00001d3c                SOUND_PWM_WriteCompare
+ .text.SOUND_PWM_SetInterruptMode
+                0x00001d48        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+                0x00001d48                SOUND_PWM_SetInterruptMode
+ .text.SOUND_PWM_ReadStatusRegister
+                0x00001d54        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+                0x00001d54                SOUND_PWM_ReadStatusRegister
+ .text.SOUND_PWM_ReadCapture
+                0x00001d60        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+                0x00001d60                SOUND_PWM_ReadCapture
+ .text.SOUND_PWM_ClearFIFO
+                0x00001d6c       0x14 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+                0x00001d6c                SOUND_PWM_ClearFIFO
+ .text.SOUND_PWM_Init
+                0x00001d80       0x50 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+                0x00001d80                SOUND_PWM_Init
+ .text.SOUND_PWM_Start
+                0x00001dd0       0x1c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+                0x00001dd0                SOUND_PWM_Start
+ .text.SOUND_PWM_CLOCK_Start
+                0x00001dec       0x1c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM_CLOCK.o)
+                0x00001dec                SOUND_PWM_CLOCK_Start
+ .text.SOUND_Control_Write
+                0x00001e08        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_Control.o)
+                0x00001e08                SOUND_Control_Write
+ .text.SOUND_ENABLE_Write
+                0x00001e14       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_ENABLE.o)
+                0x00001e14                SOUND_ENABLE_Write
+ .text.SOUND_SAMPLE_Enable
+                0x00001e2c       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+                0x00001e2c                SOUND_SAMPLE_Enable
+ .text.SOUND_SAMPLE_SetInterruptMode
+                0x00001e54        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+                0x00001e54                SOUND_SAMPLE_SetInterruptMode
+ .text.SOUND_SAMPLE_WriteCounter
+                0x00001e60       0x34 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+                0x00001e60                SOUND_SAMPLE_WriteCounter
+ .text.SOUND_SAMPLE_WritePeriod
+                0x00001e94        0xc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+                0x00001e94                SOUND_SAMPLE_WritePeriod
+ .text.SOUND_SAMPLE_Init
+                0x00001ea0       0x64 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+                0x00001ea0                SOUND_SAMPLE_Init
+ .text.SOUND_SAMPLE_Start
+                0x00001f04       0x1c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+                0x00001f04                SOUND_SAMPLE_Start
+ .text.SOUND_SAMPLE_CLOCK_Start
+                0x00001f20       0x1c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE_CLOCK.o)
+                0x00001f20                SOUND_SAMPLE_CLOCK_Start
+ .text.SOUND_SAMPLE_CLOCK_Stop
+                0x00001f3c       0x1c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE_CLOCK.o)
+                0x00001f3c                SOUND_SAMPLE_CLOCK_Stop
+ .text.UART_LOG_IntClock_Start
+                0x00001f58       0x1c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_IntClock.o)
+                0x00001f58                UART_LOG_IntClock_Start
+ .text.CyHalt   0x00001f74        0x4 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+                0x00001f74                CyHalt
+ .text.CyIntSetVector
+                0x00001f78       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+                0x00001f78                CyIntSetVector
+ .text.CyIntSetPriority
+                0x00001fa0       0x30 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+                0x00001fa0                CyIntSetPriority
+ .text          0x00001fd0       0x7c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_change_context_isr.o)
+                0x00001fd0                EE_set_switch_context_pri
+                0x00001fea                EE_switch_context
+                0x00001ff4                EE_cortex_mx_pendsv_ISR
+                0x00002030                EE_cortex_mx_svc_ISR
+ .text          0x0000204c       0x24 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_irq_stack.o)
+                0x0000204c                EE_cortex_mx_change_IRQ_stack
+                0x0000205e                EE_cortex_mx_change_IRQ_stack_back
+ .text          0x00002070       0x68 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_multi_context.o)
+                0x00002070                EE_cortex_mx_change_context
+ .text          0x000020d8       0x80 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_oo.o)
+                0x000020d8                EE_hal_terminate_savestk
+                0x00002122                EE_hal_terminate_task
+ .text          0x00002158       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyBootAsmGnu.o)
+                0x00002158                CyDelayCycles
+                0x00002168                CyEnterCriticalSection
+                0x00002170                CyExitCriticalSection
+ .text.EE_thread_not_terminated
+                0x00002178       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tnterm.o)
+                0x00002178                EE_thread_not_terminated
+ .text.EE_oo_thread_stub
+                0x00002188       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tstub.o)
+                0x00002188                EE_oo_thread_stub
+ .text.EE_std_run_task_code
+                0x00002198       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_context.o)
+                0x00002198                EE_std_run_task_code
+ .text.EE_std_need_context_change
+                0x000021b0       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_context.o)
+                0x000021b0                EE_std_need_context_change
+ .text.EE_thread_rnact_max
+                0x000021d8       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_thendin.o)
+ .text.EE_thread_endcycle_next
+                0x000021f8       0x30 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_thendin.o)
+ .text.EE_thread_end_instance
+                0x00002228      0x108 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_thendin.o)
+                0x00002228                EE_thread_end_instance
+ .text.__errno  0x00002330        0xc c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+                0x00002330                __errno
+ .text.__libc_init_array
+                0x0000233c       0x4c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+                0x0000233c                __libc_init_array
+ .text.memcpy   0x00002388       0x16 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+                0x00002388                memcpy
+ .text.memset   0x0000239e       0x10 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+                0x0000239e                memset
+ *(.plt)
+ *(.gnu.warning)
+ *(.glue_7t)
+ .glue_7t       0x000023ae        0x0 linker stubs
+ *(.glue_7)
+ .glue_7        0x000023ae        0x0 linker stubs
+ *(.vfp11_veneer)
+ .vfp11_veneer  0x000023ae        0x0 linker stubs
+ *(.bootloader)
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+ *(.gcc_except_table)
+
+.v4_bx          0x000023b0        0x0
+ .v4_bx         0x000023b0        0x0 linker stubs
+
+.iplt           0x000023b0        0x0
+ .iplt          0x000023b0        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+
+.eh_frame       0x000023b0        0x4
+ *(.eh_frame)
+ .eh_frame      0x000023b0        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .eh_frame      0x000023b0        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+                [!provide]                PROVIDE (__exidx_start, .)
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x000023b4                __exidx_end = .
+
+.rodata         0x000023b4    0x27f04
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.str1.4
+                0x000023b4       0x17 .\CortexM3\ARM_GCC_541\Debug\main.o
+ *fill*         0x000023cb        0x1 
+ .rodata        0x000023cc       0x34 .\CortexM3\ARM_GCC_541\Debug\sound_data.o
+                0x000023cc                SOUND_NoOfRecords
+                0x000023d0                SOUND_Records
+ .rodata.str1.4
+                0x00002400       0x56 .\CortexM3\ARM_GCC_541\Debug\sound_data.o
+ *fill*         0x00002456        0x2 
+ .rodata        0x00002458    0x10eb0 .\CortexM3\ARM_GCC_541\Debug\CastleOfGlass.o
+                0x00002458                SONG_Castle
+ .rodata        0x00013308    0x16c64 .\CortexM3\ARM_GCC_541\Debug\valerie.o
+                0x00013308                SONG_Valerie
+ .rodata.str1.4
+                0x00029f6c       0xa0 .\CortexM3\ARM_GCC_541\Debug\mp3.o
+                                 0x9f (size before relaxing)
+ .rodata        0x0002a00c       0x11 .\CortexM3\ARM_GCC_541\Debug\seven.o
+ *fill*         0x0002a01d        0x3 
+ .rodata        0x0002a020       0x3a .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ *fill*         0x0002a05a        0x2 
+ .rodata        0x0002a05c      0x100 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_lookup.o)
+                0x0002a05c                EE_rq_lookup
+ .rodata        0x0002a15c      0x124 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_eecfg.o)
+                0x0002a15c                EE_oo_autostart_task_data
+                0x0002a168                EE_oo_action_ROM
+                0x0002a1cc                EE_oo_counter_object_ROM
+                0x0002a208                EE_alarm_ROM
+                0x0002a21c                EE_counter_ROM
+                0x0002a228                EE_th_is_extended
+                0x0002a234                EE_th_rnact_max
+                0x0002a240                EE_th_dispatch_prio
+                0x0002a24c                EE_th_ready_prio
+                0x0002a258                EE_terminate_real_th_body
+                0x0002a264                EE_hal_thread_body
+                0x0002a270                EE_std_thread_tos
+ .rodata.str1.1
+                0x0002a280        0x2 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x0002a284                . = ALIGN (0x4)
+ *fill*         0x0002a282        0x2 
+ *(.init)
+ .init          0x0002a284        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+                0x0002a284                _init
+ .init          0x0002a288        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+                0x0002a290                . = ALIGN (0x4)
+                0x0002a290                __preinit_array_start = .
+ *(.preinit_array)
+                0x0002a290                __preinit_array_end = .
+                0x0002a290                . = ALIGN (0x4)
+                0x0002a290                __init_array_start = .
+ *(SORT(.init_array.*))
+ *(.init_array)
+ .init_array    0x0002a290        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .init_array    0x0002a294        0x4 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x0002a298                __init_array_end = .
+                0x0002a298                . = ALIGN (0x4)
+ *(.fini)
+ .fini          0x0002a298        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+                0x0002a298                _fini
+ .fini          0x0002a29c        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+                0x0002a2a4                . = ALIGN (0x4)
+                0x0002a2a4                __fini_array_start = .
+ *(.fini_array)
+ .fini_array    0x0002a2a4        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ *(SORT(.fini_array.*))
+                0x0002a2a8                __fini_array_end = .
+                0x0002a2a8                . = ALIGN (0x4)
+ *crtbegin.o(.ctors)
+ *(EXCLUDE_FILE(*crtend.o) .ctors)
+ *(SORT(.ctors.*))
+ *crtend.o(.ctors)
+                0x0002a2a8                . = ALIGN (0x4)
+ *crtbegin.o(.dtors)
+ *(EXCLUDE_FILE(*crtend.o) .dtors)
+ *(SORT(.dtors.*))
+ *crtend.o(.dtors)
+                0x0002a2a8                . = ALIGN (0x4)
+                0x0002a2a8                __cy_regions = .
+                0x0002a2a8        0x4 LONG 0x2a2b8 __cy_region_init_ram
+                0x0002a2ac        0x4 LONG 0x1fff80c8 __cy_region_start_data
+                0x0002a2b0        0x4 LONG 0x150 __cy_region_init_size_ram
+                0x0002a2b4        0x4 LONG 0x498 __cy_region_zero_size_ram
+                0x0002a2b8                __cy_regions_end = .
+                0x0002a2b8                . = ALIGN (0x8)
+                0x0002a2b8                _etext = .
+
+.cy_checksum_exclude
+                0x0002a2b8        0x0
+ *(.cy_checksum_exclude)
+
+.ramvectors     0x1fff8000       0xc0
+                0x1fff8000                __cy_region_start_ram = .
+ *(.ramvectors)
+ .ramvectors    0x1fff8000       0xc0 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x1fff8000                CyRamVectors
+
+.noinit         0x1fff80c0        0x1
+ *(.noinit)
+ .noinit        0x1fff80c0        0x1 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+                0x1fff80c0                CyResetStatus
+
+.data           0x1fff80c8      0x150 load address 0x0002a2b8
+                0x1fff80c8                __cy_region_start_data = .
+ *(.jcr)
+ .jcr           0x1fff80c8        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .jcr           0x1fff80c8        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+ *(.got.plt)
+ *(.got)
+ *(.shdata)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x1fff80cc        0x2 .\CortexM3\ARM_GCC_541\Debug\seven.o
+ *fill*         0x1fff80ce        0x2 
+ .data          0x1fff80d0       0xe0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_eecfg.o)
+                0x1fff80d0                EE_counter_RAM
+                0x1fff80d8                EE_th_terminate_nextask
+                0x1fff80e4                EE_rq_pairs_next
+                0x1fff80f0                EE_rq_link
+                0x1fff80fc                EE_th_rnact
+                0x1fff8108                EE_rq_queues_tail
+                0x1fff8148                EE_rq_queues_head
+                0x1fff8188                EE_stkfirst
+                0x1fff818c                EE_th_next
+                0x1fff8198                EE_th_status
+                0x1fff81a4                EE_cortex_mx_IRQ_tos
+                0x1fff81a8                EE_cortex_mx_system_tos
+ .data          0x1fff81b0        0x4 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_irq_stack.o)
+ .data.impure_data
+                0x1fff81b4       0x60 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+ .data._impure_ptr
+                0x1fff8214        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x1fff8214                _impure_ptr
+                0x1fff8218                . = ALIGN (0x8)
+ *(.ram)
+                0x1fff8218                _edata = .
+
+.igot.plt       0x1fff8218        0x0 load address 0x0002a408
+ .igot.plt      0x1fff8218        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+
+.bss            0x1fff8218      0x498 load address 0x0002a408
+                0x1fff8218                PROVIDE (__bss_start__, .)
+ *(.shbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x1fff8218       0x1c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .bss           0x1fff8234       0x10 .\CortexM3\ARM_GCC_541\Debug\sound.o
+ .bss           0x1fff8244        0xa .\CortexM3\ARM_GCC_541\Debug\mp3.o
+ .bss           0x1fff824e        0x3 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.o
+ *fill*         0x1fff8251        0x3 
+ .bss           0x1fff8254        0x3 .\CortexM3\ARM_GCC_541\Debug\led.o
+ *fill*         0x1fff8257        0x1 
+ .bss           0x1fff8258        0x2 .\CortexM3\ARM_GCC_541\Debug\seven.o
+ *fill*         0x1fff825a        0x2 
+ .bss           0x1fff825c       0x34 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_eecfg.o)
+                0x1fff825c                EE_th_waswaiting
+                0x1fff8268                EE_th_event_waitmask
+                0x1fff8274                EE_th_event_active
+                0x1fff8280                EE_rq_free
+                0x1fff8284                EE_rq_bitmask
+                0x1fff8288                EE_sys_ceiling
+                0x1fff828c                EE_cortex_mx_active_tos
+ .bss           0x1fff8290        0x4 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+                0x1fff8290                UART_LOG_initVar
+                0x1fff8291                UART_LOG_txBufferRead
+                0x1fff8292                UART_LOG_txBufferWrite
+ .bss           0x1fff8294        0x1 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+                0x1fff8294                RGB_PWM_red_initVar
+ .bss           0x1fff8295        0x1 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+                0x1fff8295                RGB_PWM_green_initVar
+ .bss           0x1fff8296        0x1 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+                0x1fff8296                RGB_PWM_blue_initVar
+ .bss           0x1fff8297        0x1 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+                0x1fff8297                SOUND_PWM_initVar
+ .bss           0x1fff8298        0x1 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+                0x1fff8298                SOUND_SAMPLE_initVar
+ *(COMMON)
+ *fill*         0x1fff8299        0x3 
+ COMMON         0x1fff829c        0x8 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_lookup.o)
+                0x1fff829c                EE_oo_IRQ_disable_count
+                0x1fff82a0                EE_oo_IRQ_suspend_status
+ COMMON         0x1fff82a4        0x4 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_startos.o)
+                0x1fff82a4                EE_oo_started
+ COMMON         0x1fff82a8        0x8 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_common_ee_hal_structs.o)
+                0x1fff82a8                EE_IRQ_nesting_level
+                0x1fff82ac                EE_std_endcycle_next_tid
+ COMMON         0x1fff82b0      0x334 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_eecfg.o)
+                0x1fff82b0                EE_cortex_mx_stack_3
+                0x1fff8378                EE_rq_pairs_tid
+                0x1fff8384                EE_terminate_data
+                0x1fff8390                EE_oo_counter_object_RAM
+                0x1fff83e0                EE_ApplicationMode
+                0x1fff83e4                EE_cortex_mx_stack_9
+ COMMON         0x1fff85e4       0xc8 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+                0x1fff85e4                UART_LOG_txBuffer
+                0x1fff86b0                . = ALIGN (0x8)
+ *fill*         0x1fff86ac        0x4 
+ *(.ram.b)
+                0x1fff86b0                _end = .
+                0x1fff86b0                __end = .
+                0x1fff86b0                PROVIDE (end, .)
+                0x1fff86b0                PROVIDE (__bss_end__, .)
+                0x0002a2b8                __cy_region_init_ram = LOADADDR (.data)
+                0x00000150                __cy_region_init_size_ram = (_edata - ADDR (.data))
+                0x00000498                __cy_region_zero_size_ram = (_end - _edata)
+
+.heap           0x1fff86b0       0x80 load address 0x0002a408
+                0x1fff86b0                . = _end
+                0x1fff8730                . = (. + 0x80)
+ *fill*         0x1fff86b0       0x80 
+                0x1fff8730                __cy_heap_limit = .
+
+.stack          0x20007800      0x800
+                0x20007800                __cy_stack_limit = .
+                0x20008000                . = (. + 0x800)
+ *fill*         0x20007800      0x800 
+                0x00000001                ASSERT ((__cy_stack_limit >= __cy_heap_limit), region RAM overflowed with stack)
+                0x00000000                cy_checksum_exclude_size = (CY_APPL_LOADABLE == 0x1)?SIZEOF (.cy_checksum_exclude):0x0
+                0x00000001                ASSERT ((cy_checksum_exclude_size <= CY_CHECKSUM_EXCLUDE_SIZE), CY_BOOT: Section .cy_checksum_exclude size exceedes specified limit.)
+
+.cyloadermeta
+ *(.cyloadermeta)
+
+.cyloadablemeta
+ *(.cyloadablemeta)
+
+.cyconfigecc    0x80000000      0x784
+ *(.cyconfigecc)
+ .cyconfigecc   0x80000000      0x784 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                0x80000000                cy_meta_configecc
+
+.cycustnvl      0x90000000        0x4
+ *(.cycustnvl)
+ .cycustnvl     0x90000000        0x4 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                0x90000000                cy_meta_custnvl
+
+.cywolatch      0x90100000        0x4
+ *(.cywolatch)
+ .cywolatch     0x90100000        0x4 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                0x90100000                cy_meta_wonvl
+
+.cyeeprom       0x90200000        0x0
+ *(.cyeeprom)
+                0x00000001                ASSERT ((. <= ((0x90200000 + ee_offset) + ee_size)), .cyeeprom data will not fit in EEPROM)
+
+.cyflashprotect
+                0x90400000      0x100
+ *(.cyflashprotect)
+ .cyflashprotect
+                0x90400000      0x100 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                0x90400000                cy_meta_flashprotect
+
+.cymeta         0x90500000        0xc
+ *(.cymeta)
+ .cymeta        0x90500000        0xc .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                0x90500000                cy_metadata
+
+.rel.dyn        0x0002a408        0x0 load address 0x9050000c
+ .rel.iplt      0x0002a408        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000     0x1328
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x88 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_aranges
+                0x00000088       0x48 .\CortexM3\ARM_GCC_541\Debug\sound.o
+ .debug_aranges
+                0x000000d0       0x18 .\CortexM3\ARM_GCC_541\Debug\sound_data.o
+ .debug_aranges
+                0x000000e8       0x18 .\CortexM3\ARM_GCC_541\Debug\CastleOfGlass.o
+ .debug_aranges
+                0x00000100       0x18 .\CortexM3\ARM_GCC_541\Debug\valerie.o
+ .debug_aranges
+                0x00000118       0x88 .\CortexM3\ARM_GCC_541\Debug\mp3.o
+ .debug_aranges
+                0x000001a0       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.o
+ .debug_aranges
+                0x000001c8       0x28 .\CortexM3\ARM_GCC_541\Debug\button.o
+ .debug_aranges
+                0x000001f0       0x38 .\CortexM3\ARM_GCC_541\Debug\led.o
+ .debug_aranges
+                0x00000228       0x48 .\CortexM3\ARM_GCC_541\Debug\seven.o
+ .debug_aranges
+                0x00000270       0x58 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_aranges
+                0x000002c8       0x18 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_aranges
+                0x000002e0       0x48 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_aranges
+                0x00000328       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_activate.o)
+ .debug_aranges
+                0x00000348       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alcancel.o)
+ .debug_aranges
+                0x00000368       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alsetrel.o)
+ .debug_aranges
+                0x00000388       0x58 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_altick.o)
+ .debug_aranges
+                0x000003e0       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evclear.o)
+ .debug_aranges
+                0x00000400       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evget.o)
+ .debug_aranges
+                0x00000420       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evset.o)
+ .debug_aranges
+                0x00000440       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evwait.o)
+ .debug_aranges
+                0x00000460       0x30 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_irqendin.o)
+ .debug_aranges
+                0x00000490       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_lookup.o)
+ .debug_aranges
+                0x000004a8       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_exchg.o)
+ .debug_aranges
+                0x000004c8       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_first.o)
+ .debug_aranges
+                0x000004e8       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_inser.o)
+ .debug_aranges
+                0x00000508       0x40 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_startos.o)
+ .debug_aranges
+                0x00000548       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_terminat.o)
+ .debug_aranges
+                0x00000568       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_utils.o)
+ .debug_aranges
+                0x00000588       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_common_ee_hal_structs.o)
+ .debug_aranges
+                0x000005a0       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_eecfg.o)
+ .debug_aranges
+                0x000005b8       0x38 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_DP.o)
+ .debug_aranges
+                0x000005f0       0x38 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_SELECT.o)
+ .debug_aranges
+                0x00000628       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_reg.o)
+ .debug_aranges
+                0x00000650       0x38 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_1.o)
+ .debug_aranges
+                0x00000688       0x80 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+ .debug_aranges
+                0x00000708       0x38 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_2.o)
+ .debug_aranges
+                0x00000740       0x38 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_3.o)
+ .debug_aranges
+                0x00000778       0x38 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_4.o)
+ .debug_aranges
+                0x000007b0       0x38 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_red.o)
+ .debug_aranges
+                0x000007e8       0x38 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_yellow.o)
+ .debug_aranges
+                0x00000820       0x38 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_green.o)
+ .debug_aranges
+                0x00000858       0xf0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .debug_aranges
+                0x00000948       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_INT.o)
+ .debug_aranges
+                0x00000968       0x80 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+ .debug_aranges
+                0x000009e8       0x80 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+ .debug_aranges
+                0x00000a68       0x80 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+ .debug_aranges
+                0x00000ae8       0x98 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+ .debug_aranges
+                0x00000b80       0x70 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM_CLOCK.o)
+ .debug_aranges
+                0x00000bf0       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_Control.o)
+ .debug_aranges
+                0x00000c18       0x38 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_ENABLE.o)
+ .debug_aranges
+                0x00000c50       0x80 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+ .debug_aranges
+                0x00000cd0       0x70 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE_CLOCK.o)
+ .debug_aranges
+                0x00000d40       0x70 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_IntClock.o)
+ .debug_aranges
+                0x00000db0      0x2a0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .debug_aranges
+                0x00001050       0x98 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .debug_aranges
+                0x000010e8       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_change_context_isr.o)
+ .debug_aranges
+                0x00001108       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_irq_stack.o)
+ .debug_aranges
+                0x00001128       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_multi_context.o)
+ .debug_aranges
+                0x00001148       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_oo.o)
+ .debug_aranges
+                0x00001168       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyBootAsmGnu.o)
+ .debug_aranges
+                0x00001188       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tnterm.o)
+ .debug_aranges
+                0x000011a8       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tstub.o)
+ .debug_aranges
+                0x000011c8       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_context.o)
+ .debug_aranges
+                0x000011f0       0x88 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .debug_aranges
+                0x00001278       0x80 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+ .debug_aranges
+                0x000012f8       0x30 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_thendin.o)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000    0x138b5
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000      0xe20 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_info    0x00000e20      0x4de .\CortexM3\ARM_GCC_541\Debug\sound.o
+ .debug_info    0x000012fe      0x2ca .\CortexM3\ARM_GCC_541\Debug\sound_data.o
+ .debug_info    0x000015c8      0x21d .\CortexM3\ARM_GCC_541\Debug\CastleOfGlass.o
+ .debug_info    0x000017e5      0x21d .\CortexM3\ARM_GCC_541\Debug\valerie.o
+ .debug_info    0x00001a02      0x8c2 .\CortexM3\ARM_GCC_541\Debug\mp3.o
+ .debug_info    0x000022c4      0x49e .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.o
+ .debug_info    0x00002762      0x3b6 .\CortexM3\ARM_GCC_541\Debug\button.o
+ .debug_info    0x00002b18      0x64a .\CortexM3\ARM_GCC_541\Debug\led.o
+ .debug_info    0x00003162      0x565 .\CortexM3\ARM_GCC_541\Debug\seven.o
+ .debug_info    0x000036c7      0x5de .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_info    0x00003ca5      0x139 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_info    0x00003dde      0x3bb .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_info    0x00004199      0x80d .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_activate.o)
+ .debug_info    0x000049a6      0x5bd .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alcancel.o)
+ .debug_info    0x00004f63      0x5e5 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alsetrel.o)
+ .debug_info    0x00005548      0xc3b .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_altick.o)
+ .debug_info    0x00006183      0x5a7 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evclear.o)
+ .debug_info    0x0000672a      0x4ca .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evget.o)
+ .debug_info    0x00006bf4      0x7c3 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evset.o)
+ .debug_info    0x000073b7      0x84e .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evwait.o)
+ .debug_info    0x00007c05      0x5cb .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_irqendin.o)
+ .debug_info    0x000081d0      0x3d0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_lookup.o)
+ .debug_info    0x000085a0      0x46f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_exchg.o)
+ .debug_info    0x00008a0f      0x421 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_first.o)
+ .debug_info    0x00008e30      0x475 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_inser.o)
+ .debug_info    0x000092a5     0x203e .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_startos.o)
+ .debug_info    0x0000b2e3      0x589 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_terminat.o)
+ .debug_info    0x0000b86c      0x4f3 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_utils.o)
+ .debug_info    0x0000bd5f      0x3cb .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_common_ee_hal_structs.o)
+ .debug_info    0x0000c12a      0x7eb .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_eecfg.o)
+ .debug_info    0x0000c915      0x11f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_DP.o)
+ .debug_info    0x0000ca34      0x11f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_SELECT.o)
+ .debug_info    0x0000cb53       0xd6 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_reg.o)
+ .debug_info    0x0000cc29      0x11f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_1.o)
+ .debug_info    0x0000cd48      0x2d2 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+ .debug_info    0x0000d01a      0x11f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_2.o)
+ .debug_info    0x0000d139      0x11f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_3.o)
+ .debug_info    0x0000d258      0x11f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_4.o)
+ .debug_info    0x0000d377      0x11f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_red.o)
+ .debug_info    0x0000d496      0x11f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_yellow.o)
+ .debug_info    0x0000d5b5      0x11f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_green.o)
+ .debug_info    0x0000d6d4      0x6d1 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .debug_info    0x0000dda5       0xf6 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_INT.o)
+ .debug_info    0x0000de9b      0x295 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+ .debug_info    0x0000e130      0x295 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+ .debug_info    0x0000e3c5      0x295 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+ .debug_info    0x0000e65a      0x333 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+ .debug_info    0x0000e98d      0x283 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM_CLOCK.o)
+ .debug_info    0x0000ec10       0xd6 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_Control.o)
+ .debug_info    0x0000ece6      0x11f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_ENABLE.o)
+ .debug_info    0x0000ee05      0x28f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+ .debug_info    0x0000f094      0x283 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE_CLOCK.o)
+ .debug_info    0x0000f317      0x283 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_IntClock.o)
+ .debug_info    0x0000f59a     0x1374 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .debug_info    0x0001090e      0xa2a .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .debug_info    0x00011338      0x112 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_change_context_isr.o)
+ .debug_info    0x0001144a      0x109 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_irq_stack.o)
+ .debug_info    0x00011553      0x10d .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_multi_context.o)
+ .debug_info    0x00011660      0x102 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_oo.o)
+ .debug_info    0x00011762       0xf8 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyBootAsmGnu.o)
+ .debug_info    0x0001185a      0x43d .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tnterm.o)
+ .debug_info    0x00011c97      0x487 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tstub.o)
+ .debug_info    0x0001211e      0x501 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_context.o)
+ .debug_info    0x0001261f      0x64d .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .debug_info    0x00012c6c      0x550 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+ .debug_info    0x000131bc      0x6f9 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_thendin.o)
+
+.debug_abbrev   0x00000000     0x5703
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x33d .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_abbrev  0x0000033d      0x18a .\CortexM3\ARM_GCC_541\Debug\sound.o
+ .debug_abbrev  0x000004c7       0xd9 .\CortexM3\ARM_GCC_541\Debug\sound_data.o
+ .debug_abbrev  0x000005a0       0xc5 .\CortexM3\ARM_GCC_541\Debug\CastleOfGlass.o
+ .debug_abbrev  0x00000665       0xc5 .\CortexM3\ARM_GCC_541\Debug\valerie.o
+ .debug_abbrev  0x0000072a      0x273 .\CortexM3\ARM_GCC_541\Debug\mp3.o
+ .debug_abbrev  0x0000099d      0x131 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.o
+ .debug_abbrev  0x00000ace      0x150 .\CortexM3\ARM_GCC_541\Debug\button.o
+ .debug_abbrev  0x00000c1e      0x1fb .\CortexM3\ARM_GCC_541\Debug\led.o
+ .debug_abbrev  0x00000e19      0x191 .\CortexM3\ARM_GCC_541\Debug\seven.o
+ .debug_abbrev  0x00000faa      0x20d .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_abbrev  0x000011b7       0x77 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_abbrev  0x0000122e      0x1e8 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_abbrev  0x00001416      0x284 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_activate.o)
+ .debug_abbrev  0x0000169a      0x1f8 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alcancel.o)
+ .debug_abbrev  0x00001892      0x1f7 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alsetrel.o)
+ .debug_abbrev  0x00001a89      0x362 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_altick.o)
+ .debug_abbrev  0x00001deb      0x1e0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evclear.o)
+ .debug_abbrev  0x00001fcb      0x150 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evget.o)
+ .debug_abbrev  0x0000211b      0x27f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evset.o)
+ .debug_abbrev  0x0000239a      0x25d .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evwait.o)
+ .debug_abbrev  0x000025f7      0x1da .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_irqendin.o)
+ .debug_abbrev  0x000027d1       0xcf .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_lookup.o)
+ .debug_abbrev  0x000028a0       0xfc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_exchg.o)
+ .debug_abbrev  0x0000299c       0xed .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_first.o)
+ .debug_abbrev  0x00002a89      0x109 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_inser.o)
+ .debug_abbrev  0x00002b92      0x4a7 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_startos.o)
+ .debug_abbrev  0x00003039      0x1de .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_terminat.o)
+ .debug_abbrev  0x00003217      0x1bb .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_utils.o)
+ .debug_abbrev  0x000033d2       0xcf .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_common_ee_hal_structs.o)
+ .debug_abbrev  0x000034a1      0x127 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_eecfg.o)
+ .debug_abbrev  0x000035c8       0x90 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_DP.o)
+ .debug_abbrev  0x00003658       0x90 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_SELECT.o)
+ .debug_abbrev  0x000036e8       0x81 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_reg.o)
+ .debug_abbrev  0x00003769       0x90 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_1.o)
+ .debug_abbrev  0x000037f9      0x173 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+ .debug_abbrev  0x0000396c       0x90 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_2.o)
+ .debug_abbrev  0x000039fc       0x90 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_3.o)
+ .debug_abbrev  0x00003a8c       0x90 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_4.o)
+ .debug_abbrev  0x00003b1c       0x90 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_red.o)
+ .debug_abbrev  0x00003bac       0x90 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_yellow.o)
+ .debug_abbrev  0x00003c3c       0x90 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_green.o)
+ .debug_abbrev  0x00003ccc      0x16f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .debug_abbrev  0x00003e3b       0x79 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_INT.o)
+ .debug_abbrev  0x00003eb4      0x12d .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+ .debug_abbrev  0x00003fe1      0x12d .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+ .debug_abbrev  0x0000410e      0x12d .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+ .debug_abbrev  0x0000423b      0x133 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+ .debug_abbrev  0x0000436e      0x139 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM_CLOCK.o)
+ .debug_abbrev  0x000044a7       0x81 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_Control.o)
+ .debug_abbrev  0x00004528       0x90 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_ENABLE.o)
+ .debug_abbrev  0x000045b8      0x122 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+ .debug_abbrev  0x000046da      0x139 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE_CLOCK.o)
+ .debug_abbrev  0x00004813      0x139 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_IntClock.o)
+ .debug_abbrev  0x0000494c      0x254 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .debug_abbrev  0x00004ba0      0x1ab .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .debug_abbrev  0x00004d4b       0x14 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_change_context_isr.o)
+ .debug_abbrev  0x00004d5f       0x14 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_irq_stack.o)
+ .debug_abbrev  0x00004d73       0x14 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_multi_context.o)
+ .debug_abbrev  0x00004d87       0x14 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_oo.o)
+ .debug_abbrev  0x00004d9b       0x14 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyBootAsmGnu.o)
+ .debug_abbrev  0x00004daf      0x157 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tnterm.o)
+ .debug_abbrev  0x00004f06      0x143 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tstub.o)
+ .debug_abbrev  0x00005049      0x156 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_context.o)
+ .debug_abbrev  0x0000519f      0x1a7 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .debug_abbrev  0x00005346      0x194 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+ .debug_abbrev  0x000054da      0x229 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_thendin.o)
+
+.debug_line     0x00000000     0x783c
+ *(.debug_line)
+ .debug_line    0x00000000      0x6fa .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_line    0x000006fa      0x320 .\CortexM3\ARM_GCC_541\Debug\sound.o
+ .debug_line    0x00000a1a      0x236 .\CortexM3\ARM_GCC_541\Debug\sound_data.o
+ .debug_line    0x00000c50      0x229 .\CortexM3\ARM_GCC_541\Debug\CastleOfGlass.o
+ .debug_line    0x00000e79      0x223 .\CortexM3\ARM_GCC_541\Debug\valerie.o
+ .debug_line    0x0000109c      0x40b .\CortexM3\ARM_GCC_541\Debug\mp3.o
+ .debug_line    0x000014a7      0x2ff .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.o
+ .debug_line    0x000017a6      0x2c4 .\CortexM3\ARM_GCC_541\Debug\button.o
+ .debug_line    0x00001a6a      0x37a .\CortexM3\ARM_GCC_541\Debug\led.o
+ .debug_line    0x00001de4      0x2ec .\CortexM3\ARM_GCC_541\Debug\seven.o
+ .debug_line    0x000020d0      0x1f9 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_line    0x000022c9      0x141 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_line    0x0000240a      0x234 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_line    0x0000263e      0x218 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_activate.o)
+ .debug_line    0x00002856      0x1f0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alcancel.o)
+ .debug_line    0x00002a46      0x1f0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alsetrel.o)
+ .debug_line    0x00002c36      0x321 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_altick.o)
+ .debug_line    0x00002f57      0x1f3 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evclear.o)
+ .debug_line    0x0000314a      0x173 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evget.o)
+ .debug_line    0x000032bd      0x215 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evset.o)
+ .debug_line    0x000034d2      0x221 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evwait.o)
+ .debug_line    0x000036f3      0x1b6 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_irqendin.o)
+ .debug_line    0x000038a9      0x12e .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_lookup.o)
+ .debug_line    0x000039d7      0x173 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_exchg.o)
+ .debug_line    0x00003b4a      0x16a .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_first.o)
+ .debug_line    0x00003cb4      0x16e .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_inser.o)
+ .debug_line    0x00003e22      0x413 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_startos.o)
+ .debug_line    0x00004235      0x1de .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_terminat.o)
+ .debug_line    0x00004413      0x194 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_utils.o)
+ .debug_line    0x000045a7      0x10b .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_common_ee_hal_structs.o)
+ .debug_line    0x000046b2      0x154 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_eecfg.o)
+ .debug_line    0x00004806       0x95 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_DP.o)
+ .debug_line    0x0000489b       0x99 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_SELECT.o)
+ .debug_line    0x00004934       0x71 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_reg.o)
+ .debug_line    0x000049a5       0x95 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_1.o)
+ .debug_line    0x00004a3a      0x137 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+ .debug_line    0x00004b71       0x95 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_2.o)
+ .debug_line    0x00004c06       0x95 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_3.o)
+ .debug_line    0x00004c9b       0x95 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_4.o)
+ .debug_line    0x00004d30       0x94 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_red.o)
+ .debug_line    0x00004dc4       0x97 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_yellow.o)
+ .debug_line    0x00004e5b       0x96 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_green.o)
+ .debug_line    0x00004ef1      0x2fd .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .debug_line    0x000051ee       0x85 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_INT.o)
+ .debug_line    0x00005273      0x143 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+ .debug_line    0x000053b6      0x145 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+ .debug_line    0x000054fb      0x144 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+ .debug_line    0x0000563f      0x189 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+ .debug_line    0x000057c8      0x17e .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM_CLOCK.o)
+ .debug_line    0x00005946       0x75 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_Control.o)
+ .debug_line    0x000059bb       0x99 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_ENABLE.o)
+ .debug_line    0x00005a54      0x160 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+ .debug_line    0x00005bb4      0x181 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE_CLOCK.o)
+ .debug_line    0x00005d35      0x180 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_IntClock.o)
+ .debug_line    0x00005eb5      0x816 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .debug_line    0x000066cb      0x367 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .debug_line    0x00006a32       0xb1 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_change_context_isr.o)
+ .debug_line    0x00006ae3       0x77 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_irq_stack.o)
+ .debug_line    0x00006b5a       0xa0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_multi_context.o)
+ .debug_line    0x00006bfa       0x9c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_oo.o)
+ .debug_line    0x00006c96       0x66 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyBootAsmGnu.o)
+ .debug_line    0x00006cfc      0x196 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tnterm.o)
+ .debug_line    0x00006e92      0x18a .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tstub.o)
+ .debug_line    0x0000701c      0x1c7 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_context.o)
+ .debug_line    0x000071e3      0x21a .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .debug_line    0x000073fd      0x260 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+ .debug_line    0x0000765d      0x1df .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_thendin.o)
+
+.debug_frame    0x00000000     0x2854
+ *(.debug_frame)
+ .debug_frame   0x00000000      0x1c0 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_frame   0x000001c0       0xb0 .\CortexM3\ARM_GCC_541\Debug\sound.o
+ .debug_frame   0x00000270      0x178 .\CortexM3\ARM_GCC_541\Debug\mp3.o
+ .debug_frame   0x000003e8       0x48 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.o
+ .debug_frame   0x00000430       0x4c .\CortexM3\ARM_GCC_541\Debug\button.o
+ .debug_frame   0x0000047c       0x8c .\CortexM3\ARM_GCC_541\Debug\led.o
+ .debug_frame   0x00000508       0xcc .\CortexM3\ARM_GCC_541\Debug\seven.o
+ .debug_frame   0x000005d4       0xe4 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_frame   0x000006b8       0xb8 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_frame   0x00000770       0x30 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_activate.o)
+ .debug_frame   0x000007a0       0x38 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alcancel.o)
+ .debug_frame   0x000007d8       0x38 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alsetrel.o)
+ .debug_frame   0x00000810      0x10c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_altick.o)
+ .debug_frame   0x0000091c       0x38 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evclear.o)
+ .debug_frame   0x00000954       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evget.o)
+ .debug_frame   0x00000974       0x30 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evset.o)
+ .debug_frame   0x000009a4       0x30 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evwait.o)
+ .debug_frame   0x000009d4       0x58 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_irqendin.o)
+ .debug_frame   0x00000a2c       0x3c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_exchg.o)
+ .debug_frame   0x00000a68       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_first.o)
+ .debug_frame   0x00000a88       0x30 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_inser.o)
+ .debug_frame   0x00000ab8       0x90 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_startos.o)
+ .debug_frame   0x00000b48       0x2c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_terminat.o)
+ .debug_frame   0x00000b74       0x30 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_utils.o)
+ .debug_frame   0x00000ba4       0x50 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_DP.o)
+ .debug_frame   0x00000bf4       0x50 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_SELECT.o)
+ .debug_frame   0x00000c44       0x30 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_reg.o)
+ .debug_frame   0x00000c74       0x50 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_1.o)
+ .debug_frame   0x00000cc4      0x104 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+ .debug_frame   0x00000dc8       0x50 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_2.o)
+ .debug_frame   0x00000e18       0x50 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_3.o)
+ .debug_frame   0x00000e68       0x50 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_4.o)
+ .debug_frame   0x00000eb8       0x50 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_red.o)
+ .debug_frame   0x00000f08       0x50 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_yellow.o)
+ .debug_frame   0x00000f58       0x50 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_green.o)
+ .debug_frame   0x00000fa8      0x25c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .debug_frame   0x00001204       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_INT.o)
+ .debug_frame   0x00001224       0xf8 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+ .debug_frame   0x0000131c       0xf8 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+ .debug_frame   0x00001414       0xf8 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+ .debug_frame   0x0000150c      0x134 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+ .debug_frame   0x00001640       0xe0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM_CLOCK.o)
+ .debug_frame   0x00001720       0x30 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_Control.o)
+ .debug_frame   0x00001750       0x50 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_ENABLE.o)
+ .debug_frame   0x000017a0      0x104 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+ .debug_frame   0x000018a4       0xe0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE_CLOCK.o)
+ .debug_frame   0x00001984       0xe0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_IntClock.o)
+ .debug_frame   0x00001a64      0x738 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .debug_frame   0x0000219c      0x1f8 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .debug_frame   0x00002394       0x2c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tnterm.o)
+ .debug_frame   0x000023c0       0x2c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tstub.o)
+ .debug_frame   0x000023ec       0x3c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_context.o)
+ .debug_frame   0x00002428      0x194 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .debug_frame   0x000025bc      0x180 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+ .debug_frame   0x0000273c       0x5c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_thendin.o)
+ .debug_frame   0x00002798       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+ .debug_frame   0x000027b8       0x28 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+ .debug_frame   0x000027e0       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+ .debug_frame   0x0000280c       0x28 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x00002834       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+
+.debug_str      0x00000000     0x4de8
+ *(.debug_str)
+ .debug_str     0x00000000      0x964 .\CortexM3\ARM_GCC_541\Debug\main.o
+                                0xa04 (size before relaxing)
+ .debug_str     0x00000964      0x11b .\CortexM3\ARM_GCC_541\Debug\sound.o
+                                0x682 (size before relaxing)
+ .debug_str     0x00000a7f       0x43 .\CortexM3\ARM_GCC_541\Debug\sound_data.o
+                                0x3dd (size before relaxing)
+ .debug_str     0x00000ac2       0x1b .\CortexM3\ARM_GCC_541\Debug\CastleOfGlass.o
+                                0x363 (size before relaxing)
+ .debug_str     0x00000add       0x15 .\CortexM3\ARM_GCC_541\Debug\valerie.o
+                                0x35e (size before relaxing)
+ .debug_str     0x00000af2      0x1d9 .\CortexM3\ARM_GCC_541\Debug\mp3.o
+                                0x808 (size before relaxing)
+ .debug_str     0x00000ccb      0x156 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.o
+                                0x4f7 (size before relaxing)
+ .debug_str     0x00000e21       0x8b .\CortexM3\ARM_GCC_541\Debug\button.o
+                                0x5c0 (size before relaxing)
+ .debug_str     0x00000eac      0x19c .\CortexM3\ARM_GCC_541\Debug\led.o
+                                0x69d (size before relaxing)
+ .debug_str     0x00001048       0xc9 .\CortexM3\ARM_GCC_541\Debug\seven.o
+                                0x5ed (size before relaxing)
+ .debug_str     0x00001111      0x19d .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                                0x3ac (size before relaxing)
+ .debug_str     0x000012ae       0x75 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                                0x24c (size before relaxing)
+ .debug_str     0x00001323      0x132 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                                0x372 (size before relaxing)
+ .debug_str     0x00001455      0x5cb .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_activate.o)
+                                0x872 (size before relaxing)
+ .debug_str     0x00001a20       0x7f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alcancel.o)
+                                0x645 (size before relaxing)
+ .debug_str     0x00001a9f       0x8b .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alsetrel.o)
+                                0x66a (size before relaxing)
+ .debug_str     0x00001b2a      0x22c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_altick.o)
+                                0xacd (size before relaxing)
+ .debug_str     0x00001d56       0x31 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evclear.o)
+                                0x64a (size before relaxing)
+ .debug_str     0x00001d87       0x4f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evget.o)
+                                0x5ba (size before relaxing)
+ .debug_str     0x00001dd6       0x2f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evset.o)
+                                0x84a (size before relaxing)
+ .debug_str     0x00001e05       0x92 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evwait.o)
+                                0x88e (size before relaxing)
+ .debug_str     0x00001e97       0xcd .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_irqendin.o)
+                                0x727 (size before relaxing)
+ .debug_str     0x00001f64       0x30 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_lookup.o)
+                                0x4f6 (size before relaxing)
+ .debug_str     0x00001f94       0x8f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_exchg.o)
+                                0x568 (size before relaxing)
+ .debug_str     0x00002023       0x32 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_first.o)
+                                0x533 (size before relaxing)
+ .debug_str     0x00002055       0x3d .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_inser.o)
+                                0x56d (size before relaxing)
+ .debug_str     0x00002092      0xefc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_startos.o)
+                               0x1799 (size before relaxing)
+ .debug_str     0x00002f8e       0x60 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_terminat.o)
+                                0x657 (size before relaxing)
+ .debug_str     0x00002fee       0x85 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_utils.o)
+                                0x5b4 (size before relaxing)
+ .debug_str     0x00003073       0x3c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_common_ee_hal_structs.o)
+                                0x502 (size before relaxing)
+ .debug_str     0x000030af      0x14c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_eecfg.o)
+                                0x7f5 (size before relaxing)
+ .debug_str     0x000031fb       0x6b .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_DP.o)
+                                0x259 (size before relaxing)
+ .debug_str     0x00003266       0x6b .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_SELECT.o)
+                                0x26d (size before relaxing)
+ .debug_str     0x000032d1       0x32 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_reg.o)
+                                0x223 (size before relaxing)
+ .debug_str     0x00003303       0x5c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_1.o)
+                                0x259 (size before relaxing)
+ .debug_str     0x0000335f      0x101 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+                                0x354 (size before relaxing)
+ .debug_str     0x00003460       0x5c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_2.o)
+                                0x259 (size before relaxing)
+ .debug_str     0x000034bc       0x5c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_3.o)
+                                0x259 (size before relaxing)
+ .debug_str     0x00003518       0x5c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_4.o)
+                                0x259 (size before relaxing)
+ .debug_str     0x00003574       0x57 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_red.o)
+                                0x254 (size before relaxing)
+ .debug_str     0x000035cb       0x63 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_yellow.o)
+                                0x263 (size before relaxing)
+ .debug_str     0x0000362e       0x5f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_green.o)
+                                0x25e (size before relaxing)
+ .debug_str     0x0000368d      0x359 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+                                0x5e6 (size before relaxing)
+ .debug_str     0x000039e6       0x35 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_INT.o)
+                                0x262 (size before relaxing)
+ .debug_str     0x00003a1b      0x154 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+                                0x390 (size before relaxing)
+ .debug_str     0x00003b6f      0x159 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+                                0x3ae (size before relaxing)
+ .debug_str     0x00003cc8      0x14c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+                                0x39f (size before relaxing)
+ .debug_str     0x00003e14      0x198 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+                                0x405 (size before relaxing)
+ .debug_str     0x00003fac      0x1ac .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM_CLOCK.o)
+                                0x3b6 (size before relaxing)
+ .debug_str     0x00004158       0x3a .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_Control.o)
+                                0x22f (size before relaxing)
+ .debug_str     0x00004192       0x6b .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_ENABLE.o)
+                                0x26d (size before relaxing)
+ .debug_str     0x000041fd      0x180 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+                                0x3ac (size before relaxing)
+ .debug_str     0x0000437d      0x16a .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE_CLOCK.o)
+                                0x3da (size before relaxing)
+ .debug_str     0x000044e7      0x160 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_IntClock.o)
+                                0x3ce (size before relaxing)
+ .debug_str     0x00004647      0x245 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+                                0xaaf (size before relaxing)
+ .debug_str     0x0000488c      0x2dc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+                                0x79b (size before relaxing)
+ .debug_str     0x00004b68       0x5b .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tnterm.o)
+                                0x569 (size before relaxing)
+ .debug_str     0x00004bc3       0x5a .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tstub.o)
+                                0x640 (size before relaxing)
+ .debug_str     0x00004c1d       0x8f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_context.o)
+                                0x5f7 (size before relaxing)
+ .debug_str     0x00004cac       0x6c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+                                0x428 (size before relaxing)
+ .debug_str     0x00004d18       0x64 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+                                0x3a0 (size before relaxing)
+ .debug_str     0x00004d7c       0x6c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_thendin.o)
+                                0x7bd (size before relaxing)
+
+.debug_loc      0x00000000     0x4120
+ *(.debug_loc)
+ .debug_loc     0x00000000      0x311 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_loc     0x00000311       0x9e .\CortexM3\ARM_GCC_541\Debug\sound.o
+ .debug_loc     0x000003af      0x1d9 .\CortexM3\ARM_GCC_541\Debug\mp3.o
+ .debug_loc     0x00000588       0xa6 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.o
+ .debug_loc     0x0000062e       0xde .\CortexM3\ARM_GCC_541\Debug\button.o
+ .debug_loc     0x0000070c      0x322 .\CortexM3\ARM_GCC_541\Debug\led.o
+ .debug_loc     0x00000a2e      0x18a .\CortexM3\ARM_GCC_541\Debug\seven.o
+ .debug_loc     0x00000bb8      0x259 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_loc     0x00000e11      0x144 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_loc     0x00000f55      0x12d .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_activate.o)
+ .debug_loc     0x00001082      0x156 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alcancel.o)
+ .debug_loc     0x000011d8      0x1ed .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alsetrel.o)
+ .debug_loc     0x000013c5      0x46c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_altick.o)
+ .debug_loc     0x00001831       0xbc .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evclear.o)
+ .debug_loc     0x000018ed       0xa4 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evget.o)
+ .debug_loc     0x00001991      0x16b .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evset.o)
+ .debug_loc     0x00001afc      0x13f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evwait.o)
+ .debug_loc     0x00001c3b       0x62 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_irqendin.o)
+ .debug_loc     0x00001c9d       0x4a .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_exchg.o)
+ .debug_loc     0x00001ce7       0x36 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_first.o)
+ .debug_loc     0x00001d1d       0x1e .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_inser.o)
+ .debug_loc     0x00001d3b      0x1d8 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_startos.o)
+ .debug_loc     0x00001f13       0x50 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_terminat.o)
+ .debug_loc     0x00001f63       0x13 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_utils.o)
+ .debug_loc     0x00001f76       0x42 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_DP.o)
+ .debug_loc     0x00001fb8       0x42 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_SELECT.o)
+ .debug_loc     0x00001ffa       0x42 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_1.o)
+ .debug_loc     0x0000203c       0x56 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+ .debug_loc     0x00002092       0x42 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_2.o)
+ .debug_loc     0x000020d4       0x42 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_3.o)
+ .debug_loc     0x00002116       0x42 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_4.o)
+ .debug_loc     0x00002158       0x42 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_red.o)
+ .debug_loc     0x0000219a       0x42 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_yellow.o)
+ .debug_loc     0x000021dc       0x42 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_green.o)
+ .debug_loc     0x0000221e      0x276 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .debug_loc     0x00002494       0x13 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+ .debug_loc     0x000024a7       0x13 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+ .debug_loc     0x000024ba       0x13 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+ .debug_loc     0x000024cd       0x26 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+ .debug_loc     0x000024f3      0x12c .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM_CLOCK.o)
+ .debug_loc     0x0000261f       0x42 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_ENABLE.o)
+ .debug_loc     0x00002661       0x21 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+ .debug_loc     0x00002682      0x128 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE_CLOCK.o)
+ .debug_loc     0x000027aa      0x128 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_IntClock.o)
+ .debug_loc     0x000028d2      0xa11 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .debug_loc     0x000032e3      0x1e4 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .debug_loc     0x000034c7       0xc5 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_context.o)
+ .debug_loc     0x0000358c      0x3b2 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .debug_loc     0x0000393e      0x705 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+ .debug_loc     0x00004043       0xdd .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_thendin.o)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_ranges   0x00000000      0xf88
+ *(.debug_ranges)
+ .debug_ranges  0x00000000       0x78 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_ranges  0x00000078       0x38 .\CortexM3\ARM_GCC_541\Debug\sound.o
+ .debug_ranges  0x000000b0       0x78 .\CortexM3\ARM_GCC_541\Debug\mp3.o
+ .debug_ranges  0x00000128       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.o
+ .debug_ranges  0x00000140       0x18 .\CortexM3\ARM_GCC_541\Debug\button.o
+ .debug_ranges  0x00000158       0x80 .\CortexM3\ARM_GCC_541\Debug\led.o
+ .debug_ranges  0x000001d8       0x38 .\CortexM3\ARM_GCC_541\Debug\seven.o
+ .debug_ranges  0x00000210       0x48 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_ranges  0x00000258       0x38 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_ranges  0x00000290       0x40 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_activate.o)
+ .debug_ranges  0x000002d0       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alcancel.o)
+ .debug_ranges  0x000002f8       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alsetrel.o)
+ .debug_ranges  0x00000308       0x78 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_altick.o)
+ .debug_ranges  0x00000380       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evclear.o)
+ .debug_ranges  0x000003a8       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evget.o)
+ .debug_ranges  0x000003b8       0x40 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evset.o)
+ .debug_ranges  0x000003f8       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evwait.o)
+ .debug_ranges  0x00000408       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_irqendin.o)
+ .debug_ranges  0x00000428       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_exchg.o)
+ .debug_ranges  0x00000438       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_first.o)
+ .debug_ranges  0x00000448       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_inser.o)
+ .debug_ranges  0x00000458       0x30 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_startos.o)
+ .debug_ranges  0x00000488       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_terminat.o)
+ .debug_ranges  0x00000498       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_utils.o)
+ .debug_ranges  0x000004a8       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_DP.o)
+ .debug_ranges  0x000004d0       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_SELECT.o)
+ .debug_ranges  0x000004f8       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_reg.o)
+ .debug_ranges  0x00000510       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_1.o)
+ .debug_ranges  0x00000538       0x70 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+ .debug_ranges  0x000005a8       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_2.o)
+ .debug_ranges  0x000005d0       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_3.o)
+ .debug_ranges  0x000005f8       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_4.o)
+ .debug_ranges  0x00000620       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_red.o)
+ .debug_ranges  0x00000648       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_yellow.o)
+ .debug_ranges  0x00000670       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_green.o)
+ .debug_ranges  0x00000698       0xe0 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .debug_ranges  0x00000778       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_INT.o)
+ .debug_ranges  0x00000788       0x70 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+ .debug_ranges  0x000007f8       0x70 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+ .debug_ranges  0x00000868       0x70 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+ .debug_ranges  0x000008d8       0x88 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+ .debug_ranges  0x00000960       0x60 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM_CLOCK.o)
+ .debug_ranges  0x000009c0       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_Control.o)
+ .debug_ranges  0x000009d8       0x28 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_ENABLE.o)
+ .debug_ranges  0x00000a00       0x70 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+ .debug_ranges  0x00000a70       0x60 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE_CLOCK.o)
+ .debug_ranges  0x00000ad0       0x60 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_IntClock.o)
+ .debug_ranges  0x00000b30      0x290 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .debug_ranges  0x00000dc0       0x88 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .debug_ranges  0x00000e48       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tnterm.o)
+ .debug_ranges  0x00000e58       0x10 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tstub.o)
+ .debug_ranges  0x00000e68       0x18 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_context.o)
+ .debug_ranges  0x00000e80       0x78 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .debug_ranges  0x00000ef8       0x70 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+ .debug_ranges  0x00000f68       0x20 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_thendin.o)
+
+.comment        0x00000000       0x6e
+ .comment       0x00000000       0x6e .\CortexM3\ARM_GCC_541\Debug\main.o
+                                 0x6f (size before relaxing)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\sound.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\sound_data.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\CastleOfGlass.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\valerie.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\mp3.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\button.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\led.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\seven.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_activate.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alcancel.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alsetrel.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_altick.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evclear.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evget.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evset.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evwait.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_irqendin.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_lookup.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_exchg.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_first.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_inser.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_startos.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_terminat.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_utils.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_common_ee_hal_structs.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_eecfg.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_DP.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_SELECT.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_reg.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_1.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_2.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_3.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_4.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_red.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_yellow.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_green.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_INT.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM_CLOCK.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_Control.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_ENABLE.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE_CLOCK.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_IntClock.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tnterm.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tstub.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_context.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_thendin.o)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+.ARM.attributes
+                0x00000000       0x2f
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x1d c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+ .ARM.attributes
+                0x0000001d       0x2d c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .ARM.attributes
+                0x0000004a       0x1b c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .ARM.attributes
+                0x00000065       0x33 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .ARM.attributes
+                0x00000098       0x33 .\CortexM3\ARM_GCC_541\Debug\sound.o
+ .ARM.attributes
+                0x000000cb       0x33 .\CortexM3\ARM_GCC_541\Debug\sound_data.o
+ .ARM.attributes
+                0x000000fe       0x33 .\CortexM3\ARM_GCC_541\Debug\CastleOfGlass.o
+ .ARM.attributes
+                0x00000131       0x33 .\CortexM3\ARM_GCC_541\Debug\valerie.o
+ .ARM.attributes
+                0x00000164       0x33 .\CortexM3\ARM_GCC_541\Debug\mp3.o
+ .ARM.attributes
+                0x00000197       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.o
+ .ARM.attributes
+                0x000001ca       0x33 .\CortexM3\ARM_GCC_541\Debug\button.o
+ .ARM.attributes
+                0x000001fd       0x33 .\CortexM3\ARM_GCC_541\Debug\led.o
+ .ARM.attributes
+                0x00000230       0x33 .\CortexM3\ARM_GCC_541\Debug\seven.o
+ .ARM.attributes
+                0x00000263       0x33 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .ARM.attributes
+                0x00000296       0x33 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .ARM.attributes
+                0x000002c9       0x33 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .ARM.attributes
+                0x000002fc       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_activate.o)
+ .ARM.attributes
+                0x0000032f       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alcancel.o)
+ .ARM.attributes
+                0x00000362       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_alsetrel.o)
+ .ARM.attributes
+                0x00000395       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_altick.o)
+ .ARM.attributes
+                0x000003c8       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evclear.o)
+ .ARM.attributes
+                0x000003fb       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evget.o)
+ .ARM.attributes
+                0x0000042e       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evset.o)
+ .ARM.attributes
+                0x00000461       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_evwait.o)
+ .ARM.attributes
+                0x00000494       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_irqendin.o)
+ .ARM.attributes
+                0x000004c7       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_lookup.o)
+ .ARM.attributes
+                0x000004fa       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_exchg.o)
+ .ARM.attributes
+                0x0000052d       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_first.o)
+ .ARM.attributes
+                0x00000560       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_rq_inser.o)
+ .ARM.attributes
+                0x00000593       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_startos.o)
+ .ARM.attributes
+                0x000005c6       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_terminat.o)
+ .ARM.attributes
+                0x000005f9       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_utils.o)
+ .ARM.attributes
+                0x0000062c       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_common_ee_hal_structs.o)
+ .ARM.attributes
+                0x0000065f       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_eecfg.o)
+ .ARM.attributes
+                0x00000692       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_DP.o)
+ .ARM.attributes
+                0x000006c5       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_SELECT.o)
+ .ARM.attributes
+                0x000006f8       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SEVEN_reg.o)
+ .ARM.attributes
+                0x0000072b       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_1.o)
+ .ARM.attributes
+                0x0000075e       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(isr_Button.o)
+ .ARM.attributes
+                0x00000791       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_2.o)
+ .ARM.attributes
+                0x000007c4       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_3.o)
+ .ARM.attributes
+                0x000007f7       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(BUTTON_4.o)
+ .ARM.attributes
+                0x0000082a       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_red.o)
+ .ARM.attributes
+                0x0000085d       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_yellow.o)
+ .ARM.attributes
+                0x00000890       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(LED_green.o)
+ .ARM.attributes
+                0x000008c3       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG.o)
+ .ARM.attributes
+                0x000008f6       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_INT.o)
+ .ARM.attributes
+                0x00000929       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_red.o)
+ .ARM.attributes
+                0x0000095c       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_green.o)
+ .ARM.attributes
+                0x0000098f       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(RGB_PWM_blue.o)
+ .ARM.attributes
+                0x000009c2       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM.o)
+ .ARM.attributes
+                0x000009f5       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_PWM_CLOCK.o)
+ .ARM.attributes
+                0x00000a28       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_Control.o)
+ .ARM.attributes
+                0x00000a5b       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_ENABLE.o)
+ .ARM.attributes
+                0x00000a8e       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE.o)
+ .ARM.attributes
+                0x00000ac1       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SOUND_SAMPLE_CLOCK.o)
+ .ARM.attributes
+                0x00000af4       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(UART_LOG_IntClock.o)
+ .ARM.attributes
+                0x00000b27       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyLib.o)
+ .ARM.attributes
+                0x00000b5a       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(cyPm.o)
+ .ARM.attributes
+                0x00000b8d       0x21 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_change_context_isr.o)
+ .ARM.attributes
+                0x00000bae       0x21 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_irq_stack.o)
+ .ARM.attributes
+                0x00000bcf       0x21 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_multi_context.o)
+ .ARM.attributes
+                0x00000bf0       0x21 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_gnu_oo.o)
+ .ARM.attributes
+                0x00000c11       0x21 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyBootAsmGnu.o)
+ .ARM.attributes
+                0x00000c32       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tnterm.o)
+ .ARM.attributes
+                0x00000c65       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_tstub.o)
+ .ARM.attributes
+                0x00000c98       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_cortex_mx_ee_context.o)
+ .ARM.attributes
+                0x00000ccb       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CyFlash.o)
+ .ARM.attributes
+                0x00000cfe       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(CySpc.o)
+ .ARM.attributes
+                0x00000d31       0x33 .\CortexM3\ARM_GCC_541\Debug\Smart_Volume.a(SimpleSystem_ee_thendin.o)
+ .ARM.attributes
+                0x00000d64       0x2d c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+ .ARM.attributes
+                0x00000d91       0x2d c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+ .ARM.attributes
+                0x00000dbe       0x2d c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+ .ARM.attributes
+                0x00000deb       0x2d c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+ .ARM.attributes
+                0x00000e18       0x2d c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .ARM.attributes
+                0x00000e45       0x2d c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+ .ARM.attributes
+                0x00000e72       0x2d c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+ .ARM.attributes
+                0x00000e9f       0x1d c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+
+/DISCARD/
+ *(.note.GNU-stack)
+OUTPUT(D:\H_da\Winter Semester\MM03 Advanced Microcontroller Systems and Embedded Operating Systems\Lecture Prof. Fromm\workspace\workspace_psoc\Smart_Volume\Smart_Volume.cydsn\CortexM3\ARM_GCC_541\Debug\Smart_Volume.elf elf32-littlearm)

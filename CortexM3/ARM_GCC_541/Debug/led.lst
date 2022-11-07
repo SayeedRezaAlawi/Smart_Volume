@@ -1,0 +1,3324 @@
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"led.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.LED_Set,"ax",%progbits
+  20              		.align	2
+  21              		.global	LED_Set
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	LED_Set, %function
+  25              	LED_Set:
+  26              	.LFB115:
+  27              		.file 1 "source\\bsw\\led.c"
+   1:source\bsw/led.c **** /**
+   2:source\bsw/led.c **** * \file <filename>
+   3:source\bsw/led.c **** * \author <author-name>
+   4:source\bsw/led.c **** * \date <date>
+   5:source\bsw/led.c **** *
+   6:source\bsw/led.c **** * \brief <Symbolic File name>
+   7:source\bsw/led.c **** *
+   8:source\bsw/led.c **** * \copyright Copyright ©2016
+   9:source\bsw/led.c **** * Department of electrical engineering and information technology, Hochschule Darmstadt - Universit
+  10:source\bsw/led.c **** * Permission to use, copy, modify, and distribute this software and its documentation for education
+  11:source\bsw/led.c **** * (unless permitted by h_da) and official h_da projects, is hereby granted for enrolled students of
+  12:source\bsw/led.c **** * this paragraph and the following paragraph appear in all copies, modifications, and distributions
+  13:source\bsw/led.c **** * Contact Prof.Dr.-Ing. Peter Fromm, peter.fromm@h-da.de, Birkenweg 8 64295 Darmstadt - GERMANY for
+  14:source\bsw/led.c **** *
+  15:source\bsw/led.c **** * \warning This software is a PROTOTYPE version and is not designed or intended for use in producti
+  16:source\bsw/led.c **** * The user represents and warrants that it will NOT use or redistribute the Software for such purpo
+  17:source\bsw/led.c **** * This prototype is for research purposes only. This software is provided "AS IS," without a warran
+  18:source\bsw/led.c **** */
+  19:source\bsw/led.c **** 
+  20:source\bsw/led.c **** /*****************************************************************************/
+  21:source\bsw/led.c **** /* Include files                                                             */
+  22:source\bsw/led.c **** /*****************************************************************************/
+  23:source\bsw/led.c **** 
+  24:source\bsw/led.c **** #include "project.h"
+  25:source\bsw/led.c **** #include "led.h"
+  26:source\bsw/led.c **** 
+  27:source\bsw/led.c **** 
+  28:source\bsw/led.c **** /*****************************************************************************/
+  29:source\bsw/led.c **** /* Local pre-processor symbols/macros ('#define')                            */
+  30:source\bsw/led.c **** /*****************************************************************************/
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 2
+
+
+  31:source\bsw/led.c **** 
+  32:source\bsw/led.c **** /*****************************************************************************/
+  33:source\bsw/led.c **** /* Global variable definitions (declared in header file with 'extern')       */
+  34:source\bsw/led.c **** /*****************************************************************************/
+  35:source\bsw/led.c **** 
+  36:source\bsw/led.c **** /*****************************************************************************/
+  37:source\bsw/led.c **** /* Local type definitions ('typedef')                                        */
+  38:source\bsw/led.c **** /*****************************************************************************/
+  39:source\bsw/led.c **** 
+  40:source\bsw/led.c **** 
+  41:source\bsw/led.c **** 
+  42:source\bsw/led.c **** /*****************************************************************************/
+  43:source\bsw/led.c **** /* Local variable definitions ('static')                                     */
+  44:source\bsw/led.c **** /*****************************************************************************/
+  45:source\bsw/led.c **** 
+  46:source\bsw/led.c **** 
+  47:source\bsw/led.c **** static LED_ONOFF_t LED__state[LED_ALL] = {LED_OFF, LED_OFF, LED_OFF}; /**< On/Off State of the LED,
+  48:source\bsw/led.c **** 
+  49:source\bsw/led.c **** const static uint16 LED__Pulse_Width[256] = {
+  50:source\bsw/led.c ****     0, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3,
+  51:source\bsw/led.c ****     3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 7,
+  52:source\bsw/led.c ****     7, 7, 8, 8, 8, 9, 9, 10, 10, 10, 11, 11, 12, 12, 13, 13, 14, 15,
+  53:source\bsw/led.c ****     15, 16, 17, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
+  54:source\bsw/led.c ****     31, 32, 33, 35, 36, 38, 40, 41, 43, 45, 47, 49, 52, 54, 56, 59,
+  55:source\bsw/led.c ****     61, 64, 67, 70, 73, 76, 79, 83, 87, 91, 95, 99, 103, 108, 112,
+  56:source\bsw/led.c ****     117, 123, 128, 134, 140, 146, 152, 159, 166, 173, 181, 189, 197,
+  57:source\bsw/led.c ****     206, 215, 225, 235, 245, 256, 267, 279, 292, 304, 318, 332, 347,
+  58:source\bsw/led.c ****     362, 378, 395, 412, 431, 450, 470, 490, 512, 535, 558, 583, 609,
+  59:source\bsw/led.c ****     636, 664, 693, 724, 756, 790, 825, 861, 899, 939, 981, 1024, 1069,
+  60:source\bsw/led.c ****     1117, 1166, 1218, 1272, 1328, 1387, 1448, 1512, 1579, 1649, 1722,
+  61:source\bsw/led.c ****     1798, 1878, 1961, 2048, 2139, 2233, 2332, 2435, 2543, 2656, 2773,
+  62:source\bsw/led.c ****     2896, 3025, 3158, 3298, 3444, 3597, 3756, 3922, 4096, 4277, 4467,
+  63:source\bsw/led.c ****     4664, 4871, 5087, 5312, 5547, 5793, 6049, 6317, 6596, 6889, 7194,
+  64:source\bsw/led.c ****     7512, 7845, 8192, 8555, 8933, 9329, 9742, 10173, 10624, 11094,
+  65:source\bsw/led.c ****     11585, 12098, 12634, 13193, 13777, 14387, 15024, 15689, 16384,
+  66:source\bsw/led.c ****     17109, 17867, 18658, 19484, 20346, 21247, 22188, 23170, 24196,
+  67:source\bsw/led.c ****     25267, 26386, 27554, 28774, 30048, 31378, 32768, 34218, 35733,
+  68:source\bsw/led.c ****     37315, 38967, 40693, 42494, 44376, 46340, 48392, 50534, 52772,
+  69:source\bsw/led.c ****     55108, 57548, 60096, 62757, 65535
+  70:source\bsw/led.c **** };
+  71:source\bsw/led.c **** 
+  72:source\bsw/led.c **** /*****************************************************************************/
+  73:source\bsw/led.c **** /* Local function prototypes ('static')                                      */
+  74:source\bsw/led.c **** /*****************************************************************************/
+  75:source\bsw/led.c **** 
+  76:source\bsw/led.c **** /**
+  77:source\bsw/led.c ****  * Inverts the parameter
+  78:source\bsw/led.c ****  * @param LED_ONOFF_t ledOnOff - Value to be inverted
+  79:source\bsw/led.c ****  * @return inverted parameter
+  80:source\bsw/led.c ****  */
+  81:source\bsw/led.c **** static inline LED_ONOFF_t LED__toggleValue(LED_ONOFF_t ledOnOff);
+  82:source\bsw/led.c **** 
+  83:source\bsw/led.c **** 
+  84:source\bsw/led.c **** /*****************************************************************************/
+  85:source\bsw/led.c **** /* Function implementation - global ('extern') and local ('static')          */
+  86:source\bsw/led.c **** /*****************************************************************************/
+  87:source\bsw/led.c **** 
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 3
+
+
+  88:source\bsw/led.c **** /**
+  89:source\bsw/led.c ****  * Initialises the LED's and turns them off
+  90:source\bsw/led.c ****  * @return RC_SUCCESS if function was executed as exepected, other error code in case of error
+  91:source\bsw/led.c ****  */
+  92:source\bsw/led.c **** RC_t LED_Init()
+  93:source\bsw/led.c **** {
+  94:source\bsw/led.c ****     RC_t result = RC_SUCCESS;
+  95:source\bsw/led.c ****     
+  96:source\bsw/led.c ****     for (LED_id_t i = LED_RED; i < LED_ALL; i++)
+  97:source\bsw/led.c ****     {
+  98:source\bsw/led.c ****         LED__state[i] = OFF;
+  99:source\bsw/led.c ****         
+ 100:source\bsw/led.c ****         RC_t clearResult;
+ 101:source\bsw/led.c ****         clearResult = LED_Set(i, LED_OFF);
+ 102:source\bsw/led.c ****         
+ 103:source\bsw/led.c ****         if (clearResult != RC_SUCCESS)
+ 104:source\bsw/led.c ****         {
+ 105:source\bsw/led.c ****             //memorize error
+ 106:source\bsw/led.c ****             result = clearResult;
+ 107:source\bsw/led.c ****         }
+ 108:source\bsw/led.c ****     }
+ 109:source\bsw/led.c ****     
+ 110:source\bsw/led.c ****     //Init RGB
+ 111:source\bsw/led.c ****     RGB_PWM_blue_Start();
+ 112:source\bsw/led.c ****     RGB_PWM_green_Start();
+ 113:source\bsw/led.c ****     RGB_PWM_red_Start();
+ 114:source\bsw/led.c ****     
+ 115:source\bsw/led.c ****     return result;
+ 116:source\bsw/led.c **** }
+ 117:source\bsw/led.c **** 
+ 118:source\bsw/led.c **** /**
+ 119:source\bsw/led.c ****  * Sets the required LED
+ 120:source\bsw/led.c ****  * @param LED_t ledId - Identifier for the LED, ALL will change all LED's
+ 121:source\bsw/led.c ****  * @param LED_ONOFF_t ledOnOff - Trun the led on or off
+ 122:source\bsw/led.c ****  * @return RC_SUCCESS if function was executed as exepected, other error code in case of error
+ 123:source\bsw/led.c ****  */
+ 124:source\bsw/led.c **** RC_t LED_Set(LED_id_t ledId, LED_ONOFF_t ledOnOff)
+ 125:source\bsw/led.c **** {
+  28              		.loc 1 125 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              	.LVL0:
+  33 0000 38B5     		push	{r3, r4, r5, lr}
+  34              		.cfi_def_cfa_offset 16
+  35              		.cfi_offset 3, -16
+  36              		.cfi_offset 4, -12
+  37              		.cfi_offset 5, -8
+  38              		.cfi_offset 14, -4
+  39 0002 0446     		mov	r4, r0
+  40 0004 0D46     		mov	r5, r1
+ 126:source\bsw/led.c ****     //set individual LED
+ 127:source\bsw/led.c ****     switch (ledId)
+  41              		.loc 1 127 0
+  42 0006 0328     		cmp	r0, #3
+  43 0008 24D8     		bhi	.L9
+  44 000a DFE800F0 		tbb	[pc, r0]
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 4
+
+
+  45              	.L4:
+  46 000e 02       		.byte	(.L3-.L4)/2
+  47 000f 09       		.byte	(.L5-.L4)/2
+  48 0010 10       		.byte	(.L6-.L4)/2
+  49 0011 1E       		.byte	(.L10-.L4)/2
+  50              		.p2align 1
+  51              	.L3:
+ 128:source\bsw/led.c ****     {
+ 129:source\bsw/led.c ****         case LED_RED : 
+ 130:source\bsw/led.c ****             LED_red_Write(ledOnOff); 
+  52              		.loc 1 130 0
+  53 0012 0846     		mov	r0, r1
+  54              	.LVL1:
+  55 0014 FFF7FEFF 		bl	LED_red_Write
+  56              	.LVL2:
+ 131:source\bsw/led.c ****             LED__state[ledId] = ledOnOff; 
+  57              		.loc 1 131 0
+  58 0018 104B     		ldr	r3, .L12
+  59 001a 1D55     		strb	r5, [r3, r4]
+ 132:source\bsw/led.c ****             break;
+ 133:source\bsw/led.c ****         
+ 134:source\bsw/led.c ****         case LED_YELLOW : 
+ 135:source\bsw/led.c ****             LED_yellow_Write(ledOnOff); 
+ 136:source\bsw/led.c ****             LED__state[ledId] = ledOnOff;
+ 137:source\bsw/led.c ****             break;
+ 138:source\bsw/led.c ****             
+ 139:source\bsw/led.c ****         case LED_GREEN : 
+ 140:source\bsw/led.c ****             LED_green_Write(ledOnOff); 
+ 141:source\bsw/led.c ****             LED__state[ledId] = ledOnOff;
+ 142:source\bsw/led.c ****             break;
+ 143:source\bsw/led.c ****            
+ 144:source\bsw/led.c ****         case LED_ALL : 
+ 145:source\bsw/led.c ****             for (LED_id_t i = LED_RED; i < LED_ALL; i++)
+ 146:source\bsw/led.c ****             {
+ 147:source\bsw/led.c ****                 LED_Set(i, ledOnOff);
+ 148:source\bsw/led.c ****             }
+ 149:source\bsw/led.c ****             break;
+ 150:source\bsw/led.c ****         default: return RC_ERROR_BAD_PARAM;
+ 151:source\bsw/led.c ****     }
+ 152:source\bsw/led.c ****     
+ 153:source\bsw/led.c ****     return RC_SUCCESS;
+  60              		.loc 1 153 0
+  61 001c 0020     		movs	r0, #0
+ 132:source\bsw/led.c ****             break;
+  62              		.loc 1 132 0
+  63 001e 38BD     		pop	{r3, r4, r5, pc}
+  64              	.LVL3:
+  65              	.L5:
+ 135:source\bsw/led.c ****             LED__state[ledId] = ledOnOff;
+  66              		.loc 1 135 0
+  67 0020 0846     		mov	r0, r1
+  68              	.LVL4:
+  69 0022 FFF7FEFF 		bl	LED_yellow_Write
+  70              	.LVL5:
+ 136:source\bsw/led.c ****             break;
+  71              		.loc 1 136 0
+  72 0026 0D4B     		ldr	r3, .L12
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 5
+
+
+  73 0028 1D55     		strb	r5, [r3, r4]
+  74              		.loc 1 153 0
+  75 002a 0020     		movs	r0, #0
+ 137:source\bsw/led.c ****             
+  76              		.loc 1 137 0
+  77 002c 38BD     		pop	{r3, r4, r5, pc}
+  78              	.LVL6:
+  79              	.L6:
+ 140:source\bsw/led.c ****             LED__state[ledId] = ledOnOff;
+  80              		.loc 1 140 0
+  81 002e 0846     		mov	r0, r1
+  82              	.LVL7:
+  83 0030 FFF7FEFF 		bl	LED_green_Write
+  84              	.LVL8:
+ 141:source\bsw/led.c ****             break;
+  85              		.loc 1 141 0
+  86 0034 094B     		ldr	r3, .L12
+  87 0036 1D55     		strb	r5, [r3, r4]
+  88              		.loc 1 153 0
+  89 0038 0020     		movs	r0, #0
+ 142:source\bsw/led.c ****            
+  90              		.loc 1 142 0
+  91 003a 38BD     		pop	{r3, r4, r5, pc}
+  92              	.LVL9:
+  93              	.L8:
+  94              	.LBB9:
+ 147:source\bsw/led.c ****             }
+  95              		.loc 1 147 0 discriminator 3
+  96 003c 2946     		mov	r1, r5
+  97 003e 2046     		mov	r0, r4
+  98 0040 FFF7FEFF 		bl	LED_Set
+  99              	.LVL10:
+ 145:source\bsw/led.c ****             {
+ 100              		.loc 1 145 0 discriminator 3
+ 101 0044 0134     		adds	r4, r4, #1
+ 102              	.LVL11:
+ 103 0046 E4B2     		uxtb	r4, r4
+ 104              	.LVL12:
+ 105 0048 00E0     		b	.L7
+ 106              	.LVL13:
+ 107              	.L10:
+ 108              	.LBE9:
+ 127:source\bsw/led.c ****     {
+ 109              		.loc 1 127 0
+ 110 004a 0024     		movs	r4, #0
+ 111              	.LVL14:
+ 112              	.L7:
+ 113              	.LBB10:
+ 145:source\bsw/led.c ****             {
+ 114              		.loc 1 145 0 discriminator 1
+ 115 004c 022C     		cmp	r4, #2
+ 116 004e F5D9     		bls	.L8
+ 117              	.LBE10:
+ 118              		.loc 1 153 0
+ 119 0050 0020     		movs	r0, #0
+ 120              	.LBB11:
+ 121 0052 38BD     		pop	{r3, r4, r5, pc}
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 6
+
+
+ 122              	.LVL15:
+ 123              	.L9:
+ 124              	.LBE11:
+ 150:source\bsw/led.c ****     }
+ 125              		.loc 1 150 0
+ 126 0054 6FF01300 		mvn	r0, #19
+ 127              	.LVL16:
+ 154:source\bsw/led.c **** }
+ 128              		.loc 1 154 0
+ 129 0058 38BD     		pop	{r3, r4, r5, pc}
+ 130              	.L13:
+ 131 005a 00BF     		.align	2
+ 132              	.L12:
+ 133 005c 00000000 		.word	.LANCHOR0
+ 134              		.cfi_endproc
+ 135              	.LFE115:
+ 136              		.size	LED_Set, .-LED_Set
+ 137              		.section	.text.LED_Init,"ax",%progbits
+ 138              		.align	2
+ 139              		.global	LED_Init
+ 140              		.thumb
+ 141              		.thumb_func
+ 142              		.type	LED_Init, %function
+ 143              	LED_Init:
+ 144              	.LFB114:
+  93:source\bsw/led.c ****     RC_t result = RC_SUCCESS;
+ 145              		.loc 1 93 0
+ 146              		.cfi_startproc
+ 147              		@ args = 0, pretend = 0, frame = 0
+ 148              		@ frame_needed = 0, uses_anonymous_args = 0
+ 149 0000 38B5     		push	{r3, r4, r5, lr}
+ 150              		.cfi_def_cfa_offset 16
+ 151              		.cfi_offset 3, -16
+ 152              		.cfi_offset 4, -12
+ 153              		.cfi_offset 5, -8
+ 154              		.cfi_offset 14, -4
+ 155              	.LVL17:
+ 156              	.LBB12:
+  96:source\bsw/led.c ****     {
+ 157              		.loc 1 96 0
+ 158 0002 0024     		movs	r4, #0
+ 159              	.LBE12:
+  94:source\bsw/led.c ****     
+ 160              		.loc 1 94 0
+ 161 0004 2546     		mov	r5, r4
+ 162              	.LBB14:
+  96:source\bsw/led.c ****     {
+ 163              		.loc 1 96 0
+ 164 0006 09E0     		b	.L15
+ 165              	.LVL18:
+ 166              	.L17:
+ 167              	.LBB13:
+  98:source\bsw/led.c ****         
+ 168              		.loc 1 98 0
+ 169 0008 0021     		movs	r1, #0
+ 170 000a 094B     		ldr	r3, .L20
+ 171 000c 1955     		strb	r1, [r3, r4]
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 7
+
+
+ 101:source\bsw/led.c ****         
+ 172              		.loc 1 101 0
+ 173 000e 2046     		mov	r0, r4
+ 174 0010 FFF7FEFF 		bl	LED_Set
+ 175              	.LVL19:
+ 103:source\bsw/led.c ****         {
+ 176              		.loc 1 103 0
+ 177 0014 00B1     		cbz	r0, .L16
+ 106:source\bsw/led.c ****         }
+ 178              		.loc 1 106 0
+ 179 0016 0546     		mov	r5, r0
+ 180              	.LVL20:
+ 181              	.L16:
+ 182              	.LBE13:
+  96:source\bsw/led.c ****     {
+ 183              		.loc 1 96 0 discriminator 2
+ 184 0018 0134     		adds	r4, r4, #1
+ 185              	.LVL21:
+ 186 001a E4B2     		uxtb	r4, r4
+ 187              	.LVL22:
+ 188              	.L15:
+  96:source\bsw/led.c ****     {
+ 189              		.loc 1 96 0 is_stmt 0 discriminator 1
+ 190 001c 022C     		cmp	r4, #2
+ 191 001e F3D9     		bls	.L17
+ 192              	.LBE14:
+ 111:source\bsw/led.c ****     RGB_PWM_green_Start();
+ 193              		.loc 1 111 0 is_stmt 1
+ 194 0020 FFF7FEFF 		bl	RGB_PWM_blue_Start
+ 195              	.LVL23:
+ 112:source\bsw/led.c ****     RGB_PWM_red_Start();
+ 196              		.loc 1 112 0
+ 197 0024 FFF7FEFF 		bl	RGB_PWM_green_Start
+ 198              	.LVL24:
+ 113:source\bsw/led.c ****     
+ 199              		.loc 1 113 0
+ 200 0028 FFF7FEFF 		bl	RGB_PWM_red_Start
+ 201              	.LVL25:
+ 116:source\bsw/led.c **** 
+ 202              		.loc 1 116 0
+ 203 002c 2846     		mov	r0, r5
+ 204 002e 38BD     		pop	{r3, r4, r5, pc}
+ 205              	.LVL26:
+ 206              	.L21:
+ 207              		.align	2
+ 208              	.L20:
+ 209 0030 00000000 		.word	.LANCHOR0
+ 210              		.cfi_endproc
+ 211              	.LFE114:
+ 212              		.size	LED_Init, .-LED_Init
+ 213              		.section	.text.LED_Toggle,"ax",%progbits
+ 214              		.align	2
+ 215              		.global	LED_Toggle
+ 216              		.thumb
+ 217              		.thumb_func
+ 218              		.type	LED_Toggle, %function
+ 219              	LED_Toggle:
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 8
+
+
+ 220              	.LFB116:
+ 155:source\bsw/led.c **** 
+ 156:source\bsw/led.c **** 
+ 157:source\bsw/led.c **** 
+ 158:source\bsw/led.c **** /**
+ 159:source\bsw/led.c ****  * Toggle the required LED
+ 160:source\bsw/led.c ****  * @param LED_t ledId - Identifier for the LED, ALL will change all LED's
+ 161:source\bsw/led.c ****  * @return RC_SUCCESS if function was executed as exepected, other error code in case of error
+ 162:source\bsw/led.c ****  */
+ 163:source\bsw/led.c **** RC_t LED_Toggle(LED_id_t ledId)
+ 164:source\bsw/led.c **** {
+ 221              		.loc 1 164 0
+ 222              		.cfi_startproc
+ 223              		@ args = 0, pretend = 0, frame = 0
+ 224              		@ frame_needed = 0, uses_anonymous_args = 0
+ 225              	.LVL27:
+ 226 0000 10B5     		push	{r4, lr}
+ 227              		.cfi_def_cfa_offset 8
+ 228              		.cfi_offset 4, -8
+ 229              		.cfi_offset 14, -4
+ 165:source\bsw/led.c ****     //set individual LED
+ 166:source\bsw/led.c ****     switch (ledId)
+ 230              		.loc 1 166 0
+ 231 0002 0328     		cmp	r0, #3
+ 232 0004 38D8     		bhi	.L33
+ 233 0006 DFE800F0 		tbb	[pc, r0]
+ 234              	.L25:
+ 235 000a 02       		.byte	(.L24-.L25)/2
+ 236 000b 10       		.byte	(.L26-.L25)/2
+ 237 000c 1E       		.byte	(.L27-.L25)/2
+ 238 000d 32       		.byte	(.L34-.L25)/2
+ 239              		.p2align 1
+ 240              	.L24:
+ 167:source\bsw/led.c ****     {
+ 168:source\bsw/led.c ****         case LED_RED : 
+ 169:source\bsw/led.c ****             LED__state[ledId] = LED__toggleValue(LED__state[ledId]); 
+ 241              		.loc 1 169 0
+ 242 000e 1C4B     		ldr	r3, .L39
+ 243 0010 1B5C     		ldrb	r3, [r3, r0]	@ zero_extendqisi2
+ 244              	.LVL28:
+ 245              	.LBB15:
+ 246              	.LBB16:
+ 170:source\bsw/led.c ****             LED_red_Write(LED__state[ledId]);
+ 171:source\bsw/led.c ****             break;
+ 172:source\bsw/led.c ****         
+ 173:source\bsw/led.c ****         case LED_YELLOW : 
+ 174:source\bsw/led.c ****             LED__state[ledId] = LED__toggleValue(LED__state[ledId]); 
+ 175:source\bsw/led.c ****             LED_yellow_Write(LED__state[ledId]);
+ 176:source\bsw/led.c ****             break;
+ 177:source\bsw/led.c ****             
+ 178:source\bsw/led.c ****         case LED_GREEN : 
+ 179:source\bsw/led.c ****             LED__state[ledId] = LED__toggleValue(LED__state[ledId]); 
+ 180:source\bsw/led.c ****             LED_green_Write(LED__state[ledId]);
+ 181:source\bsw/led.c ****             break;
+ 182:source\bsw/led.c ****            
+ 183:source\bsw/led.c ****         case LED_ALL : 
+ 184:source\bsw/led.c ****             for (LED_id_t i = LED_RED; i < LED_ALL; i++)
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 9
+
+
+ 185:source\bsw/led.c ****             {
+ 186:source\bsw/led.c ****                 LED_Toggle(i);
+ 187:source\bsw/led.c ****             }
+ 188:source\bsw/led.c ****             break;
+ 189:source\bsw/led.c ****         default: return RC_ERROR_BAD_PARAM;
+ 190:source\bsw/led.c ****     }
+ 191:source\bsw/led.c ****     
+ 192:source\bsw/led.c ****     return RC_SUCCESS;
+ 193:source\bsw/led.c **** }
+ 194:source\bsw/led.c **** 
+ 195:source\bsw/led.c **** 
+ 196:source\bsw/led.c **** /**
+ 197:source\bsw/led.c ****  * Inverts the parameter
+ 198:source\bsw/led.c ****  * @param LED_ONOFF_t ledOnOff - Value to be inverted
+ 199:source\bsw/led.c ****  * @return inverted parameter
+ 200:source\bsw/led.c ****  */
+ 201:source\bsw/led.c **** static inline LED_ONOFF_t LED__toggleValue(LED_ONOFF_t ledOnOff)
+ 202:source\bsw/led.c **** {
+ 203:source\bsw/led.c ****     if (ledOnOff == LED_ON) 
+ 247              		.loc 1 203 0
+ 248 0012 012B     		cmp	r3, #1
+ 249 0014 01D1     		bne	.L35
+ 204:source\bsw/led.c ****     {
+ 205:source\bsw/led.c ****         return LED_OFF;
+ 250              		.loc 1 205 0
+ 251 0016 0023     		movs	r3, #0
+ 252              	.LVL29:
+ 253 0018 00E0     		b	.L29
+ 254              	.LVL30:
+ 255              	.L35:
+ 206:source\bsw/led.c ****     }
+ 207:source\bsw/led.c ****     else
+ 208:source\bsw/led.c ****     {
+ 209:source\bsw/led.c ****         return LED_ON;
+ 256              		.loc 1 209 0
+ 257 001a 0123     		movs	r3, #1
+ 258              	.LVL31:
+ 259              	.L29:
+ 260              	.LBE16:
+ 261              	.LBE15:
+ 169:source\bsw/led.c ****             LED_red_Write(LED__state[ledId]);
+ 262              		.loc 1 169 0
+ 263 001c 184A     		ldr	r2, .L39
+ 264 001e 1354     		strb	r3, [r2, r0]
+ 170:source\bsw/led.c ****             break;
+ 265              		.loc 1 170 0
+ 266 0020 1846     		mov	r0, r3
+ 267              	.LVL32:
+ 268 0022 FFF7FEFF 		bl	LED_red_Write
+ 269              	.LVL33:
+ 192:source\bsw/led.c **** }
+ 270              		.loc 1 192 0
+ 271 0026 0020     		movs	r0, #0
+ 171:source\bsw/led.c ****         
+ 272              		.loc 1 171 0
+ 273 0028 10BD     		pop	{r4, pc}
+ 274              	.LVL34:
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 10
+
+
+ 275              	.L26:
+ 174:source\bsw/led.c ****             LED_yellow_Write(LED__state[ledId]);
+ 276              		.loc 1 174 0
+ 277 002a 154B     		ldr	r3, .L39
+ 278 002c 1B5C     		ldrb	r3, [r3, r0]	@ zero_extendqisi2
+ 279              	.LVL35:
+ 280              	.LBB17:
+ 281              	.LBB18:
+ 203:source\bsw/led.c ****     {
+ 282              		.loc 1 203 0
+ 283 002e 012B     		cmp	r3, #1
+ 284 0030 01D1     		bne	.L36
+ 205:source\bsw/led.c ****     }
+ 285              		.loc 1 205 0
+ 286 0032 0023     		movs	r3, #0
+ 287              	.LVL36:
+ 288 0034 00E0     		b	.L30
+ 289              	.LVL37:
+ 290              	.L36:
+ 291              		.loc 1 209 0
+ 292 0036 0123     		movs	r3, #1
+ 293              	.LVL38:
+ 294              	.L30:
+ 295              	.LBE18:
+ 296              	.LBE17:
+ 174:source\bsw/led.c ****             LED_yellow_Write(LED__state[ledId]);
+ 297              		.loc 1 174 0
+ 298 0038 114A     		ldr	r2, .L39
+ 299 003a 1354     		strb	r3, [r2, r0]
+ 175:source\bsw/led.c ****             break;
+ 300              		.loc 1 175 0
+ 301 003c 1846     		mov	r0, r3
+ 302              	.LVL39:
+ 303 003e FFF7FEFF 		bl	LED_yellow_Write
+ 304              	.LVL40:
+ 192:source\bsw/led.c **** }
+ 305              		.loc 1 192 0
+ 306 0042 0020     		movs	r0, #0
+ 176:source\bsw/led.c ****             
+ 307              		.loc 1 176 0
+ 308 0044 10BD     		pop	{r4, pc}
+ 309              	.LVL41:
+ 310              	.L27:
+ 179:source\bsw/led.c ****             LED_green_Write(LED__state[ledId]);
+ 311              		.loc 1 179 0
+ 312 0046 0E4B     		ldr	r3, .L39
+ 313 0048 1B5C     		ldrb	r3, [r3, r0]	@ zero_extendqisi2
+ 314              	.LVL42:
+ 315              	.LBB19:
+ 316              	.LBB20:
+ 203:source\bsw/led.c ****     {
+ 317              		.loc 1 203 0
+ 318 004a 012B     		cmp	r3, #1
+ 319 004c 01D1     		bne	.L37
+ 205:source\bsw/led.c ****     }
+ 320              		.loc 1 205 0
+ 321 004e 0023     		movs	r3, #0
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 11
+
+
+ 322              	.LVL43:
+ 323 0050 00E0     		b	.L31
+ 324              	.LVL44:
+ 325              	.L37:
+ 326              		.loc 1 209 0
+ 327 0052 0123     		movs	r3, #1
+ 328              	.LVL45:
+ 329              	.L31:
+ 330              	.LBE20:
+ 331              	.LBE19:
+ 179:source\bsw/led.c ****             LED_green_Write(LED__state[ledId]);
+ 332              		.loc 1 179 0
+ 333 0054 0A4A     		ldr	r2, .L39
+ 334 0056 1354     		strb	r3, [r2, r0]
+ 180:source\bsw/led.c ****             break;
+ 335              		.loc 1 180 0
+ 336 0058 1846     		mov	r0, r3
+ 337              	.LVL46:
+ 338 005a FFF7FEFF 		bl	LED_green_Write
+ 339              	.LVL47:
+ 192:source\bsw/led.c **** }
+ 340              		.loc 1 192 0
+ 341 005e 0020     		movs	r0, #0
+ 181:source\bsw/led.c ****            
+ 342              		.loc 1 181 0
+ 343 0060 10BD     		pop	{r4, pc}
+ 344              	.LVL48:
+ 345              	.L32:
+ 346              	.LBB21:
+ 186:source\bsw/led.c ****             }
+ 347              		.loc 1 186 0 discriminator 3
+ 348 0062 2046     		mov	r0, r4
+ 349 0064 FFF7FEFF 		bl	LED_Toggle
+ 350              	.LVL49:
+ 184:source\bsw/led.c ****             {
+ 351              		.loc 1 184 0 discriminator 3
+ 352 0068 0134     		adds	r4, r4, #1
+ 353              	.LVL50:
+ 354 006a E4B2     		uxtb	r4, r4
+ 355              	.LVL51:
+ 356 006c 00E0     		b	.L28
+ 357              	.LVL52:
+ 358              	.L34:
+ 359              	.LBE21:
+ 166:source\bsw/led.c ****     {
+ 360              		.loc 1 166 0
+ 361 006e 0024     		movs	r4, #0
+ 362              	.LVL53:
+ 363              	.L28:
+ 364              	.LBB22:
+ 184:source\bsw/led.c ****             {
+ 365              		.loc 1 184 0 discriminator 1
+ 366 0070 022C     		cmp	r4, #2
+ 367 0072 F6D9     		bls	.L32
+ 368              	.LBE22:
+ 192:source\bsw/led.c **** }
+ 369              		.loc 1 192 0
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 12
+
+
+ 370 0074 0020     		movs	r0, #0
+ 371              	.LBB23:
+ 372 0076 10BD     		pop	{r4, pc}
+ 373              	.LVL54:
+ 374              	.L33:
+ 375              	.LBE23:
+ 189:source\bsw/led.c ****     }
+ 376              		.loc 1 189 0
+ 377 0078 6FF01300 		mvn	r0, #19
+ 378              	.LVL55:
+ 193:source\bsw/led.c **** 
+ 379              		.loc 1 193 0
+ 380 007c 10BD     		pop	{r4, pc}
+ 381              	.L40:
+ 382 007e 00BF     		.align	2
+ 383              	.L39:
+ 384 0080 00000000 		.word	.LANCHOR0
+ 385              		.cfi_endproc
+ 386              	.LFE116:
+ 387              		.size	LED_Toggle, .-LED_Toggle
+ 388              		.section	.text.LED_RGB_Set,"ax",%progbits
+ 389              		.align	2
+ 390              		.global	LED_RGB_Set
+ 391              		.thumb
+ 392              		.thumb_func
+ 393              		.type	LED_RGB_Set, %function
+ 394              	LED_RGB_Set:
+ 395              	.LFB118:
+ 210:source\bsw/led.c ****     }
+ 211:source\bsw/led.c **** }
+ 212:source\bsw/led.c **** 
+ 213:source\bsw/led.c **** /**
+ 214:source\bsw/led.c ****  * Set the RGB LED
+ 215:source\bsw/led.c ****  * @param uint16_t red - brightness 
+ 216:source\bsw/led.c ****  * @param uint16_t green - brightness 
+ 217:source\bsw/led.c ****  * @param uint16_t blue - brightness 
+ 218:source\bsw/led.c ****  * @return RC_SUCCESS if function was executed as exepected, other error code in case of error
+ 219:source\bsw/led.c ****  */
+ 220:source\bsw/led.c **** RC_t LED_RGB_Set(uint8_t red, uint8_t green, uint8_t blue)
+ 221:source\bsw/led.c **** {
+ 396              		.loc 1 221 0
+ 397              		.cfi_startproc
+ 398              		@ args = 0, pretend = 0, frame = 0
+ 399              		@ frame_needed = 0, uses_anonymous_args = 0
+ 400              	.LVL56:
+ 401 0000 70B5     		push	{r4, r5, r6, lr}
+ 402              		.cfi_def_cfa_offset 16
+ 403              		.cfi_offset 4, -16
+ 404              		.cfi_offset 5, -12
+ 405              		.cfi_offset 6, -8
+ 406              		.cfi_offset 14, -4
+ 407 0002 0E46     		mov	r6, r1
+ 408 0004 1546     		mov	r5, r2
+ 222:source\bsw/led.c ****     RGB_PWM_red_WriteCompare(LED__Pulse_Width[red]);
+ 409              		.loc 1 222 0
+ 410 0006 074C     		ldr	r4, .L43
+ 411 0008 34F81000 		ldrh	r0, [r4, r0, lsl #1]
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 13
+
+
+ 412              	.LVL57:
+ 413 000c FFF7FEFF 		bl	RGB_PWM_red_WriteCompare
+ 414              	.LVL58:
+ 223:source\bsw/led.c ****     RGB_PWM_green_WriteCompare(LED__Pulse_Width[green]);
+ 415              		.loc 1 223 0
+ 416 0010 34F81600 		ldrh	r0, [r4, r6, lsl #1]
+ 417 0014 FFF7FEFF 		bl	RGB_PWM_green_WriteCompare
+ 418              	.LVL59:
+ 224:source\bsw/led.c ****     RGB_PWM_blue_WriteCompare(LED__Pulse_Width[blue]);
+ 419              		.loc 1 224 0
+ 420 0018 34F81500 		ldrh	r0, [r4, r5, lsl #1]
+ 421 001c FFF7FEFF 		bl	RGB_PWM_blue_WriteCompare
+ 422              	.LVL60:
+ 225:source\bsw/led.c ****  
+ 226:source\bsw/led.c ****     return RC_SUCCESS;
+ 227:source\bsw/led.c **** }
+ 423              		.loc 1 227 0
+ 424 0020 0020     		movs	r0, #0
+ 425 0022 70BD     		pop	{r4, r5, r6, pc}
+ 426              	.L44:
+ 427              		.align	2
+ 428              	.L43:
+ 429 0024 00000000 		.word	.LANCHOR1
+ 430              		.cfi_endproc
+ 431              	.LFE118:
+ 432              		.size	LED_RGB_Set, .-LED_RGB_Set
+ 433              		.section	.rodata
+ 434              		.align	2
+ 435              		.set	.LANCHOR1,. + 0
+ 436              		.type	LED__Pulse_Width, %object
+ 437              		.size	LED__Pulse_Width, 512
+ 438              	LED__Pulse_Width:
+ 439 0000 0000     		.short	0
+ 440 0002 0100     		.short	1
+ 441 0004 0100     		.short	1
+ 442 0006 0100     		.short	1
+ 443 0008 0100     		.short	1
+ 444 000a 0100     		.short	1
+ 445 000c 0100     		.short	1
+ 446 000e 0100     		.short	1
+ 447 0010 0100     		.short	1
+ 448 0012 0200     		.short	2
+ 449 0014 0200     		.short	2
+ 450 0016 0200     		.short	2
+ 451 0018 0200     		.short	2
+ 452 001a 0200     		.short	2
+ 453 001c 0200     		.short	2
+ 454 001e 0200     		.short	2
+ 455 0020 0200     		.short	2
+ 456 0022 0200     		.short	2
+ 457 0024 0200     		.short	2
+ 458 0026 0200     		.short	2
+ 459 0028 0200     		.short	2
+ 460 002a 0300     		.short	3
+ 461 002c 0300     		.short	3
+ 462 002e 0300     		.short	3
+ 463 0030 0300     		.short	3
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 14
+
+
+ 464 0032 0300     		.short	3
+ 465 0034 0300     		.short	3
+ 466 0036 0300     		.short	3
+ 467 0038 0400     		.short	4
+ 468 003a 0400     		.short	4
+ 469 003c 0400     		.short	4
+ 470 003e 0400     		.short	4
+ 471 0040 0400     		.short	4
+ 472 0042 0400     		.short	4
+ 473 0044 0500     		.short	5
+ 474 0046 0500     		.short	5
+ 475 0048 0500     		.short	5
+ 476 004a 0500     		.short	5
+ 477 004c 0500     		.short	5
+ 478 004e 0600     		.short	6
+ 479 0050 0600     		.short	6
+ 480 0052 0600     		.short	6
+ 481 0054 0600     		.short	6
+ 482 0056 0700     		.short	7
+ 483 0058 0700     		.short	7
+ 484 005a 0700     		.short	7
+ 485 005c 0800     		.short	8
+ 486 005e 0800     		.short	8
+ 487 0060 0800     		.short	8
+ 488 0062 0900     		.short	9
+ 489 0064 0900     		.short	9
+ 490 0066 0A00     		.short	10
+ 491 0068 0A00     		.short	10
+ 492 006a 0A00     		.short	10
+ 493 006c 0B00     		.short	11
+ 494 006e 0B00     		.short	11
+ 495 0070 0C00     		.short	12
+ 496 0072 0C00     		.short	12
+ 497 0074 0D00     		.short	13
+ 498 0076 0D00     		.short	13
+ 499 0078 0E00     		.short	14
+ 500 007a 0F00     		.short	15
+ 501 007c 0F00     		.short	15
+ 502 007e 1000     		.short	16
+ 503 0080 1100     		.short	17
+ 504 0082 1100     		.short	17
+ 505 0084 1200     		.short	18
+ 506 0086 1300     		.short	19
+ 507 0088 1400     		.short	20
+ 508 008a 1500     		.short	21
+ 509 008c 1600     		.short	22
+ 510 008e 1700     		.short	23
+ 511 0090 1800     		.short	24
+ 512 0092 1900     		.short	25
+ 513 0094 1A00     		.short	26
+ 514 0096 1B00     		.short	27
+ 515 0098 1C00     		.short	28
+ 516 009a 1D00     		.short	29
+ 517 009c 1F00     		.short	31
+ 518 009e 2000     		.short	32
+ 519 00a0 2100     		.short	33
+ 520 00a2 2300     		.short	35
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 15
+
+
+ 521 00a4 2400     		.short	36
+ 522 00a6 2600     		.short	38
+ 523 00a8 2800     		.short	40
+ 524 00aa 2900     		.short	41
+ 525 00ac 2B00     		.short	43
+ 526 00ae 2D00     		.short	45
+ 527 00b0 2F00     		.short	47
+ 528 00b2 3100     		.short	49
+ 529 00b4 3400     		.short	52
+ 530 00b6 3600     		.short	54
+ 531 00b8 3800     		.short	56
+ 532 00ba 3B00     		.short	59
+ 533 00bc 3D00     		.short	61
+ 534 00be 4000     		.short	64
+ 535 00c0 4300     		.short	67
+ 536 00c2 4600     		.short	70
+ 537 00c4 4900     		.short	73
+ 538 00c6 4C00     		.short	76
+ 539 00c8 4F00     		.short	79
+ 540 00ca 5300     		.short	83
+ 541 00cc 5700     		.short	87
+ 542 00ce 5B00     		.short	91
+ 543 00d0 5F00     		.short	95
+ 544 00d2 6300     		.short	99
+ 545 00d4 6700     		.short	103
+ 546 00d6 6C00     		.short	108
+ 547 00d8 7000     		.short	112
+ 548 00da 7500     		.short	117
+ 549 00dc 7B00     		.short	123
+ 550 00de 8000     		.short	128
+ 551 00e0 8600     		.short	134
+ 552 00e2 8C00     		.short	140
+ 553 00e4 9200     		.short	146
+ 554 00e6 9800     		.short	152
+ 555 00e8 9F00     		.short	159
+ 556 00ea A600     		.short	166
+ 557 00ec AD00     		.short	173
+ 558 00ee B500     		.short	181
+ 559 00f0 BD00     		.short	189
+ 560 00f2 C500     		.short	197
+ 561 00f4 CE00     		.short	206
+ 562 00f6 D700     		.short	215
+ 563 00f8 E100     		.short	225
+ 564 00fa EB00     		.short	235
+ 565 00fc F500     		.short	245
+ 566 00fe 0001     		.short	256
+ 567 0100 0B01     		.short	267
+ 568 0102 1701     		.short	279
+ 569 0104 2401     		.short	292
+ 570 0106 3001     		.short	304
+ 571 0108 3E01     		.short	318
+ 572 010a 4C01     		.short	332
+ 573 010c 5B01     		.short	347
+ 574 010e 6A01     		.short	362
+ 575 0110 7A01     		.short	378
+ 576 0112 8B01     		.short	395
+ 577 0114 9C01     		.short	412
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 16
+
+
+ 578 0116 AF01     		.short	431
+ 579 0118 C201     		.short	450
+ 580 011a D601     		.short	470
+ 581 011c EA01     		.short	490
+ 582 011e 0002     		.short	512
+ 583 0120 1702     		.short	535
+ 584 0122 2E02     		.short	558
+ 585 0124 4702     		.short	583
+ 586 0126 6102     		.short	609
+ 587 0128 7C02     		.short	636
+ 588 012a 9802     		.short	664
+ 589 012c B502     		.short	693
+ 590 012e D402     		.short	724
+ 591 0130 F402     		.short	756
+ 592 0132 1603     		.short	790
+ 593 0134 3903     		.short	825
+ 594 0136 5D03     		.short	861
+ 595 0138 8303     		.short	899
+ 596 013a AB03     		.short	939
+ 597 013c D503     		.short	981
+ 598 013e 0004     		.short	1024
+ 599 0140 2D04     		.short	1069
+ 600 0142 5D04     		.short	1117
+ 601 0144 8E04     		.short	1166
+ 602 0146 C204     		.short	1218
+ 603 0148 F804     		.short	1272
+ 604 014a 3005     		.short	1328
+ 605 014c 6B05     		.short	1387
+ 606 014e A805     		.short	1448
+ 607 0150 E805     		.short	1512
+ 608 0152 2B06     		.short	1579
+ 609 0154 7106     		.short	1649
+ 610 0156 BA06     		.short	1722
+ 611 0158 0607     		.short	1798
+ 612 015a 5607     		.short	1878
+ 613 015c A907     		.short	1961
+ 614 015e 0008     		.short	2048
+ 615 0160 5B08     		.short	2139
+ 616 0162 B908     		.short	2233
+ 617 0164 1C09     		.short	2332
+ 618 0166 8309     		.short	2435
+ 619 0168 EF09     		.short	2543
+ 620 016a 600A     		.short	2656
+ 621 016c D50A     		.short	2773
+ 622 016e 500B     		.short	2896
+ 623 0170 D10B     		.short	3025
+ 624 0172 560C     		.short	3158
+ 625 0174 E20C     		.short	3298
+ 626 0176 740D     		.short	3444
+ 627 0178 0D0E     		.short	3597
+ 628 017a AC0E     		.short	3756
+ 629 017c 520F     		.short	3922
+ 630 017e 0010     		.short	4096
+ 631 0180 B510     		.short	4277
+ 632 0182 7311     		.short	4467
+ 633 0184 3812     		.short	4664
+ 634 0186 0713     		.short	4871
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 17
+
+
+ 635 0188 DF13     		.short	5087
+ 636 018a C014     		.short	5312
+ 637 018c AB15     		.short	5547
+ 638 018e A116     		.short	5793
+ 639 0190 A117     		.short	6049
+ 640 0192 AD18     		.short	6317
+ 641 0194 C419     		.short	6596
+ 642 0196 E91A     		.short	6889
+ 643 0198 1A1C     		.short	7194
+ 644 019a 581D     		.short	7512
+ 645 019c A51E     		.short	7845
+ 646 019e 0020     		.short	8192
+ 647 01a0 6B21     		.short	8555
+ 648 01a2 E522     		.short	8933
+ 649 01a4 7124     		.short	9329
+ 650 01a6 0E26     		.short	9742
+ 651 01a8 BD27     		.short	10173
+ 652 01aa 8029     		.short	10624
+ 653 01ac 562B     		.short	11094
+ 654 01ae 412D     		.short	11585
+ 655 01b0 422F     		.short	12098
+ 656 01b2 5A31     		.short	12634
+ 657 01b4 8933     		.short	13193
+ 658 01b6 D135     		.short	13777
+ 659 01b8 3338     		.short	14387
+ 660 01ba B03A     		.short	15024
+ 661 01bc 493D     		.short	15689
+ 662 01be 0040     		.short	16384
+ 663 01c0 D542     		.short	17109
+ 664 01c2 CB45     		.short	17867
+ 665 01c4 E248     		.short	18658
+ 666 01c6 1C4C     		.short	19484
+ 667 01c8 7A4F     		.short	20346
+ 668 01ca FF52     		.short	21247
+ 669 01cc AC56     		.short	22188
+ 670 01ce 825A     		.short	23170
+ 671 01d0 845E     		.short	24196
+ 672 01d2 B362     		.short	25267
+ 673 01d4 1267     		.short	26386
+ 674 01d6 A26B     		.short	27554
+ 675 01d8 6670     		.short	28774
+ 676 01da 6075     		.short	30048
+ 677 01dc 927A     		.short	31378
+ 678 01de 0080     		.short	-32768
+ 679 01e0 AA85     		.short	-31318
+ 680 01e2 958B     		.short	-29803
+ 681 01e4 C391     		.short	-28221
+ 682 01e6 3798     		.short	-26569
+ 683 01e8 F59E     		.short	-24843
+ 684 01ea FEA5     		.short	-23042
+ 685 01ec 58AD     		.short	-21160
+ 686 01ee 04B5     		.short	-19196
+ 687 01f0 08BD     		.short	-17144
+ 688 01f2 66C5     		.short	-15002
+ 689 01f4 24CE     		.short	-12764
+ 690 01f6 44D7     		.short	-10428
+ 691 01f8 CCE0     		.short	-7988
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 18
+
+
+ 692 01fa C0EA     		.short	-5440
+ 693 01fc 25F5     		.short	-2779
+ 694 01fe FFFF     		.short	-1
+ 695              		.bss
+ 696              		.align	2
+ 697              		.set	.LANCHOR0,. + 0
+ 698              		.type	LED__state, %object
+ 699              		.size	LED__state, 3
+ 700              	LED__state:
+ 701 0000 000000   		.space	3
+ 702              		.text
+ 703              	.Letext0:
+ 704              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 705              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 706              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 707              		.file 5 "Generated_Source\\PSoC5/SimpleSystem_common_ee_types.inc"
+ 708              		.file 6 "Generated_Source\\PSoC5/SimpleSystem_cortex_mx_ee_cpu.inc"
+ 709              		.file 7 "source\\bsw\\global.h"
+ 710              		.file 8 "source\\bsw\\led.h"
+ 711              		.file 9 "Generated_Source\\PSoC5/SimpleSystem_ee_oo_intfunc.inc"
+ 712              		.file 10 "Generated_Source\\PSoC5/SimpleSystem_cortex_mx_ee_context.inc"
+ 713              		.file 11 "Generated_Source\\PSoC5/SimpleSystem_common_ee_primitives.inc"
+ 714              		.file 12 "Generated_Source\\PSoC5/cmsis_gcc.h"
+ 715              		.file 13 "Generated_Source\\PSoC5/core_cm3.h"
+ 716              		.file 14 "Generated_Source\\PSoC5/LED_red.h"
+ 717              		.file 15 "Generated_Source\\PSoC5/LED_yellow.h"
+ 718              		.file 16 "Generated_Source\\PSoC5/LED_green.h"
+ 719              		.file 17 "Generated_Source\\PSoC5/RGB_PWM_blue.h"
+ 720              		.file 18 "Generated_Source\\PSoC5/RGB_PWM_green.h"
+ 721              		.file 19 "Generated_Source\\PSoC5/RGB_PWM_red.h"
+ 722              		.section	.debug_info,"",%progbits
+ 723              	.Ldebug_info0:
+ 724 0000 46060000 		.4byte	0x646
+ 725 0004 0400     		.2byte	0x4
+ 726 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 727 000a 04       		.byte	0x4
+ 728 000b 01       		.uleb128 0x1
+ 729 000c 9B040000 		.4byte	.LASF96
+ 730 0010 0C       		.byte	0xc
+ 731 0011 AE020000 		.4byte	.LASF97
+ 732 0015 04020000 		.4byte	.LASF98
+ 733 0019 58000000 		.4byte	.Ldebug_ranges0+0x58
+ 734 001d 00000000 		.4byte	0
+ 735 0021 00000000 		.4byte	.Ldebug_line0
+ 736 0025 02       		.uleb128 0x2
+ 737 0026 01       		.byte	0x1
+ 738 0027 06       		.byte	0x6
+ 739 0028 C3030000 		.4byte	.LASF0
+ 740 002c 03       		.uleb128 0x3
+ 741 002d 81060000 		.4byte	.LASF4
+ 742 0031 02       		.byte	0x2
+ 743 0032 1D       		.byte	0x1d
+ 744 0033 37000000 		.4byte	0x37
+ 745 0037 02       		.uleb128 0x2
+ 746 0038 01       		.byte	0x1
+ 747 0039 08       		.byte	0x8
+ 748 003a 8D030000 		.4byte	.LASF1
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 19
+
+
+ 749 003e 02       		.uleb128 0x2
+ 750 003f 02       		.byte	0x2
+ 751 0040 05       		.byte	0x5
+ 752 0041 9D000000 		.4byte	.LASF2
+ 753 0045 02       		.uleb128 0x2
+ 754 0046 02       		.byte	0x2
+ 755 0047 07       		.byte	0x7
+ 756 0048 73040000 		.4byte	.LASF3
+ 757 004c 03       		.uleb128 0x3
+ 758 004d EE050000 		.4byte	.LASF5
+ 759 0051 02       		.byte	0x2
+ 760 0052 3F       		.byte	0x3f
+ 761 0053 57000000 		.4byte	0x57
+ 762 0057 02       		.uleb128 0x2
+ 763 0058 04       		.byte	0x4
+ 764 0059 05       		.byte	0x5
+ 765 005a E5020000 		.4byte	.LASF6
+ 766 005e 03       		.uleb128 0x3
+ 767 005f 17010000 		.4byte	.LASF7
+ 768 0063 02       		.byte	0x2
+ 769 0064 41       		.byte	0x41
+ 770 0065 69000000 		.4byte	0x69
+ 771 0069 02       		.uleb128 0x2
+ 772 006a 04       		.byte	0x4
+ 773 006b 07       		.byte	0x7
+ 774 006c A2050000 		.4byte	.LASF8
+ 775 0070 02       		.uleb128 0x2
+ 776 0071 08       		.byte	0x8
+ 777 0072 05       		.byte	0x5
+ 778 0073 EE010000 		.4byte	.LASF9
+ 779 0077 02       		.uleb128 0x2
+ 780 0078 08       		.byte	0x8
+ 781 0079 07       		.byte	0x7
+ 782 007a CF030000 		.4byte	.LASF10
+ 783 007e 04       		.uleb128 0x4
+ 784 007f 04       		.byte	0x4
+ 785 0080 05       		.byte	0x5
+ 786 0081 696E7400 		.ascii	"int\000"
+ 787 0085 02       		.uleb128 0x2
+ 788 0086 04       		.byte	0x4
+ 789 0087 07       		.byte	0x7
+ 790 0088 F6030000 		.4byte	.LASF11
+ 791 008c 03       		.uleb128 0x3
+ 792 008d 5E010000 		.4byte	.LASF12
+ 793 0091 03       		.byte	0x3
+ 794 0092 18       		.byte	0x18
+ 795 0093 2C000000 		.4byte	0x2c
+ 796 0097 03       		.uleb128 0x3
+ 797 0098 5D050000 		.4byte	.LASF13
+ 798 009c 03       		.byte	0x3
+ 799 009d 2C       		.byte	0x2c
+ 800 009e 4C000000 		.4byte	0x4c
+ 801 00a2 03       		.uleb128 0x3
+ 802 00a3 ED030000 		.4byte	.LASF14
+ 803 00a7 03       		.byte	0x3
+ 804 00a8 30       		.byte	0x30
+ 805 00a9 5E000000 		.4byte	0x5e
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 20
+
+
+ 806 00ad 05       		.uleb128 0x5
+ 807 00ae 4C010000 		.4byte	.LASF15
+ 808 00b2 04       		.byte	0x4
+ 809 00b3 E501     		.2byte	0x1e5
+ 810 00b5 45000000 		.4byte	0x45
+ 811 00b9 02       		.uleb128 0x2
+ 812 00ba 04       		.byte	0x4
+ 813 00bb 04       		.byte	0x4
+ 814 00bc CF010000 		.4byte	.LASF16
+ 815 00c0 02       		.uleb128 0x2
+ 816 00c1 08       		.byte	0x8
+ 817 00c2 04       		.byte	0x4
+ 818 00c3 1E060000 		.4byte	.LASF17
+ 819 00c7 02       		.uleb128 0x2
+ 820 00c8 01       		.byte	0x1
+ 821 00c9 08       		.byte	0x8
+ 822 00ca 43050000 		.4byte	.LASF18
+ 823 00ce 02       		.uleb128 0x2
+ 824 00cf 08       		.byte	0x8
+ 825 00d0 04       		.byte	0x4
+ 826 00d1 71030000 		.4byte	.LASF19
+ 827 00d5 03       		.uleb128 0x3
+ 828 00d6 50040000 		.4byte	.LASF20
+ 829 00da 05       		.byte	0x5
+ 830 00db 53       		.byte	0x53
+ 831 00dc 7E000000 		.4byte	0x7e
+ 832 00e0 03       		.uleb128 0x3
+ 833 00e1 22010000 		.4byte	.LASF21
+ 834 00e5 05       		.byte	0x5
+ 835 00e6 54       		.byte	0x54
+ 836 00e7 85000000 		.4byte	0x85
+ 837 00eb 03       		.uleb128 0x3
+ 838 00ec CF050000 		.4byte	.LASF22
+ 839 00f0 06       		.byte	0x6
+ 840 00f1 4D       		.byte	0x4d
+ 841 00f2 E0000000 		.4byte	0xe0
+ 842 00f6 03       		.uleb128 0x3
+ 843 00f7 FE000000 		.4byte	.LASF23
+ 844 00fb 06       		.byte	0x6
+ 845 00fc 4F       		.byte	0x4f
+ 846 00fd E0000000 		.4byte	0xe0
+ 847 0101 03       		.uleb128 0x3
+ 848 0102 00030000 		.4byte	.LASF24
+ 849 0106 06       		.byte	0x6
+ 850 0107 78       		.byte	0x78
+ 851 0108 D5000000 		.4byte	0xd5
+ 852 010c 02       		.uleb128 0x2
+ 853 010d 04       		.byte	0x4
+ 854 010e 07       		.byte	0x7
+ 855 010f CD000000 		.4byte	.LASF25
+ 856 0113 06       		.uleb128 0x6
+ 857 0114 65524300 		.ascii	"eRC\000"
+ 858 0118 01       		.byte	0x1
+ 859 0119 25000000 		.4byte	0x25
+ 860 011d 07       		.byte	0x7
+ 861 011e AC       		.byte	0xac
+ 862 011f BA010000 		.4byte	0x1ba
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 21
+
+
+ 863 0123 07       		.uleb128 0x7
+ 864 0124 5A000000 		.4byte	.LASF26
+ 865 0128 00       		.byte	0
+ 866 0129 08       		.uleb128 0x8
+ 867 012a 37060000 		.4byte	.LASF27
+ 868 012e 7F       		.sleb128 -1
+ 869 012f 08       		.uleb128 0x8
+ 870 0130 2C040000 		.4byte	.LASF28
+ 871 0134 7E       		.sleb128 -2
+ 872 0135 08       		.uleb128 0x8
+ 873 0136 F0000000 		.4byte	.LASF29
+ 874 013a 7D       		.sleb128 -3
+ 875 013b 08       		.uleb128 0x8
+ 876 013c 59060000 		.4byte	.LASF30
+ 877 0140 7C       		.sleb128 -4
+ 878 0141 08       		.uleb128 0x8
+ 879 0142 DF050000 		.4byte	.LASF31
+ 880 0146 7B       		.sleb128 -5
+ 881 0147 08       		.uleb128 0x8
+ 882 0148 A7000000 		.4byte	.LASF32
+ 883 014c 7A       		.sleb128 -6
+ 884 014d 08       		.uleb128 0x8
+ 885 014e EE020000 		.4byte	.LASF33
+ 886 0152 79       		.sleb128 -7
+ 887 0153 08       		.uleb128 0x8
+ 888 0154 48050000 		.4byte	.LASF34
+ 889 0158 78       		.sleb128 -8
+ 890 0159 08       		.uleb128 0x8
+ 891 015a 3A040000 		.4byte	.LASF35
+ 892 015e 77       		.sleb128 -9
+ 893 015f 08       		.uleb128 0x8
+ 894 0160 07030000 		.4byte	.LASF36
+ 895 0164 76       		.sleb128 -10
+ 896 0165 08       		.uleb128 0x8
+ 897 0166 8B060000 		.4byte	.LASF37
+ 898 016a 75       		.sleb128 -11
+ 899 016b 08       		.uleb128 0x8
+ 900 016c 03040000 		.4byte	.LASF38
+ 901 0170 74       		.sleb128 -12
+ 902 0171 08       		.uleb128 0x8
+ 903 0172 BD050000 		.4byte	.LASF39
+ 904 0176 73       		.sleb128 -13
+ 905 0177 08       		.uleb128 0x8
+ 906 0178 47000000 		.4byte	.LASF40
+ 907 017c 72       		.sleb128 -14
+ 908 017d 08       		.uleb128 0x8
+ 909 017e 89000000 		.4byte	.LASF41
+ 910 0182 71       		.sleb128 -15
+ 911 0183 08       		.uleb128 0x8
+ 912 0184 06010000 		.4byte	.LASF42
+ 913 0188 70       		.sleb128 -16
+ 914 0189 08       		.uleb128 0x8
+ 915 018a 65050000 		.4byte	.LASF43
+ 916 018e 6F       		.sleb128 -17
+ 917 018f 08       		.uleb128 0x8
+ 918 0190 B8000000 		.4byte	.LASF44
+ 919 0194 6E       		.sleb128 -18
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 22
+
+
+ 920 0195 08       		.uleb128 0x8
+ 921 0196 BF020000 		.4byte	.LASF45
+ 922 019a 6D       		.sleb128 -19
+ 923 019b 08       		.uleb128 0x8
+ 924 019c A4030000 		.4byte	.LASF46
+ 925 01a0 6C       		.sleb128 -20
+ 926 01a1 08       		.uleb128 0x8
+ 927 01a2 33030000 		.4byte	.LASF47
+ 928 01a6 6B       		.sleb128 -21
+ 929 01a7 08       		.uleb128 0x8
+ 930 01a8 0C060000 		.4byte	.LASF48
+ 931 01ac 6A       		.sleb128 -22
+ 932 01ad 08       		.uleb128 0x8
+ 933 01ae 66010000 		.4byte	.LASF49
+ 934 01b2 69       		.sleb128 -23
+ 935 01b3 08       		.uleb128 0x8
+ 936 01b4 92010000 		.4byte	.LASF50
+ 937 01b8 68       		.sleb128 -24
+ 938 01b9 00       		.byte	0
+ 939 01ba 03       		.uleb128 0x3
+ 940 01bb D6000000 		.4byte	.LASF51
+ 941 01bf 07       		.byte	0x7
+ 942 01c0 C8       		.byte	0xc8
+ 943 01c1 13010000 		.4byte	0x113
+ 944 01c5 09       		.uleb128 0x9
+ 945 01c6 FC010000 		.4byte	.LASF52
+ 946 01ca 01       		.byte	0x1
+ 947 01cb 37000000 		.4byte	0x37
+ 948 01cf 08       		.byte	0x8
+ 949 01d0 5A       		.byte	0x5a
+ 950 01d1 EE010000 		.4byte	0x1ee
+ 951 01d5 07       		.uleb128 0x7
+ 952 01d6 51060000 		.4byte	.LASF53
+ 953 01da 00       		.byte	0
+ 954 01db 07       		.uleb128 0x7
+ 955 01dc 21040000 		.4byte	.LASF54
+ 956 01e0 01       		.byte	0x1
+ 957 01e1 07       		.uleb128 0x7
+ 958 01e2 85050000 		.4byte	.LASF55
+ 959 01e6 02       		.byte	0x2
+ 960 01e7 07       		.uleb128 0x7
+ 961 01e8 D7050000 		.4byte	.LASF56
+ 962 01ec 03       		.byte	0x3
+ 963 01ed 00       		.byte	0
+ 964 01ee 03       		.uleb128 0x3
+ 965 01ef 9B030000 		.4byte	.LASF57
+ 966 01f3 08       		.byte	0x8
+ 967 01f4 60       		.byte	0x60
+ 968 01f5 C5010000 		.4byte	0x1c5
+ 969 01f9 09       		.uleb128 0x9
+ 970 01fa 53010000 		.4byte	.LASF58
+ 971 01fe 01       		.byte	0x1
+ 972 01ff 37000000 		.4byte	0x37
+ 973 0203 08       		.byte	0x8
+ 974 0204 62       		.byte	0x62
+ 975 0205 16020000 		.4byte	0x216
+ 976 0209 07       		.uleb128 0x7
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 23
+
+
+ 977 020a 19040000 		.4byte	.LASF59
+ 978 020e 00       		.byte	0
+ 979 020f 07       		.uleb128 0x7
+ 980 0210 E6030000 		.4byte	.LASF60
+ 981 0214 01       		.byte	0x1
+ 982 0215 00       		.byte	0
+ 983 0216 03       		.uleb128 0x3
+ 984 0217 B7030000 		.4byte	.LASF61
+ 985 021b 08       		.byte	0x8
+ 986 021c 66       		.byte	0x66
+ 987 021d F9010000 		.4byte	0x1f9
+ 988 0221 0A       		.uleb128 0xa
+ 989 0222 65000000 		.4byte	.LASF99
+ 990 0226 01       		.byte	0x1
+ 991 0227 C9       		.byte	0xc9
+ 992 0228 16020000 		.4byte	0x216
+ 993 022c 03       		.byte	0x3
+ 994 022d 3D020000 		.4byte	0x23d
+ 995 0231 0B       		.uleb128 0xb
+ 996 0232 6A040000 		.4byte	.LASF63
+ 997 0236 01       		.byte	0x1
+ 998 0237 C9       		.byte	0xc9
+ 999 0238 16020000 		.4byte	0x216
+ 1000 023c 00       		.byte	0
+ 1001 023d 0C       		.uleb128 0xc
+ 1002 023e 11040000 		.4byte	.LASF66
+ 1003 0242 01       		.byte	0x1
+ 1004 0243 7C       		.byte	0x7c
+ 1005 0244 BA010000 		.4byte	0x1ba
+ 1006 0248 00000000 		.4byte	.LFB115
+ 1007 024c 60000000 		.4byte	.LFE115-.LFB115
+ 1008 0250 01       		.uleb128 0x1
+ 1009 0251 9C       		.byte	0x9c
+ 1010 0252 DA020000 		.4byte	0x2da
+ 1011 0256 0D       		.uleb128 0xd
+ 1012 0257 15030000 		.4byte	.LASF62
+ 1013 025b 01       		.byte	0x1
+ 1014 025c 7C       		.byte	0x7c
+ 1015 025d EE010000 		.4byte	0x1ee
+ 1016 0261 00000000 		.4byte	.LLST0
+ 1017 0265 0D       		.uleb128 0xd
+ 1018 0266 6A040000 		.4byte	.LASF63
+ 1019 026a 01       		.byte	0x1
+ 1020 026b 7C       		.byte	0x7c
+ 1021 026c 16020000 		.4byte	0x216
+ 1022 0270 85000000 		.4byte	.LLST1
+ 1023 0274 0E       		.uleb128 0xe
+ 1024 0275 00000000 		.4byte	.Ldebug_ranges0+0
+ 1025 0279 A1020000 		.4byte	0x2a1
+ 1026 027d 0F       		.uleb128 0xf
+ 1027 027e 6900     		.ascii	"i\000"
+ 1028 0280 01       		.byte	0x1
+ 1029 0281 91       		.byte	0x91
+ 1030 0282 EE010000 		.4byte	0x1ee
+ 1031 0286 FC000000 		.4byte	.LLST2
+ 1032 028a 10       		.uleb128 0x10
+ 1033 028b 44000000 		.4byte	.LVL10
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 24
+
+
+ 1034 028f 3D020000 		.4byte	0x23d
+ 1035 0293 11       		.uleb128 0x11
+ 1036 0294 01       		.uleb128 0x1
+ 1037 0295 50       		.byte	0x50
+ 1038 0296 02       		.uleb128 0x2
+ 1039 0297 74       		.byte	0x74
+ 1040 0298 00       		.sleb128 0
+ 1041 0299 11       		.uleb128 0x11
+ 1042 029a 01       		.uleb128 0x1
+ 1043 029b 51       		.byte	0x51
+ 1044 029c 02       		.uleb128 0x2
+ 1045 029d 75       		.byte	0x75
+ 1046 029e 00       		.sleb128 0
+ 1047 029f 00       		.byte	0
+ 1048 02a0 00       		.byte	0
+ 1049 02a1 12       		.uleb128 0x12
+ 1050 02a2 18000000 		.4byte	.LVL2
+ 1051 02a6 E6050000 		.4byte	0x5e6
+ 1052 02aa B5020000 		.4byte	0x2b5
+ 1053 02ae 11       		.uleb128 0x11
+ 1054 02af 01       		.uleb128 0x1
+ 1055 02b0 50       		.byte	0x50
+ 1056 02b1 02       		.uleb128 0x2
+ 1057 02b2 75       		.byte	0x75
+ 1058 02b3 00       		.sleb128 0
+ 1059 02b4 00       		.byte	0
+ 1060 02b5 12       		.uleb128 0x12
+ 1061 02b6 26000000 		.4byte	.LVL5
+ 1062 02ba F1050000 		.4byte	0x5f1
+ 1063 02be C9020000 		.4byte	0x2c9
+ 1064 02c2 11       		.uleb128 0x11
+ 1065 02c3 01       		.uleb128 0x1
+ 1066 02c4 50       		.byte	0x50
+ 1067 02c5 02       		.uleb128 0x2
+ 1068 02c6 75       		.byte	0x75
+ 1069 02c7 00       		.sleb128 0
+ 1070 02c8 00       		.byte	0
+ 1071 02c9 10       		.uleb128 0x10
+ 1072 02ca 34000000 		.4byte	.LVL8
+ 1073 02ce FC050000 		.4byte	0x5fc
+ 1074 02d2 11       		.uleb128 0x11
+ 1075 02d3 01       		.uleb128 0x1
+ 1076 02d4 50       		.byte	0x50
+ 1077 02d5 02       		.uleb128 0x2
+ 1078 02d6 75       		.byte	0x75
+ 1079 02d7 00       		.sleb128 0
+ 1080 02d8 00       		.byte	0
+ 1081 02d9 00       		.byte	0
+ 1082 02da 13       		.uleb128 0x13
+ 1083 02db B4050000 		.4byte	.LASF100
+ 1084 02df 01       		.byte	0x1
+ 1085 02e0 5C       		.byte	0x5c
+ 1086 02e1 BA010000 		.4byte	0x1ba
+ 1087 02e5 00000000 		.4byte	.LFB114
+ 1088 02e9 34000000 		.4byte	.LFE114-.LFB114
+ 1089 02ed 01       		.uleb128 0x1
+ 1090 02ee 9C       		.byte	0x9c
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 25
+
+
+ 1091 02ef 63030000 		.4byte	0x363
+ 1092 02f3 14       		.uleb128 0x14
+ 1093 02f4 1A000000 		.4byte	.LASF64
+ 1094 02f8 01       		.byte	0x1
+ 1095 02f9 5E       		.byte	0x5e
+ 1096 02fa BA010000 		.4byte	0x1ba
+ 1097 02fe 25010000 		.4byte	.LLST3
+ 1098 0302 0E       		.uleb128 0xe
+ 1099 0303 20000000 		.4byte	.Ldebug_ranges0+0x20
+ 1100 0307 47030000 		.4byte	0x347
+ 1101 030b 0F       		.uleb128 0xf
+ 1102 030c 6900     		.ascii	"i\000"
+ 1103 030e 01       		.byte	0x1
+ 1104 030f 60       		.byte	0x60
+ 1105 0310 EE010000 		.4byte	0x1ee
+ 1106 0314 44010000 		.4byte	.LLST4
+ 1107 0318 15       		.uleb128 0x15
+ 1108 0319 08000000 		.4byte	.LBB13
+ 1109 031d 10000000 		.4byte	.LBE13-.LBB13
+ 1110 0321 14       		.uleb128 0x14
+ 1111 0322 2C010000 		.4byte	.LASF65
+ 1112 0326 01       		.byte	0x1
+ 1113 0327 64       		.byte	0x64
+ 1114 0328 BA010000 		.4byte	0x1ba
+ 1115 032c 6E010000 		.4byte	.LLST5
+ 1116 0330 10       		.uleb128 0x10
+ 1117 0331 14000000 		.4byte	.LVL19
+ 1118 0335 3D020000 		.4byte	0x23d
+ 1119 0339 11       		.uleb128 0x11
+ 1120 033a 01       		.uleb128 0x1
+ 1121 033b 50       		.byte	0x50
+ 1122 033c 02       		.uleb128 0x2
+ 1123 033d 74       		.byte	0x74
+ 1124 033e 00       		.sleb128 0
+ 1125 033f 11       		.uleb128 0x11
+ 1126 0340 01       		.uleb128 0x1
+ 1127 0341 51       		.byte	0x51
+ 1128 0342 01       		.uleb128 0x1
+ 1129 0343 30       		.byte	0x30
+ 1130 0344 00       		.byte	0
+ 1131 0345 00       		.byte	0
+ 1132 0346 00       		.byte	0
+ 1133 0347 16       		.uleb128 0x16
+ 1134 0348 24000000 		.4byte	.LVL23
+ 1135 034c 07060000 		.4byte	0x607
+ 1136 0350 16       		.uleb128 0x16
+ 1137 0351 28000000 		.4byte	.LVL24
+ 1138 0355 12060000 		.4byte	0x612
+ 1139 0359 16       		.uleb128 0x16
+ 1140 035a 2C000000 		.4byte	.LVL25
+ 1141 035e 1D060000 		.4byte	0x61d
+ 1142 0362 00       		.byte	0
+ 1143 0363 0C       		.uleb128 0xc
+ 1144 0364 00000000 		.4byte	.LASF67
+ 1145 0368 01       		.byte	0x1
+ 1146 0369 A3       		.byte	0xa3
+ 1147 036a BA010000 		.4byte	0x1ba
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 26
+
+
+ 1148 036e 00000000 		.4byte	.LFB116
+ 1149 0372 84000000 		.4byte	.LFE116-.LFB116
+ 1150 0376 01       		.uleb128 0x1
+ 1151 0377 9C       		.byte	0x9c
+ 1152 0378 25040000 		.4byte	0x425
+ 1153 037c 0D       		.uleb128 0xd
+ 1154 037d 15030000 		.4byte	.LASF62
+ 1155 0381 01       		.byte	0x1
+ 1156 0382 A3       		.byte	0xa3
+ 1157 0383 EE010000 		.4byte	0x1ee
+ 1158 0387 81010000 		.4byte	.LLST6
+ 1159 038b 17       		.uleb128 0x17
+ 1160 038c 21020000 		.4byte	0x221
+ 1161 0390 12000000 		.4byte	.LBB15
+ 1162 0394 0A000000 		.4byte	.LBE15-.LBB15
+ 1163 0398 01       		.byte	0x1
+ 1164 0399 A9       		.byte	0xa9
+ 1165 039a A8030000 		.4byte	0x3a8
+ 1166 039e 18       		.uleb128 0x18
+ 1167 039f 31020000 		.4byte	0x231
+ 1168 03a3 06020000 		.4byte	.LLST7
+ 1169 03a7 00       		.byte	0
+ 1170 03a8 17       		.uleb128 0x17
+ 1171 03a9 21020000 		.4byte	0x221
+ 1172 03ad 2E000000 		.4byte	.LBB17
+ 1173 03b1 0A000000 		.4byte	.LBE17-.LBB17
+ 1174 03b5 01       		.byte	0x1
+ 1175 03b6 AE       		.byte	0xae
+ 1176 03b7 C5030000 		.4byte	0x3c5
+ 1177 03bb 18       		.uleb128 0x18
+ 1178 03bc 31020000 		.4byte	0x231
+ 1179 03c0 36020000 		.4byte	.LLST8
+ 1180 03c4 00       		.byte	0
+ 1181 03c5 17       		.uleb128 0x17
+ 1182 03c6 21020000 		.4byte	0x221
+ 1183 03ca 4A000000 		.4byte	.LBB19
+ 1184 03ce 0A000000 		.4byte	.LBE19-.LBB19
+ 1185 03d2 01       		.byte	0x1
+ 1186 03d3 B3       		.byte	0xb3
+ 1187 03d4 E2030000 		.4byte	0x3e2
+ 1188 03d8 18       		.uleb128 0x18
+ 1189 03d9 31020000 		.4byte	0x231
+ 1190 03dd 66020000 		.4byte	.LLST9
+ 1191 03e1 00       		.byte	0
+ 1192 03e2 0E       		.uleb128 0xe
+ 1193 03e3 38000000 		.4byte	.Ldebug_ranges0+0x38
+ 1194 03e7 09040000 		.4byte	0x409
+ 1195 03eb 0F       		.uleb128 0xf
+ 1196 03ec 6900     		.ascii	"i\000"
+ 1197 03ee 01       		.byte	0x1
+ 1198 03ef B8       		.byte	0xb8
+ 1199 03f0 EE010000 		.4byte	0x1ee
+ 1200 03f4 96020000 		.4byte	.LLST10
+ 1201 03f8 10       		.uleb128 0x10
+ 1202 03f9 68000000 		.4byte	.LVL49
+ 1203 03fd 63030000 		.4byte	0x363
+ 1204 0401 11       		.uleb128 0x11
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 27
+
+
+ 1205 0402 01       		.uleb128 0x1
+ 1206 0403 50       		.byte	0x50
+ 1207 0404 02       		.uleb128 0x2
+ 1208 0405 74       		.byte	0x74
+ 1209 0406 00       		.sleb128 0
+ 1210 0407 00       		.byte	0
+ 1211 0408 00       		.byte	0
+ 1212 0409 16       		.uleb128 0x16
+ 1213 040a 26000000 		.4byte	.LVL33
+ 1214 040e E6050000 		.4byte	0x5e6
+ 1215 0412 16       		.uleb128 0x16
+ 1216 0413 42000000 		.4byte	.LVL40
+ 1217 0417 F1050000 		.4byte	0x5f1
+ 1218 041b 16       		.uleb128 0x16
+ 1219 041c 5E000000 		.4byte	.LVL47
+ 1220 0420 FC050000 		.4byte	0x5fc
+ 1221 0424 00       		.byte	0
+ 1222 0425 0C       		.uleb128 0xc
+ 1223 0426 79050000 		.4byte	.LASF68
+ 1224 042a 01       		.byte	0x1
+ 1225 042b DC       		.byte	0xdc
+ 1226 042c BA010000 		.4byte	0x1ba
+ 1227 0430 00000000 		.4byte	.LFB118
+ 1228 0434 28000000 		.4byte	.LFE118-.LFB118
+ 1229 0438 01       		.uleb128 0x1
+ 1230 0439 9C       		.byte	0x9c
+ 1231 043a A7040000 		.4byte	0x4a7
+ 1232 043e 19       		.uleb128 0x19
+ 1233 043f 72656400 		.ascii	"red\000"
+ 1234 0443 01       		.byte	0x1
+ 1235 0444 DC       		.byte	0xdc
+ 1236 0445 8C000000 		.4byte	0x8c
+ 1237 0449 BF020000 		.4byte	.LLST11
+ 1238 044d 0D       		.uleb128 0xd
+ 1239 044e 2D030000 		.4byte	.LASF69
+ 1240 0452 01       		.byte	0x1
+ 1241 0453 DC       		.byte	0xdc
+ 1242 0454 8C000000 		.4byte	0x8c
+ 1243 0458 E0020000 		.4byte	.LLST12
+ 1244 045c 0D       		.uleb128 0xd
+ 1245 045d 47010000 		.4byte	.LASF70
+ 1246 0461 01       		.byte	0x1
+ 1247 0462 DC       		.byte	0xdc
+ 1248 0463 8C000000 		.4byte	0x8c
+ 1249 0467 01030000 		.4byte	.LLST13
+ 1250 046b 16       		.uleb128 0x16
+ 1251 046c 10000000 		.4byte	.LVL58
+ 1252 0470 28060000 		.4byte	0x628
+ 1253 0474 12       		.uleb128 0x12
+ 1254 0475 18000000 		.4byte	.LVL59
+ 1255 0479 33060000 		.4byte	0x633
+ 1256 047d 8F040000 		.4byte	0x48f
+ 1257 0481 11       		.uleb128 0x11
+ 1258 0482 01       		.uleb128 0x1
+ 1259 0483 50       		.byte	0x50
+ 1260 0484 09       		.uleb128 0x9
+ 1261 0485 76       		.byte	0x76
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 28
+
+
+ 1262 0486 00       		.sleb128 0
+ 1263 0487 31       		.byte	0x31
+ 1264 0488 24       		.byte	0x24
+ 1265 0489 74       		.byte	0x74
+ 1266 048a 00       		.sleb128 0
+ 1267 048b 22       		.byte	0x22
+ 1268 048c 94       		.byte	0x94
+ 1269 048d 02       		.byte	0x2
+ 1270 048e 00       		.byte	0
+ 1271 048f 10       		.uleb128 0x10
+ 1272 0490 20000000 		.4byte	.LVL60
+ 1273 0494 3E060000 		.4byte	0x63e
+ 1274 0498 11       		.uleb128 0x11
+ 1275 0499 01       		.uleb128 0x1
+ 1276 049a 50       		.byte	0x50
+ 1277 049b 09       		.uleb128 0x9
+ 1278 049c 75       		.byte	0x75
+ 1279 049d 00       		.sleb128 0
+ 1280 049e 31       		.byte	0x31
+ 1281 049f 24       		.byte	0x24
+ 1282 04a0 74       		.byte	0x74
+ 1283 04a1 00       		.sleb128 0
+ 1284 04a2 22       		.byte	0x22
+ 1285 04a3 94       		.byte	0x94
+ 1286 04a4 02       		.byte	0x2
+ 1287 04a5 00       		.byte	0
+ 1288 04a6 00       		.byte	0
+ 1289 04a7 1A       		.uleb128 0x1a
+ 1290 04a8 16020000 		.4byte	0x216
+ 1291 04ac B7040000 		.4byte	0x4b7
+ 1292 04b0 1B       		.uleb128 0x1b
+ 1293 04b1 0C010000 		.4byte	0x10c
+ 1294 04b5 02       		.byte	0x2
+ 1295 04b6 00       		.byte	0
+ 1296 04b7 1C       		.uleb128 0x1c
+ 1297 04b8 3C000000 		.4byte	.LASF71
+ 1298 04bc 01       		.byte	0x1
+ 1299 04bd 2F       		.byte	0x2f
+ 1300 04be A7040000 		.4byte	0x4a7
+ 1301 04c2 05       		.uleb128 0x5
+ 1302 04c3 03       		.byte	0x3
+ 1303 04c4 00000000 		.4byte	LED__state
+ 1304 04c8 1A       		.uleb128 0x1a
+ 1305 04c9 D8040000 		.4byte	0x4d8
+ 1306 04cd D8040000 		.4byte	0x4d8
+ 1307 04d1 1B       		.uleb128 0x1b
+ 1308 04d2 0C010000 		.4byte	0x10c
+ 1309 04d6 FF       		.byte	0xff
+ 1310 04d7 00       		.byte	0
+ 1311 04d8 1D       		.uleb128 0x1d
+ 1312 04d9 AD000000 		.4byte	0xad
+ 1313 04dd 1C       		.uleb128 0x1c
+ 1314 04de 59040000 		.4byte	.LASF72
+ 1315 04e2 01       		.byte	0x1
+ 1316 04e3 31       		.byte	0x31
+ 1317 04e4 EE040000 		.4byte	0x4ee
+ 1318 04e8 05       		.uleb128 0x5
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 29
+
+
+ 1319 04e9 03       		.byte	0x3
+ 1320 04ea 00000000 		.4byte	LED__Pulse_Width
+ 1321 04ee 1D       		.uleb128 0x1d
+ 1322 04ef C8040000 		.4byte	0x4c8
+ 1323 04f3 1E       		.uleb128 0x1e
+ 1324 04f4 69060000 		.4byte	.LASF73
+ 1325 04f8 09       		.byte	0x9
+ 1326 04f9 40       		.byte	0x40
+ 1327 04fa EB000000 		.4byte	0xeb
+ 1328 04fe 1E       		.uleb128 0x1e
+ 1329 04ff D5010000 		.4byte	.LASF74
+ 1330 0503 09       		.byte	0x9
+ 1331 0504 47       		.byte	0x47
+ 1332 0505 F6000000 		.4byte	0xf6
+ 1333 0509 1E       		.uleb128 0x1e
+ 1334 050a 8F050000 		.4byte	.LASF75
+ 1335 050e 09       		.byte	0x9
+ 1336 050f 4A       		.byte	0x4a
+ 1337 0510 EB000000 		.4byte	0xeb
+ 1338 0514 1E       		.uleb128 0x1e
+ 1339 0515 A3010000 		.4byte	.LASF76
+ 1340 0519 0A       		.byte	0xa
+ 1341 051a 48       		.byte	0x48
+ 1342 051b 01010000 		.4byte	0x101
+ 1343 051f 1E       		.uleb128 0x1e
+ 1344 0520 7D010000 		.4byte	.LASF77
+ 1345 0524 0B       		.byte	0xb
+ 1346 0525 44       		.byte	0x44
+ 1347 0526 EB000000 		.4byte	0xeb
+ 1348 052a 03       		.uleb128 0x3
+ 1349 052b 0B000000 		.4byte	.LASF78
+ 1350 052f 0C       		.byte	0xc
+ 1351 0530 8B       		.byte	0x8b
+ 1352 0531 B9050000 		.4byte	0x5b9
+ 1353 0535 1F       		.uleb128 0x1f
+ 1354 0536 04       		.byte	0x4
+ 1355 0537 3B050000 		.4byte	0x53b
+ 1356 053b 1D       		.uleb128 0x1d
+ 1357 053c A2000000 		.4byte	0xa2
+ 1358 0540 1F       		.uleb128 0x1f
+ 1359 0541 04       		.byte	0x4
+ 1360 0542 A2000000 		.4byte	0xa2
+ 1361 0546 1E       		.uleb128 0x1e
+ 1362 0547 86040000 		.4byte	.LASF79
+ 1363 054b 0C       		.byte	0xc
+ 1364 054c 92       		.byte	0x92
+ 1365 054d 51050000 		.4byte	0x551
+ 1366 0551 1D       		.uleb128 0x1d
+ 1367 0552 2A050000 		.4byte	0x52a
+ 1368 0556 1E       		.uleb128 0x1e
+ 1369 0557 BC010000 		.4byte	.LASF80
+ 1370 055b 0C       		.byte	0xc
+ 1371 055c 93       		.byte	0x93
+ 1372 055d 51050000 		.4byte	0x551
+ 1373 0561 03       		.uleb128 0x3
+ 1374 0562 38010000 		.4byte	.LASF81
+ 1375 0566 0C       		.byte	0xc
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 30
+
+
+ 1376 0567 90       		.byte	0x90
+ 1377 0568 98050000 		.4byte	0x598
+ 1378 056c 1E       		.uleb128 0x1e
+ 1379 056d DB000000 		.4byte	.LASF82
+ 1380 0571 0C       		.byte	0xc
+ 1381 0572 94       		.byte	0x94
+ 1382 0573 77050000 		.4byte	0x577
+ 1383 0577 1D       		.uleb128 0x1d
+ 1384 0578 61050000 		.4byte	0x561
+ 1385 057c 1E       		.uleb128 0x1e
+ 1386 057d D2020000 		.4byte	.LASF83
+ 1387 0581 0C       		.byte	0xc
+ 1388 0582 95       		.byte	0x95
+ 1389 0583 77050000 		.4byte	0x577
+ 1390 0587 20       		.uleb128 0x20
+ 1391 0588 2A060000 		.4byte	.LASF84
+ 1392 058c 0D       		.byte	0xd
+ 1393 058d 1207     		.2byte	0x712
+ 1394 058f 93050000 		.4byte	0x593
+ 1395 0593 21       		.uleb128 0x21
+ 1396 0594 97000000 		.4byte	0x97
+ 1397 0598 22       		.uleb128 0x22
+ 1398 0599 08       		.byte	0x8
+ 1399 059a 0C       		.byte	0xc
+ 1400 059b 8D       		.byte	0x8d
+ 1401 059c B9050000 		.4byte	0x5b9
+ 1402 05a0 23       		.uleb128 0x23
+ 1403 05a1 76000000 		.4byte	.LASF85
+ 1404 05a5 0C       		.byte	0xc
+ 1405 05a6 8E       		.byte	0x8e
+ 1406 05a7 40050000 		.4byte	0x540
+ 1407 05ab 00       		.byte	0
+ 1408 05ac 23       		.uleb128 0x23
+ 1409 05ad 25060000 		.4byte	.LASF86
+ 1410 05b1 0C       		.byte	0xc
+ 1411 05b2 8F       		.byte	0x8f
+ 1412 05b3 A2000000 		.4byte	0xa2
+ 1413 05b7 04       		.byte	0x4
+ 1414 05b8 00       		.byte	0
+ 1415 05b9 22       		.uleb128 0x22
+ 1416 05ba 0C       		.byte	0xc
+ 1417 05bb 0C       		.byte	0xc
+ 1418 05bc 87       		.byte	0x87
+ 1419 05bd E6050000 		.4byte	0x5e6
+ 1420 05c1 24       		.uleb128 0x24
+ 1421 05c2 73726300 		.ascii	"src\000"
+ 1422 05c6 0C       		.byte	0xc
+ 1423 05c7 88       		.byte	0x88
+ 1424 05c8 35050000 		.4byte	0x535
+ 1425 05cc 00       		.byte	0
+ 1426 05cd 23       		.uleb128 0x23
+ 1427 05ce 76000000 		.4byte	.LASF85
+ 1428 05d2 0C       		.byte	0xc
+ 1429 05d3 89       		.byte	0x89
+ 1430 05d4 40050000 		.4byte	0x540
+ 1431 05d8 04       		.byte	0x4
+ 1432 05d9 23       		.uleb128 0x23
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 31
+
+
+ 1433 05da 25060000 		.4byte	.LASF86
+ 1434 05de 0C       		.byte	0xc
+ 1435 05df 8A       		.byte	0x8a
+ 1436 05e0 A2000000 		.4byte	0xa2
+ 1437 05e4 08       		.byte	0x8
+ 1438 05e5 00       		.byte	0
+ 1439 05e6 25       		.uleb128 0x25
+ 1440 05e7 7B000000 		.4byte	.LASF87
+ 1441 05eb 7B000000 		.4byte	.LASF87
+ 1442 05ef 0E       		.byte	0xe
+ 1443 05f0 26       		.byte	0x26
+ 1444 05f1 25       		.uleb128 0x25
+ 1445 05f2 40060000 		.4byte	.LASF88
+ 1446 05f6 40060000 		.4byte	.LASF88
+ 1447 05fa 0F       		.byte	0xf
+ 1448 05fb 26       		.byte	0x26
+ 1449 05fc 25       		.uleb128 0x25
+ 1450 05fd 7D030000 		.4byte	.LASF89
+ 1451 0601 7D030000 		.4byte	.LASF89
+ 1452 0605 10       		.byte	0x10
+ 1453 0606 26       		.byte	0x26
+ 1454 0607 25       		.uleb128 0x25
+ 1455 0608 5E030000 		.4byte	.LASF90
+ 1456 060c 5E030000 		.4byte	.LASF90
+ 1457 0610 11       		.byte	0x11
+ 1458 0611 92       		.byte	0x92
+ 1459 0612 25       		.uleb128 0x25
+ 1460 0613 F8050000 		.4byte	.LASF91
+ 1461 0617 F8050000 		.4byte	.LASF91
+ 1462 061b 12       		.byte	0x12
+ 1463 061c 92       		.byte	0x92
+ 1464 061d 25       		.uleb128 0x25
+ 1465 061e 1B030000 		.4byte	.LASF92
+ 1466 0622 1B030000 		.4byte	.LASF92
+ 1467 0626 13       		.byte	0x13
+ 1468 0627 92       		.byte	0x92
+ 1469 0628 25       		.uleb128 0x25
+ 1470 0629 45030000 		.4byte	.LASF93
+ 1471 062d 45030000 		.4byte	.LASF93
+ 1472 0631 13       		.byte	0x13
+ 1473 0632 C3       		.byte	0xc3
+ 1474 0633 25       		.uleb128 0x25
+ 1475 0634 21000000 		.4byte	.LASF94
+ 1476 0638 21000000 		.4byte	.LASF94
+ 1477 063c 12       		.byte	0x12
+ 1478 063d C3       		.byte	0xc3
+ 1479 063e 25       		.uleb128 0x25
+ 1480 063f 29050000 		.4byte	.LASF95
+ 1481 0643 29050000 		.4byte	.LASF95
+ 1482 0647 11       		.byte	0x11
+ 1483 0648 C3       		.byte	0xc3
+ 1484 0649 00       		.byte	0
+ 1485              		.section	.debug_abbrev,"",%progbits
+ 1486              	.Ldebug_abbrev0:
+ 1487 0000 01       		.uleb128 0x1
+ 1488 0001 11       		.uleb128 0x11
+ 1489 0002 01       		.byte	0x1
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 32
+
+
+ 1490 0003 25       		.uleb128 0x25
+ 1491 0004 0E       		.uleb128 0xe
+ 1492 0005 13       		.uleb128 0x13
+ 1493 0006 0B       		.uleb128 0xb
+ 1494 0007 03       		.uleb128 0x3
+ 1495 0008 0E       		.uleb128 0xe
+ 1496 0009 1B       		.uleb128 0x1b
+ 1497 000a 0E       		.uleb128 0xe
+ 1498 000b 55       		.uleb128 0x55
+ 1499 000c 17       		.uleb128 0x17
+ 1500 000d 11       		.uleb128 0x11
+ 1501 000e 01       		.uleb128 0x1
+ 1502 000f 10       		.uleb128 0x10
+ 1503 0010 17       		.uleb128 0x17
+ 1504 0011 00       		.byte	0
+ 1505 0012 00       		.byte	0
+ 1506 0013 02       		.uleb128 0x2
+ 1507 0014 24       		.uleb128 0x24
+ 1508 0015 00       		.byte	0
+ 1509 0016 0B       		.uleb128 0xb
+ 1510 0017 0B       		.uleb128 0xb
+ 1511 0018 3E       		.uleb128 0x3e
+ 1512 0019 0B       		.uleb128 0xb
+ 1513 001a 03       		.uleb128 0x3
+ 1514 001b 0E       		.uleb128 0xe
+ 1515 001c 00       		.byte	0
+ 1516 001d 00       		.byte	0
+ 1517 001e 03       		.uleb128 0x3
+ 1518 001f 16       		.uleb128 0x16
+ 1519 0020 00       		.byte	0
+ 1520 0021 03       		.uleb128 0x3
+ 1521 0022 0E       		.uleb128 0xe
+ 1522 0023 3A       		.uleb128 0x3a
+ 1523 0024 0B       		.uleb128 0xb
+ 1524 0025 3B       		.uleb128 0x3b
+ 1525 0026 0B       		.uleb128 0xb
+ 1526 0027 49       		.uleb128 0x49
+ 1527 0028 13       		.uleb128 0x13
+ 1528 0029 00       		.byte	0
+ 1529 002a 00       		.byte	0
+ 1530 002b 04       		.uleb128 0x4
+ 1531 002c 24       		.uleb128 0x24
+ 1532 002d 00       		.byte	0
+ 1533 002e 0B       		.uleb128 0xb
+ 1534 002f 0B       		.uleb128 0xb
+ 1535 0030 3E       		.uleb128 0x3e
+ 1536 0031 0B       		.uleb128 0xb
+ 1537 0032 03       		.uleb128 0x3
+ 1538 0033 08       		.uleb128 0x8
+ 1539 0034 00       		.byte	0
+ 1540 0035 00       		.byte	0
+ 1541 0036 05       		.uleb128 0x5
+ 1542 0037 16       		.uleb128 0x16
+ 1543 0038 00       		.byte	0
+ 1544 0039 03       		.uleb128 0x3
+ 1545 003a 0E       		.uleb128 0xe
+ 1546 003b 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 33
+
+
+ 1547 003c 0B       		.uleb128 0xb
+ 1548 003d 3B       		.uleb128 0x3b
+ 1549 003e 05       		.uleb128 0x5
+ 1550 003f 49       		.uleb128 0x49
+ 1551 0040 13       		.uleb128 0x13
+ 1552 0041 00       		.byte	0
+ 1553 0042 00       		.byte	0
+ 1554 0043 06       		.uleb128 0x6
+ 1555 0044 04       		.uleb128 0x4
+ 1556 0045 01       		.byte	0x1
+ 1557 0046 03       		.uleb128 0x3
+ 1558 0047 08       		.uleb128 0x8
+ 1559 0048 0B       		.uleb128 0xb
+ 1560 0049 0B       		.uleb128 0xb
+ 1561 004a 49       		.uleb128 0x49
+ 1562 004b 13       		.uleb128 0x13
+ 1563 004c 3A       		.uleb128 0x3a
+ 1564 004d 0B       		.uleb128 0xb
+ 1565 004e 3B       		.uleb128 0x3b
+ 1566 004f 0B       		.uleb128 0xb
+ 1567 0050 01       		.uleb128 0x1
+ 1568 0051 13       		.uleb128 0x13
+ 1569 0052 00       		.byte	0
+ 1570 0053 00       		.byte	0
+ 1571 0054 07       		.uleb128 0x7
+ 1572 0055 28       		.uleb128 0x28
+ 1573 0056 00       		.byte	0
+ 1574 0057 03       		.uleb128 0x3
+ 1575 0058 0E       		.uleb128 0xe
+ 1576 0059 1C       		.uleb128 0x1c
+ 1577 005a 0B       		.uleb128 0xb
+ 1578 005b 00       		.byte	0
+ 1579 005c 00       		.byte	0
+ 1580 005d 08       		.uleb128 0x8
+ 1581 005e 28       		.uleb128 0x28
+ 1582 005f 00       		.byte	0
+ 1583 0060 03       		.uleb128 0x3
+ 1584 0061 0E       		.uleb128 0xe
+ 1585 0062 1C       		.uleb128 0x1c
+ 1586 0063 0D       		.uleb128 0xd
+ 1587 0064 00       		.byte	0
+ 1588 0065 00       		.byte	0
+ 1589 0066 09       		.uleb128 0x9
+ 1590 0067 04       		.uleb128 0x4
+ 1591 0068 01       		.byte	0x1
+ 1592 0069 03       		.uleb128 0x3
+ 1593 006a 0E       		.uleb128 0xe
+ 1594 006b 0B       		.uleb128 0xb
+ 1595 006c 0B       		.uleb128 0xb
+ 1596 006d 49       		.uleb128 0x49
+ 1597 006e 13       		.uleb128 0x13
+ 1598 006f 3A       		.uleb128 0x3a
+ 1599 0070 0B       		.uleb128 0xb
+ 1600 0071 3B       		.uleb128 0x3b
+ 1601 0072 0B       		.uleb128 0xb
+ 1602 0073 01       		.uleb128 0x1
+ 1603 0074 13       		.uleb128 0x13
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 34
+
+
+ 1604 0075 00       		.byte	0
+ 1605 0076 00       		.byte	0
+ 1606 0077 0A       		.uleb128 0xa
+ 1607 0078 2E       		.uleb128 0x2e
+ 1608 0079 01       		.byte	0x1
+ 1609 007a 03       		.uleb128 0x3
+ 1610 007b 0E       		.uleb128 0xe
+ 1611 007c 3A       		.uleb128 0x3a
+ 1612 007d 0B       		.uleb128 0xb
+ 1613 007e 3B       		.uleb128 0x3b
+ 1614 007f 0B       		.uleb128 0xb
+ 1615 0080 27       		.uleb128 0x27
+ 1616 0081 19       		.uleb128 0x19
+ 1617 0082 49       		.uleb128 0x49
+ 1618 0083 13       		.uleb128 0x13
+ 1619 0084 20       		.uleb128 0x20
+ 1620 0085 0B       		.uleb128 0xb
+ 1621 0086 01       		.uleb128 0x1
+ 1622 0087 13       		.uleb128 0x13
+ 1623 0088 00       		.byte	0
+ 1624 0089 00       		.byte	0
+ 1625 008a 0B       		.uleb128 0xb
+ 1626 008b 05       		.uleb128 0x5
+ 1627 008c 00       		.byte	0
+ 1628 008d 03       		.uleb128 0x3
+ 1629 008e 0E       		.uleb128 0xe
+ 1630 008f 3A       		.uleb128 0x3a
+ 1631 0090 0B       		.uleb128 0xb
+ 1632 0091 3B       		.uleb128 0x3b
+ 1633 0092 0B       		.uleb128 0xb
+ 1634 0093 49       		.uleb128 0x49
+ 1635 0094 13       		.uleb128 0x13
+ 1636 0095 00       		.byte	0
+ 1637 0096 00       		.byte	0
+ 1638 0097 0C       		.uleb128 0xc
+ 1639 0098 2E       		.uleb128 0x2e
+ 1640 0099 01       		.byte	0x1
+ 1641 009a 3F       		.uleb128 0x3f
+ 1642 009b 19       		.uleb128 0x19
+ 1643 009c 03       		.uleb128 0x3
+ 1644 009d 0E       		.uleb128 0xe
+ 1645 009e 3A       		.uleb128 0x3a
+ 1646 009f 0B       		.uleb128 0xb
+ 1647 00a0 3B       		.uleb128 0x3b
+ 1648 00a1 0B       		.uleb128 0xb
+ 1649 00a2 27       		.uleb128 0x27
+ 1650 00a3 19       		.uleb128 0x19
+ 1651 00a4 49       		.uleb128 0x49
+ 1652 00a5 13       		.uleb128 0x13
+ 1653 00a6 11       		.uleb128 0x11
+ 1654 00a7 01       		.uleb128 0x1
+ 1655 00a8 12       		.uleb128 0x12
+ 1656 00a9 06       		.uleb128 0x6
+ 1657 00aa 40       		.uleb128 0x40
+ 1658 00ab 18       		.uleb128 0x18
+ 1659 00ac 9742     		.uleb128 0x2117
+ 1660 00ae 19       		.uleb128 0x19
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 35
+
+
+ 1661 00af 01       		.uleb128 0x1
+ 1662 00b0 13       		.uleb128 0x13
+ 1663 00b1 00       		.byte	0
+ 1664 00b2 00       		.byte	0
+ 1665 00b3 0D       		.uleb128 0xd
+ 1666 00b4 05       		.uleb128 0x5
+ 1667 00b5 00       		.byte	0
+ 1668 00b6 03       		.uleb128 0x3
+ 1669 00b7 0E       		.uleb128 0xe
+ 1670 00b8 3A       		.uleb128 0x3a
+ 1671 00b9 0B       		.uleb128 0xb
+ 1672 00ba 3B       		.uleb128 0x3b
+ 1673 00bb 0B       		.uleb128 0xb
+ 1674 00bc 49       		.uleb128 0x49
+ 1675 00bd 13       		.uleb128 0x13
+ 1676 00be 02       		.uleb128 0x2
+ 1677 00bf 17       		.uleb128 0x17
+ 1678 00c0 00       		.byte	0
+ 1679 00c1 00       		.byte	0
+ 1680 00c2 0E       		.uleb128 0xe
+ 1681 00c3 0B       		.uleb128 0xb
+ 1682 00c4 01       		.byte	0x1
+ 1683 00c5 55       		.uleb128 0x55
+ 1684 00c6 17       		.uleb128 0x17
+ 1685 00c7 01       		.uleb128 0x1
+ 1686 00c8 13       		.uleb128 0x13
+ 1687 00c9 00       		.byte	0
+ 1688 00ca 00       		.byte	0
+ 1689 00cb 0F       		.uleb128 0xf
+ 1690 00cc 34       		.uleb128 0x34
+ 1691 00cd 00       		.byte	0
+ 1692 00ce 03       		.uleb128 0x3
+ 1693 00cf 08       		.uleb128 0x8
+ 1694 00d0 3A       		.uleb128 0x3a
+ 1695 00d1 0B       		.uleb128 0xb
+ 1696 00d2 3B       		.uleb128 0x3b
+ 1697 00d3 0B       		.uleb128 0xb
+ 1698 00d4 49       		.uleb128 0x49
+ 1699 00d5 13       		.uleb128 0x13
+ 1700 00d6 02       		.uleb128 0x2
+ 1701 00d7 17       		.uleb128 0x17
+ 1702 00d8 00       		.byte	0
+ 1703 00d9 00       		.byte	0
+ 1704 00da 10       		.uleb128 0x10
+ 1705 00db 898201   		.uleb128 0x4109
+ 1706 00de 01       		.byte	0x1
+ 1707 00df 11       		.uleb128 0x11
+ 1708 00e0 01       		.uleb128 0x1
+ 1709 00e1 31       		.uleb128 0x31
+ 1710 00e2 13       		.uleb128 0x13
+ 1711 00e3 00       		.byte	0
+ 1712 00e4 00       		.byte	0
+ 1713 00e5 11       		.uleb128 0x11
+ 1714 00e6 8A8201   		.uleb128 0x410a
+ 1715 00e9 00       		.byte	0
+ 1716 00ea 02       		.uleb128 0x2
+ 1717 00eb 18       		.uleb128 0x18
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 36
+
+
+ 1718 00ec 9142     		.uleb128 0x2111
+ 1719 00ee 18       		.uleb128 0x18
+ 1720 00ef 00       		.byte	0
+ 1721 00f0 00       		.byte	0
+ 1722 00f1 12       		.uleb128 0x12
+ 1723 00f2 898201   		.uleb128 0x4109
+ 1724 00f5 01       		.byte	0x1
+ 1725 00f6 11       		.uleb128 0x11
+ 1726 00f7 01       		.uleb128 0x1
+ 1727 00f8 31       		.uleb128 0x31
+ 1728 00f9 13       		.uleb128 0x13
+ 1729 00fa 01       		.uleb128 0x1
+ 1730 00fb 13       		.uleb128 0x13
+ 1731 00fc 00       		.byte	0
+ 1732 00fd 00       		.byte	0
+ 1733 00fe 13       		.uleb128 0x13
+ 1734 00ff 2E       		.uleb128 0x2e
+ 1735 0100 01       		.byte	0x1
+ 1736 0101 3F       		.uleb128 0x3f
+ 1737 0102 19       		.uleb128 0x19
+ 1738 0103 03       		.uleb128 0x3
+ 1739 0104 0E       		.uleb128 0xe
+ 1740 0105 3A       		.uleb128 0x3a
+ 1741 0106 0B       		.uleb128 0xb
+ 1742 0107 3B       		.uleb128 0x3b
+ 1743 0108 0B       		.uleb128 0xb
+ 1744 0109 49       		.uleb128 0x49
+ 1745 010a 13       		.uleb128 0x13
+ 1746 010b 11       		.uleb128 0x11
+ 1747 010c 01       		.uleb128 0x1
+ 1748 010d 12       		.uleb128 0x12
+ 1749 010e 06       		.uleb128 0x6
+ 1750 010f 40       		.uleb128 0x40
+ 1751 0110 18       		.uleb128 0x18
+ 1752 0111 9742     		.uleb128 0x2117
+ 1753 0113 19       		.uleb128 0x19
+ 1754 0114 01       		.uleb128 0x1
+ 1755 0115 13       		.uleb128 0x13
+ 1756 0116 00       		.byte	0
+ 1757 0117 00       		.byte	0
+ 1758 0118 14       		.uleb128 0x14
+ 1759 0119 34       		.uleb128 0x34
+ 1760 011a 00       		.byte	0
+ 1761 011b 03       		.uleb128 0x3
+ 1762 011c 0E       		.uleb128 0xe
+ 1763 011d 3A       		.uleb128 0x3a
+ 1764 011e 0B       		.uleb128 0xb
+ 1765 011f 3B       		.uleb128 0x3b
+ 1766 0120 0B       		.uleb128 0xb
+ 1767 0121 49       		.uleb128 0x49
+ 1768 0122 13       		.uleb128 0x13
+ 1769 0123 02       		.uleb128 0x2
+ 1770 0124 17       		.uleb128 0x17
+ 1771 0125 00       		.byte	0
+ 1772 0126 00       		.byte	0
+ 1773 0127 15       		.uleb128 0x15
+ 1774 0128 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 37
+
+
+ 1775 0129 01       		.byte	0x1
+ 1776 012a 11       		.uleb128 0x11
+ 1777 012b 01       		.uleb128 0x1
+ 1778 012c 12       		.uleb128 0x12
+ 1779 012d 06       		.uleb128 0x6
+ 1780 012e 00       		.byte	0
+ 1781 012f 00       		.byte	0
+ 1782 0130 16       		.uleb128 0x16
+ 1783 0131 898201   		.uleb128 0x4109
+ 1784 0134 00       		.byte	0
+ 1785 0135 11       		.uleb128 0x11
+ 1786 0136 01       		.uleb128 0x1
+ 1787 0137 31       		.uleb128 0x31
+ 1788 0138 13       		.uleb128 0x13
+ 1789 0139 00       		.byte	0
+ 1790 013a 00       		.byte	0
+ 1791 013b 17       		.uleb128 0x17
+ 1792 013c 1D       		.uleb128 0x1d
+ 1793 013d 01       		.byte	0x1
+ 1794 013e 31       		.uleb128 0x31
+ 1795 013f 13       		.uleb128 0x13
+ 1796 0140 11       		.uleb128 0x11
+ 1797 0141 01       		.uleb128 0x1
+ 1798 0142 12       		.uleb128 0x12
+ 1799 0143 06       		.uleb128 0x6
+ 1800 0144 58       		.uleb128 0x58
+ 1801 0145 0B       		.uleb128 0xb
+ 1802 0146 59       		.uleb128 0x59
+ 1803 0147 0B       		.uleb128 0xb
+ 1804 0148 01       		.uleb128 0x1
+ 1805 0149 13       		.uleb128 0x13
+ 1806 014a 00       		.byte	0
+ 1807 014b 00       		.byte	0
+ 1808 014c 18       		.uleb128 0x18
+ 1809 014d 05       		.uleb128 0x5
+ 1810 014e 00       		.byte	0
+ 1811 014f 31       		.uleb128 0x31
+ 1812 0150 13       		.uleb128 0x13
+ 1813 0151 02       		.uleb128 0x2
+ 1814 0152 17       		.uleb128 0x17
+ 1815 0153 00       		.byte	0
+ 1816 0154 00       		.byte	0
+ 1817 0155 19       		.uleb128 0x19
+ 1818 0156 05       		.uleb128 0x5
+ 1819 0157 00       		.byte	0
+ 1820 0158 03       		.uleb128 0x3
+ 1821 0159 08       		.uleb128 0x8
+ 1822 015a 3A       		.uleb128 0x3a
+ 1823 015b 0B       		.uleb128 0xb
+ 1824 015c 3B       		.uleb128 0x3b
+ 1825 015d 0B       		.uleb128 0xb
+ 1826 015e 49       		.uleb128 0x49
+ 1827 015f 13       		.uleb128 0x13
+ 1828 0160 02       		.uleb128 0x2
+ 1829 0161 17       		.uleb128 0x17
+ 1830 0162 00       		.byte	0
+ 1831 0163 00       		.byte	0
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 38
+
+
+ 1832 0164 1A       		.uleb128 0x1a
+ 1833 0165 01       		.uleb128 0x1
+ 1834 0166 01       		.byte	0x1
+ 1835 0167 49       		.uleb128 0x49
+ 1836 0168 13       		.uleb128 0x13
+ 1837 0169 01       		.uleb128 0x1
+ 1838 016a 13       		.uleb128 0x13
+ 1839 016b 00       		.byte	0
+ 1840 016c 00       		.byte	0
+ 1841 016d 1B       		.uleb128 0x1b
+ 1842 016e 21       		.uleb128 0x21
+ 1843 016f 00       		.byte	0
+ 1844 0170 49       		.uleb128 0x49
+ 1845 0171 13       		.uleb128 0x13
+ 1846 0172 2F       		.uleb128 0x2f
+ 1847 0173 0B       		.uleb128 0xb
+ 1848 0174 00       		.byte	0
+ 1849 0175 00       		.byte	0
+ 1850 0176 1C       		.uleb128 0x1c
+ 1851 0177 34       		.uleb128 0x34
+ 1852 0178 00       		.byte	0
+ 1853 0179 03       		.uleb128 0x3
+ 1854 017a 0E       		.uleb128 0xe
+ 1855 017b 3A       		.uleb128 0x3a
+ 1856 017c 0B       		.uleb128 0xb
+ 1857 017d 3B       		.uleb128 0x3b
+ 1858 017e 0B       		.uleb128 0xb
+ 1859 017f 49       		.uleb128 0x49
+ 1860 0180 13       		.uleb128 0x13
+ 1861 0181 02       		.uleb128 0x2
+ 1862 0182 18       		.uleb128 0x18
+ 1863 0183 00       		.byte	0
+ 1864 0184 00       		.byte	0
+ 1865 0185 1D       		.uleb128 0x1d
+ 1866 0186 26       		.uleb128 0x26
+ 1867 0187 00       		.byte	0
+ 1868 0188 49       		.uleb128 0x49
+ 1869 0189 13       		.uleb128 0x13
+ 1870 018a 00       		.byte	0
+ 1871 018b 00       		.byte	0
+ 1872 018c 1E       		.uleb128 0x1e
+ 1873 018d 34       		.uleb128 0x34
+ 1874 018e 00       		.byte	0
+ 1875 018f 03       		.uleb128 0x3
+ 1876 0190 0E       		.uleb128 0xe
+ 1877 0191 3A       		.uleb128 0x3a
+ 1878 0192 0B       		.uleb128 0xb
+ 1879 0193 3B       		.uleb128 0x3b
+ 1880 0194 0B       		.uleb128 0xb
+ 1881 0195 49       		.uleb128 0x49
+ 1882 0196 13       		.uleb128 0x13
+ 1883 0197 3F       		.uleb128 0x3f
+ 1884 0198 19       		.uleb128 0x19
+ 1885 0199 3C       		.uleb128 0x3c
+ 1886 019a 19       		.uleb128 0x19
+ 1887 019b 00       		.byte	0
+ 1888 019c 00       		.byte	0
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 39
+
+
+ 1889 019d 1F       		.uleb128 0x1f
+ 1890 019e 0F       		.uleb128 0xf
+ 1891 019f 00       		.byte	0
+ 1892 01a0 0B       		.uleb128 0xb
+ 1893 01a1 0B       		.uleb128 0xb
+ 1894 01a2 49       		.uleb128 0x49
+ 1895 01a3 13       		.uleb128 0x13
+ 1896 01a4 00       		.byte	0
+ 1897 01a5 00       		.byte	0
+ 1898 01a6 20       		.uleb128 0x20
+ 1899 01a7 34       		.uleb128 0x34
+ 1900 01a8 00       		.byte	0
+ 1901 01a9 03       		.uleb128 0x3
+ 1902 01aa 0E       		.uleb128 0xe
+ 1903 01ab 3A       		.uleb128 0x3a
+ 1904 01ac 0B       		.uleb128 0xb
+ 1905 01ad 3B       		.uleb128 0x3b
+ 1906 01ae 05       		.uleb128 0x5
+ 1907 01af 49       		.uleb128 0x49
+ 1908 01b0 13       		.uleb128 0x13
+ 1909 01b1 3F       		.uleb128 0x3f
+ 1910 01b2 19       		.uleb128 0x19
+ 1911 01b3 3C       		.uleb128 0x3c
+ 1912 01b4 19       		.uleb128 0x19
+ 1913 01b5 00       		.byte	0
+ 1914 01b6 00       		.byte	0
+ 1915 01b7 21       		.uleb128 0x21
+ 1916 01b8 35       		.uleb128 0x35
+ 1917 01b9 00       		.byte	0
+ 1918 01ba 49       		.uleb128 0x49
+ 1919 01bb 13       		.uleb128 0x13
+ 1920 01bc 00       		.byte	0
+ 1921 01bd 00       		.byte	0
+ 1922 01be 22       		.uleb128 0x22
+ 1923 01bf 13       		.uleb128 0x13
+ 1924 01c0 01       		.byte	0x1
+ 1925 01c1 0B       		.uleb128 0xb
+ 1926 01c2 0B       		.uleb128 0xb
+ 1927 01c3 3A       		.uleb128 0x3a
+ 1928 01c4 0B       		.uleb128 0xb
+ 1929 01c5 3B       		.uleb128 0x3b
+ 1930 01c6 0B       		.uleb128 0xb
+ 1931 01c7 01       		.uleb128 0x1
+ 1932 01c8 13       		.uleb128 0x13
+ 1933 01c9 00       		.byte	0
+ 1934 01ca 00       		.byte	0
+ 1935 01cb 23       		.uleb128 0x23
+ 1936 01cc 0D       		.uleb128 0xd
+ 1937 01cd 00       		.byte	0
+ 1938 01ce 03       		.uleb128 0x3
+ 1939 01cf 0E       		.uleb128 0xe
+ 1940 01d0 3A       		.uleb128 0x3a
+ 1941 01d1 0B       		.uleb128 0xb
+ 1942 01d2 3B       		.uleb128 0x3b
+ 1943 01d3 0B       		.uleb128 0xb
+ 1944 01d4 49       		.uleb128 0x49
+ 1945 01d5 13       		.uleb128 0x13
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 40
+
+
+ 1946 01d6 38       		.uleb128 0x38
+ 1947 01d7 0B       		.uleb128 0xb
+ 1948 01d8 00       		.byte	0
+ 1949 01d9 00       		.byte	0
+ 1950 01da 24       		.uleb128 0x24
+ 1951 01db 0D       		.uleb128 0xd
+ 1952 01dc 00       		.byte	0
+ 1953 01dd 03       		.uleb128 0x3
+ 1954 01de 08       		.uleb128 0x8
+ 1955 01df 3A       		.uleb128 0x3a
+ 1956 01e0 0B       		.uleb128 0xb
+ 1957 01e1 3B       		.uleb128 0x3b
+ 1958 01e2 0B       		.uleb128 0xb
+ 1959 01e3 49       		.uleb128 0x49
+ 1960 01e4 13       		.uleb128 0x13
+ 1961 01e5 38       		.uleb128 0x38
+ 1962 01e6 0B       		.uleb128 0xb
+ 1963 01e7 00       		.byte	0
+ 1964 01e8 00       		.byte	0
+ 1965 01e9 25       		.uleb128 0x25
+ 1966 01ea 2E       		.uleb128 0x2e
+ 1967 01eb 00       		.byte	0
+ 1968 01ec 3F       		.uleb128 0x3f
+ 1969 01ed 19       		.uleb128 0x19
+ 1970 01ee 3C       		.uleb128 0x3c
+ 1971 01ef 19       		.uleb128 0x19
+ 1972 01f0 6E       		.uleb128 0x6e
+ 1973 01f1 0E       		.uleb128 0xe
+ 1974 01f2 03       		.uleb128 0x3
+ 1975 01f3 0E       		.uleb128 0xe
+ 1976 01f4 3A       		.uleb128 0x3a
+ 1977 01f5 0B       		.uleb128 0xb
+ 1978 01f6 3B       		.uleb128 0x3b
+ 1979 01f7 0B       		.uleb128 0xb
+ 1980 01f8 00       		.byte	0
+ 1981 01f9 00       		.byte	0
+ 1982 01fa 00       		.byte	0
+ 1983              		.section	.debug_loc,"",%progbits
+ 1984              	.Ldebug_loc0:
+ 1985              	.LLST0:
+ 1986 0000 00000000 		.4byte	.LVL0
+ 1987 0004 14000000 		.4byte	.LVL1
+ 1988 0008 0100     		.2byte	0x1
+ 1989 000a 50       		.byte	0x50
+ 1990 000b 14000000 		.4byte	.LVL1
+ 1991 000f 20000000 		.4byte	.LVL3
+ 1992 0013 0400     		.2byte	0x4
+ 1993 0015 F3       		.byte	0xf3
+ 1994 0016 01       		.uleb128 0x1
+ 1995 0017 50       		.byte	0x50
+ 1996 0018 9F       		.byte	0x9f
+ 1997 0019 20000000 		.4byte	.LVL3
+ 1998 001d 22000000 		.4byte	.LVL4
+ 1999 0021 0100     		.2byte	0x1
+ 2000 0023 50       		.byte	0x50
+ 2001 0024 22000000 		.4byte	.LVL4
+ 2002 0028 2E000000 		.4byte	.LVL6
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 41
+
+
+ 2003 002c 0400     		.2byte	0x4
+ 2004 002e F3       		.byte	0xf3
+ 2005 002f 01       		.uleb128 0x1
+ 2006 0030 50       		.byte	0x50
+ 2007 0031 9F       		.byte	0x9f
+ 2008 0032 2E000000 		.4byte	.LVL6
+ 2009 0036 30000000 		.4byte	.LVL7
+ 2010 003a 0100     		.2byte	0x1
+ 2011 003c 50       		.byte	0x50
+ 2012 003d 30000000 		.4byte	.LVL7
+ 2013 0041 4A000000 		.4byte	.LVL13
+ 2014 0045 0400     		.2byte	0x4
+ 2015 0047 F3       		.byte	0xf3
+ 2016 0048 01       		.uleb128 0x1
+ 2017 0049 50       		.byte	0x50
+ 2018 004a 9F       		.byte	0x9f
+ 2019 004b 4A000000 		.4byte	.LVL13
+ 2020 004f 4C000000 		.4byte	.LVL14
+ 2021 0053 0100     		.2byte	0x1
+ 2022 0055 50       		.byte	0x50
+ 2023 0056 4C000000 		.4byte	.LVL14
+ 2024 005a 54000000 		.4byte	.LVL15
+ 2025 005e 0400     		.2byte	0x4
+ 2026 0060 F3       		.byte	0xf3
+ 2027 0061 01       		.uleb128 0x1
+ 2028 0062 50       		.byte	0x50
+ 2029 0063 9F       		.byte	0x9f
+ 2030 0064 54000000 		.4byte	.LVL15
+ 2031 0068 58000000 		.4byte	.LVL16
+ 2032 006c 0100     		.2byte	0x1
+ 2033 006e 50       		.byte	0x50
+ 2034 006f 58000000 		.4byte	.LVL16
+ 2035 0073 60000000 		.4byte	.LFE115
+ 2036 0077 0400     		.2byte	0x4
+ 2037 0079 F3       		.byte	0xf3
+ 2038 007a 01       		.uleb128 0x1
+ 2039 007b 50       		.byte	0x50
+ 2040 007c 9F       		.byte	0x9f
+ 2041 007d 00000000 		.4byte	0
+ 2042 0081 00000000 		.4byte	0
+ 2043              	.LLST1:
+ 2044 0085 00000000 		.4byte	.LVL0
+ 2045 0089 17000000 		.4byte	.LVL2-1
+ 2046 008d 0100     		.2byte	0x1
+ 2047 008f 51       		.byte	0x51
+ 2048 0090 17000000 		.4byte	.LVL2-1
+ 2049 0094 20000000 		.4byte	.LVL3
+ 2050 0098 0400     		.2byte	0x4
+ 2051 009a F3       		.byte	0xf3
+ 2052 009b 01       		.uleb128 0x1
+ 2053 009c 51       		.byte	0x51
+ 2054 009d 9F       		.byte	0x9f
+ 2055 009e 20000000 		.4byte	.LVL3
+ 2056 00a2 25000000 		.4byte	.LVL5-1
+ 2057 00a6 0100     		.2byte	0x1
+ 2058 00a8 51       		.byte	0x51
+ 2059 00a9 25000000 		.4byte	.LVL5-1
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 42
+
+
+ 2060 00ad 2E000000 		.4byte	.LVL6
+ 2061 00b1 0400     		.2byte	0x4
+ 2062 00b3 F3       		.byte	0xf3
+ 2063 00b4 01       		.uleb128 0x1
+ 2064 00b5 51       		.byte	0x51
+ 2065 00b6 9F       		.byte	0x9f
+ 2066 00b7 2E000000 		.4byte	.LVL6
+ 2067 00bb 33000000 		.4byte	.LVL8-1
+ 2068 00bf 0100     		.2byte	0x1
+ 2069 00c1 51       		.byte	0x51
+ 2070 00c2 33000000 		.4byte	.LVL8-1
+ 2071 00c6 4A000000 		.4byte	.LVL13
+ 2072 00ca 0400     		.2byte	0x4
+ 2073 00cc F3       		.byte	0xf3
+ 2074 00cd 01       		.uleb128 0x1
+ 2075 00ce 51       		.byte	0x51
+ 2076 00cf 9F       		.byte	0x9f
+ 2077 00d0 4A000000 		.4byte	.LVL13
+ 2078 00d4 4C000000 		.4byte	.LVL14
+ 2079 00d8 0100     		.2byte	0x1
+ 2080 00da 51       		.byte	0x51
+ 2081 00db 4C000000 		.4byte	.LVL14
+ 2082 00df 54000000 		.4byte	.LVL15
+ 2083 00e3 0400     		.2byte	0x4
+ 2084 00e5 F3       		.byte	0xf3
+ 2085 00e6 01       		.uleb128 0x1
+ 2086 00e7 51       		.byte	0x51
+ 2087 00e8 9F       		.byte	0x9f
+ 2088 00e9 54000000 		.4byte	.LVL15
+ 2089 00ed 60000000 		.4byte	.LFE115
+ 2090 00f1 0100     		.2byte	0x1
+ 2091 00f3 51       		.byte	0x51
+ 2092 00f4 00000000 		.4byte	0
+ 2093 00f8 00000000 		.4byte	0
+ 2094              	.LLST2:
+ 2095 00fc 3C000000 		.4byte	.LVL9
+ 2096 0100 46000000 		.4byte	.LVL11
+ 2097 0104 0100     		.2byte	0x1
+ 2098 0106 54       		.byte	0x54
+ 2099 0107 48000000 		.4byte	.LVL12
+ 2100 010b 4A000000 		.4byte	.LVL13
+ 2101 010f 0100     		.2byte	0x1
+ 2102 0111 54       		.byte	0x54
+ 2103 0112 4C000000 		.4byte	.LVL14
+ 2104 0116 54000000 		.4byte	.LVL15
+ 2105 011a 0100     		.2byte	0x1
+ 2106 011c 54       		.byte	0x54
+ 2107 011d 00000000 		.4byte	0
+ 2108 0121 00000000 		.4byte	0
+ 2109              	.LLST3:
+ 2110 0125 02000000 		.4byte	.LVL17
+ 2111 0129 08000000 		.4byte	.LVL18
+ 2112 012d 0200     		.2byte	0x2
+ 2113 012f 30       		.byte	0x30
+ 2114 0130 9F       		.byte	0x9f
+ 2115 0131 08000000 		.4byte	.LVL18
+ 2116 0135 30000000 		.4byte	.LVL26
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 43
+
+
+ 2117 0139 0100     		.2byte	0x1
+ 2118 013b 55       		.byte	0x55
+ 2119 013c 00000000 		.4byte	0
+ 2120 0140 00000000 		.4byte	0
+ 2121              	.LLST4:
+ 2122 0144 02000000 		.4byte	.LVL17
+ 2123 0148 08000000 		.4byte	.LVL18
+ 2124 014c 0200     		.2byte	0x2
+ 2125 014e 30       		.byte	0x30
+ 2126 014f 9F       		.byte	0x9f
+ 2127 0150 08000000 		.4byte	.LVL18
+ 2128 0154 1A000000 		.4byte	.LVL21
+ 2129 0158 0100     		.2byte	0x1
+ 2130 015a 54       		.byte	0x54
+ 2131 015b 1C000000 		.4byte	.LVL22
+ 2132 015f 30000000 		.4byte	.LVL26
+ 2133 0163 0100     		.2byte	0x1
+ 2134 0165 54       		.byte	0x54
+ 2135 0166 00000000 		.4byte	0
+ 2136 016a 00000000 		.4byte	0
+ 2137              	.LLST5:
+ 2138 016e 14000000 		.4byte	.LVL19
+ 2139 0172 1C000000 		.4byte	.LVL22
+ 2140 0176 0100     		.2byte	0x1
+ 2141 0178 50       		.byte	0x50
+ 2142 0179 00000000 		.4byte	0
+ 2143 017d 00000000 		.4byte	0
+ 2144              	.LLST6:
+ 2145 0181 00000000 		.4byte	.LVL27
+ 2146 0185 22000000 		.4byte	.LVL32
+ 2147 0189 0100     		.2byte	0x1
+ 2148 018b 50       		.byte	0x50
+ 2149 018c 22000000 		.4byte	.LVL32
+ 2150 0190 2A000000 		.4byte	.LVL34
+ 2151 0194 0400     		.2byte	0x4
+ 2152 0196 F3       		.byte	0xf3
+ 2153 0197 01       		.uleb128 0x1
+ 2154 0198 50       		.byte	0x50
+ 2155 0199 9F       		.byte	0x9f
+ 2156 019a 2A000000 		.4byte	.LVL34
+ 2157 019e 3E000000 		.4byte	.LVL39
+ 2158 01a2 0100     		.2byte	0x1
+ 2159 01a4 50       		.byte	0x50
+ 2160 01a5 3E000000 		.4byte	.LVL39
+ 2161 01a9 46000000 		.4byte	.LVL41
+ 2162 01ad 0400     		.2byte	0x4
+ 2163 01af F3       		.byte	0xf3
+ 2164 01b0 01       		.uleb128 0x1
+ 2165 01b1 50       		.byte	0x50
+ 2166 01b2 9F       		.byte	0x9f
+ 2167 01b3 46000000 		.4byte	.LVL41
+ 2168 01b7 5A000000 		.4byte	.LVL46
+ 2169 01bb 0100     		.2byte	0x1
+ 2170 01bd 50       		.byte	0x50
+ 2171 01be 5A000000 		.4byte	.LVL46
+ 2172 01c2 6E000000 		.4byte	.LVL52
+ 2173 01c6 0400     		.2byte	0x4
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 44
+
+
+ 2174 01c8 F3       		.byte	0xf3
+ 2175 01c9 01       		.uleb128 0x1
+ 2176 01ca 50       		.byte	0x50
+ 2177 01cb 9F       		.byte	0x9f
+ 2178 01cc 6E000000 		.4byte	.LVL52
+ 2179 01d0 70000000 		.4byte	.LVL53
+ 2180 01d4 0100     		.2byte	0x1
+ 2181 01d6 50       		.byte	0x50
+ 2182 01d7 70000000 		.4byte	.LVL53
+ 2183 01db 78000000 		.4byte	.LVL54
+ 2184 01df 0400     		.2byte	0x4
+ 2185 01e1 F3       		.byte	0xf3
+ 2186 01e2 01       		.uleb128 0x1
+ 2187 01e3 50       		.byte	0x50
+ 2188 01e4 9F       		.byte	0x9f
+ 2189 01e5 78000000 		.4byte	.LVL54
+ 2190 01e9 7C000000 		.4byte	.LVL55
+ 2191 01ed 0100     		.2byte	0x1
+ 2192 01ef 50       		.byte	0x50
+ 2193 01f0 7C000000 		.4byte	.LVL55
+ 2194 01f4 84000000 		.4byte	.LFE116
+ 2195 01f8 0400     		.2byte	0x4
+ 2196 01fa F3       		.byte	0xf3
+ 2197 01fb 01       		.uleb128 0x1
+ 2198 01fc 50       		.byte	0x50
+ 2199 01fd 9F       		.byte	0x9f
+ 2200 01fe 00000000 		.4byte	0
+ 2201 0202 00000000 		.4byte	0
+ 2202              	.LLST7:
+ 2203 0206 12000000 		.4byte	.LVL28
+ 2204 020a 18000000 		.4byte	.LVL29
+ 2205 020e 0100     		.2byte	0x1
+ 2206 0210 53       		.byte	0x53
+ 2207 0211 18000000 		.4byte	.LVL29
+ 2208 0215 1A000000 		.4byte	.LVL30
+ 2209 0219 0800     		.2byte	0x8
+ 2210 021b 70       		.byte	0x70
+ 2211 021c 00       		.sleb128 0
+ 2212 021d 03       		.byte	0x3
+ 2213 021e 00000000 		.4byte	.LANCHOR0
+ 2214 0222 22       		.byte	0x22
+ 2215 0223 1A000000 		.4byte	.LVL30
+ 2216 0227 1C000000 		.4byte	.LVL31
+ 2217 022b 0100     		.2byte	0x1
+ 2218 022d 53       		.byte	0x53
+ 2219 022e 00000000 		.4byte	0
+ 2220 0232 00000000 		.4byte	0
+ 2221              	.LLST8:
+ 2222 0236 2E000000 		.4byte	.LVL35
+ 2223 023a 34000000 		.4byte	.LVL36
+ 2224 023e 0100     		.2byte	0x1
+ 2225 0240 53       		.byte	0x53
+ 2226 0241 34000000 		.4byte	.LVL36
+ 2227 0245 36000000 		.4byte	.LVL37
+ 2228 0249 0800     		.2byte	0x8
+ 2229 024b 70       		.byte	0x70
+ 2230 024c 00       		.sleb128 0
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 45
+
+
+ 2231 024d 03       		.byte	0x3
+ 2232 024e 00000000 		.4byte	.LANCHOR0
+ 2233 0252 22       		.byte	0x22
+ 2234 0253 36000000 		.4byte	.LVL37
+ 2235 0257 38000000 		.4byte	.LVL38
+ 2236 025b 0100     		.2byte	0x1
+ 2237 025d 53       		.byte	0x53
+ 2238 025e 00000000 		.4byte	0
+ 2239 0262 00000000 		.4byte	0
+ 2240              	.LLST9:
+ 2241 0266 4A000000 		.4byte	.LVL42
+ 2242 026a 50000000 		.4byte	.LVL43
+ 2243 026e 0100     		.2byte	0x1
+ 2244 0270 53       		.byte	0x53
+ 2245 0271 50000000 		.4byte	.LVL43
+ 2246 0275 52000000 		.4byte	.LVL44
+ 2247 0279 0800     		.2byte	0x8
+ 2248 027b 70       		.byte	0x70
+ 2249 027c 00       		.sleb128 0
+ 2250 027d 03       		.byte	0x3
+ 2251 027e 00000000 		.4byte	.LANCHOR0
+ 2252 0282 22       		.byte	0x22
+ 2253 0283 52000000 		.4byte	.LVL44
+ 2254 0287 54000000 		.4byte	.LVL45
+ 2255 028b 0100     		.2byte	0x1
+ 2256 028d 53       		.byte	0x53
+ 2257 028e 00000000 		.4byte	0
+ 2258 0292 00000000 		.4byte	0
+ 2259              	.LLST10:
+ 2260 0296 62000000 		.4byte	.LVL48
+ 2261 029a 6A000000 		.4byte	.LVL50
+ 2262 029e 0100     		.2byte	0x1
+ 2263 02a0 54       		.byte	0x54
+ 2264 02a1 6C000000 		.4byte	.LVL51
+ 2265 02a5 6E000000 		.4byte	.LVL52
+ 2266 02a9 0100     		.2byte	0x1
+ 2267 02ab 54       		.byte	0x54
+ 2268 02ac 70000000 		.4byte	.LVL53
+ 2269 02b0 78000000 		.4byte	.LVL54
+ 2270 02b4 0100     		.2byte	0x1
+ 2271 02b6 54       		.byte	0x54
+ 2272 02b7 00000000 		.4byte	0
+ 2273 02bb 00000000 		.4byte	0
+ 2274              	.LLST11:
+ 2275 02bf 00000000 		.4byte	.LVL56
+ 2276 02c3 0C000000 		.4byte	.LVL57
+ 2277 02c7 0100     		.2byte	0x1
+ 2278 02c9 50       		.byte	0x50
+ 2279 02ca 0C000000 		.4byte	.LVL57
+ 2280 02ce 28000000 		.4byte	.LFE118
+ 2281 02d2 0400     		.2byte	0x4
+ 2282 02d4 F3       		.byte	0xf3
+ 2283 02d5 01       		.uleb128 0x1
+ 2284 02d6 50       		.byte	0x50
+ 2285 02d7 9F       		.byte	0x9f
+ 2286 02d8 00000000 		.4byte	0
+ 2287 02dc 00000000 		.4byte	0
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 46
+
+
+ 2288              	.LLST12:
+ 2289 02e0 00000000 		.4byte	.LVL56
+ 2290 02e4 0F000000 		.4byte	.LVL58-1
+ 2291 02e8 0100     		.2byte	0x1
+ 2292 02ea 51       		.byte	0x51
+ 2293 02eb 0F000000 		.4byte	.LVL58-1
+ 2294 02ef 28000000 		.4byte	.LFE118
+ 2295 02f3 0400     		.2byte	0x4
+ 2296 02f5 F3       		.byte	0xf3
+ 2297 02f6 01       		.uleb128 0x1
+ 2298 02f7 51       		.byte	0x51
+ 2299 02f8 9F       		.byte	0x9f
+ 2300 02f9 00000000 		.4byte	0
+ 2301 02fd 00000000 		.4byte	0
+ 2302              	.LLST13:
+ 2303 0301 00000000 		.4byte	.LVL56
+ 2304 0305 0F000000 		.4byte	.LVL58-1
+ 2305 0309 0100     		.2byte	0x1
+ 2306 030b 52       		.byte	0x52
+ 2307 030c 0F000000 		.4byte	.LVL58-1
+ 2308 0310 28000000 		.4byte	.LFE118
+ 2309 0314 0400     		.2byte	0x4
+ 2310 0316 F3       		.byte	0xf3
+ 2311 0317 01       		.uleb128 0x1
+ 2312 0318 52       		.byte	0x52
+ 2313 0319 9F       		.byte	0x9f
+ 2314 031a 00000000 		.4byte	0
+ 2315 031e 00000000 		.4byte	0
+ 2316              		.section	.debug_aranges,"",%progbits
+ 2317 0000 34000000 		.4byte	0x34
+ 2318 0004 0200     		.2byte	0x2
+ 2319 0006 00000000 		.4byte	.Ldebug_info0
+ 2320 000a 04       		.byte	0x4
+ 2321 000b 00       		.byte	0
+ 2322 000c 0000     		.2byte	0
+ 2323 000e 0000     		.2byte	0
+ 2324 0010 00000000 		.4byte	.LFB115
+ 2325 0014 60000000 		.4byte	.LFE115-.LFB115
+ 2326 0018 00000000 		.4byte	.LFB114
+ 2327 001c 34000000 		.4byte	.LFE114-.LFB114
+ 2328 0020 00000000 		.4byte	.LFB116
+ 2329 0024 84000000 		.4byte	.LFE116-.LFB116
+ 2330 0028 00000000 		.4byte	.LFB118
+ 2331 002c 28000000 		.4byte	.LFE118-.LFB118
+ 2332 0030 00000000 		.4byte	0
+ 2333 0034 00000000 		.4byte	0
+ 2334              		.section	.debug_ranges,"",%progbits
+ 2335              	.Ldebug_ranges0:
+ 2336 0000 3C000000 		.4byte	.LBB9
+ 2337 0004 4A000000 		.4byte	.LBE9
+ 2338 0008 4C000000 		.4byte	.LBB10
+ 2339 000c 50000000 		.4byte	.LBE10
+ 2340 0010 52000000 		.4byte	.LBB11
+ 2341 0014 54000000 		.4byte	.LBE11
+ 2342 0018 00000000 		.4byte	0
+ 2343 001c 00000000 		.4byte	0
+ 2344 0020 02000000 		.4byte	.LBB12
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 47
+
+
+ 2345 0024 04000000 		.4byte	.LBE12
+ 2346 0028 06000000 		.4byte	.LBB14
+ 2347 002c 20000000 		.4byte	.LBE14
+ 2348 0030 00000000 		.4byte	0
+ 2349 0034 00000000 		.4byte	0
+ 2350 0038 62000000 		.4byte	.LBB21
+ 2351 003c 6E000000 		.4byte	.LBE21
+ 2352 0040 70000000 		.4byte	.LBB22
+ 2353 0044 74000000 		.4byte	.LBE22
+ 2354 0048 76000000 		.4byte	.LBB23
+ 2355 004c 78000000 		.4byte	.LBE23
+ 2356 0050 00000000 		.4byte	0
+ 2357 0054 00000000 		.4byte	0
+ 2358 0058 00000000 		.4byte	.LFB115
+ 2359 005c 60000000 		.4byte	.LFE115
+ 2360 0060 00000000 		.4byte	.LFB114
+ 2361 0064 34000000 		.4byte	.LFE114
+ 2362 0068 00000000 		.4byte	.LFB116
+ 2363 006c 84000000 		.4byte	.LFE116
+ 2364 0070 00000000 		.4byte	.LFB118
+ 2365 0074 28000000 		.4byte	.LFE118
+ 2366 0078 00000000 		.4byte	0
+ 2367 007c 00000000 		.4byte	0
+ 2368              		.section	.debug_line,"",%progbits
+ 2369              	.Ldebug_line0:
+ 2370 0000 76030000 		.section	.debug_str,"MS",%progbits,1
+ 2370      02009902 
+ 2370      00000201 
+ 2370      FB0E0D00 
+ 2370      01010101 
+ 2371              	.LASF67:
+ 2372 0000 4C45445F 		.ascii	"LED_Toggle\000"
+ 2372      546F6767 
+ 2372      6C6500
+ 2373              	.LASF78:
+ 2374 000b 5F5F636F 		.ascii	"__copy_table_t\000"
+ 2374      70795F74 
+ 2374      61626C65 
+ 2374      5F7400
+ 2375              	.LASF64:
+ 2376 001a 72657375 		.ascii	"result\000"
+ 2376      6C7400
+ 2377              	.LASF94:
+ 2378 0021 5247425F 		.ascii	"RGB_PWM_green_WriteCompare\000"
+ 2378      50574D5F 
+ 2378      67726565 
+ 2378      6E5F5772 
+ 2378      69746543 
+ 2379              	.LASF71:
+ 2380 003c 4C45445F 		.ascii	"LED__state\000"
+ 2380      5F737461 
+ 2380      746500
+ 2381              	.LASF40:
+ 2382 0047 52435F45 		.ascii	"RC_ERROR_READ_ONLY\000"
+ 2382      52524F52 
+ 2382      5F524541 
+ 2382      445F4F4E 
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 48
+
+
+ 2382      4C5900
+ 2383              	.LASF26:
+ 2384 005a 52435F53 		.ascii	"RC_SUCCESS\000"
+ 2384      55434345 
+ 2384      535300
+ 2385              	.LASF99:
+ 2386 0065 4C45445F 		.ascii	"LED__toggleValue\000"
+ 2386      5F746F67 
+ 2386      676C6556 
+ 2386      616C7565 
+ 2386      00
+ 2387              	.LASF85:
+ 2388 0076 64657374 		.ascii	"dest\000"
+ 2388      00
+ 2389              	.LASF87:
+ 2390 007b 4C45445F 		.ascii	"LED_red_Write\000"
+ 2390      7265645F 
+ 2390      57726974 
+ 2390      6500
+ 2391              	.LASF41:
+ 2392 0089 52435F45 		.ascii	"RC_ERROR_WRITE_ONLY\000"
+ 2392      52524F52 
+ 2392      5F575249 
+ 2392      54455F4F 
+ 2392      4E4C5900 
+ 2393              	.LASF2:
+ 2394 009d 73686F72 		.ascii	"short int\000"
+ 2394      7420696E 
+ 2394      7400
+ 2395              	.LASF32:
+ 2396 00a7 52435F45 		.ascii	"RC_ERROR_OVERRUN\000"
+ 2396      52524F52 
+ 2396      5F4F5645 
+ 2396      5252554E 
+ 2396      00
+ 2397              	.LASF44:
+ 2398 00b8 52435F45 		.ascii	"RC_ERROR_WRITE_FAILS\000"
+ 2398      52524F52 
+ 2398      5F575249 
+ 2398      54455F46 
+ 2398      41494C53 
+ 2399              	.LASF25:
+ 2400 00cd 73697A65 		.ascii	"sizetype\000"
+ 2400      74797065 
+ 2400      00
+ 2401              	.LASF51:
+ 2402 00d6 52435F74 		.ascii	"RC_t\000"
+ 2402      00
+ 2403              	.LASF82:
+ 2404 00db 5F5F7A65 		.ascii	"__zero_table_start__\000"
+ 2404      726F5F74 
+ 2404      61626C65 
+ 2404      5F737461 
+ 2404      72745F5F 
+ 2405              	.LASF29:
+ 2406 00f0 52435F45 		.ascii	"RC_ERROR_ZERO\000"
+ 2406      52524F52 
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 49
+
+
+ 2406      5F5A4552 
+ 2406      4F00
+ 2407              	.LASF23:
+ 2408 00fe 45455F46 		.ascii	"EE_FREG\000"
+ 2408      52454700 
+ 2409              	.LASF42:
+ 2410 0106 52435F45 		.ascii	"RC_ERROR_INVALID\000"
+ 2410      52524F52 
+ 2410      5F494E56 
+ 2410      414C4944 
+ 2410      00
+ 2411              	.LASF7:
+ 2412 0117 5F5F7569 		.ascii	"__uint32_t\000"
+ 2412      6E743332 
+ 2412      5F7400
+ 2413              	.LASF21:
+ 2414 0122 45455F55 		.ascii	"EE_UINT32\000"
+ 2414      494E5433 
+ 2414      3200
+ 2415              	.LASF65:
+ 2416 012c 636C6561 		.ascii	"clearResult\000"
+ 2416      72526573 
+ 2416      756C7400 
+ 2417              	.LASF81:
+ 2418 0138 5F5F7A65 		.ascii	"__zero_table_t\000"
+ 2418      726F5F74 
+ 2418      61626C65 
+ 2418      5F7400
+ 2419              	.LASF70:
+ 2420 0147 626C7565 		.ascii	"blue\000"
+ 2420      00
+ 2421              	.LASF15:
+ 2422 014c 75696E74 		.ascii	"uint16\000"
+ 2422      313600
+ 2423              	.LASF58:
+ 2424 0153 654C4544 		.ascii	"eLED_ONOFF\000"
+ 2424      5F4F4E4F 
+ 2424      464600
+ 2425              	.LASF12:
+ 2426 015e 75696E74 		.ascii	"uint8_t\000"
+ 2426      385F7400 
+ 2427              	.LASF49:
+ 2428 0166 52435F45 		.ascii	"RC_ERROR_INVALID_STATE\000"
+ 2428      52524F52 
+ 2428      5F494E56 
+ 2428      414C4944 
+ 2428      5F535441 
+ 2429              	.LASF77:
+ 2430 017d 45455F49 		.ascii	"EE_IRQ_nesting_level\000"
+ 2430      52515F6E 
+ 2430      65737469 
+ 2430      6E675F6C 
+ 2430      6576656C 
+ 2431              	.LASF50:
+ 2432 0192 52435F45 		.ascii	"RC_ERROR_UNKNOWN\000"
+ 2432      52524F52 
+ 2432      5F554E4B 
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 50
+
+
+ 2432      4E4F574E 
+ 2432      00
+ 2433              	.LASF76:
+ 2434 01a3 45455F73 		.ascii	"EE_std_endcycle_next_tid\000"
+ 2434      74645F65 
+ 2434      6E646379 
+ 2434      636C655F 
+ 2434      6E657874 
+ 2435              	.LASF80:
+ 2436 01bc 5F5F636F 		.ascii	"__copy_table_end__\000"
+ 2436      70795F74 
+ 2436      61626C65 
+ 2436      5F656E64 
+ 2436      5F5F00
+ 2437              	.LASF16:
+ 2438 01cf 666C6F61 		.ascii	"float\000"
+ 2438      7400
+ 2439              	.LASF74:
+ 2440 01d5 45455F6F 		.ascii	"EE_oo_IRQ_suspend_status\000"
+ 2440      6F5F4952 
+ 2440      515F7375 
+ 2440      7370656E 
+ 2440      645F7374 
+ 2441              	.LASF9:
+ 2442 01ee 6C6F6E67 		.ascii	"long long int\000"
+ 2442      206C6F6E 
+ 2442      6720696E 
+ 2442      7400
+ 2443              	.LASF52:
+ 2444 01fc 654C4544 		.ascii	"eLED_id\000"
+ 2444      5F696400 
+ 2445              	.LASF98:
+ 2446 0204 443A5C48 		.ascii	"D:\\H_da\\Winter Semester\\MM03 Advanced Microcontr"
+ 2446      5F64615C 
+ 2446      57696E74 
+ 2446      65722053 
+ 2446      656D6573 
+ 2447 0234 6F6C6C65 		.ascii	"oller Systems and Embedded Operating Systems\\Lectu"
+ 2447      72205379 
+ 2447      7374656D 
+ 2447      7320616E 
+ 2447      6420456D 
+ 2448 0266 72652050 		.ascii	"re Prof. Fromm\\workspace\\workspace_psoc\\Smart_Vo"
+ 2448      726F662E 
+ 2448      2046726F 
+ 2448      6D6D5C77 
+ 2448      6F726B73 
+ 2449 0296 6C756D65 		.ascii	"lume\\Smart_Volume.cydsn\000"
+ 2449      5C536D61 
+ 2449      72745F56 
+ 2449      6F6C756D 
+ 2449      652E6379 
+ 2450              	.LASF97:
+ 2451 02ae 736F7572 		.ascii	"source\\bsw\\led.c\000"
+ 2451      63655C62 
+ 2451      73775C6C 
+ 2451      65642E63 
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 51
+
+
+ 2451      00
+ 2452              	.LASF45:
+ 2453 02bf 52435F45 		.ascii	"RC_ERROR_NOT_MATCH\000"
+ 2453      52524F52 
+ 2453      5F4E4F54 
+ 2453      5F4D4154 
+ 2453      434800
+ 2454              	.LASF83:
+ 2455 02d2 5F5F7A65 		.ascii	"__zero_table_end__\000"
+ 2455      726F5F74 
+ 2455      61626C65 
+ 2455      5F656E64 
+ 2455      5F5F00
+ 2456              	.LASF6:
+ 2457 02e5 6C6F6E67 		.ascii	"long int\000"
+ 2457      20696E74 
+ 2457      00
+ 2458              	.LASF33:
+ 2459 02ee 52435F45 		.ascii	"RC_ERROR_UNDERRUN\000"
+ 2459      52524F52 
+ 2459      5F554E44 
+ 2459      45525255 
+ 2459      4E00
+ 2460              	.LASF24:
+ 2461 0300 45455F54 		.ascii	"EE_TID\000"
+ 2461      494400
+ 2462              	.LASF36:
+ 2463 0307 52435F45 		.ascii	"RC_ERROR_BUSY\000"
+ 2463      52524F52 
+ 2463      5F425553 
+ 2463      5900
+ 2464              	.LASF62:
+ 2465 0315 6C656449 		.ascii	"ledId\000"
+ 2465      6400
+ 2466              	.LASF92:
+ 2467 031b 5247425F 		.ascii	"RGB_PWM_red_Start\000"
+ 2467      50574D5F 
+ 2467      7265645F 
+ 2467      53746172 
+ 2467      7400
+ 2468              	.LASF69:
+ 2469 032d 67726565 		.ascii	"green\000"
+ 2469      6E00
+ 2470              	.LASF47:
+ 2471 0333 52435F45 		.ascii	"RC_ERROR_BAD_DATA\000"
+ 2471      52524F52 
+ 2471      5F424144 
+ 2471      5F444154 
+ 2471      4100
+ 2472              	.LASF93:
+ 2473 0345 5247425F 		.ascii	"RGB_PWM_red_WriteCompare\000"
+ 2473      50574D5F 
+ 2473      7265645F 
+ 2473      57726974 
+ 2473      65436F6D 
+ 2474              	.LASF90:
+ 2475 035e 5247425F 		.ascii	"RGB_PWM_blue_Start\000"
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 52
+
+
+ 2475      50574D5F 
+ 2475      626C7565 
+ 2475      5F537461 
+ 2475      727400
+ 2476              	.LASF19:
+ 2477 0371 6C6F6E67 		.ascii	"long double\000"
+ 2477      20646F75 
+ 2477      626C6500 
+ 2478              	.LASF89:
+ 2479 037d 4C45445F 		.ascii	"LED_green_Write\000"
+ 2479      67726565 
+ 2479      6E5F5772 
+ 2479      69746500 
+ 2480              	.LASF1:
+ 2481 038d 756E7369 		.ascii	"unsigned char\000"
+ 2481      676E6564 
+ 2481      20636861 
+ 2481      7200
+ 2482              	.LASF57:
+ 2483 039b 4C45445F 		.ascii	"LED_id_t\000"
+ 2483      69645F74 
+ 2483      00
+ 2484              	.LASF46:
+ 2485 03a4 52435F45 		.ascii	"RC_ERROR_BAD_PARAM\000"
+ 2485      52524F52 
+ 2485      5F424144 
+ 2485      5F504152 
+ 2485      414D00
+ 2486              	.LASF61:
+ 2487 03b7 4C45445F 		.ascii	"LED_ONOFF_t\000"
+ 2487      4F4E4F46 
+ 2487      465F7400 
+ 2488              	.LASF0:
+ 2489 03c3 7369676E 		.ascii	"signed char\000"
+ 2489      65642063 
+ 2489      68617200 
+ 2490              	.LASF10:
+ 2491 03cf 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2491      206C6F6E 
+ 2491      6720756E 
+ 2491      7369676E 
+ 2491      65642069 
+ 2492              	.LASF60:
+ 2493 03e6 4C45445F 		.ascii	"LED_ON\000"
+ 2493      4F4E00
+ 2494              	.LASF14:
+ 2495 03ed 75696E74 		.ascii	"uint32_t\000"
+ 2495      33325F74 
+ 2495      00
+ 2496              	.LASF11:
+ 2497 03f6 756E7369 		.ascii	"unsigned int\000"
+ 2497      676E6564 
+ 2497      20696E74 
+ 2497      00
+ 2498              	.LASF38:
+ 2499 0403 52435F45 		.ascii	"RC_ERROR_OPEN\000"
+ 2499      52524F52 
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 53
+
+
+ 2499      5F4F5045 
+ 2499      4E00
+ 2500              	.LASF66:
+ 2501 0411 4C45445F 		.ascii	"LED_Set\000"
+ 2501      53657400 
+ 2502              	.LASF59:
+ 2503 0419 4C45445F 		.ascii	"LED_OFF\000"
+ 2503      4F464600 
+ 2504              	.LASF54:
+ 2505 0421 4C45445F 		.ascii	"LED_YELLOW\000"
+ 2505      59454C4C 
+ 2505      4F5700
+ 2506              	.LASF28:
+ 2507 042c 52435F45 		.ascii	"RC_ERROR_NULL\000"
+ 2507      52524F52 
+ 2507      5F4E554C 
+ 2507      4C00
+ 2508              	.LASF35:
+ 2509 043a 52435F45 		.ascii	"RC_ERROR_BUFFER_EMTPY\000"
+ 2509      52524F52 
+ 2509      5F425546 
+ 2509      4645525F 
+ 2509      454D5450 
+ 2510              	.LASF20:
+ 2511 0450 45455F49 		.ascii	"EE_INT32\000"
+ 2511      4E543332 
+ 2511      00
+ 2512              	.LASF72:
+ 2513 0459 4C45445F 		.ascii	"LED__Pulse_Width\000"
+ 2513      5F50756C 
+ 2513      73655F57 
+ 2513      69647468 
+ 2513      00
+ 2514              	.LASF63:
+ 2515 046a 6C65644F 		.ascii	"ledOnOff\000"
+ 2515      6E4F6666 
+ 2515      00
+ 2516              	.LASF3:
+ 2517 0473 73686F72 		.ascii	"short unsigned int\000"
+ 2517      7420756E 
+ 2517      7369676E 
+ 2517      65642069 
+ 2517      6E7400
+ 2518              	.LASF79:
+ 2519 0486 5F5F636F 		.ascii	"__copy_table_start__\000"
+ 2519      70795F74 
+ 2519      61626C65 
+ 2519      5F737461 
+ 2519      72745F5F 
+ 2520              	.LASF96:
+ 2521 049b 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2521      43313120 
+ 2521      352E342E 
+ 2521      31203230 
+ 2521      31363036 
+ 2522 04ce 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 2522      20726576 
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 54
+
+
+ 2522      6973696F 
+ 2522      6E203233 
+ 2522      37373135 
+ 2523 0501 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 2523      66756E63 
+ 2523      74696F6E 
+ 2523      2D736563 
+ 2523      74696F6E 
+ 2524              	.LASF95:
+ 2525 0529 5247425F 		.ascii	"RGB_PWM_blue_WriteCompare\000"
+ 2525      50574D5F 
+ 2525      626C7565 
+ 2525      5F577269 
+ 2525      7465436F 
+ 2526              	.LASF18:
+ 2527 0543 63686172 		.ascii	"char\000"
+ 2527      00
+ 2528              	.LASF34:
+ 2529 0548 52435F45 		.ascii	"RC_ERROR_BUFFER_FULL\000"
+ 2529      52524F52 
+ 2529      5F425546 
+ 2529      4645525F 
+ 2529      46554C4C 
+ 2530              	.LASF13:
+ 2531 055d 696E7433 		.ascii	"int32_t\000"
+ 2531      325F7400 
+ 2532              	.LASF43:
+ 2533 0565 52435F45 		.ascii	"RC_ERROR_READ_FAILS\000"
+ 2533      52524F52 
+ 2533      5F524541 
+ 2533      445F4641 
+ 2533      494C5300 
+ 2534              	.LASF68:
+ 2535 0579 4C45445F 		.ascii	"LED_RGB_Set\000"
+ 2535      5247425F 
+ 2535      53657400 
+ 2536              	.LASF55:
+ 2537 0585 4C45445F 		.ascii	"LED_GREEN\000"
+ 2537      47524545 
+ 2537      4E00
+ 2538              	.LASF75:
+ 2539 058f 45455F41 		.ascii	"EE_ApplicationMode\000"
+ 2539      70706C69 
+ 2539      63617469 
+ 2539      6F6E4D6F 
+ 2539      646500
+ 2540              	.LASF8:
+ 2541 05a2 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2541      20756E73 
+ 2541      69676E65 
+ 2541      6420696E 
+ 2541      7400
+ 2542              	.LASF100:
+ 2543 05b4 4C45445F 		.ascii	"LED_Init\000"
+ 2543      496E6974 
+ 2543      00
+ 2544              	.LASF39:
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 55
+
+
+ 2545 05bd 52435F45 		.ascii	"RC_ERROR_CHECKSUM\000"
+ 2545      52524F52 
+ 2545      5F434845 
+ 2545      434B5355 
+ 2545      4D00
+ 2546              	.LASF22:
+ 2547 05cf 45455F55 		.ascii	"EE_UREG\000"
+ 2547      52454700 
+ 2548              	.LASF56:
+ 2549 05d7 4C45445F 		.ascii	"LED_ALL\000"
+ 2549      414C4C00 
+ 2550              	.LASF31:
+ 2551 05df 52435F45 		.ascii	"RC_ERROR_RANGE\000"
+ 2551      52524F52 
+ 2551      5F52414E 
+ 2551      474500
+ 2552              	.LASF5:
+ 2553 05ee 5F5F696E 		.ascii	"__int32_t\000"
+ 2553      7433325F 
+ 2553      7400
+ 2554              	.LASF91:
+ 2555 05f8 5247425F 		.ascii	"RGB_PWM_green_Start\000"
+ 2555      50574D5F 
+ 2555      67726565 
+ 2555      6E5F5374 
+ 2555      61727400 
+ 2556              	.LASF48:
+ 2557 060c 52435F45 		.ascii	"RC_ERROR_CANCELED\000"
+ 2557      52524F52 
+ 2557      5F43414E 
+ 2557      43454C45 
+ 2557      4400
+ 2558              	.LASF17:
+ 2559 061e 646F7562 		.ascii	"double\000"
+ 2559      6C6500
+ 2560              	.LASF86:
+ 2561 0625 776C656E 		.ascii	"wlen\000"
+ 2561      00
+ 2562              	.LASF84:
+ 2563 062a 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2563      52784275 
+ 2563      66666572 
+ 2563      00
+ 2564              	.LASF27:
+ 2565 0637 52435F45 		.ascii	"RC_ERROR\000"
+ 2565      52524F52 
+ 2565      00
+ 2566              	.LASF88:
+ 2567 0640 4C45445F 		.ascii	"LED_yellow_Write\000"
+ 2567      79656C6C 
+ 2567      6F775F57 
+ 2567      72697465 
+ 2567      00
+ 2568              	.LASF53:
+ 2569 0651 4C45445F 		.ascii	"LED_RED\000"
+ 2569      52454400 
+ 2570              	.LASF30:
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccxQuLch.s 			page 56
+
+
+ 2571 0659 52435F45 		.ascii	"RC_ERROR_MEMORY\000"
+ 2571      52524F52 
+ 2571      5F4D454D 
+ 2571      4F525900 
+ 2572              	.LASF73:
+ 2573 0669 45455F6F 		.ascii	"EE_oo_IRQ_disable_count\000"
+ 2573      6F5F4952 
+ 2573      515F6469 
+ 2573      7361626C 
+ 2573      655F636F 
+ 2574              	.LASF4:
+ 2575 0681 5F5F7569 		.ascii	"__uint8_t\000"
+ 2575      6E74385F 
+ 2575      7400
+ 2576              	.LASF37:
+ 2577 068b 52435F45 		.ascii	"RC_ERROR_TIME_OUT\000"
+ 2577      52524F52 
+ 2577      5F54494D 
+ 2577      455F4F55 
+ 2577      5400
+ 2578              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

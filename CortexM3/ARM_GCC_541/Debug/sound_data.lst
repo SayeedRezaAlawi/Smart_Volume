@@ -1,0 +1,983 @@
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccCObWKk.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"sound_data.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	SOUND_NoOfRecords
+  20              		.global	SOUND_Records
+  21              		.section	.rodata
+  22              		.align	2
+  23              		.type	SOUND_NoOfRecords, %object
+  24              		.size	SOUND_NoOfRecords, 2
+  25              	SOUND_NoOfRecords:
+  26 0000 0300     		.short	3
+  27 0002 0000     		.space	2
+  28              		.type	SOUND_Records, %object
+  29              		.size	SOUND_Records, 48
+  30              	SOUND_Records:
+  31 0004 00000000 		.word	.LC0
+  32 0008 0700     		.short	7
+  33 000a 0000     		.space	2
+  34 000c 646C0100 		.word	93284
+  35 0010 00000000 		.word	SONG_Valerie
+  36 0014 1C000000 		.word	.LC1
+  37 0018 0200     		.short	2
+  38 001a 0000     		.space	2
+  39 001c 00000000 		.word	0
+  40 0020 00000000 		.word	0
+  41 0024 38000000 		.word	.LC2
+  42 0028 0A00     		.short	10
+  43 002a 0000     		.space	2
+  44 002c AF0E0100 		.word	69295
+  45 0030 00000000 		.word	SONG_Castle
+  46              		.section	.rodata.str1.4,"aMS",%progbits,1
+  47              		.align	2
+  48              	.LC0:
+  49 0000 56616C65 		.ascii	"Valerie - Amy Whinehouse\000"
+  49      72696520 
+  49      2D20416D 
+  49      79205768 
+  49      696E6568 
+  50 0019 000000   		.space	3
+  51              	.LC1:
+  52 001c 426F7865 		.ascii	"Boxer - Simon & Garfunkel\000"
+  52      72202D20 
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccCObWKk.s 			page 2
+
+
+  52      53696D6F 
+  52      6E202620 
+  52      47617266 
+  53 0036 0000     		.space	2
+  54              	.LC2:
+  55 0038 43617374 		.ascii	"Castle of Glass - Linkin Park\000"
+  55      6C65206F 
+  55      6620476C 
+  55      61737320 
+  55      2D204C69 
+  56              		.text
+  57              	.Letext0:
+  58              		.file 1 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+  59              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+  60              		.file 3 "Generated_Source\\PSoC5/SimpleSystem_common_ee_types.inc"
+  61              		.file 4 "Generated_Source\\PSoC5/SimpleSystem_cortex_mx_ee_cpu.inc"
+  62              		.file 5 "source\\asw\\sound_data.h"
+  63              		.file 6 "Generated_Source\\PSoC5/SimpleSystem_ee_oo_intfunc.inc"
+  64              		.file 7 "Generated_Source\\PSoC5/SimpleSystem_cortex_mx_ee_context.inc"
+  65              		.file 8 "Generated_Source\\PSoC5/SimpleSystem_common_ee_primitives.inc"
+  66              		.file 9 "Generated_Source\\PSoC5/cmsis_gcc.h"
+  67              		.file 10 "Generated_Source\\PSoC5/core_cm3.h"
+  68              		.file 11 "source\\asw\\sound_data.c"
+  69              		.section	.debug_info,"",%progbits
+  70              	.Ldebug_info0:
+  71 0000 C6020000 		.4byte	0x2c6
+  72 0004 0400     		.2byte	0x4
+  73 0006 00000000 		.4byte	.Ldebug_abbrev0
+  74 000a 04       		.byte	0x4
+  75 000b 01       		.uleb128 0x1
+  76 000c D0010000 		.4byte	.LASF50
+  77 0010 0C       		.byte	0xc
+  78 0011 A9010000 		.4byte	.LASF51
+  79 0015 00030000 		.4byte	.LASF52
+  80 0019 00000000 		.4byte	.Ldebug_line0
+  81 001d 02       		.uleb128 0x2
+  82 001e 01       		.byte	0x1
+  83 001f 06       		.byte	0x6
+  84 0020 AA030000 		.4byte	.LASF0
+  85 0024 03       		.uleb128 0x3
+  86 0025 21000000 		.4byte	.LASF3
+  87 0029 01       		.byte	0x1
+  88 002a 1D       		.byte	0x1d
+  89 002b 2F000000 		.4byte	0x2f
+  90 002f 02       		.uleb128 0x2
+  91 0030 01       		.byte	0x1
+  92 0031 08       		.byte	0x8
+  93 0032 A4000000 		.4byte	.LASF1
+  94 0036 02       		.uleb128 0x2
+  95 0037 02       		.byte	0x2
+  96 0038 05       		.byte	0x5
+  97 0039 AB020000 		.4byte	.LASF2
+  98 003d 03       		.uleb128 0x3
+  99 003e 16010000 		.4byte	.LASF4
+ 100 0042 01       		.byte	0x1
+ 101 0043 2B       		.byte	0x2b
+ 102 0044 48000000 		.4byte	0x48
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccCObWKk.s 			page 3
+
+
+ 103 0048 02       		.uleb128 0x2
+ 104 0049 02       		.byte	0x2
+ 105 004a 07       		.byte	0x7
+ 106 004b ED000000 		.4byte	.LASF5
+ 107 004f 03       		.uleb128 0x3
+ 108 0050 3A000000 		.4byte	.LASF6
+ 109 0054 01       		.byte	0x1
+ 110 0055 3F       		.byte	0x3f
+ 111 0056 5A000000 		.4byte	0x5a
+ 112 005a 02       		.uleb128 0x2
+ 113 005b 04       		.byte	0x4
+ 114 005c 05       		.byte	0x5
+ 115 005d 44000000 		.4byte	.LASF7
+ 116 0061 03       		.uleb128 0x3
+ 117 0062 28010000 		.4byte	.LASF8
+ 118 0066 01       		.byte	0x1
+ 119 0067 41       		.byte	0x41
+ 120 0068 6C000000 		.4byte	0x6c
+ 121 006c 02       		.uleb128 0x2
+ 122 006d 04       		.byte	0x4
+ 123 006e 07       		.byte	0x7
+ 124 006f DB000000 		.4byte	.LASF9
+ 125 0073 02       		.uleb128 0x2
+ 126 0074 08       		.byte	0x8
+ 127 0075 05       		.byte	0x5
+ 128 0076 6F020000 		.4byte	.LASF10
+ 129 007a 02       		.uleb128 0x2
+ 130 007b 08       		.byte	0x8
+ 131 007c 07       		.byte	0x7
+ 132 007d 72010000 		.4byte	.LASF11
+ 133 0081 04       		.uleb128 0x4
+ 134 0082 04       		.byte	0x4
+ 135 0083 05       		.byte	0x5
+ 136 0084 696E7400 		.ascii	"int\000"
+ 137 0088 02       		.uleb128 0x2
+ 138 0089 04       		.byte	0x4
+ 139 008a 07       		.byte	0x7
+ 140 008b 4C010000 		.4byte	.LASF12
+ 141 008f 03       		.uleb128 0x3
+ 142 0090 89010000 		.4byte	.LASF13
+ 143 0094 02       		.byte	0x2
+ 144 0095 18       		.byte	0x18
+ 145 0096 24000000 		.4byte	0x24
+ 146 009a 03       		.uleb128 0x3
+ 147 009b CD020000 		.4byte	.LASF14
+ 148 009f 02       		.byte	0x2
+ 149 00a0 24       		.byte	0x24
+ 150 00a1 3D000000 		.4byte	0x3d
+ 151 00a5 03       		.uleb128 0x3
+ 152 00a6 5E020000 		.4byte	.LASF15
+ 153 00aa 02       		.byte	0x2
+ 154 00ab 2C       		.byte	0x2c
+ 155 00ac 4F000000 		.4byte	0x4f
+ 156 00b0 03       		.uleb128 0x3
+ 157 00b1 D6020000 		.4byte	.LASF16
+ 158 00b5 02       		.byte	0x2
+ 159 00b6 30       		.byte	0x30
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccCObWKk.s 			page 4
+
+
+ 160 00b7 61000000 		.4byte	0x61
+ 161 00bb 02       		.uleb128 0x2
+ 162 00bc 04       		.byte	0x4
+ 163 00bd 04       		.byte	0x4
+ 164 00be 9E000000 		.4byte	.LASF17
+ 165 00c2 02       		.uleb128 0x2
+ 166 00c3 08       		.byte	0x8
+ 167 00c4 04       		.byte	0x4
+ 168 00c5 21010000 		.4byte	.LASF18
+ 169 00c9 02       		.uleb128 0x2
+ 170 00ca 01       		.byte	0x1
+ 171 00cb 08       		.byte	0x8
+ 172 00cc 7D020000 		.4byte	.LASF19
+ 173 00d0 02       		.uleb128 0x2
+ 174 00d1 08       		.byte	0x8
+ 175 00d2 04       		.byte	0x4
+ 176 00d3 F4020000 		.4byte	.LASF20
+ 177 00d7 03       		.uleb128 0x3
+ 178 00d8 00010000 		.4byte	.LASF21
+ 179 00dc 03       		.byte	0x3
+ 180 00dd 53       		.byte	0x53
+ 181 00de 81000000 		.4byte	0x81
+ 182 00e2 03       		.uleb128 0x3
+ 183 00e3 61010000 		.4byte	.LASF22
+ 184 00e7 03       		.byte	0x3
+ 185 00e8 54       		.byte	0x54
+ 186 00e9 88000000 		.4byte	0x88
+ 187 00ed 03       		.uleb128 0x3
+ 188 00ee 89020000 		.4byte	.LASF23
+ 189 00f2 04       		.byte	0x4
+ 190 00f3 4D       		.byte	0x4d
+ 191 00f4 E2000000 		.4byte	0xe2
+ 192 00f8 03       		.uleb128 0x3
+ 193 00f9 59010000 		.4byte	.LASF24
+ 194 00fd 04       		.byte	0x4
+ 195 00fe 4F       		.byte	0x4f
+ 196 00ff E2000000 		.4byte	0xe2
+ 197 0103 03       		.uleb128 0x3
+ 198 0104 8B000000 		.4byte	.LASF25
+ 199 0108 04       		.byte	0x4
+ 200 0109 78       		.byte	0x78
+ 201 010a D7000000 		.4byte	0xd7
+ 202 010e 02       		.uleb128 0x2
+ 203 010f 04       		.byte	0x4
+ 204 0110 07       		.byte	0x7
+ 205 0111 66020000 		.4byte	.LASF26
+ 206 0115 05       		.uleb128 0x5
+ 207 0116 04       		.byte	0x4
+ 208 0117 C9000000 		.4byte	0xc9
+ 209 011b 06       		.uleb128 0x6
+ 210 011c 00000000 		.4byte	.LASF53
+ 211 0120 10       		.byte	0x10
+ 212 0121 05       		.byte	0x5
+ 213 0122 30       		.byte	0x30
+ 214 0123 58010000 		.4byte	0x158
+ 215 0127 07       		.uleb128 0x7
+ 216 0128 D3000000 		.4byte	.LASF27
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccCObWKk.s 			page 5
+
+
+ 217 012c 05       		.byte	0x5
+ 218 012d 31       		.byte	0x31
+ 219 012e 15010000 		.4byte	0x115
+ 220 0132 00       		.byte	0
+ 221 0133 07       		.uleb128 0x7
+ 222 0134 82000000 		.4byte	.LASF28
+ 223 0138 05       		.byte	0x5
+ 224 0139 32       		.byte	0x32
+ 225 013a 9A000000 		.4byte	0x9a
+ 226 013e 04       		.byte	0x4
+ 227 013f 07       		.uleb128 0x7
+ 228 0140 82020000 		.4byte	.LASF29
+ 229 0144 05       		.byte	0x5
+ 230 0145 33       		.byte	0x33
+ 231 0146 B0000000 		.4byte	0xb0
+ 232 014a 08       		.byte	0x8
+ 233 014b 07       		.uleb128 0x7
+ 234 014c 6B010000 		.4byte	.LASF30
+ 235 0150 05       		.byte	0x5
+ 236 0151 34       		.byte	0x34
+ 237 0152 58010000 		.4byte	0x158
+ 238 0156 0C       		.byte	0xc
+ 239 0157 00       		.byte	0
+ 240 0158 05       		.uleb128 0x5
+ 241 0159 04       		.byte	0x4
+ 242 015a 8F000000 		.4byte	0x8f
+ 243 015e 03       		.uleb128 0x3
+ 244 015f C1010000 		.4byte	.LASF31
+ 245 0163 05       		.byte	0x5
+ 246 0164 38       		.byte	0x38
+ 247 0165 1B010000 		.4byte	0x11b
+ 248 0169 08       		.uleb128 0x8
+ 249 016a B5020000 		.4byte	.LASF32
+ 250 016e 06       		.byte	0x6
+ 251 016f 40       		.byte	0x40
+ 252 0170 ED000000 		.4byte	0xed
+ 253 0174 08       		.uleb128 0x8
+ 254 0175 69000000 		.4byte	.LASF33
+ 255 0179 06       		.byte	0x6
+ 256 017a 47       		.byte	0x47
+ 257 017b F8000000 		.4byte	0xf8
+ 258 017f 08       		.uleb128 0x8
+ 259 0180 96010000 		.4byte	.LASF34
+ 260 0184 06       		.byte	0x6
+ 261 0185 4A       		.byte	0x4a
+ 262 0186 ED000000 		.4byte	0xed
+ 263 018a 08       		.uleb128 0x8
+ 264 018b 33010000 		.4byte	.LASF35
+ 265 018f 07       		.byte	0x7
+ 266 0190 48       		.byte	0x48
+ 267 0191 03010000 		.4byte	0x103
+ 268 0195 08       		.uleb128 0x8
+ 269 0196 91020000 		.4byte	.LASF36
+ 270 019a 08       		.byte	0x8
+ 271 019b 44       		.byte	0x44
+ 272 019c ED000000 		.4byte	0xed
+ 273 01a0 03       		.uleb128 0x3
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccCObWKk.s 			page 6
+
+
+ 274 01a1 2B000000 		.4byte	.LASF37
+ 275 01a5 09       		.byte	0x9
+ 276 01a6 8B       		.byte	0x8b
+ 277 01a7 A0020000 		.4byte	0x2a0
+ 278 01ab 05       		.uleb128 0x5
+ 279 01ac 04       		.byte	0x4
+ 280 01ad B1010000 		.4byte	0x1b1
+ 281 01b1 09       		.uleb128 0x9
+ 282 01b2 B0000000 		.4byte	0xb0
+ 283 01b6 05       		.uleb128 0x5
+ 284 01b7 04       		.byte	0x4
+ 285 01b8 B0000000 		.4byte	0xb0
+ 286 01bc 08       		.uleb128 0x8
+ 287 01bd DF020000 		.4byte	.LASF38
+ 288 01c1 09       		.byte	0x9
+ 289 01c2 92       		.byte	0x92
+ 290 01c3 C7010000 		.4byte	0x1c7
+ 291 01c7 09       		.uleb128 0x9
+ 292 01c8 A0010000 		.4byte	0x1a0
+ 293 01cc 08       		.uleb128 0x8
+ 294 01cd C0000000 		.4byte	.LASF39
+ 295 01d1 09       		.byte	0x9
+ 296 01d2 93       		.byte	0x93
+ 297 01d3 C7010000 		.4byte	0x1c7
+ 298 01d7 03       		.uleb128 0x3
+ 299 01d8 5A000000 		.4byte	.LASF40
+ 300 01dc 09       		.byte	0x9
+ 301 01dd 90       		.byte	0x90
+ 302 01de 7F020000 		.4byte	0x27f
+ 303 01e2 08       		.uleb128 0x8
+ 304 01e3 B6030000 		.4byte	.LASF41
+ 305 01e7 09       		.byte	0x9
+ 306 01e8 94       		.byte	0x94
+ 307 01e9 ED010000 		.4byte	0x1ed
+ 308 01ed 09       		.uleb128 0x9
+ 309 01ee D7010000 		.4byte	0x1d7
+ 310 01f2 08       		.uleb128 0x8
+ 311 01f3 0E000000 		.4byte	.LASF42
+ 312 01f7 09       		.byte	0x9
+ 313 01f8 95       		.byte	0x95
+ 314 01f9 ED010000 		.4byte	0x1ed
+ 315 01fd 0A       		.uleb128 0xa
+ 316 01fe 09010000 		.4byte	.LASF43
+ 317 0202 0A       		.byte	0xa
+ 318 0203 1207     		.2byte	0x712
+ 319 0205 09020000 		.4byte	0x209
+ 320 0209 0B       		.uleb128 0xb
+ 321 020a A5000000 		.4byte	0xa5
+ 322 020e 0C       		.uleb128 0xc
+ 323 020f 1E020000 		.4byte	0x21e
+ 324 0213 1E020000 		.4byte	0x21e
+ 325 0217 0D       		.uleb128 0xd
+ 326 0218 0E010000 		.4byte	0x10e
+ 327 021c 02       		.byte	0x2
+ 328 021d 00       		.byte	0
+ 329 021e 09       		.uleb128 0x9
+ 330 021f 5E010000 		.4byte	0x15e
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccCObWKk.s 			page 7
+
+
+ 331 0223 0E       		.uleb128 0xe
+ 332 0224 B2000000 		.4byte	.LASF44
+ 333 0228 0B       		.byte	0xb
+ 334 0229 26       		.byte	0x26
+ 335 022a 34020000 		.4byte	0x234
+ 336 022e 05       		.uleb128 0x5
+ 337 022f 03       		.byte	0x3
+ 338 0230 00000000 		.4byte	SOUND_Records
+ 339 0234 09       		.uleb128 0x9
+ 340 0235 0E020000 		.4byte	0x20e
+ 341 0239 0E       		.uleb128 0xe
+ 342 023a CB030000 		.4byte	.LASF45
+ 343 023e 0B       		.byte	0xb
+ 344 023f 2D       		.byte	0x2d
+ 345 0240 4A020000 		.4byte	0x24a
+ 346 0244 05       		.uleb128 0x5
+ 347 0245 03       		.byte	0x3
+ 348 0246 00000000 		.4byte	SOUND_NoOfRecords
+ 349 024a 09       		.uleb128 0x9
+ 350 024b 9A000000 		.4byte	0x9a
+ 351 024f 0C       		.uleb128 0xc
+ 352 0250 5A020000 		.4byte	0x25a
+ 353 0254 5A020000 		.4byte	0x25a
+ 354 0258 0F       		.uleb128 0xf
+ 355 0259 00       		.byte	0
+ 356 025a 09       		.uleb128 0x9
+ 357 025b 8F000000 		.4byte	0x8f
+ 358 025f 08       		.uleb128 0x8
+ 359 0260 4D000000 		.4byte	.LASF46
+ 360 0264 0B       		.byte	0xb
+ 361 0265 23       		.byte	0x23
+ 362 0266 6A020000 		.4byte	0x26a
+ 363 026a 09       		.uleb128 0x9
+ 364 026b 4F020000 		.4byte	0x24f
+ 365 026f 08       		.uleb128 0x8
+ 366 0270 92000000 		.4byte	.LASF47
+ 367 0274 0B       		.byte	0xb
+ 368 0275 24       		.byte	0x24
+ 369 0276 7A020000 		.4byte	0x27a
+ 370 027a 09       		.uleb128 0x9
+ 371 027b 4F020000 		.4byte	0x24f
+ 372 027f 10       		.uleb128 0x10
+ 373 0280 08       		.byte	0x8
+ 374 0281 09       		.byte	0x9
+ 375 0282 8D       		.byte	0x8d
+ 376 0283 A0020000 		.4byte	0x2a0
+ 377 0287 07       		.uleb128 0x7
+ 378 0288 91010000 		.4byte	.LASF48
+ 379 028c 09       		.byte	0x9
+ 380 028d 8E       		.byte	0x8e
+ 381 028e B6010000 		.4byte	0x1b6
+ 382 0292 00       		.byte	0
+ 383 0293 07       		.uleb128 0x7
+ 384 0294 A6020000 		.4byte	.LASF49
+ 385 0298 09       		.byte	0x9
+ 386 0299 8F       		.byte	0x8f
+ 387 029a B0000000 		.4byte	0xb0
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccCObWKk.s 			page 8
+
+
+ 388 029e 04       		.byte	0x4
+ 389 029f 00       		.byte	0
+ 390 02a0 11       		.uleb128 0x11
+ 391 02a1 0C       		.byte	0xc
+ 392 02a2 09       		.byte	0x9
+ 393 02a3 87       		.byte	0x87
+ 394 02a4 12       		.uleb128 0x12
+ 395 02a5 73726300 		.ascii	"src\000"
+ 396 02a9 09       		.byte	0x9
+ 397 02aa 88       		.byte	0x88
+ 398 02ab AB010000 		.4byte	0x1ab
+ 399 02af 00       		.byte	0
+ 400 02b0 07       		.uleb128 0x7
+ 401 02b1 91010000 		.4byte	.LASF48
+ 402 02b5 09       		.byte	0x9
+ 403 02b6 89       		.byte	0x89
+ 404 02b7 B6010000 		.4byte	0x1b6
+ 405 02bb 04       		.byte	0x4
+ 406 02bc 07       		.uleb128 0x7
+ 407 02bd A6020000 		.4byte	.LASF49
+ 408 02c1 09       		.byte	0x9
+ 409 02c2 8A       		.byte	0x8a
+ 410 02c3 B0000000 		.4byte	0xb0
+ 411 02c7 08       		.byte	0x8
+ 412 02c8 00       		.byte	0
+ 413 02c9 00       		.byte	0
+ 414              		.section	.debug_abbrev,"",%progbits
+ 415              	.Ldebug_abbrev0:
+ 416 0000 01       		.uleb128 0x1
+ 417 0001 11       		.uleb128 0x11
+ 418 0002 01       		.byte	0x1
+ 419 0003 25       		.uleb128 0x25
+ 420 0004 0E       		.uleb128 0xe
+ 421 0005 13       		.uleb128 0x13
+ 422 0006 0B       		.uleb128 0xb
+ 423 0007 03       		.uleb128 0x3
+ 424 0008 0E       		.uleb128 0xe
+ 425 0009 1B       		.uleb128 0x1b
+ 426 000a 0E       		.uleb128 0xe
+ 427 000b 10       		.uleb128 0x10
+ 428 000c 17       		.uleb128 0x17
+ 429 000d 00       		.byte	0
+ 430 000e 00       		.byte	0
+ 431 000f 02       		.uleb128 0x2
+ 432 0010 24       		.uleb128 0x24
+ 433 0011 00       		.byte	0
+ 434 0012 0B       		.uleb128 0xb
+ 435 0013 0B       		.uleb128 0xb
+ 436 0014 3E       		.uleb128 0x3e
+ 437 0015 0B       		.uleb128 0xb
+ 438 0016 03       		.uleb128 0x3
+ 439 0017 0E       		.uleb128 0xe
+ 440 0018 00       		.byte	0
+ 441 0019 00       		.byte	0
+ 442 001a 03       		.uleb128 0x3
+ 443 001b 16       		.uleb128 0x16
+ 444 001c 00       		.byte	0
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccCObWKk.s 			page 9
+
+
+ 445 001d 03       		.uleb128 0x3
+ 446 001e 0E       		.uleb128 0xe
+ 447 001f 3A       		.uleb128 0x3a
+ 448 0020 0B       		.uleb128 0xb
+ 449 0021 3B       		.uleb128 0x3b
+ 450 0022 0B       		.uleb128 0xb
+ 451 0023 49       		.uleb128 0x49
+ 452 0024 13       		.uleb128 0x13
+ 453 0025 00       		.byte	0
+ 454 0026 00       		.byte	0
+ 455 0027 04       		.uleb128 0x4
+ 456 0028 24       		.uleb128 0x24
+ 457 0029 00       		.byte	0
+ 458 002a 0B       		.uleb128 0xb
+ 459 002b 0B       		.uleb128 0xb
+ 460 002c 3E       		.uleb128 0x3e
+ 461 002d 0B       		.uleb128 0xb
+ 462 002e 03       		.uleb128 0x3
+ 463 002f 08       		.uleb128 0x8
+ 464 0030 00       		.byte	0
+ 465 0031 00       		.byte	0
+ 466 0032 05       		.uleb128 0x5
+ 467 0033 0F       		.uleb128 0xf
+ 468 0034 00       		.byte	0
+ 469 0035 0B       		.uleb128 0xb
+ 470 0036 0B       		.uleb128 0xb
+ 471 0037 49       		.uleb128 0x49
+ 472 0038 13       		.uleb128 0x13
+ 473 0039 00       		.byte	0
+ 474 003a 00       		.byte	0
+ 475 003b 06       		.uleb128 0x6
+ 476 003c 13       		.uleb128 0x13
+ 477 003d 01       		.byte	0x1
+ 478 003e 03       		.uleb128 0x3
+ 479 003f 0E       		.uleb128 0xe
+ 480 0040 0B       		.uleb128 0xb
+ 481 0041 0B       		.uleb128 0xb
+ 482 0042 3A       		.uleb128 0x3a
+ 483 0043 0B       		.uleb128 0xb
+ 484 0044 3B       		.uleb128 0x3b
+ 485 0045 0B       		.uleb128 0xb
+ 486 0046 01       		.uleb128 0x1
+ 487 0047 13       		.uleb128 0x13
+ 488 0048 00       		.byte	0
+ 489 0049 00       		.byte	0
+ 490 004a 07       		.uleb128 0x7
+ 491 004b 0D       		.uleb128 0xd
+ 492 004c 00       		.byte	0
+ 493 004d 03       		.uleb128 0x3
+ 494 004e 0E       		.uleb128 0xe
+ 495 004f 3A       		.uleb128 0x3a
+ 496 0050 0B       		.uleb128 0xb
+ 497 0051 3B       		.uleb128 0x3b
+ 498 0052 0B       		.uleb128 0xb
+ 499 0053 49       		.uleb128 0x49
+ 500 0054 13       		.uleb128 0x13
+ 501 0055 38       		.uleb128 0x38
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccCObWKk.s 			page 10
+
+
+ 502 0056 0B       		.uleb128 0xb
+ 503 0057 00       		.byte	0
+ 504 0058 00       		.byte	0
+ 505 0059 08       		.uleb128 0x8
+ 506 005a 34       		.uleb128 0x34
+ 507 005b 00       		.byte	0
+ 508 005c 03       		.uleb128 0x3
+ 509 005d 0E       		.uleb128 0xe
+ 510 005e 3A       		.uleb128 0x3a
+ 511 005f 0B       		.uleb128 0xb
+ 512 0060 3B       		.uleb128 0x3b
+ 513 0061 0B       		.uleb128 0xb
+ 514 0062 49       		.uleb128 0x49
+ 515 0063 13       		.uleb128 0x13
+ 516 0064 3F       		.uleb128 0x3f
+ 517 0065 19       		.uleb128 0x19
+ 518 0066 3C       		.uleb128 0x3c
+ 519 0067 19       		.uleb128 0x19
+ 520 0068 00       		.byte	0
+ 521 0069 00       		.byte	0
+ 522 006a 09       		.uleb128 0x9
+ 523 006b 26       		.uleb128 0x26
+ 524 006c 00       		.byte	0
+ 525 006d 49       		.uleb128 0x49
+ 526 006e 13       		.uleb128 0x13
+ 527 006f 00       		.byte	0
+ 528 0070 00       		.byte	0
+ 529 0071 0A       		.uleb128 0xa
+ 530 0072 34       		.uleb128 0x34
+ 531 0073 00       		.byte	0
+ 532 0074 03       		.uleb128 0x3
+ 533 0075 0E       		.uleb128 0xe
+ 534 0076 3A       		.uleb128 0x3a
+ 535 0077 0B       		.uleb128 0xb
+ 536 0078 3B       		.uleb128 0x3b
+ 537 0079 05       		.uleb128 0x5
+ 538 007a 49       		.uleb128 0x49
+ 539 007b 13       		.uleb128 0x13
+ 540 007c 3F       		.uleb128 0x3f
+ 541 007d 19       		.uleb128 0x19
+ 542 007e 3C       		.uleb128 0x3c
+ 543 007f 19       		.uleb128 0x19
+ 544 0080 00       		.byte	0
+ 545 0081 00       		.byte	0
+ 546 0082 0B       		.uleb128 0xb
+ 547 0083 35       		.uleb128 0x35
+ 548 0084 00       		.byte	0
+ 549 0085 49       		.uleb128 0x49
+ 550 0086 13       		.uleb128 0x13
+ 551 0087 00       		.byte	0
+ 552 0088 00       		.byte	0
+ 553 0089 0C       		.uleb128 0xc
+ 554 008a 01       		.uleb128 0x1
+ 555 008b 01       		.byte	0x1
+ 556 008c 49       		.uleb128 0x49
+ 557 008d 13       		.uleb128 0x13
+ 558 008e 01       		.uleb128 0x1
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccCObWKk.s 			page 11
+
+
+ 559 008f 13       		.uleb128 0x13
+ 560 0090 00       		.byte	0
+ 561 0091 00       		.byte	0
+ 562 0092 0D       		.uleb128 0xd
+ 563 0093 21       		.uleb128 0x21
+ 564 0094 00       		.byte	0
+ 565 0095 49       		.uleb128 0x49
+ 566 0096 13       		.uleb128 0x13
+ 567 0097 2F       		.uleb128 0x2f
+ 568 0098 0B       		.uleb128 0xb
+ 569 0099 00       		.byte	0
+ 570 009a 00       		.byte	0
+ 571 009b 0E       		.uleb128 0xe
+ 572 009c 34       		.uleb128 0x34
+ 573 009d 00       		.byte	0
+ 574 009e 03       		.uleb128 0x3
+ 575 009f 0E       		.uleb128 0xe
+ 576 00a0 3A       		.uleb128 0x3a
+ 577 00a1 0B       		.uleb128 0xb
+ 578 00a2 3B       		.uleb128 0x3b
+ 579 00a3 0B       		.uleb128 0xb
+ 580 00a4 49       		.uleb128 0x49
+ 581 00a5 13       		.uleb128 0x13
+ 582 00a6 3F       		.uleb128 0x3f
+ 583 00a7 19       		.uleb128 0x19
+ 584 00a8 02       		.uleb128 0x2
+ 585 00a9 18       		.uleb128 0x18
+ 586 00aa 00       		.byte	0
+ 587 00ab 00       		.byte	0
+ 588 00ac 0F       		.uleb128 0xf
+ 589 00ad 21       		.uleb128 0x21
+ 590 00ae 00       		.byte	0
+ 591 00af 00       		.byte	0
+ 592 00b0 00       		.byte	0
+ 593 00b1 10       		.uleb128 0x10
+ 594 00b2 13       		.uleb128 0x13
+ 595 00b3 01       		.byte	0x1
+ 596 00b4 0B       		.uleb128 0xb
+ 597 00b5 0B       		.uleb128 0xb
+ 598 00b6 3A       		.uleb128 0x3a
+ 599 00b7 0B       		.uleb128 0xb
+ 600 00b8 3B       		.uleb128 0x3b
+ 601 00b9 0B       		.uleb128 0xb
+ 602 00ba 01       		.uleb128 0x1
+ 603 00bb 13       		.uleb128 0x13
+ 604 00bc 00       		.byte	0
+ 605 00bd 00       		.byte	0
+ 606 00be 11       		.uleb128 0x11
+ 607 00bf 13       		.uleb128 0x13
+ 608 00c0 01       		.byte	0x1
+ 609 00c1 0B       		.uleb128 0xb
+ 610 00c2 0B       		.uleb128 0xb
+ 611 00c3 3A       		.uleb128 0x3a
+ 612 00c4 0B       		.uleb128 0xb
+ 613 00c5 3B       		.uleb128 0x3b
+ 614 00c6 0B       		.uleb128 0xb
+ 615 00c7 00       		.byte	0
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccCObWKk.s 			page 12
+
+
+ 616 00c8 00       		.byte	0
+ 617 00c9 12       		.uleb128 0x12
+ 618 00ca 0D       		.uleb128 0xd
+ 619 00cb 00       		.byte	0
+ 620 00cc 03       		.uleb128 0x3
+ 621 00cd 08       		.uleb128 0x8
+ 622 00ce 3A       		.uleb128 0x3a
+ 623 00cf 0B       		.uleb128 0xb
+ 624 00d0 3B       		.uleb128 0x3b
+ 625 00d1 0B       		.uleb128 0xb
+ 626 00d2 49       		.uleb128 0x49
+ 627 00d3 13       		.uleb128 0x13
+ 628 00d4 38       		.uleb128 0x38
+ 629 00d5 0B       		.uleb128 0xb
+ 630 00d6 00       		.byte	0
+ 631 00d7 00       		.byte	0
+ 632 00d8 00       		.byte	0
+ 633              		.section	.debug_aranges,"",%progbits
+ 634 0000 14000000 		.4byte	0x14
+ 635 0004 0200     		.2byte	0x2
+ 636 0006 00000000 		.4byte	.Ldebug_info0
+ 637 000a 04       		.byte	0x4
+ 638 000b 00       		.byte	0
+ 639 000c 0000     		.2byte	0
+ 640 000e 0000     		.2byte	0
+ 641 0010 00000000 		.4byte	0
+ 642 0014 00000000 		.4byte	0
+ 643              		.section	.debug_line,"",%progbits
+ 644              	.Ldebug_line0:
+ 645 0000 32020000 		.section	.debug_str,"MS",%progbits,1
+ 645      02002C02 
+ 645      00000201 
+ 645      FB0E0D00 
+ 645      01010101 
+ 646              	.LASF53:
+ 647 0000 73536F75 		.ascii	"sSoundRecourd\000"
+ 647      6E645265 
+ 647      636F7572 
+ 647      6400
+ 648              	.LASF42:
+ 649 000e 5F5F7A65 		.ascii	"__zero_table_end__\000"
+ 649      726F5F74 
+ 649      61626C65 
+ 649      5F656E64 
+ 649      5F5F00
+ 650              	.LASF3:
+ 651 0021 5F5F7569 		.ascii	"__uint8_t\000"
+ 651      6E74385F 
+ 651      7400
+ 652              	.LASF37:
+ 653 002b 5F5F636F 		.ascii	"__copy_table_t\000"
+ 653      70795F74 
+ 653      61626C65 
+ 653      5F7400
+ 654              	.LASF6:
+ 655 003a 5F5F696E 		.ascii	"__int32_t\000"
+ 655      7433325F 
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccCObWKk.s 			page 13
+
+
+ 655      7400
+ 656              	.LASF7:
+ 657 0044 6C6F6E67 		.ascii	"long int\000"
+ 657      20696E74 
+ 657      00
+ 658              	.LASF46:
+ 659 004d 534F4E47 		.ascii	"SONG_Valerie\000"
+ 659      5F56616C 
+ 659      65726965 
+ 659      00
+ 660              	.LASF40:
+ 661 005a 5F5F7A65 		.ascii	"__zero_table_t\000"
+ 661      726F5F74 
+ 661      61626C65 
+ 661      5F7400
+ 662              	.LASF33:
+ 663 0069 45455F6F 		.ascii	"EE_oo_IRQ_suspend_status\000"
+ 663      6F5F4952 
+ 663      515F7375 
+ 663      7370656E 
+ 663      645F7374 
+ 664              	.LASF28:
+ 665 0082 6D5F6C65 		.ascii	"m_length\000"
+ 665      6E677468 
+ 665      00
+ 666              	.LASF25:
+ 667 008b 45455F54 		.ascii	"EE_TID\000"
+ 667      494400
+ 668              	.LASF47:
+ 669 0092 534F4E47 		.ascii	"SONG_Castle\000"
+ 669      5F436173 
+ 669      746C6500 
+ 670              	.LASF17:
+ 671 009e 666C6F61 		.ascii	"float\000"
+ 671      7400
+ 672              	.LASF1:
+ 673 00a4 756E7369 		.ascii	"unsigned char\000"
+ 673      676E6564 
+ 673      20636861 
+ 673      7200
+ 674              	.LASF44:
+ 675 00b2 534F554E 		.ascii	"SOUND_Records\000"
+ 675      445F5265 
+ 675      636F7264 
+ 675      7300
+ 676              	.LASF39:
+ 677 00c0 5F5F636F 		.ascii	"__copy_table_end__\000"
+ 677      70795F74 
+ 677      61626C65 
+ 677      5F656E64 
+ 677      5F5F00
+ 678              	.LASF27:
+ 679 00d3 6D5F7469 		.ascii	"m_title\000"
+ 679      746C6500 
+ 680              	.LASF9:
+ 681 00db 6C6F6E67 		.ascii	"long unsigned int\000"
+ 681      20756E73 
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccCObWKk.s 			page 14
+
+
+ 681      69676E65 
+ 681      6420696E 
+ 681      7400
+ 682              	.LASF5:
+ 683 00ed 73686F72 		.ascii	"short unsigned int\000"
+ 683      7420756E 
+ 683      7369676E 
+ 683      65642069 
+ 683      6E7400
+ 684              	.LASF21:
+ 685 0100 45455F49 		.ascii	"EE_INT32\000"
+ 685      4E543332 
+ 685      00
+ 686              	.LASF43:
+ 687 0109 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 687      52784275 
+ 687      66666572 
+ 687      00
+ 688              	.LASF4:
+ 689 0116 5F5F7569 		.ascii	"__uint16_t\000"
+ 689      6E743136 
+ 689      5F7400
+ 690              	.LASF18:
+ 691 0121 646F7562 		.ascii	"double\000"
+ 691      6C6500
+ 692              	.LASF8:
+ 693 0128 5F5F7569 		.ascii	"__uint32_t\000"
+ 693      6E743332 
+ 693      5F7400
+ 694              	.LASF35:
+ 695 0133 45455F73 		.ascii	"EE_std_endcycle_next_tid\000"
+ 695      74645F65 
+ 695      6E646379 
+ 695      636C655F 
+ 695      6E657874 
+ 696              	.LASF12:
+ 697 014c 756E7369 		.ascii	"unsigned int\000"
+ 697      676E6564 
+ 697      20696E74 
+ 697      00
+ 698              	.LASF24:
+ 699 0159 45455F46 		.ascii	"EE_FREG\000"
+ 699      52454700 
+ 700              	.LASF22:
+ 701 0161 45455F55 		.ascii	"EE_UINT32\000"
+ 701      494E5433 
+ 701      3200
+ 702              	.LASF30:
+ 703 016b 6D5F6461 		.ascii	"m_data\000"
+ 703      746100
+ 704              	.LASF11:
+ 705 0172 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 705      206C6F6E 
+ 705      6720756E 
+ 705      7369676E 
+ 705      65642069 
+ 706              	.LASF13:
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccCObWKk.s 			page 15
+
+
+ 707 0189 75696E74 		.ascii	"uint8_t\000"
+ 707      385F7400 
+ 708              	.LASF48:
+ 709 0191 64657374 		.ascii	"dest\000"
+ 709      00
+ 710              	.LASF34:
+ 711 0196 45455F41 		.ascii	"EE_ApplicationMode\000"
+ 711      70706C69 
+ 711      63617469 
+ 711      6F6E4D6F 
+ 711      646500
+ 712              	.LASF51:
+ 713 01a9 736F7572 		.ascii	"source\\asw\\sound_data.c\000"
+ 713      63655C61 
+ 713      73775C73 
+ 713      6F756E64 
+ 713      5F646174 
+ 714              	.LASF31:
+ 715 01c1 534F554E 		.ascii	"SOUND_Record_t\000"
+ 715      445F5265 
+ 715      636F7264 
+ 715      5F7400
+ 716              	.LASF50:
+ 717 01d0 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 717      43313120 
+ 717      352E342E 
+ 717      31203230 
+ 717      31363036 
+ 718 0203 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 718      20726576 
+ 718      6973696F 
+ 718      6E203233 
+ 718      37373135 
+ 719 0236 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 719      66756E63 
+ 719      74696F6E 
+ 719      2D736563 
+ 719      74696F6E 
+ 720              	.LASF15:
+ 721 025e 696E7433 		.ascii	"int32_t\000"
+ 721      325F7400 
+ 722              	.LASF26:
+ 723 0266 73697A65 		.ascii	"sizetype\000"
+ 723      74797065 
+ 723      00
+ 724              	.LASF10:
+ 725 026f 6C6F6E67 		.ascii	"long long int\000"
+ 725      206C6F6E 
+ 725      6720696E 
+ 725      7400
+ 726              	.LASF19:
+ 727 027d 63686172 		.ascii	"char\000"
+ 727      00
+ 728              	.LASF29:
+ 729 0282 6D5F7369 		.ascii	"m_size\000"
+ 729      7A6500
+ 730              	.LASF23:
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccCObWKk.s 			page 16
+
+
+ 731 0289 45455F55 		.ascii	"EE_UREG\000"
+ 731      52454700 
+ 732              	.LASF36:
+ 733 0291 45455F49 		.ascii	"EE_IRQ_nesting_level\000"
+ 733      52515F6E 
+ 733      65737469 
+ 733      6E675F6C 
+ 733      6576656C 
+ 734              	.LASF49:
+ 735 02a6 776C656E 		.ascii	"wlen\000"
+ 735      00
+ 736              	.LASF2:
+ 737 02ab 73686F72 		.ascii	"short int\000"
+ 737      7420696E 
+ 737      7400
+ 738              	.LASF32:
+ 739 02b5 45455F6F 		.ascii	"EE_oo_IRQ_disable_count\000"
+ 739      6F5F4952 
+ 739      515F6469 
+ 739      7361626C 
+ 739      655F636F 
+ 740              	.LASF14:
+ 741 02cd 75696E74 		.ascii	"uint16_t\000"
+ 741      31365F74 
+ 741      00
+ 742              	.LASF16:
+ 743 02d6 75696E74 		.ascii	"uint32_t\000"
+ 743      33325F74 
+ 743      00
+ 744              	.LASF38:
+ 745 02df 5F5F636F 		.ascii	"__copy_table_start__\000"
+ 745      70795F74 
+ 745      61626C65 
+ 745      5F737461 
+ 745      72745F5F 
+ 746              	.LASF20:
+ 747 02f4 6C6F6E67 		.ascii	"long double\000"
+ 747      20646F75 
+ 747      626C6500 
+ 748              	.LASF52:
+ 749 0300 443A5C48 		.ascii	"D:\\H_da\\Winter Semester\\MM03 Advanced Microcontr"
+ 749      5F64615C 
+ 749      57696E74 
+ 749      65722053 
+ 749      656D6573 
+ 750 0330 6F6C6C65 		.ascii	"oller Systems and Embedded Operating Systems\\Lectu"
+ 750      72205379 
+ 750      7374656D 
+ 750      7320616E 
+ 750      6420456D 
+ 751 0362 72652050 		.ascii	"re Prof. Fromm\\workspace\\workspace_psoc\\Smart_Vo"
+ 751      726F662E 
+ 751      2046726F 
+ 751      6D6D5C77 
+ 751      6F726B73 
+ 752 0392 6C756D65 		.ascii	"lume\\Smart_Volume.cydsn\000"
+ 752      5C536D61 
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccCObWKk.s 			page 17
+
+
+ 752      72745F56 
+ 752      6F6C756D 
+ 752      652E6379 
+ 753              	.LASF0:
+ 754 03aa 7369676E 		.ascii	"signed char\000"
+ 754      65642063 
+ 754      68617200 
+ 755              	.LASF41:
+ 756 03b6 5F5F7A65 		.ascii	"__zero_table_start__\000"
+ 756      726F5F74 
+ 756      61626C65 
+ 756      5F737461 
+ 756      72745F5F 
+ 757              	.LASF45:
+ 758 03cb 534F554E 		.ascii	"SOUND_NoOfRecords\000"
+ 758      445F4E6F 
+ 758      4F665265 
+ 758      636F7264 
+ 758      7300
+ 759              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

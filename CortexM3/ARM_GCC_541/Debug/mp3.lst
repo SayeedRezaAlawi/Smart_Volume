@@ -1,0 +1,4040 @@
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"mp3.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.MP3__nextSong,"ax",%progbits
+  20              		.align	2
+  21              		.global	MP3__nextSong
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	MP3__nextSong, %function
+  25              	MP3__nextSong:
+  26              	.LFB116:
+  27              		.file 1 "source\\asw\\mp3.c"
+   1:source\asw/mp3.c **** /**
+   2:source\asw/mp3.c **** * \file mp3.c
+   3:source\asw/mp3.c **** * \author P. Fromm
+   4:source\asw/mp3.c **** * \date 6.11.18
+   5:source\asw/mp3.c **** *
+   6:source\asw/mp3.c **** * \brief Sound driver
+   7:source\asw/mp3.c **** *
+   8:source\asw/mp3.c **** * \copyright Copyright ©2016
+   9:source\asw/mp3.c **** * Department of electrical engineering and information technology, Hochschule Darmstadt - Universit
+  10:source\asw/mp3.c **** * Permission to use, copy, modify, and distribute this software and its documentation for education
+  11:source\asw/mp3.c **** * (unless permitted by h_da) and official h_da projects, is hereby granted for enrolled students of
+  12:source\asw/mp3.c **** * this paragraph and the following paragraph appear in all copies, modifications, and distributions
+  13:source\asw/mp3.c **** * Contact Prof.Dr.-Ing. Peter Fromm, peter.fromm@h-da.de, Birkenweg 8 64295 Darmstadt - GERMANY for
+  14:source\asw/mp3.c **** *
+  15:source\asw/mp3.c **** * \warning This software is a PROTOTYPE version and is not designed or intended for use in producti
+  16:source\asw/mp3.c **** * The user represents and warrants that it will NOT use or redistribute the Software for such purpo
+  17:source\asw/mp3.c **** * This prototype is for research purposes only. This software is provided "AS IS," without a warran
+  18:source\asw/mp3.c **** */
+  19:source\asw/mp3.c **** 
+  20:source\asw/mp3.c **** /*****************************************************************************/
+  21:source\asw/mp3.c **** /* Include files                                                             */
+  22:source\asw/mp3.c **** /*****************************************************************************/
+  23:source\asw/mp3.c **** #include "mp3.h"
+  24:source\asw/mp3.c **** #include "sound.h"
+  25:source\asw/mp3.c **** #include "sound_data.h"
+  26:source\asw/mp3.c **** #include "seven.h"
+  27:source\asw/mp3.c **** #include "button.h"
+  28:source\asw/mp3.c **** #include "Smart_Volume.h"
+  29:source\asw/mp3.c **** 
+  30:source\asw/mp3.c **** /*****************************************************************************/
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 2
+
+
+  31:source\asw/mp3.c **** /* Local pre-processor symbols/macros ('#define')                            */
+  32:source\asw/mp3.c **** /*****************************************************************************/
+  33:source\asw/mp3.c **** 
+  34:source\asw/mp3.c **** /*****************************************************************************/
+  35:source\asw/mp3.c **** /* Global variable definitions (declared in header file with 'extern')       */
+  36:source\asw/mp3.c **** /*****************************************************************************/
+  37:source\asw/mp3.c **** 
+  38:source\asw/mp3.c **** /*****************************************************************************/
+  39:source\asw/mp3.c **** /* Local type definitions ('typedef')                                        */
+  40:source\asw/mp3.c **** /*****************************************************************************/
+  41:source\asw/mp3.c ****  enum eMP3__State{
+  42:source\asw/mp3.c ****     MP3STATE_ISSTOPPED,
+  43:source\asw/mp3.c ****     MP3STATE_ISPLAYING,
+  44:source\asw/mp3.c ****     MP3STATE_ISPAUSING,
+  45:source\asw/mp3.c **** } ;
+  46:source\asw/mp3.c **** typedef enum eMP3__State MP3__State_t;
+  47:source\asw/mp3.c **** 
+  48:source\asw/mp3.c **** /*****************************************************************************/
+  49:source\asw/mp3.c **** /* Local variable definitions ('static')                                     */
+  50:source\asw/mp3.c **** /*****************************************************************************/
+  51:source\asw/mp3.c **** 
+  52:source\asw/mp3.c **** static struct
+  53:source\asw/mp3.c **** {
+  54:source\asw/mp3.c ****     MP3__State_t m_state;                       /**< \brief state of the state machine */
+  55:source\asw/mp3.c ****     uint16_t     m_noSongs;                     /**< \brief number of songs in flash */
+  56:source\asw/mp3.c ****     uint16_t     m_currentSong;                 /**< \brief song currently selected */
+  57:source\asw/mp3.c ****     uint8_t      m_volume;                      /**< \brief volume */
+  58:source\asw/mp3.c ****     uint16_t     m_remainingPlayTime;           /**< \brief remaining play time of the song */
+  59:source\asw/mp3.c **** } MP3__player = {MP3STATE_ISSTOPPED, 0, 0, 0, 0};
+  60:source\asw/mp3.c **** 
+  61:source\asw/mp3.c **** 
+  62:source\asw/mp3.c **** 
+  63:source\asw/mp3.c **** /*****************************************************************************/
+  64:source\asw/mp3.c **** /* Local function prototypes ('static')                                      */
+  65:source\asw/mp3.c **** /*****************************************************************************/
+  66:source\asw/mp3.c **** 
+  67:source\asw/mp3.c **** void MP3__nextSong();               /**< \brief select the next song. Go to first in case of EOL */
+  68:source\asw/mp3.c **** void MP3__prevSong();               /**< \brief select the previous song. Go to last in case of EOL
+  69:source\asw/mp3.c **** 
+  70:source\asw/mp3.c **** void MP3__increaseVolume(EventMaskType nextEvent);         /**< \brief increase the volume by one *
+  71:source\asw/mp3.c **** void MP3__decreaseVolume(EventMaskType nextEvent);         /**< \brief decrease the volume by one *
+  72:source\asw/mp3.c **** 
+  73:source\asw/mp3.c **** void MP3__playSong();               /**< \brief set the sound record pointer to the current song an
+  74:source\asw/mp3.c **** void MP3__stopSong();               /**< \brief Stop the clock for the timer ISR */
+  75:source\asw/mp3.c **** void MP3__pauseSong();              /**< \brief Stop the clock for the timer ISR */
+  76:source\asw/mp3.c **** void MP3__resumeSong();             /**< \brief Start the clock for the timer ISR */
+  77:source\asw/mp3.c **** 
+  78:source\asw/mp3.c **** void MP3__showSong();               /**< \brief Show the songs via uart */
+  79:source\asw/mp3.c **** void MP3__showRemainingPlaytime();  /**< \brief Show the remaining play time via 7 segment */
+  80:source\asw/mp3.c **** 
+  81:source\asw/mp3.c **** boolean_t MP3__songEnded();         /**< \brief Check if the remaining playtime has ended */
+  82:source\asw/mp3.c **** 
+  83:source\asw/mp3.c **** void MP3__showEventAndState(EventMaskType ev, MP3__State_t state);  /**< \brief Helper function to 
+  84:source\asw/mp3.c **** 
+  85:source\asw/mp3.c **** 
+  86:source\asw/mp3.c **** /*****************************************************************************/
+  87:source\asw/mp3.c **** /* Function implementation - global ('extern') and local ('static')          */
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 3
+
+
+  88:source\asw/mp3.c **** /*****************************************************************************/
+  89:source\asw/mp3.c **** 
+  90:source\asw/mp3.c **** /**
+  91:source\asw/mp3.c ****  * Init Function for the sound driver
+  92:source\asw/mp3.c ****  * /return RC_SUCCESS
+  93:source\asw/mp3.c ****  */
+  94:source\asw/mp3.c **** RC_t MP3_Init()
+  95:source\asw/mp3.c **** {
+  96:source\asw/mp3.c ****     MP3__player.m_state = MP3STATE_ISSTOPPED;
+  97:source\asw/mp3.c ****     MP3__player.m_noSongs = SOUND_NoOfRecords;
+  98:source\asw/mp3.c ****     //MP3__player.m_volume = MP3__MAXVOLUME;
+  99:source\asw/mp3.c ****     MP3__player.m_volume = 0;
+ 100:source\asw/mp3.c ****     MP3__player.m_currentSong = 0;
+ 101:source\asw/mp3.c **** 
+ 102:source\asw/mp3.c ****     MP3__showSong();
+ 103:source\asw/mp3.c ****     SEVEN_Set(SEVEN_1,MP3__player.m_volume%10);
+ 104:source\asw/mp3.c ****     SEVEN_Set(SEVEN_0,MP3__player.m_volume/10);
+ 105:source\asw/mp3.c ****     //SOUND_SetVolume(MP3__player.m_volume * 20);
+ 106:source\asw/mp3.c ****     
+ 107:source\asw/mp3.c ****     return RC_SUCCESS;
+ 108:source\asw/mp3.c **** }
+ 109:source\asw/mp3.c **** 
+ 110:source\asw/mp3.c **** /**
+ 111:source\asw/mp3.c ****  * The implementation of the MP3 Player State Machine
+ 112:source\asw/mp3.c ****  * /param EventMaskType nextEvent   : The event to be processed [IN]
+ 113:source\asw/mp3.c ****  * /return RC_SUCCESS
+ 114:source\asw/mp3.c ****  */
+ 115:source\asw/mp3.c **** RC_t MP3_ProcessEvent(EventMaskType nextEvent)
+ 116:source\asw/mp3.c **** {
+ 117:source\asw/mp3.c ****     //Debugging aid
+ 118:source\asw/mp3.c ****     //MP3__showEventAndState(nextEvent, MP3__player.m_state);
+ 119:source\asw/mp3.c ****     
+ 120:source\asw/mp3.c ****     
+ 121:source\asw/mp3.c ****     switch (MP3__player.m_state)
+ 122:source\asw/mp3.c ****     {
+ 123:source\asw/mp3.c ****         case MP3STATE_ISSTOPPED :
+ 124:source\asw/mp3.c ****             if (nextEvent & ev_Button1)
+ 125:source\asw/mp3.c ****             {
+ 126:source\asw/mp3.c ****                 MP3__prevSong();
+ 127:source\asw/mp3.c ****                 MP3__showSong();
+ 128:source\asw/mp3.c ****             }
+ 129:source\asw/mp3.c ****             else if (nextEvent & ev_Button2)
+ 130:source\asw/mp3.c ****             {
+ 131:source\asw/mp3.c ****                 MP3__nextSong();
+ 132:source\asw/mp3.c ****                 MP3__showSong();
+ 133:source\asw/mp3.c ****             }
+ 134:source\asw/mp3.c ****             else if (nextEvent & ev_Button3)
+ 135:source\asw/mp3.c ****             {
+ 136:source\asw/mp3.c ****                 MP3__playSong();
+ 137:source\asw/mp3.c ****                 MP3__showSong();
+ 138:source\asw/mp3.c ****                 MP3__player.m_state = MP3STATE_ISPLAYING;
+ 139:source\asw/mp3.c ****             }
+ 140:source\asw/mp3.c ****             break;
+ 141:source\asw/mp3.c **** 
+ 142:source\asw/mp3.c ****         case MP3STATE_ISPLAYING :
+ 143:source\asw/mp3.c ****             if (TRUE == BUTTON_IsPressed(BUTTON_1) 
+ 144:source\asw/mp3.c ****             && ((nextEvent & ev_Button1) || (nextEvent & ev_3000ms)||(nextEvent & ev_1000ms)
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 4
+
+
+ 145:source\asw/mp3.c ****             || (nextEvent & ev_500ms) ||(nextEvent & ev_100ms)))         
+ 146:source\asw/mp3.c ****             { 
+ 147:source\asw/mp3.c ****                 MP3__increaseVolume(nextEvent);
+ 148:source\asw/mp3.c ****             }
+ 149:source\asw/mp3.c ****             if (TRUE == BUTTON_IsPressed(BUTTON_2) 
+ 150:source\asw/mp3.c ****             && ((nextEvent & ev_Button2) || (nextEvent & ev_3000ms)||(nextEvent & ev_1000ms)
+ 151:source\asw/mp3.c ****             || (nextEvent & ev_500ms) ||(nextEvent & ev_100ms)))         
+ 152:source\asw/mp3.c ****             {
+ 153:source\asw/mp3.c ****                 MP3__decreaseVolume(nextEvent);
+ 154:source\asw/mp3.c ****             }
+ 155:source\asw/mp3.c ****             else if (nextEvent & ev_Button3)
+ 156:source\asw/mp3.c ****             {
+ 157:source\asw/mp3.c ****                 MP3__pauseSong();
+ 158:source\asw/mp3.c ****                 MP3__player.m_state = MP3STATE_ISPAUSING;
+ 159:source\asw/mp3.c ****             }
+ 160:source\asw/mp3.c ****             else if (nextEvent & ev_Button4)
+ 161:source\asw/mp3.c ****             {
+ 162:source\asw/mp3.c ****                 MP3__stopSong();
+ 163:source\asw/mp3.c ****                 MP3__player.m_state = MP3STATE_ISSTOPPED;
+ 164:source\asw/mp3.c ****             }
+ 165:source\asw/mp3.c ****             else if (nextEvent & ev_1s && !MP3__songEnded())
+ 166:source\asw/mp3.c ****             {
+ 167:source\asw/mp3.c ****                 MP3__showRemainingPlaytime();
+ 168:source\asw/mp3.c ****             }
+ 169:source\asw/mp3.c ****             else if (nextEvent & ev_1s && MP3__songEnded())
+ 170:source\asw/mp3.c ****             {
+ 171:source\asw/mp3.c ****                 MP3__nextSong(); 
+ 172:source\asw/mp3.c ****                 MP3__playSong();
+ 173:source\asw/mp3.c ****                 MP3__showSong();
+ 174:source\asw/mp3.c ****             }
+ 175:source\asw/mp3.c ****             break;
+ 176:source\asw/mp3.c ****             
+ 177:source\asw/mp3.c ****         case MP3STATE_ISPAUSING :
+ 178:source\asw/mp3.c ****             if (nextEvent & ev_Button3)
+ 179:source\asw/mp3.c ****             {
+ 180:source\asw/mp3.c ****                 MP3__resumeSong();
+ 181:source\asw/mp3.c ****                 MP3__player.m_state = MP3STATE_ISPLAYING;
+ 182:source\asw/mp3.c ****             }
+ 183:source\asw/mp3.c ****             else if (nextEvent & ev_Button4)
+ 184:source\asw/mp3.c ****             {
+ 185:source\asw/mp3.c ****                 MP3__stopSong();
+ 186:source\asw/mp3.c ****                 MP3__player.m_state = MP3STATE_ISSTOPPED;
+ 187:source\asw/mp3.c ****             }
+ 188:source\asw/mp3.c **** 
+ 189:source\asw/mp3.c ****             break;
+ 190:source\asw/mp3.c ****     }
+ 191:source\asw/mp3.c ****     return RC_SUCCESS;
+ 192:source\asw/mp3.c **** }
+ 193:source\asw/mp3.c **** 
+ 194:source\asw/mp3.c **** 
+ 195:source\asw/mp3.c **** 
+ 196:source\asw/mp3.c **** 
+ 197:source\asw/mp3.c **** void MP3__nextSong()
+ 198:source\asw/mp3.c **** {
+  28              		.loc 1 198 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 5
+
+
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+ 199:source\asw/mp3.c ****     MP3__player.m_currentSong++;
+  33              		.loc 1 199 0
+  34 0000 054A     		ldr	r2, .L2
+  35 0002 9388     		ldrh	r3, [r2, #4]
+  36 0004 0133     		adds	r3, r3, #1
+  37 0006 9BB2     		uxth	r3, r3
+ 200:source\asw/mp3.c ****     MP3__player.m_currentSong %= MP3__player.m_noSongs;
+  38              		.loc 1 200 0
+  39 0008 5088     		ldrh	r0, [r2, #2]
+  40 000a B3FBF0F1 		udiv	r1, r3, r0
+  41 000e 00FB1133 		mls	r3, r0, r1, r3
+  42 0012 9380     		strh	r3, [r2, #4]	@ movhi
+  43 0014 7047     		bx	lr
+  44              	.L3:
+  45 0016 00BF     		.align	2
+  46              	.L2:
+  47 0018 00000000 		.word	.LANCHOR0
+  48              		.cfi_endproc
+  49              	.LFE116:
+  50              		.size	MP3__nextSong, .-MP3__nextSong
+  51              		.section	.text.MP3__prevSong,"ax",%progbits
+  52              		.align	2
+  53              		.global	MP3__prevSong
+  54              		.thumb
+  55              		.thumb_func
+  56              		.type	MP3__prevSong, %function
+  57              	MP3__prevSong:
+  58              	.LFB117:
+ 201:source\asw/mp3.c ****     
+ 202:source\asw/mp3.c **** }
+ 203:source\asw/mp3.c **** 
+ 204:source\asw/mp3.c **** void MP3__prevSong()
+ 205:source\asw/mp3.c **** {
+  59              		.loc 1 205 0
+  60              		.cfi_startproc
+  61              		@ args = 0, pretend = 0, frame = 0
+  62              		@ frame_needed = 0, uses_anonymous_args = 0
+  63              		@ link register save eliminated.
+ 206:source\asw/mp3.c ****     if (MP3__player.m_currentSong == 0)
+  64              		.loc 1 206 0
+  65 0000 054B     		ldr	r3, .L6
+  66 0002 9B88     		ldrh	r3, [r3, #4]
+  67 0004 1BB9     		cbnz	r3, .L5
+ 207:source\asw/mp3.c ****     {
+ 208:source\asw/mp3.c ****         MP3__player.m_currentSong += MP3__player.m_noSongs;
+  68              		.loc 1 208 0
+  69 0006 0449     		ldr	r1, .L6
+  70 0008 4A88     		ldrh	r2, [r1, #2]
+  71 000a 1344     		add	r3, r3, r2
+  72 000c 8B80     		strh	r3, [r1, #4]	@ movhi
+  73              	.L5:
+ 209:source\asw/mp3.c ****     }
+ 210:source\asw/mp3.c ****     MP3__player.m_currentSong--;
+  74              		.loc 1 210 0
+  75 000e 024A     		ldr	r2, .L6
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 6
+
+
+  76 0010 9388     		ldrh	r3, [r2, #4]
+  77 0012 013B     		subs	r3, r3, #1
+  78 0014 9380     		strh	r3, [r2, #4]	@ movhi
+  79 0016 7047     		bx	lr
+  80              	.L7:
+  81              		.align	2
+  82              	.L6:
+  83 0018 00000000 		.word	.LANCHOR0
+  84              		.cfi_endproc
+  85              	.LFE117:
+  86              		.size	MP3__prevSong, .-MP3__prevSong
+  87              		.section	.text.MP3__increaseVolume,"ax",%progbits
+  88              		.align	2
+  89              		.global	MP3__increaseVolume
+  90              		.thumb
+  91              		.thumb_func
+  92              		.type	MP3__increaseVolume, %function
+  93              	MP3__increaseVolume:
+  94              	.LFB118:
+ 211:source\asw/mp3.c **** }
+ 212:source\asw/mp3.c **** 
+ 213:source\asw/mp3.c **** void MP3__increaseVolume(EventMaskType nextEvent)
+ 214:source\asw/mp3.c **** {
+  95              		.loc 1 214 0
+  96              		.cfi_startproc
+  97              		@ args = 0, pretend = 0, frame = 0
+  98              		@ frame_needed = 0, uses_anonymous_args = 0
+  99              	.LVL0:
+ 100 0000 38B5     		push	{r3, r4, r5, lr}
+ 101              		.cfi_def_cfa_offset 16
+ 102              		.cfi_offset 3, -16
+ 103              		.cfi_offset 4, -12
+ 104              		.cfi_offset 5, -8
+ 105              		.cfi_offset 14, -4
+ 215:source\asw/mp3.c ****     MP3__player.m_volume=MP3__increaseSmartVolume(nextEvent);
+ 106              		.loc 1 215 0
+ 107 0002 FFF7FEFF 		bl	MP3__increaseSmartVolume
+ 108              	.LVL1:
+ 109 0006 0C4D     		ldr	r5, .L10
+ 110 0008 A871     		strb	r0, [r5, #6]
+ 216:source\asw/mp3.c ****     SEVEN_Set(SEVEN_1,MP3__player.m_volume/10);
+ 111              		.loc 1 216 0
+ 112 000a 0C4C     		ldr	r4, .L10+4
+ 113 000c A4FB0031 		umull	r3, r1, r4, r0
+ 114 0010 C908     		lsrs	r1, r1, #3
+ 115 0012 0120     		movs	r0, #1
+ 116 0014 FFF7FEFF 		bl	SEVEN_Set
+ 117              	.LVL2:
+ 217:source\asw/mp3.c ****     SEVEN_Set(SEVEN_0,MP3__player.m_volume%10);
+ 118              		.loc 1 217 0
+ 119 0018 AB79     		ldrb	r3, [r5, #6]	@ zero_extendqisi2
+ 120 001a A4FB0324 		umull	r2, r4, r4, r3
+ 121 001e E408     		lsrs	r4, r4, #3
+ 122 0020 04EB8404 		add	r4, r4, r4, lsl #2
+ 123 0024 6100     		lsls	r1, r4, #1
+ 124 0026 591A     		subs	r1, r3, r1
+ 125 0028 C9B2     		uxtb	r1, r1
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 7
+
+
+ 126 002a 0020     		movs	r0, #0
+ 127 002c FFF7FEFF 		bl	SEVEN_Set
+ 128              	.LVL3:
+ 218:source\asw/mp3.c ****     SOUND_SetVolume(MP3__player.m_volume);
+ 129              		.loc 1 218 0
+ 130 0030 A879     		ldrb	r0, [r5, #6]	@ zero_extendqisi2
+ 131 0032 FFF7FEFF 		bl	SOUND_SetVolume
+ 132              	.LVL4:
+ 133 0036 38BD     		pop	{r3, r4, r5, pc}
+ 134              	.L11:
+ 135              		.align	2
+ 136              	.L10:
+ 137 0038 00000000 		.word	.LANCHOR0
+ 138 003c CDCCCCCC 		.word	-858993459
+ 139              		.cfi_endproc
+ 140              	.LFE118:
+ 141              		.size	MP3__increaseVolume, .-MP3__increaseVolume
+ 142              		.section	.text.MP3__decreaseVolume,"ax",%progbits
+ 143              		.align	2
+ 144              		.global	MP3__decreaseVolume
+ 145              		.thumb
+ 146              		.thumb_func
+ 147              		.type	MP3__decreaseVolume, %function
+ 148              	MP3__decreaseVolume:
+ 149              	.LFB119:
+ 219:source\asw/mp3.c **** }
+ 220:source\asw/mp3.c **** 
+ 221:source\asw/mp3.c **** void MP3__decreaseVolume(EventMaskType nextEvent)
+ 222:source\asw/mp3.c **** {
+ 150              		.loc 1 222 0
+ 151              		.cfi_startproc
+ 152              		@ args = 0, pretend = 0, frame = 0
+ 153              		@ frame_needed = 0, uses_anonymous_args = 0
+ 154              	.LVL5:
+ 155 0000 38B5     		push	{r3, r4, r5, lr}
+ 156              		.cfi_def_cfa_offset 16
+ 157              		.cfi_offset 3, -16
+ 158              		.cfi_offset 4, -12
+ 159              		.cfi_offset 5, -8
+ 160              		.cfi_offset 14, -4
+ 223:source\asw/mp3.c ****     MP3__player.m_volume=MP3__decreaseSmartVolume(nextEvent);
+ 161              		.loc 1 223 0
+ 162 0002 FFF7FEFF 		bl	MP3__decreaseSmartVolume
+ 163              	.LVL6:
+ 164 0006 0C4D     		ldr	r5, .L14
+ 165 0008 A871     		strb	r0, [r5, #6]
+ 224:source\asw/mp3.c ****     SEVEN_Set(SEVEN_1,MP3__player.m_volume/10);
+ 166              		.loc 1 224 0
+ 167 000a 0C4C     		ldr	r4, .L14+4
+ 168 000c A4FB0031 		umull	r3, r1, r4, r0
+ 169 0010 C908     		lsrs	r1, r1, #3
+ 170 0012 0120     		movs	r0, #1
+ 171 0014 FFF7FEFF 		bl	SEVEN_Set
+ 172              	.LVL7:
+ 225:source\asw/mp3.c ****     SEVEN_Set(SEVEN_0,MP3__player.m_volume%10);
+ 173              		.loc 1 225 0
+ 174 0018 AB79     		ldrb	r3, [r5, #6]	@ zero_extendqisi2
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 8
+
+
+ 175 001a A4FB0324 		umull	r2, r4, r4, r3
+ 176 001e E408     		lsrs	r4, r4, #3
+ 177 0020 04EB8404 		add	r4, r4, r4, lsl #2
+ 178 0024 6100     		lsls	r1, r4, #1
+ 179 0026 591A     		subs	r1, r3, r1
+ 180 0028 C9B2     		uxtb	r1, r1
+ 181 002a 0020     		movs	r0, #0
+ 182 002c FFF7FEFF 		bl	SEVEN_Set
+ 183              	.LVL8:
+ 226:source\asw/mp3.c ****     SOUND_SetVolume(MP3__player.m_volume);
+ 184              		.loc 1 226 0
+ 185 0030 A879     		ldrb	r0, [r5, #6]	@ zero_extendqisi2
+ 186 0032 FFF7FEFF 		bl	SOUND_SetVolume
+ 187              	.LVL9:
+ 188 0036 38BD     		pop	{r3, r4, r5, pc}
+ 189              	.L15:
+ 190              		.align	2
+ 191              	.L14:
+ 192 0038 00000000 		.word	.LANCHOR0
+ 193 003c CDCCCCCC 		.word	-858993459
+ 194              		.cfi_endproc
+ 195              	.LFE119:
+ 196              		.size	MP3__decreaseVolume, .-MP3__decreaseVolume
+ 197              		.section	.text.MP3__playSong,"ax",%progbits
+ 198              		.align	2
+ 199              		.global	MP3__playSong
+ 200              		.thumb
+ 201              		.thumb_func
+ 202              		.type	MP3__playSong, %function
+ 203              	MP3__playSong:
+ 204              	.LFB120:
+ 227:source\asw/mp3.c **** }
+ 228:source\asw/mp3.c **** 
+ 229:source\asw/mp3.c **** void MP3__playSong()
+ 230:source\asw/mp3.c **** {
+ 205              		.loc 1 230 0
+ 206              		.cfi_startproc
+ 207              		@ args = 0, pretend = 0, frame = 0
+ 208              		@ frame_needed = 0, uses_anonymous_args = 0
+ 209 0000 08B5     		push	{r3, lr}
+ 210              		.cfi_def_cfa_offset 8
+ 211              		.cfi_offset 3, -8
+ 212              		.cfi_offset 14, -4
+ 231:source\asw/mp3.c ****     MP3__player.m_remainingPlayTime = SOUND_Records[MP3__player.m_currentSong].m_length;
+ 213              		.loc 1 231 0
+ 214 0002 074A     		ldr	r2, .L18
+ 215 0004 9188     		ldrh	r1, [r2, #4]
+ 216 0006 074B     		ldr	r3, .L18+4
+ 217 0008 03EB0113 		add	r3, r3, r1, lsl #4
+ 218 000c 9988     		ldrh	r1, [r3, #4]
+ 219 000e 1181     		strh	r1, [r2, #8]	@ movhi
+ 232:source\asw/mp3.c ****     SOUND_SetSong(SOUND_Records[MP3__player.m_currentSong].m_data, SOUND_Records[MP3__player.m_curr
+ 220              		.loc 1 232 0
+ 221 0010 9968     		ldr	r1, [r3, #8]
+ 222 0012 D868     		ldr	r0, [r3, #12]
+ 223 0014 FFF7FEFF 		bl	SOUND_SetSong
+ 224              	.LVL10:
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 9
+
+
+ 233:source\asw/mp3.c ****     SOUND_StartPlay();
+ 225              		.loc 1 233 0
+ 226 0018 FFF7FEFF 		bl	SOUND_StartPlay
+ 227              	.LVL11:
+ 228 001c 08BD     		pop	{r3, pc}
+ 229              	.L19:
+ 230 001e 00BF     		.align	2
+ 231              	.L18:
+ 232 0020 00000000 		.word	.LANCHOR0
+ 233 0024 00000000 		.word	SOUND_Records
+ 234              		.cfi_endproc
+ 235              	.LFE120:
+ 236              		.size	MP3__playSong, .-MP3__playSong
+ 237              		.section	.text.MP3__stopSong,"ax",%progbits
+ 238              		.align	2
+ 239              		.global	MP3__stopSong
+ 240              		.thumb
+ 241              		.thumb_func
+ 242              		.type	MP3__stopSong, %function
+ 243              	MP3__stopSong:
+ 244              	.LFB121:
+ 234:source\asw/mp3.c **** }
+ 235:source\asw/mp3.c **** 
+ 236:source\asw/mp3.c **** void MP3__stopSong()
+ 237:source\asw/mp3.c **** {
+ 245              		.loc 1 237 0
+ 246              		.cfi_startproc
+ 247              		@ args = 0, pretend = 0, frame = 0
+ 248              		@ frame_needed = 0, uses_anonymous_args = 0
+ 249 0000 08B5     		push	{r3, lr}
+ 250              		.cfi_def_cfa_offset 8
+ 251              		.cfi_offset 3, -8
+ 252              		.cfi_offset 14, -4
+ 238:source\asw/mp3.c ****     SOUND_StopPlay();
+ 253              		.loc 1 238 0
+ 254 0002 FFF7FEFF 		bl	SOUND_StopPlay
+ 255              	.LVL12:
+ 256 0006 08BD     		pop	{r3, pc}
+ 257              		.cfi_endproc
+ 258              	.LFE121:
+ 259              		.size	MP3__stopSong, .-MP3__stopSong
+ 260              		.section	.text.MP3__pauseSong,"ax",%progbits
+ 261              		.align	2
+ 262              		.global	MP3__pauseSong
+ 263              		.thumb
+ 264              		.thumb_func
+ 265              		.type	MP3__pauseSong, %function
+ 266              	MP3__pauseSong:
+ 267              	.LFB122:
+ 239:source\asw/mp3.c **** }
+ 240:source\asw/mp3.c **** 
+ 241:source\asw/mp3.c **** void MP3__pauseSong()
+ 242:source\asw/mp3.c **** {
+ 268              		.loc 1 242 0
+ 269              		.cfi_startproc
+ 270              		@ args = 0, pretend = 0, frame = 0
+ 271              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 10
+
+
+ 272 0000 08B5     		push	{r3, lr}
+ 273              		.cfi_def_cfa_offset 8
+ 274              		.cfi_offset 3, -8
+ 275              		.cfi_offset 14, -4
+ 243:source\asw/mp3.c ****    SOUND_StopPlay(); 
+ 276              		.loc 1 243 0
+ 277 0002 FFF7FEFF 		bl	SOUND_StopPlay
+ 278              	.LVL13:
+ 279 0006 08BD     		pop	{r3, pc}
+ 280              		.cfi_endproc
+ 281              	.LFE122:
+ 282              		.size	MP3__pauseSong, .-MP3__pauseSong
+ 283              		.section	.text.MP3__resumeSong,"ax",%progbits
+ 284              		.align	2
+ 285              		.global	MP3__resumeSong
+ 286              		.thumb
+ 287              		.thumb_func
+ 288              		.type	MP3__resumeSong, %function
+ 289              	MP3__resumeSong:
+ 290              	.LFB123:
+ 244:source\asw/mp3.c **** }
+ 245:source\asw/mp3.c **** 
+ 246:source\asw/mp3.c **** void MP3__resumeSong()
+ 247:source\asw/mp3.c **** {
+ 291              		.loc 1 247 0
+ 292              		.cfi_startproc
+ 293              		@ args = 0, pretend = 0, frame = 0
+ 294              		@ frame_needed = 0, uses_anonymous_args = 0
+ 295 0000 08B5     		push	{r3, lr}
+ 296              		.cfi_def_cfa_offset 8
+ 297              		.cfi_offset 3, -8
+ 298              		.cfi_offset 14, -4
+ 248:source\asw/mp3.c ****     SOUND_StartPlay();
+ 299              		.loc 1 248 0
+ 300 0002 FFF7FEFF 		bl	SOUND_StartPlay
+ 301              	.LVL14:
+ 302 0006 08BD     		pop	{r3, pc}
+ 303              		.cfi_endproc
+ 304              	.LFE123:
+ 305              		.size	MP3__resumeSong, .-MP3__resumeSong
+ 306              		.section	.text.MP3__showSong,"ax",%progbits
+ 307              		.align	2
+ 308              		.global	MP3__showSong
+ 309              		.thumb
+ 310              		.thumb_func
+ 311              		.type	MP3__showSong, %function
+ 312              	MP3__showSong:
+ 313              	.LFB124:
+ 249:source\asw/mp3.c **** }
+ 250:source\asw/mp3.c **** 
+ 251:source\asw/mp3.c **** void MP3__showSong()
+ 252:source\asw/mp3.c **** {
+ 314              		.loc 1 252 0
+ 315              		.cfi_startproc
+ 316              		@ args = 0, pretend = 0, frame = 0
+ 317              		@ frame_needed = 0, uses_anonymous_args = 0
+ 318 0000 10B5     		push	{r4, lr}
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 11
+
+
+ 319              		.cfi_def_cfa_offset 8
+ 320              		.cfi_offset 4, -8
+ 321              		.cfi_offset 14, -4
+ 253:source\asw/mp3.c ****     UART_LOG_PutString("\n\n===================\n");
+ 322              		.loc 1 253 0
+ 323 0002 0F48     		ldr	r0, .L32
+ 324 0004 FFF7FEFF 		bl	UART_LOG_PutString
+ 325              	.LVL15:
+ 326              	.LBB2:
+ 254:source\asw/mp3.c ****     
+ 255:source\asw/mp3.c ****     for (uint16_t i = 0; i < MP3__player.m_noSongs; i++)
+ 327              		.loc 1 255 0
+ 328 0008 0024     		movs	r4, #0
+ 329 000a 14E0     		b	.L27
+ 330              	.LVL16:
+ 331              	.L30:
+ 256:source\asw/mp3.c ****     {
+ 257:source\asw/mp3.c ****         if (i == MP3__player.m_currentSong)
+ 332              		.loc 1 257 0
+ 333 000c 0D4B     		ldr	r3, .L32+4
+ 334 000e 9B88     		ldrh	r3, [r3, #4]
+ 335 0010 9C42     		cmp	r4, r3
+ 336 0012 03D1     		bne	.L28
+ 258:source\asw/mp3.c ****         {
+ 259:source\asw/mp3.c ****             UART_LOG_PutString("(*)");
+ 337              		.loc 1 259 0
+ 338 0014 0C48     		ldr	r0, .L32+8
+ 339 0016 FFF7FEFF 		bl	UART_LOG_PutString
+ 340              	.LVL17:
+ 341 001a 02E0     		b	.L29
+ 342              	.L28:
+ 260:source\asw/mp3.c ****         }
+ 261:source\asw/mp3.c ****         else
+ 262:source\asw/mp3.c ****         {
+ 263:source\asw/mp3.c ****             UART_LOG_PutString("( )");
+ 343              		.loc 1 263 0
+ 344 001c 0B48     		ldr	r0, .L32+12
+ 345 001e FFF7FEFF 		bl	UART_LOG_PutString
+ 346              	.LVL18:
+ 347              	.L29:
+ 264:source\asw/mp3.c ****         }
+ 265:source\asw/mp3.c ****         UART_LOG_PutString(SOUND_Records[i].m_title);
+ 348              		.loc 1 265 0 discriminator 2
+ 349 0022 2301     		lsls	r3, r4, #4
+ 350 0024 0A4A     		ldr	r2, .L32+16
+ 351 0026 D058     		ldr	r0, [r2, r3]
+ 352 0028 FFF7FEFF 		bl	UART_LOG_PutString
+ 353              	.LVL19:
+ 266:source\asw/mp3.c ****         UART_LOG_PutString("\n");
+ 354              		.loc 1 266 0 discriminator 2
+ 355 002c 0948     		ldr	r0, .L32+20
+ 356 002e FFF7FEFF 		bl	UART_LOG_PutString
+ 357              	.LVL20:
+ 255:source\asw/mp3.c ****     {
+ 358              		.loc 1 255 0 discriminator 2
+ 359 0032 0134     		adds	r4, r4, #1
+ 360              	.LVL21:
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 12
+
+
+ 361 0034 A4B2     		uxth	r4, r4
+ 362              	.LVL22:
+ 363              	.L27:
+ 255:source\asw/mp3.c ****     {
+ 364              		.loc 1 255 0 is_stmt 0 discriminator 1
+ 365 0036 034B     		ldr	r3, .L32+4
+ 366 0038 5B88     		ldrh	r3, [r3, #2]
+ 367 003a 9C42     		cmp	r4, r3
+ 368 003c E6D3     		bcc	.L30
+ 369              	.LBE2:
+ 267:source\asw/mp3.c ****     }
+ 268:source\asw/mp3.c ****     
+ 269:source\asw/mp3.c **** 
+ 270:source\asw/mp3.c **** }
+ 370              		.loc 1 270 0 is_stmt 1
+ 371 003e 10BD     		pop	{r4, pc}
+ 372              	.LVL23:
+ 373              	.L33:
+ 374              		.align	2
+ 375              	.L32:
+ 376 0040 00000000 		.word	.LC0
+ 377 0044 00000000 		.word	.LANCHOR0
+ 378 0048 18000000 		.word	.LC1
+ 379 004c 1C000000 		.word	.LC2
+ 380 0050 00000000 		.word	SOUND_Records
+ 381 0054 20000000 		.word	.LC3
+ 382              		.cfi_endproc
+ 383              	.LFE124:
+ 384              		.size	MP3__showSong, .-MP3__showSong
+ 385              		.section	.text.MP3_Init,"ax",%progbits
+ 386              		.align	2
+ 387              		.global	MP3_Init
+ 388              		.thumb
+ 389              		.thumb_func
+ 390              		.type	MP3_Init, %function
+ 391              	MP3_Init:
+ 392              	.LFB114:
+  95:source\asw/mp3.c ****     MP3__player.m_state = MP3STATE_ISSTOPPED;
+ 393              		.loc 1 95 0
+ 394              		.cfi_startproc
+ 395              		@ args = 0, pretend = 0, frame = 0
+ 396              		@ frame_needed = 0, uses_anonymous_args = 0
+ 397 0000 70B5     		push	{r4, r5, r6, lr}
+ 398              		.cfi_def_cfa_offset 16
+ 399              		.cfi_offset 4, -16
+ 400              		.cfi_offset 5, -12
+ 401              		.cfi_offset 6, -8
+ 402              		.cfi_offset 14, -4
+  96:source\asw/mp3.c ****     MP3__player.m_noSongs = SOUND_NoOfRecords;
+ 403              		.loc 1 96 0
+ 404 0002 104C     		ldr	r4, .L36
+ 405 0004 0025     		movs	r5, #0
+ 406 0006 2570     		strb	r5, [r4]
+  97:source\asw/mp3.c ****     //MP3__player.m_volume = MP3__MAXVOLUME;
+ 407              		.loc 1 97 0
+ 408 0008 0F4B     		ldr	r3, .L36+4
+ 409 000a 1B88     		ldrh	r3, [r3]
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 13
+
+
+ 410 000c 6380     		strh	r3, [r4, #2]	@ movhi
+  99:source\asw/mp3.c ****     MP3__player.m_currentSong = 0;
+ 411              		.loc 1 99 0
+ 412 000e A571     		strb	r5, [r4, #6]
+ 100:source\asw/mp3.c **** 
+ 413              		.loc 1 100 0
+ 414 0010 A580     		strh	r5, [r4, #4]	@ movhi
+ 102:source\asw/mp3.c ****     SEVEN_Set(SEVEN_1,MP3__player.m_volume%10);
+ 415              		.loc 1 102 0
+ 416 0012 FFF7FEFF 		bl	MP3__showSong
+ 417              	.LVL24:
+ 103:source\asw/mp3.c ****     SEVEN_Set(SEVEN_0,MP3__player.m_volume/10);
+ 418              		.loc 1 103 0
+ 419 0016 A279     		ldrb	r2, [r4, #6]	@ zero_extendqisi2
+ 420 0018 0C4E     		ldr	r6, .L36+8
+ 421 001a A6FB0213 		umull	r1, r3, r6, r2
+ 422 001e DB08     		lsrs	r3, r3, #3
+ 423 0020 03EB8303 		add	r3, r3, r3, lsl #2
+ 424 0024 5900     		lsls	r1, r3, #1
+ 425 0026 511A     		subs	r1, r2, r1
+ 426 0028 C9B2     		uxtb	r1, r1
+ 427 002a 0120     		movs	r0, #1
+ 428 002c FFF7FEFF 		bl	SEVEN_Set
+ 429              	.LVL25:
+ 104:source\asw/mp3.c ****     //SOUND_SetVolume(MP3__player.m_volume * 20);
+ 430              		.loc 1 104 0
+ 431 0030 A179     		ldrb	r1, [r4, #6]	@ zero_extendqisi2
+ 432 0032 A6FB0131 		umull	r3, r1, r6, r1
+ 433 0036 C908     		lsrs	r1, r1, #3
+ 434 0038 2846     		mov	r0, r5
+ 435 003a FFF7FEFF 		bl	SEVEN_Set
+ 436              	.LVL26:
+ 108:source\asw/mp3.c **** 
+ 437              		.loc 1 108 0
+ 438 003e 2846     		mov	r0, r5
+ 439 0040 70BD     		pop	{r4, r5, r6, pc}
+ 440              	.L37:
+ 441 0042 00BF     		.align	2
+ 442              	.L36:
+ 443 0044 00000000 		.word	.LANCHOR0
+ 444 0048 00000000 		.word	SOUND_NoOfRecords
+ 445 004c CDCCCCCC 		.word	-858993459
+ 446              		.cfi_endproc
+ 447              	.LFE114:
+ 448              		.size	MP3_Init, .-MP3_Init
+ 449              		.section	.text.MP3__showRemainingPlaytime,"ax",%progbits
+ 450              		.align	2
+ 451              		.global	MP3__showRemainingPlaytime
+ 452              		.thumb
+ 453              		.thumb_func
+ 454              		.type	MP3__showRemainingPlaytime, %function
+ 455              	MP3__showRemainingPlaytime:
+ 456              	.LFB125:
+ 271:source\asw/mp3.c **** 
+ 272:source\asw/mp3.c **** void MP3__showRemainingPlaytime()
+ 273:source\asw/mp3.c **** {
+ 457              		.loc 1 273 0
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 14
+
+
+ 458              		.cfi_startproc
+ 459              		@ args = 0, pretend = 0, frame = 0
+ 460              		@ frame_needed = 0, uses_anonymous_args = 0
+ 461              		@ link register save eliminated.
+ 274:source\asw/mp3.c ****     MP3__player.m_remainingPlayTime--;
+ 462              		.loc 1 274 0
+ 463 0000 024A     		ldr	r2, .L39
+ 464 0002 1389     		ldrh	r3, [r2, #8]
+ 465 0004 013B     		subs	r3, r3, #1
+ 466 0006 1381     		strh	r3, [r2, #8]	@ movhi
+ 467 0008 7047     		bx	lr
+ 468              	.L40:
+ 469 000a 00BF     		.align	2
+ 470              	.L39:
+ 471 000c 00000000 		.word	.LANCHOR0
+ 472              		.cfi_endproc
+ 473              	.LFE125:
+ 474              		.size	MP3__showRemainingPlaytime, .-MP3__showRemainingPlaytime
+ 475              		.section	.text.MP3__songEnded,"ax",%progbits
+ 476              		.align	2
+ 477              		.global	MP3__songEnded
+ 478              		.thumb
+ 479              		.thumb_func
+ 480              		.type	MP3__songEnded, %function
+ 481              	MP3__songEnded:
+ 482              	.LFB126:
+ 275:source\asw/mp3.c ****     //SEVEN_Set(SEVEN_0,MP3__player.m_remainingPlayTime);
+ 276:source\asw/mp3.c ****     
+ 277:source\asw/mp3.c **** }
+ 278:source\asw/mp3.c **** 
+ 279:source\asw/mp3.c **** boolean_t MP3__songEnded()
+ 280:source\asw/mp3.c **** {
+ 483              		.loc 1 280 0
+ 484              		.cfi_startproc
+ 485              		@ args = 0, pretend = 0, frame = 0
+ 486              		@ frame_needed = 0, uses_anonymous_args = 0
+ 487              		@ link register save eliminated.
+ 281:source\asw/mp3.c ****     return MP3__player.m_remainingPlayTime == 0;
+ 488              		.loc 1 281 0
+ 489 0000 024B     		ldr	r3, .L42
+ 490 0002 1889     		ldrh	r0, [r3, #8]
+ 282:source\asw/mp3.c **** }
+ 491              		.loc 1 282 0
+ 492 0004 B0FA80F0 		clz	r0, r0
+ 493 0008 4009     		lsrs	r0, r0, #5
+ 494 000a 7047     		bx	lr
+ 495              	.L43:
+ 496              		.align	2
+ 497              	.L42:
+ 498 000c 00000000 		.word	.LANCHOR0
+ 499              		.cfi_endproc
+ 500              	.LFE126:
+ 501              		.size	MP3__songEnded, .-MP3__songEnded
+ 502              		.section	.text.MP3_ProcessEvent,"ax",%progbits
+ 503              		.align	2
+ 504              		.global	MP3_ProcessEvent
+ 505              		.thumb
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 15
+
+
+ 506              		.thumb_func
+ 507              		.type	MP3_ProcessEvent, %function
+ 508              	MP3_ProcessEvent:
+ 509              	.LFB115:
+ 116:source\asw/mp3.c ****     //Debugging aid
+ 510              		.loc 1 116 0
+ 511              		.cfi_startproc
+ 512              		@ args = 0, pretend = 0, frame = 0
+ 513              		@ frame_needed = 0, uses_anonymous_args = 0
+ 514              	.LVL27:
+ 515 0000 10B5     		push	{r4, lr}
+ 516              		.cfi_def_cfa_offset 8
+ 517              		.cfi_offset 4, -8
+ 518              		.cfi_offset 14, -4
+ 519 0002 0446     		mov	r4, r0
+ 121:source\asw/mp3.c ****     {
+ 520              		.loc 1 121 0
+ 521 0004 394B     		ldr	r3, .L58
+ 522 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 523 0008 012B     		cmp	r3, #1
+ 524 000a 1ED0     		beq	.L46
+ 525 000c 13B1     		cbz	r3, .L47
+ 526 000e 022B     		cmp	r3, #2
+ 527 0010 59D0     		beq	.L48
+ 528 0012 69E0     		b	.L45
+ 529              	.L47:
+ 124:source\asw/mp3.c ****             {
+ 530              		.loc 1 124 0
+ 531 0014 10F0010F 		tst	r0, #1
+ 532 0018 04D0     		beq	.L49
+ 126:source\asw/mp3.c ****                 MP3__showSong();
+ 533              		.loc 1 126 0
+ 534 001a FFF7FEFF 		bl	MP3__prevSong
+ 535              	.LVL28:
+ 127:source\asw/mp3.c ****             }
+ 536              		.loc 1 127 0
+ 537 001e FFF7FEFF 		bl	MP3__showSong
+ 538              	.LVL29:
+ 539 0022 61E0     		b	.L45
+ 540              	.LVL30:
+ 541              	.L49:
+ 129:source\asw/mp3.c ****             {
+ 542              		.loc 1 129 0
+ 543 0024 10F0020F 		tst	r0, #2
+ 544 0028 04D0     		beq	.L50
+ 131:source\asw/mp3.c ****                 MP3__showSong();
+ 545              		.loc 1 131 0
+ 546 002a FFF7FEFF 		bl	MP3__nextSong
+ 547              	.LVL31:
+ 132:source\asw/mp3.c ****             }
+ 548              		.loc 1 132 0
+ 549 002e FFF7FEFF 		bl	MP3__showSong
+ 550              	.LVL32:
+ 551 0032 59E0     		b	.L45
+ 552              	.LVL33:
+ 553              	.L50:
+ 134:source\asw/mp3.c ****             {
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 16
+
+
+ 554              		.loc 1 134 0
+ 555 0034 10F0080F 		tst	r0, #8
+ 556 0038 56D0     		beq	.L45
+ 136:source\asw/mp3.c ****                 MP3__showSong();
+ 557              		.loc 1 136 0
+ 558 003a FFF7FEFF 		bl	MP3__playSong
+ 559              	.LVL34:
+ 137:source\asw/mp3.c ****                 MP3__player.m_state = MP3STATE_ISPLAYING;
+ 560              		.loc 1 137 0
+ 561 003e FFF7FEFF 		bl	MP3__showSong
+ 562              	.LVL35:
+ 138:source\asw/mp3.c ****             }
+ 563              		.loc 1 138 0
+ 564 0042 0122     		movs	r2, #1
+ 565 0044 294B     		ldr	r3, .L58
+ 566 0046 1A70     		strb	r2, [r3]
+ 567 0048 4EE0     		b	.L45
+ 568              	.LVL36:
+ 569              	.L46:
+ 143:source\asw/mp3.c ****             && ((nextEvent & ev_Button1) || (nextEvent & ev_3000ms)||(nextEvent & ev_1000ms)
+ 570              		.loc 1 143 0
+ 571 004a 0020     		movs	r0, #0
+ 572              	.LVL37:
+ 573 004c FFF7FEFF 		bl	BUTTON_IsPressed
+ 574              	.LVL38:
+ 575 0050 0128     		cmp	r0, #1
+ 576 0052 06D1     		bne	.L51
+ 144:source\asw/mp3.c ****             || (nextEvent & ev_500ms) ||(nextEvent & ev_100ms)))         
+ 577              		.loc 1 144 0
+ 578 0054 40F2E113 		movw	r3, #481
+ 579 0058 1C42     		tst	r4, r3
+ 580 005a 02D0     		beq	.L51
+ 147:source\asw/mp3.c ****             }
+ 581              		.loc 1 147 0
+ 582 005c 2046     		mov	r0, r4
+ 583 005e FFF7FEFF 		bl	MP3__increaseVolume
+ 584              	.LVL39:
+ 585              	.L51:
+ 149:source\asw/mp3.c ****             && ((nextEvent & ev_Button2) || (nextEvent & ev_3000ms)||(nextEvent & ev_1000ms)
+ 586              		.loc 1 149 0
+ 587 0062 0120     		movs	r0, #1
+ 588 0064 FFF7FEFF 		bl	BUTTON_IsPressed
+ 589              	.LVL40:
+ 590 0068 0128     		cmp	r0, #1
+ 591 006a 06D1     		bne	.L52
+ 150:source\asw/mp3.c ****             || (nextEvent & ev_500ms) ||(nextEvent & ev_100ms)))         
+ 592              		.loc 1 150 0
+ 593 006c 14F4F17F 		tst	r4, #482
+ 594 0070 03D0     		beq	.L52
+ 153:source\asw/mp3.c ****             }
+ 595              		.loc 1 153 0
+ 596 0072 2046     		mov	r0, r4
+ 597 0074 FFF7FEFF 		bl	MP3__decreaseVolume
+ 598              	.LVL41:
+ 599 0078 36E0     		b	.L45
+ 600              	.L52:
+ 155:source\asw/mp3.c ****             {
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 17
+
+
+ 601              		.loc 1 155 0
+ 602 007a 14F0080F 		tst	r4, #8
+ 603 007e 05D0     		beq	.L53
+ 157:source\asw/mp3.c ****                 MP3__player.m_state = MP3STATE_ISPAUSING;
+ 604              		.loc 1 157 0
+ 605 0080 FFF7FEFF 		bl	MP3__pauseSong
+ 606              	.LVL42:
+ 158:source\asw/mp3.c ****             }
+ 607              		.loc 1 158 0
+ 608 0084 0222     		movs	r2, #2
+ 609 0086 194B     		ldr	r3, .L58
+ 610 0088 1A70     		strb	r2, [r3]
+ 611 008a 2DE0     		b	.L45
+ 612              	.L53:
+ 160:source\asw/mp3.c ****             {
+ 613              		.loc 1 160 0
+ 614 008c 14F0100F 		tst	r4, #16
+ 615 0090 05D0     		beq	.L54
+ 162:source\asw/mp3.c ****                 MP3__player.m_state = MP3STATE_ISSTOPPED;
+ 616              		.loc 1 162 0
+ 617 0092 FFF7FEFF 		bl	MP3__stopSong
+ 618              	.LVL43:
+ 163:source\asw/mp3.c ****             }
+ 619              		.loc 1 163 0
+ 620 0096 0022     		movs	r2, #0
+ 621 0098 144B     		ldr	r3, .L58
+ 622 009a 1A70     		strb	r2, [r3]
+ 623 009c 24E0     		b	.L45
+ 624              	.L54:
+ 165:source\asw/mp3.c ****             {
+ 625              		.loc 1 165 0
+ 626 009e 14F00404 		ands	r4, r4, #4
+ 627              	.LVL44:
+ 628 00a2 05D0     		beq	.L55
+ 165:source\asw/mp3.c ****             {
+ 629              		.loc 1 165 0 is_stmt 0 discriminator 1
+ 630 00a4 FFF7FEFF 		bl	MP3__songEnded
+ 631              	.LVL45:
+ 632 00a8 10B9     		cbnz	r0, .L55
+ 167:source\asw/mp3.c ****             }
+ 633              		.loc 1 167 0 is_stmt 1
+ 634 00aa FFF7FEFF 		bl	MP3__showRemainingPlaytime
+ 635              	.LVL46:
+ 636 00ae 1BE0     		b	.L45
+ 637              	.L55:
+ 169:source\asw/mp3.c ****             {
+ 638              		.loc 1 169 0
+ 639 00b0 D4B1     		cbz	r4, .L45
+ 169:source\asw/mp3.c ****             {
+ 640              		.loc 1 169 0 is_stmt 0 discriminator 1
+ 641 00b2 FFF7FEFF 		bl	MP3__songEnded
+ 642              	.LVL47:
+ 643 00b6 B8B1     		cbz	r0, .L45
+ 171:source\asw/mp3.c ****                 MP3__playSong();
+ 644              		.loc 1 171 0 is_stmt 1
+ 645 00b8 FFF7FEFF 		bl	MP3__nextSong
+ 646              	.LVL48:
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 18
+
+
+ 172:source\asw/mp3.c ****                 MP3__showSong();
+ 647              		.loc 1 172 0
+ 648 00bc FFF7FEFF 		bl	MP3__playSong
+ 649              	.LVL49:
+ 173:source\asw/mp3.c ****             }
+ 650              		.loc 1 173 0
+ 651 00c0 FFF7FEFF 		bl	MP3__showSong
+ 652              	.LVL50:
+ 653 00c4 10E0     		b	.L45
+ 654              	.LVL51:
+ 655              	.L48:
+ 178:source\asw/mp3.c ****             {
+ 656              		.loc 1 178 0
+ 657 00c6 10F0080F 		tst	r0, #8
+ 658 00ca 05D0     		beq	.L56
+ 180:source\asw/mp3.c ****                 MP3__player.m_state = MP3STATE_ISPLAYING;
+ 659              		.loc 1 180 0
+ 660 00cc FFF7FEFF 		bl	MP3__resumeSong
+ 661              	.LVL52:
+ 181:source\asw/mp3.c ****             }
+ 662              		.loc 1 181 0
+ 663 00d0 0122     		movs	r2, #1
+ 664 00d2 064B     		ldr	r3, .L58
+ 665 00d4 1A70     		strb	r2, [r3]
+ 666 00d6 07E0     		b	.L45
+ 667              	.LVL53:
+ 668              	.L56:
+ 183:source\asw/mp3.c ****             {
+ 669              		.loc 1 183 0
+ 670 00d8 10F0100F 		tst	r0, #16
+ 671 00dc 04D0     		beq	.L45
+ 185:source\asw/mp3.c ****                 MP3__player.m_state = MP3STATE_ISSTOPPED;
+ 672              		.loc 1 185 0
+ 673 00de FFF7FEFF 		bl	MP3__stopSong
+ 674              	.LVL54:
+ 186:source\asw/mp3.c ****             }
+ 675              		.loc 1 186 0
+ 676 00e2 0022     		movs	r2, #0
+ 677 00e4 014B     		ldr	r3, .L58
+ 678 00e6 1A70     		strb	r2, [r3]
+ 679              	.LVL55:
+ 680              	.L45:
+ 192:source\asw/mp3.c **** 
+ 681              		.loc 1 192 0
+ 682 00e8 0020     		movs	r0, #0
+ 683 00ea 10BD     		pop	{r4, pc}
+ 684              	.L59:
+ 685              		.align	2
+ 686              	.L58:
+ 687 00ec 00000000 		.word	.LANCHOR0
+ 688              		.cfi_endproc
+ 689              	.LFE115:
+ 690              		.size	MP3_ProcessEvent, .-MP3_ProcessEvent
+ 691              		.section	.text.MP3__showEventAndState,"ax",%progbits
+ 692              		.align	2
+ 693              		.global	MP3__showEventAndState
+ 694              		.thumb
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 19
+
+
+ 695              		.thumb_func
+ 696              		.type	MP3__showEventAndState, %function
+ 697              	MP3__showEventAndState:
+ 698              	.LFB127:
+ 283:source\asw/mp3.c **** 
+ 284:source\asw/mp3.c **** void MP3__showEventAndState(EventMaskType ev, MP3__State_t state)
+ 285:source\asw/mp3.c **** {
+ 699              		.loc 1 285 0
+ 700              		.cfi_startproc
+ 701              		@ args = 0, pretend = 0, frame = 0
+ 702              		@ frame_needed = 0, uses_anonymous_args = 0
+ 703              	.LVL56:
+ 704 0000 38B5     		push	{r3, r4, r5, lr}
+ 705              		.cfi_def_cfa_offset 16
+ 706              		.cfi_offset 3, -16
+ 707              		.cfi_offset 4, -12
+ 708              		.cfi_offset 5, -8
+ 709              		.cfi_offset 14, -4
+ 286:source\asw/mp3.c ****     char* stateStr;
+ 287:source\asw/mp3.c ****     char* eventStr;
+ 288:source\asw/mp3.c ****     
+ 289:source\asw/mp3.c ****     //Create the event string
+ 290:source\asw/mp3.c ****     switch (ev)
+ 710              		.loc 1 290 0
+ 711 0002 0138     		subs	r0, r0, #1
+ 712              	.LVL57:
+ 713 0004 0F28     		cmp	r0, #15
+ 714 0006 11D8     		bhi	.L61
+ 715 0008 DFE800F0 		tbb	[pc, r0]
+ 716              	.L63:
+ 717 000c 12       		.byte	(.L71-.L63)/2
+ 718 000d 0A       		.byte	(.L64-.L63)/2
+ 719 000e 10       		.byte	(.L61-.L63)/2
+ 720 000f 08       		.byte	(.L65-.L63)/2
+ 721 0010 10       		.byte	(.L61-.L63)/2
+ 722 0011 10       		.byte	(.L61-.L63)/2
+ 723 0012 10       		.byte	(.L61-.L63)/2
+ 724 0013 0C       		.byte	(.L66-.L63)/2
+ 725 0014 10       		.byte	(.L61-.L63)/2
+ 726 0015 10       		.byte	(.L61-.L63)/2
+ 727 0016 10       		.byte	(.L61-.L63)/2
+ 728 0017 10       		.byte	(.L61-.L63)/2
+ 729 0018 10       		.byte	(.L61-.L63)/2
+ 730 0019 10       		.byte	(.L61-.L63)/2
+ 731 001a 10       		.byte	(.L61-.L63)/2
+ 732 001b 0E       		.byte	(.L67-.L63)/2
+ 733              		.p2align 1
+ 734              	.L65:
+ 291:source\asw/mp3.c ****     {
+ 292:source\asw/mp3.c ****         case ev_1s : eventStr = "ev_1s"; break;
+ 735              		.loc 1 292 0
+ 736 001c 114C     		ldr	r4, .L74
+ 737 001e 08E0     		b	.L62
+ 738              	.L64:
+ 739              	.LVL58:
+ 293:source\asw/mp3.c ****         case ev_Button1 : eventStr = "ev_Button1"; break;
+ 294:source\asw/mp3.c ****         case ev_Button2 : eventStr = "ev_Button2"; break;
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 20
+
+
+ 740              		.loc 1 294 0
+ 741 0020 114C     		ldr	r4, .L74+4
+ 742 0022 06E0     		b	.L62
+ 743              	.LVL59:
+ 744              	.L66:
+ 295:source\asw/mp3.c ****         case ev_Button3 : eventStr = "ev_Button3"; break;
+ 745              		.loc 1 295 0
+ 746 0024 114C     		ldr	r4, .L74+8
+ 747 0026 04E0     		b	.L62
+ 748              	.LVL60:
+ 749              	.L67:
+ 296:source\asw/mp3.c ****         case ev_Button4 : eventStr = "ev_Button4"; break;
+ 750              		.loc 1 296 0
+ 751 0028 114C     		ldr	r4, .L74+12
+ 752 002a 02E0     		b	.L62
+ 753              	.LVL61:
+ 754              	.L61:
+ 297:source\asw/mp3.c ****         default: eventStr = "WRONG EVENT"; break;
+ 755              		.loc 1 297 0
+ 756 002c 114C     		ldr	r4, .L74+16
+ 757 002e 00E0     		b	.L62
+ 758              	.LVL62:
+ 759              	.L71:
+ 293:source\asw/mp3.c ****         case ev_Button2 : eventStr = "ev_Button2"; break;
+ 760              		.loc 1 293 0
+ 761 0030 114C     		ldr	r4, .L74+20
+ 762              	.L62:
+ 763              	.LVL63:
+ 298:source\asw/mp3.c ****     }
+ 299:source\asw/mp3.c ****     
+ 300:source\asw/mp3.c ****     //Create the state string
+ 301:source\asw/mp3.c ****     switch (state)
+ 764              		.loc 1 301 0
+ 765 0032 0129     		cmp	r1, #1
+ 766 0034 05D0     		beq	.L72
+ 767 0036 0229     		cmp	r1, #2
+ 768 0038 01D0     		beq	.L70
+ 302:source\asw/mp3.c ****     {
+ 303:source\asw/mp3.c ****         case MP3STATE_ISSTOPPED : stateStr = "IsStopped"; break; 
+ 769              		.loc 1 303 0
+ 770 003a 104D     		ldr	r5, .L74+24
+ 771 003c 02E0     		b	.L69
+ 772              	.L70:
+ 773              	.LVL64:
+ 304:source\asw/mp3.c ****         case MP3STATE_ISPLAYING : stateStr = "IsPlaying"; break;
+ 305:source\asw/mp3.c ****         case MP3STATE_ISPAUSING : stateStr = "IsPausing"; break;
+ 774              		.loc 1 305 0
+ 775 003e 104D     		ldr	r5, .L74+28
+ 776 0040 00E0     		b	.L69
+ 777              	.LVL65:
+ 778              	.L72:
+ 304:source\asw/mp3.c ****         case MP3STATE_ISPLAYING : stateStr = "IsPlaying"; break;
+ 779              		.loc 1 304 0
+ 780 0042 104D     		ldr	r5, .L74+32
+ 781              	.L69:
+ 782              	.LVL66:
+ 306:source\asw/mp3.c ****         default : stateStr = "IsStopped"; break;
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 21
+
+
+ 307:source\asw/mp3.c ****     }
+ 308:source\asw/mp3.c ****     
+ 309:source\asw/mp3.c ****     //Print it via USB
+ 310:source\asw/mp3.c ****     UART_LOG_PutString("State: ");
+ 783              		.loc 1 310 0
+ 784 0044 1048     		ldr	r0, .L74+36
+ 785              	.LVL67:
+ 786 0046 FFF7FEFF 		bl	UART_LOG_PutString
+ 787              	.LVL68:
+ 311:source\asw/mp3.c ****     UART_LOG_PutString(stateStr);
+ 788              		.loc 1 311 0
+ 789 004a 2846     		mov	r0, r5
+ 790 004c FFF7FEFF 		bl	UART_LOG_PutString
+ 791              	.LVL69:
+ 312:source\asw/mp3.c ****     UART_LOG_PutString(" | Event: ");
+ 792              		.loc 1 312 0
+ 793 0050 0E48     		ldr	r0, .L74+40
+ 794 0052 FFF7FEFF 		bl	UART_LOG_PutString
+ 795              	.LVL70:
+ 313:source\asw/mp3.c ****     UART_LOG_PutString(eventStr);
+ 796              		.loc 1 313 0
+ 797 0056 2046     		mov	r0, r4
+ 798 0058 FFF7FEFF 		bl	UART_LOG_PutString
+ 799              	.LVL71:
+ 314:source\asw/mp3.c ****     UART_LOG_PutString("\n");
+ 800              		.loc 1 314 0
+ 801 005c 0C48     		ldr	r0, .L74+44
+ 802 005e FFF7FEFF 		bl	UART_LOG_PutString
+ 803              	.LVL72:
+ 804 0062 38BD     		pop	{r3, r4, r5, pc}
+ 805              	.LVL73:
+ 806              	.L75:
+ 807              		.align	2
+ 808              	.L74:
+ 809 0064 24000000 		.word	.LC4
+ 810 0068 38000000 		.word	.LC6
+ 811 006c 44000000 		.word	.LC7
+ 812 0070 50000000 		.word	.LC8
+ 813 0074 5C000000 		.word	.LC9
+ 814 0078 2C000000 		.word	.LC5
+ 815 007c 68000000 		.word	.LC10
+ 816 0080 80000000 		.word	.LC12
+ 817 0084 74000000 		.word	.LC11
+ 818 0088 8C000000 		.word	.LC13
+ 819 008c 94000000 		.word	.LC14
+ 820 0090 20000000 		.word	.LC3
+ 821              		.cfi_endproc
+ 822              	.LFE127:
+ 823              		.size	MP3__showEventAndState, .-MP3__showEventAndState
+ 824              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 825              		.align	2
+ 826              	.LC0:
+ 827 0000 0A0A3D3D 		.ascii	"\012\012===================\012\000"
+ 827      3D3D3D3D 
+ 827      3D3D3D3D 
+ 827      3D3D3D3D 
+ 827      3D3D3D3D 
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 22
+
+
+ 828 0017 00       		.space	1
+ 829              	.LC1:
+ 830 0018 282A2900 		.ascii	"(*)\000"
+ 831              	.LC2:
+ 832 001c 28202900 		.ascii	"( )\000"
+ 833              	.LC3:
+ 834 0020 0A00     		.ascii	"\012\000"
+ 835 0022 0000     		.space	2
+ 836              	.LC4:
+ 837 0024 65765F31 		.ascii	"ev_1s\000"
+ 837      7300
+ 838 002a 0000     		.space	2
+ 839              	.LC5:
+ 840 002c 65765F42 		.ascii	"ev_Button1\000"
+ 840      7574746F 
+ 840      6E3100
+ 841 0037 00       		.space	1
+ 842              	.LC6:
+ 843 0038 65765F42 		.ascii	"ev_Button2\000"
+ 843      7574746F 
+ 843      6E3200
+ 844 0043 00       		.space	1
+ 845              	.LC7:
+ 846 0044 65765F42 		.ascii	"ev_Button3\000"
+ 846      7574746F 
+ 846      6E3300
+ 847 004f 00       		.space	1
+ 848              	.LC8:
+ 849 0050 65765F42 		.ascii	"ev_Button4\000"
+ 849      7574746F 
+ 849      6E3400
+ 850 005b 00       		.space	1
+ 851              	.LC9:
+ 852 005c 57524F4E 		.ascii	"WRONG EVENT\000"
+ 852      47204556 
+ 852      454E5400 
+ 853              	.LC10:
+ 854 0068 49735374 		.ascii	"IsStopped\000"
+ 854      6F707065 
+ 854      6400
+ 855 0072 0000     		.space	2
+ 856              	.LC11:
+ 857 0074 4973506C 		.ascii	"IsPlaying\000"
+ 857      6179696E 
+ 857      6700
+ 858 007e 0000     		.space	2
+ 859              	.LC12:
+ 860 0080 49735061 		.ascii	"IsPausing\000"
+ 860      7573696E 
+ 860      6700
+ 861 008a 0000     		.space	2
+ 862              	.LC13:
+ 863 008c 53746174 		.ascii	"State: \000"
+ 863      653A2000 
+ 864              	.LC14:
+ 865 0094 207C2045 		.ascii	" | Event: \000"
+ 865      76656E74 
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 23
+
+
+ 865      3A2000
+ 866              		.bss
+ 867              		.align	2
+ 868              		.set	.LANCHOR0,. + 0
+ 869              		.type	MP3__player, %object
+ 870              		.size	MP3__player, 10
+ 871              	MP3__player:
+ 872 0000 00000000 		.space	10
+ 872      00000000 
+ 872      0000
+ 873              		.text
+ 874              	.Letext0:
+ 875              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 876              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 877              		.file 4 "Generated_Source\\PSoC5/SimpleSystem_common_ee_types.inc"
+ 878              		.file 5 "Generated_Source\\PSoC5/SimpleSystem_cortex_mx_ee_cpu.inc"
+ 879              		.file 6 "Generated_Source\\PSoC5/SimpleSystem_ee_oo_common.inc"
+ 880              		.file 7 ".\\source\\bsw/global.h"
+ 881              		.file 8 "source\\asw\\sound_data.h"
+ 882              		.file 9 ".\\source\\bsw/button.h"
+ 883              		.file 10 "Generated_Source\\PSoC5/SimpleSystem_ee_oo_intfunc.inc"
+ 884              		.file 11 "Generated_Source\\PSoC5/SimpleSystem_cortex_mx_ee_context.inc"
+ 885              		.file 12 "Generated_Source\\PSoC5/SimpleSystem_common_ee_primitives.inc"
+ 886              		.file 13 "Generated_Source\\PSoC5/cmsis_gcc.h"
+ 887              		.file 14 "Generated_Source\\PSoC5/core_cm3.h"
+ 888              		.file 15 "source\\asw\\Smart_Volume.h"
+ 889              		.file 16 ".\\source\\bsw/seven.h"
+ 890              		.file 17 "source\\asw\\sound.h"
+ 891              		.file 18 "Generated_Source\\PSoC5/UART_LOG.h"
+ 892              		.section	.debug_info,"",%progbits
+ 893              	.Ldebug_info0:
+ 894 0000 BE080000 		.4byte	0x8be
+ 895 0004 0400     		.2byte	0x4
+ 896 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 897 000a 04       		.byte	0x4
+ 898 000b 01       		.uleb128 0x1
+ 899 000c 22030000 		.4byte	.LASF119
+ 900 0010 0C       		.byte	0xc
+ 901 0011 4F070000 		.4byte	.LASF120
+ 902 0015 30020000 		.4byte	.LASF121
+ 903 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 904 001d 00000000 		.4byte	0
+ 905 0021 00000000 		.4byte	.Ldebug_line0
+ 906 0025 02       		.uleb128 0x2
+ 907 0026 01       		.byte	0x1
+ 908 0027 06       		.byte	0x6
+ 909 0028 9F070000 		.4byte	.LASF0
+ 910 002c 03       		.uleb128 0x3
+ 911 002d 2D060000 		.4byte	.LASF3
+ 912 0031 02       		.byte	0x2
+ 913 0032 1D       		.byte	0x1d
+ 914 0033 37000000 		.4byte	0x37
+ 915 0037 02       		.uleb128 0x2
+ 916 0038 01       		.byte	0x1
+ 917 0039 08       		.byte	0x8
+ 918 003a D7060000 		.4byte	.LASF1
+ 919 003e 02       		.uleb128 0x2
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 24
+
+
+ 920 003f 02       		.byte	0x2
+ 921 0040 05       		.byte	0x5
+ 922 0041 7C050000 		.4byte	.LASF2
+ 923 0045 03       		.uleb128 0x3
+ 924 0046 FC010000 		.4byte	.LASF4
+ 925 004a 02       		.byte	0x2
+ 926 004b 2B       		.byte	0x2b
+ 927 004c 50000000 		.4byte	0x50
+ 928 0050 02       		.uleb128 0x2
+ 929 0051 02       		.byte	0x2
+ 930 0052 07       		.byte	0x7
+ 931 0053 B5070000 		.4byte	.LASF5
+ 932 0057 03       		.uleb128 0x3
+ 933 0058 B9000000 		.4byte	.LASF6
+ 934 005c 02       		.byte	0x2
+ 935 005d 3F       		.byte	0x3f
+ 936 005e 62000000 		.4byte	0x62
+ 937 0062 02       		.uleb128 0x2
+ 938 0063 04       		.byte	0x4
+ 939 0064 05       		.byte	0x5
+ 940 0065 86050000 		.4byte	.LASF7
+ 941 0069 03       		.uleb128 0x3
+ 942 006a E5060000 		.4byte	.LASF8
+ 943 006e 02       		.byte	0x2
+ 944 006f 41       		.byte	0x41
+ 945 0070 74000000 		.4byte	0x74
+ 946 0074 02       		.uleb128 0x2
+ 947 0075 04       		.byte	0x4
+ 948 0076 07       		.byte	0x7
+ 949 0077 97060000 		.4byte	.LASF9
+ 950 007b 02       		.uleb128 0x2
+ 951 007c 08       		.byte	0x8
+ 952 007d 05       		.byte	0x5
+ 953 007e 44040000 		.4byte	.LASF10
+ 954 0082 02       		.uleb128 0x2
+ 955 0083 08       		.byte	0x8
+ 956 0084 07       		.byte	0x7
+ 957 0085 C4010000 		.4byte	.LASF11
+ 958 0089 04       		.uleb128 0x4
+ 959 008a 04       		.byte	0x4
+ 960 008b 05       		.byte	0x5
+ 961 008c 696E7400 		.ascii	"int\000"
+ 962 0090 02       		.uleb128 0x2
+ 963 0091 04       		.byte	0x4
+ 964 0092 07       		.byte	0x7
+ 965 0093 95000000 		.4byte	.LASF12
+ 966 0097 03       		.uleb128 0x3
+ 967 0098 16040000 		.4byte	.LASF13
+ 968 009c 03       		.byte	0x3
+ 969 009d 18       		.byte	0x18
+ 970 009e 2C000000 		.4byte	0x2c
+ 971 00a2 03       		.uleb128 0x3
+ 972 00a3 0F050000 		.4byte	.LASF14
+ 973 00a7 03       		.byte	0x3
+ 974 00a8 24       		.byte	0x24
+ 975 00a9 45000000 		.4byte	0x45
+ 976 00ad 03       		.uleb128 0x3
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 25
+
+
+ 977 00ae BE060000 		.4byte	.LASF15
+ 978 00b2 03       		.byte	0x3
+ 979 00b3 2C       		.byte	0x2c
+ 980 00b4 57000000 		.4byte	0x57
+ 981 00b8 03       		.uleb128 0x3
+ 982 00b9 49010000 		.4byte	.LASF16
+ 983 00bd 03       		.byte	0x3
+ 984 00be 30       		.byte	0x30
+ 985 00bf 69000000 		.4byte	0x69
+ 986 00c3 02       		.uleb128 0x2
+ 987 00c4 04       		.byte	0x4
+ 988 00c5 04       		.byte	0x4
+ 989 00c6 7E010000 		.4byte	.LASF17
+ 990 00ca 02       		.uleb128 0x2
+ 991 00cb 08       		.byte	0x8
+ 992 00cc 04       		.byte	0x4
+ 993 00cd DF070000 		.4byte	.LASF18
+ 994 00d1 02       		.uleb128 0x2
+ 995 00d2 01       		.byte	0x1
+ 996 00d3 08       		.byte	0x8
+ 997 00d4 D6030000 		.4byte	.LASF19
+ 998 00d8 02       		.uleb128 0x2
+ 999 00d9 08       		.byte	0x8
+ 1000 00da 04       		.byte	0x4
+ 1001 00db 03050000 		.4byte	.LASF20
+ 1002 00df 03       		.uleb128 0x3
+ 1003 00e0 85060000 		.4byte	.LASF21
+ 1004 00e4 04       		.byte	0x4
+ 1005 00e5 53       		.byte	0x53
+ 1006 00e6 89000000 		.4byte	0x89
+ 1007 00ea 03       		.uleb128 0x3
+ 1008 00eb 2B050000 		.4byte	.LASF22
+ 1009 00ef 04       		.byte	0x4
+ 1010 00f0 54       		.byte	0x54
+ 1011 00f1 90000000 		.4byte	0x90
+ 1012 00f5 03       		.uleb128 0x3
+ 1013 00f6 7D060000 		.4byte	.LASF23
+ 1014 00fa 05       		.byte	0x5
+ 1015 00fb 4D       		.byte	0x4d
+ 1016 00fc EA000000 		.4byte	0xea
+ 1017 0100 03       		.uleb128 0x3
+ 1018 0101 0B010000 		.4byte	.LASF24
+ 1019 0105 05       		.byte	0x5
+ 1020 0106 4F       		.byte	0x4f
+ 1021 0107 EA000000 		.4byte	0xea
+ 1022 010b 03       		.uleb128 0x3
+ 1023 010c 29020000 		.4byte	.LASF25
+ 1024 0110 05       		.byte	0x5
+ 1025 0111 78       		.byte	0x78
+ 1026 0112 DF000000 		.4byte	0xdf
+ 1027 0116 05       		.uleb128 0x5
+ 1028 0117 52000000 		.4byte	.LASF26
+ 1029 011b 06       		.byte	0x6
+ 1030 011c 2302     		.2byte	0x223
+ 1031 011e F5000000 		.4byte	0xf5
+ 1032 0122 02       		.uleb128 0x2
+ 1033 0123 04       		.byte	0x4
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 26
+
+
+ 1034 0124 07       		.byte	0x7
+ 1035 0125 8E060000 		.4byte	.LASF27
+ 1036 0129 06       		.uleb128 0x6
+ 1037 012a 04       		.byte	0x4
+ 1038 012b D1000000 		.4byte	0xd1
+ 1039 012f 03       		.uleb128 0x3
+ 1040 0130 E6030000 		.4byte	.LASF28
+ 1041 0134 07       		.byte	0x7
+ 1042 0135 82       		.byte	0x82
+ 1043 0136 37000000 		.4byte	0x37
+ 1044 013a 07       		.uleb128 0x7
+ 1045 013b 65524300 		.ascii	"eRC\000"
+ 1046 013f 01       		.byte	0x1
+ 1047 0140 25000000 		.4byte	0x25
+ 1048 0144 07       		.byte	0x7
+ 1049 0145 AC       		.byte	0xac
+ 1050 0146 E1010000 		.4byte	0x1e1
+ 1051 014a 08       		.uleb128 0x8
+ 1052 014b DB030000 		.4byte	.LASF29
+ 1053 014f 00       		.byte	0
+ 1054 0150 09       		.uleb128 0x9
+ 1055 0151 52010000 		.4byte	.LASF30
+ 1056 0155 7F       		.sleb128 -1
+ 1057 0156 09       		.uleb128 0x9
+ 1058 0157 C3000000 		.4byte	.LASF31
+ 1059 015b 7E       		.sleb128 -2
+ 1060 015c 09       		.uleb128 0x9
+ 1061 015d A2000000 		.4byte	.LASF32
+ 1062 0161 7D       		.sleb128 -3
+ 1063 0162 09       		.uleb128 0x9
+ 1064 0163 CE040000 		.4byte	.LASF33
+ 1065 0167 7C       		.sleb128 -4
+ 1066 0168 09       		.uleb128 0x9
+ 1067 0169 F9070000 		.4byte	.LASF34
+ 1068 016d 7B       		.sleb128 -5
+ 1069 016e 09       		.uleb128 0x9
+ 1070 016f C6060000 		.4byte	.LASF35
+ 1071 0173 7A       		.sleb128 -6
+ 1072 0174 09       		.uleb128 0x9
+ 1073 0175 BC040000 		.4byte	.LASF36
+ 1074 0179 79       		.sleb128 -7
+ 1075 017a 09       		.uleb128 0x9
+ 1076 017b EE040000 		.4byte	.LASF37
+ 1077 017f 78       		.sleb128 -8
+ 1078 0180 09       		.uleb128 0x9
+ 1079 0181 F0060000 		.4byte	.LASF38
+ 1080 0185 77       		.sleb128 -9
+ 1081 0186 09       		.uleb128 0x9
+ 1082 0187 48050000 		.4byte	.LASF39
+ 1083 018b 76       		.sleb128 -10
+ 1084 018c 09       		.uleb128 0x9
+ 1085 018d D1000000 		.4byte	.LASF40
+ 1086 0191 75       		.sleb128 -11
+ 1087 0192 09       		.uleb128 0x9
+ 1088 0193 B6010000 		.4byte	.LASF41
+ 1089 0197 74       		.sleb128 -12
+ 1090 0198 09       		.uleb128 0x9
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 27
+
+
+ 1091 0199 B0030000 		.4byte	.LASF42
+ 1092 019d 73       		.sleb128 -13
+ 1093 019e 09       		.uleb128 0x9
+ 1094 019f 35050000 		.4byte	.LASF43
+ 1095 01a3 72       		.sleb128 -14
+ 1096 01a4 09       		.uleb128 0x9
+ 1097 01a5 3E000000 		.4byte	.LASF44
+ 1098 01a9 71       		.sleb128 -15
+ 1099 01aa 09       		.uleb128 0x9
+ 1100 01ab 1C060000 		.4byte	.LASF45
+ 1101 01af 70       		.sleb128 -16
+ 1102 01b0 09       		.uleb128 0x9
+ 1103 01b1 69060000 		.4byte	.LASF46
+ 1104 01b5 6F       		.sleb128 -17
+ 1105 01b6 09       		.uleb128 0x9
+ 1106 01b7 5B010000 		.4byte	.LASF47
+ 1107 01bb 6E       		.sleb128 -18
+ 1108 01bc 09       		.uleb128 0x9
+ 1109 01bd 18000000 		.4byte	.LASF48
+ 1110 01c1 6D       		.sleb128 -19
+ 1111 01c2 09       		.uleb128 0x9
+ 1112 01c3 56050000 		.4byte	.LASF49
+ 1113 01c7 6C       		.sleb128 -20
+ 1114 01c8 09       		.uleb128 0x9
+ 1115 01c9 04040000 		.4byte	.LASF50
+ 1116 01cd 6B       		.sleb128 -21
+ 1117 01ce 09       		.uleb128 0x9
+ 1118 01cf 65040000 		.4byte	.LASF51
+ 1119 01d3 6A       		.sleb128 -22
+ 1120 01d4 09       		.uleb128 0x9
+ 1121 01d5 E3000000 		.4byte	.LASF52
+ 1122 01d9 69       		.sleb128 -23
+ 1123 01da 09       		.uleb128 0x9
+ 1124 01db 2E070000 		.4byte	.LASF53
+ 1125 01df 68       		.sleb128 -24
+ 1126 01e0 00       		.byte	0
+ 1127 01e1 03       		.uleb128 0x3
+ 1128 01e2 B9060000 		.4byte	.LASF54
+ 1129 01e6 07       		.byte	0x7
+ 1130 01e7 C8       		.byte	0xc8
+ 1131 01e8 3A010000 		.4byte	0x13a
+ 1132 01ec 0A       		.uleb128 0xa
+ 1133 01ed 7F000000 		.4byte	.LASF122
+ 1134 01f1 10       		.byte	0x10
+ 1135 01f2 08       		.byte	0x8
+ 1136 01f3 30       		.byte	0x30
+ 1137 01f4 29020000 		.4byte	0x229
+ 1138 01f8 0B       		.uleb128 0xb
+ 1139 01f9 8D000000 		.4byte	.LASF55
+ 1140 01fd 08       		.byte	0x8
+ 1141 01fe 31       		.byte	0x31
+ 1142 01ff 29010000 		.4byte	0x129
+ 1143 0203 00       		.byte	0
+ 1144 0204 0B       		.uleb128 0xb
+ 1145 0205 DB010000 		.4byte	.LASF56
+ 1146 0209 08       		.byte	0x8
+ 1147 020a 32       		.byte	0x32
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 28
+
+
+ 1148 020b A2000000 		.4byte	0xa2
+ 1149 020f 04       		.byte	0x4
+ 1150 0210 0B       		.uleb128 0xb
+ 1151 0211 3D040000 		.4byte	.LASF57
+ 1152 0215 08       		.byte	0x8
+ 1153 0216 33       		.byte	0x33
+ 1154 0217 B8000000 		.4byte	0xb8
+ 1155 021b 08       		.byte	0x8
+ 1156 021c 0B       		.uleb128 0xb
+ 1157 021d 07020000 		.4byte	.LASF58
+ 1158 0221 08       		.byte	0x8
+ 1159 0222 34       		.byte	0x34
+ 1160 0223 29020000 		.4byte	0x229
+ 1161 0227 0C       		.byte	0xc
+ 1162 0228 00       		.byte	0
+ 1163 0229 06       		.uleb128 0x6
+ 1164 022a 04       		.byte	0x4
+ 1165 022b 97000000 		.4byte	0x97
+ 1166 022f 03       		.uleb128 0x3
+ 1167 0230 70000000 		.4byte	.LASF59
+ 1168 0234 08       		.byte	0x8
+ 1169 0235 38       		.byte	0x38
+ 1170 0236 EC010000 		.4byte	0x1ec
+ 1171 023a 0C       		.uleb128 0xc
+ 1172 023b 01       		.byte	0x1
+ 1173 023c 37000000 		.4byte	0x37
+ 1174 0240 10       		.byte	0x10
+ 1175 0241 5F       		.byte	0x5f
+ 1176 0242 53020000 		.4byte	0x253
+ 1177 0246 08       		.uleb128 0x8
+ 1178 0247 DE040000 		.4byte	.LASF60
+ 1179 024b 00       		.byte	0
+ 1180 024c 08       		.uleb128 0x8
+ 1181 024d E6040000 		.4byte	.LASF61
+ 1182 0251 01       		.byte	0x1
+ 1183 0252 00       		.byte	0
+ 1184 0253 0D       		.uleb128 0xd
+ 1185 0254 1A030000 		.4byte	.LASF62
+ 1186 0258 01       		.byte	0x1
+ 1187 0259 37000000 		.4byte	0x37
+ 1188 025d 09       		.byte	0x9
+ 1189 025e 59       		.byte	0x59
+ 1190 025f 7C020000 		.4byte	0x27c
+ 1191 0263 08       		.uleb128 0x8
+ 1192 0264 92010000 		.4byte	.LASF63
+ 1193 0268 00       		.byte	0
+ 1194 0269 08       		.uleb128 0x8
+ 1195 026a 9B010000 		.4byte	.LASF64
+ 1196 026e 01       		.byte	0x1
+ 1197 026f 08       		.uleb128 0x8
+ 1198 0270 A4010000 		.4byte	.LASF65
+ 1199 0274 02       		.byte	0x2
+ 1200 0275 08       		.uleb128 0x8
+ 1201 0276 AD010000 		.4byte	.LASF66
+ 1202 027a 03       		.byte	0x3
+ 1203 027b 00       		.byte	0
+ 1204 027c 0D       		.uleb128 0xd
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 29
+
+
+ 1205 027d 37060000 		.4byte	.LASF67
+ 1206 0281 01       		.byte	0x1
+ 1207 0282 37000000 		.4byte	0x37
+ 1208 0286 01       		.byte	0x1
+ 1209 0287 29       		.byte	0x29
+ 1210 0288 9F020000 		.4byte	0x29f
+ 1211 028c 08       		.uleb128 0x8
+ 1212 028d 69050000 		.4byte	.LASF68
+ 1213 0291 00       		.byte	0
+ 1214 0292 08       		.uleb128 0x8
+ 1215 0293 18050000 		.4byte	.LASF69
+ 1216 0297 01       		.byte	0x1
+ 1217 0298 08       		.uleb128 0x8
+ 1218 0299 2B000000 		.4byte	.LASF70
+ 1219 029d 02       		.byte	0x2
+ 1220 029e 00       		.byte	0
+ 1221 029f 03       		.uleb128 0x3
+ 1222 02a0 0E020000 		.4byte	.LASF71
+ 1223 02a4 01       		.byte	0x1
+ 1224 02a5 2E       		.byte	0x2e
+ 1225 02a6 7C020000 		.4byte	0x27c
+ 1226 02aa 0E       		.uleb128 0xe
+ 1227 02ab 0A       		.byte	0xa
+ 1228 02ac 01       		.byte	0x1
+ 1229 02ad 34       		.byte	0x34
+ 1230 02ae EF020000 		.4byte	0x2ef
+ 1231 02b2 0B       		.uleb128 0xb
+ 1232 02b3 43060000 		.4byte	.LASF72
+ 1233 02b7 01       		.byte	0x1
+ 1234 02b8 36       		.byte	0x36
+ 1235 02b9 9F020000 		.4byte	0x29f
+ 1236 02bd 00       		.byte	0
+ 1237 02be 0B       		.uleb128 0xb
+ 1238 02bf 00000000 		.4byte	.LASF73
+ 1239 02c3 01       		.byte	0x1
+ 1240 02c4 37       		.byte	0x37
+ 1241 02c5 A2000000 		.4byte	0xa2
+ 1242 02c9 02       		.byte	0x2
+ 1243 02ca 0B       		.uleb128 0xb
+ 1244 02cb 60070000 		.4byte	.LASF74
+ 1245 02cf 01       		.byte	0x1
+ 1246 02d0 38       		.byte	0x38
+ 1247 02d1 A2000000 		.4byte	0xa2
+ 1248 02d5 04       		.byte	0x4
+ 1249 02d6 0B       		.uleb128 0xb
+ 1250 02d7 60060000 		.4byte	.LASF75
+ 1251 02db 01       		.byte	0x1
+ 1252 02dc 39       		.byte	0x39
+ 1253 02dd 97000000 		.4byte	0x97
+ 1254 02e1 06       		.byte	0x6
+ 1255 02e2 0B       		.uleb128 0xb
+ 1256 02e3 F0030000 		.4byte	.LASF76
+ 1257 02e7 01       		.byte	0x1
+ 1258 02e8 3A       		.byte	0x3a
+ 1259 02e9 A2000000 		.4byte	0xa2
+ 1260 02ed 08       		.byte	0x8
+ 1261 02ee 00       		.byte	0
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 30
+
+
+ 1262 02ef 0F       		.uleb128 0xf
+ 1263 02f0 70010000 		.4byte	.LASF77
+ 1264 02f4 01       		.byte	0x1
+ 1265 02f5 C5       		.byte	0xc5
+ 1266 02f6 00000000 		.4byte	.LFB116
+ 1267 02fa 1C000000 		.4byte	.LFE116-.LFB116
+ 1268 02fe 01       		.uleb128 0x1
+ 1269 02ff 9C       		.byte	0x9c
+ 1270 0300 0F       		.uleb128 0xf
+ 1271 0301 EB070000 		.4byte	.LASF78
+ 1272 0305 01       		.byte	0x1
+ 1273 0306 CC       		.byte	0xcc
+ 1274 0307 00000000 		.4byte	.LFB117
+ 1275 030b 1C000000 		.4byte	.LFE117-.LFB117
+ 1276 030f 01       		.uleb128 0x1
+ 1277 0310 9C       		.byte	0x9c
+ 1278 0311 10       		.uleb128 0x10
+ 1279 0312 E4050000 		.4byte	.LASF79
+ 1280 0316 01       		.byte	0x1
+ 1281 0317 D5       		.byte	0xd5
+ 1282 0318 00000000 		.4byte	.LFB118
+ 1283 031c 40000000 		.4byte	.LFE118-.LFB118
+ 1284 0320 01       		.uleb128 0x1
+ 1285 0321 9C       		.byte	0x9c
+ 1286 0322 7A030000 		.4byte	0x37a
+ 1287 0326 11       		.uleb128 0x11
+ 1288 0327 45070000 		.4byte	.LASF81
+ 1289 032b 01       		.byte	0x1
+ 1290 032c D5       		.byte	0xd5
+ 1291 032d 16010000 		.4byte	0x116
+ 1292 0331 00000000 		.4byte	.LLST0
+ 1293 0335 12       		.uleb128 0x12
+ 1294 0336 06000000 		.4byte	.LVL1
+ 1295 033a 5E080000 		.4byte	0x85e
+ 1296 033e 4A030000 		.4byte	0x34a
+ 1297 0342 13       		.uleb128 0x13
+ 1298 0343 01       		.uleb128 0x1
+ 1299 0344 50       		.byte	0x50
+ 1300 0345 03       		.uleb128 0x3
+ 1301 0346 F3       		.byte	0xf3
+ 1302 0347 01       		.uleb128 0x1
+ 1303 0348 50       		.byte	0x50
+ 1304 0349 00       		.byte	0
+ 1305 034a 12       		.uleb128 0x12
+ 1306 034b 18000000 		.4byte	.LVL2
+ 1307 034f 69080000 		.4byte	0x869
+ 1308 0353 5D030000 		.4byte	0x35d
+ 1309 0357 13       		.uleb128 0x13
+ 1310 0358 01       		.uleb128 0x1
+ 1311 0359 50       		.byte	0x50
+ 1312 035a 01       		.uleb128 0x1
+ 1313 035b 31       		.byte	0x31
+ 1314 035c 00       		.byte	0
+ 1315 035d 12       		.uleb128 0x12
+ 1316 035e 30000000 		.4byte	.LVL3
+ 1317 0362 69080000 		.4byte	0x869
+ 1318 0366 70030000 		.4byte	0x370
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 31
+
+
+ 1319 036a 13       		.uleb128 0x13
+ 1320 036b 01       		.uleb128 0x1
+ 1321 036c 50       		.byte	0x50
+ 1322 036d 01       		.uleb128 0x1
+ 1323 036e 30       		.byte	0x30
+ 1324 036f 00       		.byte	0
+ 1325 0370 14       		.uleb128 0x14
+ 1326 0371 36000000 		.4byte	.LVL4
+ 1327 0375 74080000 		.4byte	0x874
+ 1328 0379 00       		.byte	0
+ 1329 037a 10       		.uleb128 0x10
+ 1330 037b C2030000 		.4byte	.LASF80
+ 1331 037f 01       		.byte	0x1
+ 1332 0380 DD       		.byte	0xdd
+ 1333 0381 00000000 		.4byte	.LFB119
+ 1334 0385 40000000 		.4byte	.LFE119-.LFB119
+ 1335 0389 01       		.uleb128 0x1
+ 1336 038a 9C       		.byte	0x9c
+ 1337 038b E3030000 		.4byte	0x3e3
+ 1338 038f 11       		.uleb128 0x11
+ 1339 0390 45070000 		.4byte	.LASF81
+ 1340 0394 01       		.byte	0x1
+ 1341 0395 DD       		.byte	0xdd
+ 1342 0396 16010000 		.4byte	0x116
+ 1343 039a 21000000 		.4byte	.LLST1
+ 1344 039e 12       		.uleb128 0x12
+ 1345 039f 06000000 		.4byte	.LVL6
+ 1346 03a3 7F080000 		.4byte	0x87f
+ 1347 03a7 B3030000 		.4byte	0x3b3
+ 1348 03ab 13       		.uleb128 0x13
+ 1349 03ac 01       		.uleb128 0x1
+ 1350 03ad 50       		.byte	0x50
+ 1351 03ae 03       		.uleb128 0x3
+ 1352 03af F3       		.byte	0xf3
+ 1353 03b0 01       		.uleb128 0x1
+ 1354 03b1 50       		.byte	0x50
+ 1355 03b2 00       		.byte	0
+ 1356 03b3 12       		.uleb128 0x12
+ 1357 03b4 18000000 		.4byte	.LVL7
+ 1358 03b8 69080000 		.4byte	0x869
+ 1359 03bc C6030000 		.4byte	0x3c6
+ 1360 03c0 13       		.uleb128 0x13
+ 1361 03c1 01       		.uleb128 0x1
+ 1362 03c2 50       		.byte	0x50
+ 1363 03c3 01       		.uleb128 0x1
+ 1364 03c4 31       		.byte	0x31
+ 1365 03c5 00       		.byte	0
+ 1366 03c6 12       		.uleb128 0x12
+ 1367 03c7 30000000 		.4byte	.LVL8
+ 1368 03cb 69080000 		.4byte	0x869
+ 1369 03cf D9030000 		.4byte	0x3d9
+ 1370 03d3 13       		.uleb128 0x13
+ 1371 03d4 01       		.uleb128 0x1
+ 1372 03d5 50       		.byte	0x50
+ 1373 03d6 01       		.uleb128 0x1
+ 1374 03d7 30       		.byte	0x30
+ 1375 03d8 00       		.byte	0
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 32
+
+
+ 1376 03d9 14       		.uleb128 0x14
+ 1377 03da 36000000 		.4byte	.LVL9
+ 1378 03de 74080000 		.4byte	0x874
+ 1379 03e2 00       		.byte	0
+ 1380 03e3 15       		.uleb128 0x15
+ 1381 03e4 84010000 		.4byte	.LASF82
+ 1382 03e8 01       		.byte	0x1
+ 1383 03e9 E5       		.byte	0xe5
+ 1384 03ea 00000000 		.4byte	.LFB120
+ 1385 03ee 28000000 		.4byte	.LFE120-.LFB120
+ 1386 03f2 01       		.uleb128 0x1
+ 1387 03f3 9C       		.byte	0x9c
+ 1388 03f4 0B040000 		.4byte	0x40b
+ 1389 03f8 14       		.uleb128 0x14
+ 1390 03f9 18000000 		.4byte	.LVL10
+ 1391 03fd 8A080000 		.4byte	0x88a
+ 1392 0401 14       		.uleb128 0x14
+ 1393 0402 1C000000 		.4byte	.LVL11
+ 1394 0406 95080000 		.4byte	0x895
+ 1395 040a 00       		.byte	0
+ 1396 040b 15       		.uleb128 0x15
+ 1397 040c 0C030000 		.4byte	.LASF83
+ 1398 0410 01       		.byte	0x1
+ 1399 0411 EC       		.byte	0xec
+ 1400 0412 00000000 		.4byte	.LFB121
+ 1401 0416 08000000 		.4byte	.LFE121-.LFB121
+ 1402 041a 01       		.uleb128 0x1
+ 1403 041b 9C       		.byte	0x9c
+ 1404 041c 2A040000 		.4byte	0x42a
+ 1405 0420 14       		.uleb128 0x14
+ 1406 0421 06000000 		.4byte	.LVL12
+ 1407 0425 A0080000 		.4byte	0x8a0
+ 1408 0429 00       		.byte	0
+ 1409 042a 15       		.uleb128 0x15
+ 1410 042b D5050000 		.4byte	.LASF84
+ 1411 042f 01       		.byte	0x1
+ 1412 0430 F1       		.byte	0xf1
+ 1413 0431 00000000 		.4byte	.LFB122
+ 1414 0435 08000000 		.4byte	.LFE122-.LFB122
+ 1415 0439 01       		.uleb128 0x1
+ 1416 043a 9C       		.byte	0x9c
+ 1417 043b 49040000 		.4byte	0x449
+ 1418 043f 14       		.uleb128 0x14
+ 1419 0440 06000000 		.4byte	.LVL13
+ 1420 0444 A0080000 		.4byte	0x8a0
+ 1421 0448 00       		.byte	0
+ 1422 0449 15       		.uleb128 0x15
+ 1423 044a 60000000 		.4byte	.LASF85
+ 1424 044e 01       		.byte	0x1
+ 1425 044f F6       		.byte	0xf6
+ 1426 0450 00000000 		.4byte	.LFB123
+ 1427 0454 08000000 		.4byte	.LFE123-.LFB123
+ 1428 0458 01       		.uleb128 0x1
+ 1429 0459 9C       		.byte	0x9c
+ 1430 045a 68040000 		.4byte	0x468
+ 1431 045e 14       		.uleb128 0x14
+ 1432 045f 06000000 		.4byte	.LVL14
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 33
+
+
+ 1433 0463 95080000 		.4byte	0x895
+ 1434 0467 00       		.byte	0
+ 1435 0468 15       		.uleb128 0x15
+ 1436 0469 3B010000 		.4byte	.LASF86
+ 1437 046d 01       		.byte	0x1
+ 1438 046e FB       		.byte	0xfb
+ 1439 046f 00000000 		.4byte	.LFB124
+ 1440 0473 58000000 		.4byte	.LFE124-.LFB124
+ 1441 0477 01       		.uleb128 0x1
+ 1442 0478 9C       		.byte	0x9c
+ 1443 0479 F6040000 		.4byte	0x4f6
+ 1444 047d 16       		.uleb128 0x16
+ 1445 047e 08000000 		.4byte	.LBB2
+ 1446 0482 36000000 		.4byte	.LBE2-.LBB2
+ 1447 0486 E2040000 		.4byte	0x4e2
+ 1448 048a 17       		.uleb128 0x17
+ 1449 048b 6900     		.ascii	"i\000"
+ 1450 048d 01       		.byte	0x1
+ 1451 048e FF       		.byte	0xff
+ 1452 048f A2000000 		.4byte	0xa2
+ 1453 0493 42000000 		.4byte	.LLST2
+ 1454 0497 12       		.uleb128 0x12
+ 1455 0498 1A000000 		.4byte	.LVL17
+ 1456 049c AB080000 		.4byte	0x8ab
+ 1457 04a0 AE040000 		.4byte	0x4ae
+ 1458 04a4 13       		.uleb128 0x13
+ 1459 04a5 01       		.uleb128 0x1
+ 1460 04a6 50       		.byte	0x50
+ 1461 04a7 05       		.uleb128 0x5
+ 1462 04a8 03       		.byte	0x3
+ 1463 04a9 18000000 		.4byte	.LC1
+ 1464 04ad 00       		.byte	0
+ 1465 04ae 12       		.uleb128 0x12
+ 1466 04af 22000000 		.4byte	.LVL18
+ 1467 04b3 AB080000 		.4byte	0x8ab
+ 1468 04b7 C5040000 		.4byte	0x4c5
+ 1469 04bb 13       		.uleb128 0x13
+ 1470 04bc 01       		.uleb128 0x1
+ 1471 04bd 50       		.byte	0x50
+ 1472 04be 05       		.uleb128 0x5
+ 1473 04bf 03       		.byte	0x3
+ 1474 04c0 1C000000 		.4byte	.LC2
+ 1475 04c4 00       		.byte	0
+ 1476 04c5 14       		.uleb128 0x14
+ 1477 04c6 2C000000 		.4byte	.LVL19
+ 1478 04ca AB080000 		.4byte	0x8ab
+ 1479 04ce 18       		.uleb128 0x18
+ 1480 04cf 32000000 		.4byte	.LVL20
+ 1481 04d3 AB080000 		.4byte	0x8ab
+ 1482 04d7 13       		.uleb128 0x13
+ 1483 04d8 01       		.uleb128 0x1
+ 1484 04d9 50       		.byte	0x50
+ 1485 04da 05       		.uleb128 0x5
+ 1486 04db 03       		.byte	0x3
+ 1487 04dc 20000000 		.4byte	.LC3
+ 1488 04e0 00       		.byte	0
+ 1489 04e1 00       		.byte	0
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 34
+
+
+ 1490 04e2 18       		.uleb128 0x18
+ 1491 04e3 08000000 		.4byte	.LVL15
+ 1492 04e7 AB080000 		.4byte	0x8ab
+ 1493 04eb 13       		.uleb128 0x13
+ 1494 04ec 01       		.uleb128 0x1
+ 1495 04ed 50       		.byte	0x50
+ 1496 04ee 05       		.uleb128 0x5
+ 1497 04ef 03       		.byte	0x3
+ 1498 04f0 00000000 		.4byte	.LC0
+ 1499 04f4 00       		.byte	0
+ 1500 04f5 00       		.byte	0
+ 1501 04f6 19       		.uleb128 0x19
+ 1502 04f7 8C040000 		.4byte	.LASF87
+ 1503 04fb 01       		.byte	0x1
+ 1504 04fc 5E       		.byte	0x5e
+ 1505 04fd E1010000 		.4byte	0x1e1
+ 1506 0501 00000000 		.4byte	.LFB114
+ 1507 0505 50000000 		.4byte	.LFE114-.LFB114
+ 1508 0509 01       		.uleb128 0x1
+ 1509 050a 9C       		.byte	0x9c
+ 1510 050b 3C050000 		.4byte	0x53c
+ 1511 050f 14       		.uleb128 0x14
+ 1512 0510 16000000 		.4byte	.LVL24
+ 1513 0514 68040000 		.4byte	0x468
+ 1514 0518 12       		.uleb128 0x12
+ 1515 0519 30000000 		.4byte	.LVL25
+ 1516 051d 69080000 		.4byte	0x869
+ 1517 0521 2B050000 		.4byte	0x52b
+ 1518 0525 13       		.uleb128 0x13
+ 1519 0526 01       		.uleb128 0x1
+ 1520 0527 50       		.byte	0x50
+ 1521 0528 01       		.uleb128 0x1
+ 1522 0529 31       		.byte	0x31
+ 1523 052a 00       		.byte	0
+ 1524 052b 18       		.uleb128 0x18
+ 1525 052c 3E000000 		.4byte	.LVL26
+ 1526 0530 69080000 		.4byte	0x869
+ 1527 0534 13       		.uleb128 0x13
+ 1528 0535 01       		.uleb128 0x1
+ 1529 0536 50       		.byte	0x50
+ 1530 0537 02       		.uleb128 0x2
+ 1531 0538 75       		.byte	0x75
+ 1532 0539 00       		.sleb128 0
+ 1533 053a 00       		.byte	0
+ 1534 053b 00       		.byte	0
+ 1535 053c 1A       		.uleb128 0x1a
+ 1536 053d A1050000 		.4byte	.LASF88
+ 1537 0541 01       		.byte	0x1
+ 1538 0542 1001     		.2byte	0x110
+ 1539 0544 00000000 		.4byte	.LFB125
+ 1540 0548 10000000 		.4byte	.LFE125-.LFB125
+ 1541 054c 01       		.uleb128 0x1
+ 1542 054d 9C       		.byte	0x9c
+ 1543 054e 1B       		.uleb128 0x1b
+ 1544 054f FD020000 		.4byte	.LASF123
+ 1545 0553 01       		.byte	0x1
+ 1546 0554 1701     		.2byte	0x117
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 35
+
+
+ 1547 0556 2F010000 		.4byte	0x12f
+ 1548 055a 00000000 		.4byte	.LFB126
+ 1549 055e 10000000 		.4byte	.LFE126-.LFB126
+ 1550 0562 01       		.uleb128 0x1
+ 1551 0563 9C       		.byte	0x9c
+ 1552 0564 1C       		.uleb128 0x1c
+ 1553 0565 0B060000 		.4byte	.LASF124
+ 1554 0569 01       		.byte	0x1
+ 1555 056a 73       		.byte	0x73
+ 1556 056b E1010000 		.4byte	0x1e1
+ 1557 056f 00000000 		.4byte	.LFB115
+ 1558 0573 F0000000 		.4byte	.LFE115-.LFB115
+ 1559 0577 01       		.uleb128 0x1
+ 1560 0578 9C       		.byte	0x9c
+ 1561 0579 6B060000 		.4byte	0x66b
+ 1562 057d 11       		.uleb128 0x11
+ 1563 057e 45070000 		.4byte	.LASF81
+ 1564 0582 01       		.byte	0x1
+ 1565 0583 73       		.byte	0x73
+ 1566 0584 16010000 		.4byte	0x116
+ 1567 0588 6C000000 		.4byte	.LLST3
+ 1568 058c 14       		.uleb128 0x14
+ 1569 058d 1E000000 		.4byte	.LVL28
+ 1570 0591 00030000 		.4byte	0x300
+ 1571 0595 14       		.uleb128 0x14
+ 1572 0596 22000000 		.4byte	.LVL29
+ 1573 059a 68040000 		.4byte	0x468
+ 1574 059e 14       		.uleb128 0x14
+ 1575 059f 2E000000 		.4byte	.LVL31
+ 1576 05a3 EF020000 		.4byte	0x2ef
+ 1577 05a7 14       		.uleb128 0x14
+ 1578 05a8 32000000 		.4byte	.LVL32
+ 1579 05ac 68040000 		.4byte	0x468
+ 1580 05b0 14       		.uleb128 0x14
+ 1581 05b1 3E000000 		.4byte	.LVL34
+ 1582 05b5 E3030000 		.4byte	0x3e3
+ 1583 05b9 14       		.uleb128 0x14
+ 1584 05ba 42000000 		.4byte	.LVL35
+ 1585 05be 68040000 		.4byte	0x468
+ 1586 05c2 12       		.uleb128 0x12
+ 1587 05c3 50000000 		.4byte	.LVL38
+ 1588 05c7 B6080000 		.4byte	0x8b6
+ 1589 05cb D5050000 		.4byte	0x5d5
+ 1590 05cf 13       		.uleb128 0x13
+ 1591 05d0 01       		.uleb128 0x1
+ 1592 05d1 50       		.byte	0x50
+ 1593 05d2 01       		.uleb128 0x1
+ 1594 05d3 30       		.byte	0x30
+ 1595 05d4 00       		.byte	0
+ 1596 05d5 12       		.uleb128 0x12
+ 1597 05d6 62000000 		.4byte	.LVL39
+ 1598 05da 11030000 		.4byte	0x311
+ 1599 05de E9050000 		.4byte	0x5e9
+ 1600 05e2 13       		.uleb128 0x13
+ 1601 05e3 01       		.uleb128 0x1
+ 1602 05e4 50       		.byte	0x50
+ 1603 05e5 02       		.uleb128 0x2
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 36
+
+
+ 1604 05e6 74       		.byte	0x74
+ 1605 05e7 00       		.sleb128 0
+ 1606 05e8 00       		.byte	0
+ 1607 05e9 12       		.uleb128 0x12
+ 1608 05ea 68000000 		.4byte	.LVL40
+ 1609 05ee B6080000 		.4byte	0x8b6
+ 1610 05f2 FC050000 		.4byte	0x5fc
+ 1611 05f6 13       		.uleb128 0x13
+ 1612 05f7 01       		.uleb128 0x1
+ 1613 05f8 50       		.byte	0x50
+ 1614 05f9 01       		.uleb128 0x1
+ 1615 05fa 31       		.byte	0x31
+ 1616 05fb 00       		.byte	0
+ 1617 05fc 12       		.uleb128 0x12
+ 1618 05fd 78000000 		.4byte	.LVL41
+ 1619 0601 7A030000 		.4byte	0x37a
+ 1620 0605 10060000 		.4byte	0x610
+ 1621 0609 13       		.uleb128 0x13
+ 1622 060a 01       		.uleb128 0x1
+ 1623 060b 50       		.byte	0x50
+ 1624 060c 02       		.uleb128 0x2
+ 1625 060d 74       		.byte	0x74
+ 1626 060e 00       		.sleb128 0
+ 1627 060f 00       		.byte	0
+ 1628 0610 14       		.uleb128 0x14
+ 1629 0611 84000000 		.4byte	.LVL42
+ 1630 0615 2A040000 		.4byte	0x42a
+ 1631 0619 14       		.uleb128 0x14
+ 1632 061a 96000000 		.4byte	.LVL43
+ 1633 061e 0B040000 		.4byte	0x40b
+ 1634 0622 14       		.uleb128 0x14
+ 1635 0623 A8000000 		.4byte	.LVL45
+ 1636 0627 4E050000 		.4byte	0x54e
+ 1637 062b 14       		.uleb128 0x14
+ 1638 062c AE000000 		.4byte	.LVL46
+ 1639 0630 3C050000 		.4byte	0x53c
+ 1640 0634 14       		.uleb128 0x14
+ 1641 0635 B6000000 		.4byte	.LVL47
+ 1642 0639 4E050000 		.4byte	0x54e
+ 1643 063d 14       		.uleb128 0x14
+ 1644 063e BC000000 		.4byte	.LVL48
+ 1645 0642 EF020000 		.4byte	0x2ef
+ 1646 0646 14       		.uleb128 0x14
+ 1647 0647 C0000000 		.4byte	.LVL49
+ 1648 064b E3030000 		.4byte	0x3e3
+ 1649 064f 14       		.uleb128 0x14
+ 1650 0650 C4000000 		.4byte	.LVL50
+ 1651 0654 68040000 		.4byte	0x468
+ 1652 0658 14       		.uleb128 0x14
+ 1653 0659 D0000000 		.4byte	.LVL52
+ 1654 065d 49040000 		.4byte	0x449
+ 1655 0661 14       		.uleb128 0x14
+ 1656 0662 E2000000 		.4byte	.LVL54
+ 1657 0666 0B040000 		.4byte	0x40b
+ 1658 066a 00       		.byte	0
+ 1659 066b 1D       		.uleb128 0x1d
+ 1660 066c C8070000 		.4byte	.LASF89
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 37
+
+
+ 1661 0670 01       		.byte	0x1
+ 1662 0671 1C01     		.2byte	0x11c
+ 1663 0673 00000000 		.4byte	.LFB127
+ 1664 0677 94000000 		.4byte	.LFE127-.LFB127
+ 1665 067b 01       		.uleb128 0x1
+ 1666 067c 9C       		.byte	0x9c
+ 1667 067d 2A070000 		.4byte	0x72a
+ 1668 0681 1E       		.uleb128 0x1e
+ 1669 0682 657600   		.ascii	"ev\000"
+ 1670 0685 01       		.byte	0x1
+ 1671 0686 1C01     		.2byte	0x11c
+ 1672 0688 16010000 		.4byte	0x116
+ 1673 068c 14010000 		.4byte	.LLST4
+ 1674 0690 1F       		.uleb128 0x1f
+ 1675 0691 3F070000 		.4byte	.LASF90
+ 1676 0695 01       		.byte	0x1
+ 1677 0696 1C01     		.2byte	0x11c
+ 1678 0698 9F020000 		.4byte	0x29f
+ 1679 069c 42010000 		.4byte	.LLST5
+ 1680 06a0 20       		.uleb128 0x20
+ 1681 06a1 B0000000 		.4byte	.LASF91
+ 1682 06a5 01       		.byte	0x1
+ 1683 06a6 1E01     		.2byte	0x11e
+ 1684 06a8 29010000 		.4byte	0x129
+ 1685 06ac 63010000 		.4byte	.LLST6
+ 1686 06b0 20       		.uleb128 0x20
+ 1687 06b1 E4010000 		.4byte	.LASF92
+ 1688 06b5 01       		.byte	0x1
+ 1689 06b6 1F01     		.2byte	0x11f
+ 1690 06b8 29010000 		.4byte	0x129
+ 1691 06bc 86010000 		.4byte	.LLST7
+ 1692 06c0 12       		.uleb128 0x12
+ 1693 06c1 4A000000 		.4byte	.LVL68
+ 1694 06c5 AB080000 		.4byte	0x8ab
+ 1695 06c9 D7060000 		.4byte	0x6d7
+ 1696 06cd 13       		.uleb128 0x13
+ 1697 06ce 01       		.uleb128 0x1
+ 1698 06cf 50       		.byte	0x50
+ 1699 06d0 05       		.uleb128 0x5
+ 1700 06d1 03       		.byte	0x3
+ 1701 06d2 8C000000 		.4byte	.LC13
+ 1702 06d6 00       		.byte	0
+ 1703 06d7 12       		.uleb128 0x12
+ 1704 06d8 50000000 		.4byte	.LVL69
+ 1705 06dc AB080000 		.4byte	0x8ab
+ 1706 06e0 EB060000 		.4byte	0x6eb
+ 1707 06e4 13       		.uleb128 0x13
+ 1708 06e5 01       		.uleb128 0x1
+ 1709 06e6 50       		.byte	0x50
+ 1710 06e7 02       		.uleb128 0x2
+ 1711 06e8 75       		.byte	0x75
+ 1712 06e9 00       		.sleb128 0
+ 1713 06ea 00       		.byte	0
+ 1714 06eb 12       		.uleb128 0x12
+ 1715 06ec 56000000 		.4byte	.LVL70
+ 1716 06f0 AB080000 		.4byte	0x8ab
+ 1717 06f4 02070000 		.4byte	0x702
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 38
+
+
+ 1718 06f8 13       		.uleb128 0x13
+ 1719 06f9 01       		.uleb128 0x1
+ 1720 06fa 50       		.byte	0x50
+ 1721 06fb 05       		.uleb128 0x5
+ 1722 06fc 03       		.byte	0x3
+ 1723 06fd 94000000 		.4byte	.LC14
+ 1724 0701 00       		.byte	0
+ 1725 0702 12       		.uleb128 0x12
+ 1726 0703 5C000000 		.4byte	.LVL71
+ 1727 0707 AB080000 		.4byte	0x8ab
+ 1728 070b 16070000 		.4byte	0x716
+ 1729 070f 13       		.uleb128 0x13
+ 1730 0710 01       		.uleb128 0x1
+ 1731 0711 50       		.byte	0x50
+ 1732 0712 02       		.uleb128 0x2
+ 1733 0713 74       		.byte	0x74
+ 1734 0714 00       		.sleb128 0
+ 1735 0715 00       		.byte	0
+ 1736 0716 18       		.uleb128 0x18
+ 1737 0717 62000000 		.4byte	.LVL72
+ 1738 071b AB080000 		.4byte	0x8ab
+ 1739 071f 13       		.uleb128 0x13
+ 1740 0720 01       		.uleb128 0x1
+ 1741 0721 50       		.byte	0x50
+ 1742 0722 05       		.uleb128 0x5
+ 1743 0723 03       		.byte	0x3
+ 1744 0724 20000000 		.4byte	.LC3
+ 1745 0728 00       		.byte	0
+ 1746 0729 00       		.byte	0
+ 1747 072a 21       		.uleb128 0x21
+ 1748 072b 1E040000 		.4byte	.LASF93
+ 1749 072f 01       		.byte	0x1
+ 1750 0730 3B       		.byte	0x3b
+ 1751 0731 AA020000 		.4byte	0x2aa
+ 1752 0735 05       		.uleb128 0x5
+ 1753 0736 03       		.byte	0x3
+ 1754 0737 00000000 		.4byte	MP3__player
+ 1755 073b 22       		.uleb128 0x22
+ 1756 073c 87070000 		.4byte	.LASF94
+ 1757 0740 0A       		.byte	0xa
+ 1758 0741 40       		.byte	0x40
+ 1759 0742 F5000000 		.4byte	0xf5
+ 1760 0746 22       		.uleb128 0x22
+ 1761 0747 6E070000 		.4byte	.LASF95
+ 1762 074b 0A       		.byte	0xa
+ 1763 074c 47       		.byte	0x47
+ 1764 074d 00010000 		.4byte	0x100
+ 1765 0751 22       		.uleb128 0x22
+ 1766 0752 EA020000 		.4byte	.LASF96
+ 1767 0756 0A       		.byte	0xa
+ 1768 0757 4A       		.byte	0x4a
+ 1769 0758 F5000000 		.4byte	0xf5
+ 1770 075c 22       		.uleb128 0x22
+ 1771 075d 06070000 		.4byte	.LASF97
+ 1772 0761 0B       		.byte	0xb
+ 1773 0762 48       		.byte	0x48
+ 1774 0763 0B010000 		.4byte	0x10b
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 39
+
+
+ 1775 0767 22       		.uleb128 0x22
+ 1776 0768 4B060000 		.4byte	.LASF98
+ 1777 076c 0C       		.byte	0xc
+ 1778 076d 44       		.byte	0x44
+ 1779 076e F5000000 		.4byte	0xf5
+ 1780 0772 03       		.uleb128 0x3
+ 1781 0773 1F070000 		.4byte	.LASF99
+ 1782 0777 0D       		.byte	0xd
+ 1783 0778 8B       		.byte	0x8b
+ 1784 0779 31080000 		.4byte	0x831
+ 1785 077d 06       		.uleb128 0x6
+ 1786 077e 04       		.byte	0x4
+ 1787 077f 83070000 		.4byte	0x783
+ 1788 0783 23       		.uleb128 0x23
+ 1789 0784 B8000000 		.4byte	0xb8
+ 1790 0788 06       		.uleb128 0x6
+ 1791 0789 04       		.byte	0x4
+ 1792 078a B8000000 		.4byte	0xb8
+ 1793 078e 22       		.uleb128 0x22
+ 1794 078f A7040000 		.4byte	.LASF100
+ 1795 0793 0D       		.byte	0xd
+ 1796 0794 92       		.byte	0x92
+ 1797 0795 99070000 		.4byte	0x799
+ 1798 0799 23       		.uleb128 0x23
+ 1799 079a 72070000 		.4byte	0x772
+ 1800 079e 22       		.uleb128 0x22
+ 1801 079f 52040000 		.4byte	.LASF101
+ 1802 07a3 0D       		.byte	0xd
+ 1803 07a4 93       		.byte	0x93
+ 1804 07a5 99070000 		.4byte	0x799
+ 1805 07a9 03       		.uleb128 0x3
+ 1806 07aa ED010000 		.4byte	.LASF102
+ 1807 07ae 0D       		.byte	0xd
+ 1808 07af 90       		.byte	0x90
+ 1809 07b0 10080000 		.4byte	0x810
+ 1810 07b4 22       		.uleb128 0x22
+ 1811 07b5 77040000 		.4byte	.LASF103
+ 1812 07b9 0D       		.byte	0xd
+ 1813 07ba 94       		.byte	0x94
+ 1814 07bb BF070000 		.4byte	0x7bf
+ 1815 07bf 23       		.uleb128 0x23
+ 1816 07c0 A9070000 		.4byte	0x7a9
+ 1817 07c4 22       		.uleb128 0x22
+ 1818 07c5 F8050000 		.4byte	.LASF104
+ 1819 07c9 0D       		.byte	0xd
+ 1820 07ca 95       		.byte	0x95
+ 1821 07cb BF070000 		.4byte	0x7bf
+ 1822 07cf 24       		.uleb128 0x24
+ 1823 07d0 94050000 		.4byte	.LASF105
+ 1824 07d4 0E       		.byte	0xe
+ 1825 07d5 1207     		.2byte	0x712
+ 1826 07d7 DB070000 		.4byte	0x7db
+ 1827 07db 25       		.uleb128 0x25
+ 1828 07dc AD000000 		.4byte	0xad
+ 1829 07e0 26       		.uleb128 0x26
+ 1830 07e1 EB070000 		.4byte	0x7eb
+ 1831 07e5 EB070000 		.4byte	0x7eb
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 40
+
+
+ 1832 07e9 27       		.uleb128 0x27
+ 1833 07ea 00       		.byte	0
+ 1834 07eb 23       		.uleb128 0x23
+ 1835 07ec 2F020000 		.4byte	0x22f
+ 1836 07f0 22       		.uleb128 0x22
+ 1837 07f1 1B020000 		.4byte	.LASF106
+ 1838 07f5 08       		.byte	0x8
+ 1839 07f6 49       		.byte	0x49
+ 1840 07f7 FB070000 		.4byte	0x7fb
+ 1841 07fb 23       		.uleb128 0x23
+ 1842 07fc E0070000 		.4byte	0x7e0
+ 1843 0800 22       		.uleb128 0x22
+ 1844 0801 95040000 		.4byte	.LASF107
+ 1845 0805 08       		.byte	0x8
+ 1846 0806 4E       		.byte	0x4e
+ 1847 0807 0B080000 		.4byte	0x80b
+ 1848 080b 23       		.uleb128 0x23
+ 1849 080c A2000000 		.4byte	0xa2
+ 1850 0810 0E       		.uleb128 0xe
+ 1851 0811 08       		.byte	0x8
+ 1852 0812 0D       		.byte	0xd
+ 1853 0813 8D       		.byte	0x8d
+ 1854 0814 31080000 		.4byte	0x831
+ 1855 0818 0B       		.uleb128 0xb
+ 1856 0819 E6070000 		.4byte	.LASF108
+ 1857 081d 0D       		.byte	0xd
+ 1858 081e 8E       		.byte	0x8e
+ 1859 081f 88070000 		.4byte	0x788
+ 1860 0823 00       		.byte	0
+ 1861 0824 0B       		.uleb128 0xb
+ 1862 0825 8F050000 		.4byte	.LASF109
+ 1863 0829 0D       		.byte	0xd
+ 1864 082a 8F       		.byte	0x8f
+ 1865 082b B8000000 		.4byte	0xb8
+ 1866 082f 04       		.byte	0x4
+ 1867 0830 00       		.byte	0
+ 1868 0831 0E       		.uleb128 0xe
+ 1869 0832 0C       		.byte	0xc
+ 1870 0833 0D       		.byte	0xd
+ 1871 0834 87       		.byte	0x87
+ 1872 0835 5E080000 		.4byte	0x85e
+ 1873 0839 28       		.uleb128 0x28
+ 1874 083a 73726300 		.ascii	"src\000"
+ 1875 083e 0D       		.byte	0xd
+ 1876 083f 88       		.byte	0x88
+ 1877 0840 7D070000 		.4byte	0x77d
+ 1878 0844 00       		.byte	0
+ 1879 0845 0B       		.uleb128 0xb
+ 1880 0846 E6070000 		.4byte	.LASF108
+ 1881 084a 0D       		.byte	0xd
+ 1882 084b 89       		.byte	0x89
+ 1883 084c 88070000 		.4byte	0x788
+ 1884 0850 04       		.byte	0x4
+ 1885 0851 0B       		.uleb128 0xb
+ 1886 0852 8F050000 		.4byte	.LASF109
+ 1887 0856 0D       		.byte	0xd
+ 1888 0857 8A       		.byte	0x8a
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 41
+
+
+ 1889 0858 B8000000 		.4byte	0xb8
+ 1890 085c 08       		.byte	0x8
+ 1891 085d 00       		.byte	0
+ 1892 085e 29       		.uleb128 0x29
+ 1893 085f BC050000 		.4byte	.LASF110
+ 1894 0863 BC050000 		.4byte	.LASF110
+ 1895 0867 0F       		.byte	0xf
+ 1896 0868 7A       		.byte	0x7a
+ 1897 0869 29       		.uleb128 0x29
+ 1898 086a AB070000 		.4byte	.LASF111
+ 1899 086e AB070000 		.4byte	.LASF111
+ 1900 0872 10       		.byte	0x10
+ 1901 0873 82       		.byte	0x82
+ 1902 0874 29       		.uleb128 0x29
+ 1903 0875 DA020000 		.4byte	.LASF112
+ 1904 0879 DA020000 		.4byte	.LASF112
+ 1905 087d 11       		.byte	0x11
+ 1906 087e 8F       		.byte	0x8f
+ 1907 087f 29       		.uleb128 0x29
+ 1908 0880 22010000 		.4byte	.LASF113
+ 1909 0884 22010000 		.4byte	.LASF113
+ 1910 0888 0F       		.byte	0xf
+ 1911 0889 80       		.byte	0x80
+ 1912 088a 29       		.uleb128 0x29
+ 1913 088b 0A000000 		.4byte	.LASF114
+ 1914 088f 0A000000 		.4byte	.LASF114
+ 1915 0893 11       		.byte	0x11
+ 1916 0894 88       		.byte	0x88
+ 1917 0895 29       		.uleb128 0x29
+ 1918 0896 A9060000 		.4byte	.LASF115
+ 1919 089a A9060000 		.4byte	.LASF115
+ 1920 089e 11       		.byte	0x11
+ 1921 089f 7A       		.byte	0x7a
+ 1922 08a0 29       		.uleb128 0x29
+ 1923 08a1 13010000 		.4byte	.LASF116
+ 1924 08a5 13010000 		.4byte	.LASF116
+ 1925 08a9 11       		.byte	0x11
+ 1926 08aa 80       		.byte	0x80
+ 1927 08ab 29       		.uleb128 0x29
+ 1928 08ac 2A040000 		.4byte	.LASF117
+ 1929 08b0 2A040000 		.4byte	.LASF117
+ 1930 08b4 12       		.byte	0x12
+ 1931 08b5 8B       		.byte	0x8b
+ 1932 08b6 29       		.uleb128 0x29
+ 1933 08b7 FA000000 		.4byte	.LASF118
+ 1934 08bb FA000000 		.4byte	.LASF118
+ 1935 08bf 09       		.byte	0x9
+ 1936 08c0 7F       		.byte	0x7f
+ 1937 08c1 00       		.byte	0
+ 1938              		.section	.debug_abbrev,"",%progbits
+ 1939              	.Ldebug_abbrev0:
+ 1940 0000 01       		.uleb128 0x1
+ 1941 0001 11       		.uleb128 0x11
+ 1942 0002 01       		.byte	0x1
+ 1943 0003 25       		.uleb128 0x25
+ 1944 0004 0E       		.uleb128 0xe
+ 1945 0005 13       		.uleb128 0x13
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 42
+
+
+ 1946 0006 0B       		.uleb128 0xb
+ 1947 0007 03       		.uleb128 0x3
+ 1948 0008 0E       		.uleb128 0xe
+ 1949 0009 1B       		.uleb128 0x1b
+ 1950 000a 0E       		.uleb128 0xe
+ 1951 000b 55       		.uleb128 0x55
+ 1952 000c 17       		.uleb128 0x17
+ 1953 000d 11       		.uleb128 0x11
+ 1954 000e 01       		.uleb128 0x1
+ 1955 000f 10       		.uleb128 0x10
+ 1956 0010 17       		.uleb128 0x17
+ 1957 0011 00       		.byte	0
+ 1958 0012 00       		.byte	0
+ 1959 0013 02       		.uleb128 0x2
+ 1960 0014 24       		.uleb128 0x24
+ 1961 0015 00       		.byte	0
+ 1962 0016 0B       		.uleb128 0xb
+ 1963 0017 0B       		.uleb128 0xb
+ 1964 0018 3E       		.uleb128 0x3e
+ 1965 0019 0B       		.uleb128 0xb
+ 1966 001a 03       		.uleb128 0x3
+ 1967 001b 0E       		.uleb128 0xe
+ 1968 001c 00       		.byte	0
+ 1969 001d 00       		.byte	0
+ 1970 001e 03       		.uleb128 0x3
+ 1971 001f 16       		.uleb128 0x16
+ 1972 0020 00       		.byte	0
+ 1973 0021 03       		.uleb128 0x3
+ 1974 0022 0E       		.uleb128 0xe
+ 1975 0023 3A       		.uleb128 0x3a
+ 1976 0024 0B       		.uleb128 0xb
+ 1977 0025 3B       		.uleb128 0x3b
+ 1978 0026 0B       		.uleb128 0xb
+ 1979 0027 49       		.uleb128 0x49
+ 1980 0028 13       		.uleb128 0x13
+ 1981 0029 00       		.byte	0
+ 1982 002a 00       		.byte	0
+ 1983 002b 04       		.uleb128 0x4
+ 1984 002c 24       		.uleb128 0x24
+ 1985 002d 00       		.byte	0
+ 1986 002e 0B       		.uleb128 0xb
+ 1987 002f 0B       		.uleb128 0xb
+ 1988 0030 3E       		.uleb128 0x3e
+ 1989 0031 0B       		.uleb128 0xb
+ 1990 0032 03       		.uleb128 0x3
+ 1991 0033 08       		.uleb128 0x8
+ 1992 0034 00       		.byte	0
+ 1993 0035 00       		.byte	0
+ 1994 0036 05       		.uleb128 0x5
+ 1995 0037 16       		.uleb128 0x16
+ 1996 0038 00       		.byte	0
+ 1997 0039 03       		.uleb128 0x3
+ 1998 003a 0E       		.uleb128 0xe
+ 1999 003b 3A       		.uleb128 0x3a
+ 2000 003c 0B       		.uleb128 0xb
+ 2001 003d 3B       		.uleb128 0x3b
+ 2002 003e 05       		.uleb128 0x5
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 43
+
+
+ 2003 003f 49       		.uleb128 0x49
+ 2004 0040 13       		.uleb128 0x13
+ 2005 0041 00       		.byte	0
+ 2006 0042 00       		.byte	0
+ 2007 0043 06       		.uleb128 0x6
+ 2008 0044 0F       		.uleb128 0xf
+ 2009 0045 00       		.byte	0
+ 2010 0046 0B       		.uleb128 0xb
+ 2011 0047 0B       		.uleb128 0xb
+ 2012 0048 49       		.uleb128 0x49
+ 2013 0049 13       		.uleb128 0x13
+ 2014 004a 00       		.byte	0
+ 2015 004b 00       		.byte	0
+ 2016 004c 07       		.uleb128 0x7
+ 2017 004d 04       		.uleb128 0x4
+ 2018 004e 01       		.byte	0x1
+ 2019 004f 03       		.uleb128 0x3
+ 2020 0050 08       		.uleb128 0x8
+ 2021 0051 0B       		.uleb128 0xb
+ 2022 0052 0B       		.uleb128 0xb
+ 2023 0053 49       		.uleb128 0x49
+ 2024 0054 13       		.uleb128 0x13
+ 2025 0055 3A       		.uleb128 0x3a
+ 2026 0056 0B       		.uleb128 0xb
+ 2027 0057 3B       		.uleb128 0x3b
+ 2028 0058 0B       		.uleb128 0xb
+ 2029 0059 01       		.uleb128 0x1
+ 2030 005a 13       		.uleb128 0x13
+ 2031 005b 00       		.byte	0
+ 2032 005c 00       		.byte	0
+ 2033 005d 08       		.uleb128 0x8
+ 2034 005e 28       		.uleb128 0x28
+ 2035 005f 00       		.byte	0
+ 2036 0060 03       		.uleb128 0x3
+ 2037 0061 0E       		.uleb128 0xe
+ 2038 0062 1C       		.uleb128 0x1c
+ 2039 0063 0B       		.uleb128 0xb
+ 2040 0064 00       		.byte	0
+ 2041 0065 00       		.byte	0
+ 2042 0066 09       		.uleb128 0x9
+ 2043 0067 28       		.uleb128 0x28
+ 2044 0068 00       		.byte	0
+ 2045 0069 03       		.uleb128 0x3
+ 2046 006a 0E       		.uleb128 0xe
+ 2047 006b 1C       		.uleb128 0x1c
+ 2048 006c 0D       		.uleb128 0xd
+ 2049 006d 00       		.byte	0
+ 2050 006e 00       		.byte	0
+ 2051 006f 0A       		.uleb128 0xa
+ 2052 0070 13       		.uleb128 0x13
+ 2053 0071 01       		.byte	0x1
+ 2054 0072 03       		.uleb128 0x3
+ 2055 0073 0E       		.uleb128 0xe
+ 2056 0074 0B       		.uleb128 0xb
+ 2057 0075 0B       		.uleb128 0xb
+ 2058 0076 3A       		.uleb128 0x3a
+ 2059 0077 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 44
+
+
+ 2060 0078 3B       		.uleb128 0x3b
+ 2061 0079 0B       		.uleb128 0xb
+ 2062 007a 01       		.uleb128 0x1
+ 2063 007b 13       		.uleb128 0x13
+ 2064 007c 00       		.byte	0
+ 2065 007d 00       		.byte	0
+ 2066 007e 0B       		.uleb128 0xb
+ 2067 007f 0D       		.uleb128 0xd
+ 2068 0080 00       		.byte	0
+ 2069 0081 03       		.uleb128 0x3
+ 2070 0082 0E       		.uleb128 0xe
+ 2071 0083 3A       		.uleb128 0x3a
+ 2072 0084 0B       		.uleb128 0xb
+ 2073 0085 3B       		.uleb128 0x3b
+ 2074 0086 0B       		.uleb128 0xb
+ 2075 0087 49       		.uleb128 0x49
+ 2076 0088 13       		.uleb128 0x13
+ 2077 0089 38       		.uleb128 0x38
+ 2078 008a 0B       		.uleb128 0xb
+ 2079 008b 00       		.byte	0
+ 2080 008c 00       		.byte	0
+ 2081 008d 0C       		.uleb128 0xc
+ 2082 008e 04       		.uleb128 0x4
+ 2083 008f 01       		.byte	0x1
+ 2084 0090 0B       		.uleb128 0xb
+ 2085 0091 0B       		.uleb128 0xb
+ 2086 0092 49       		.uleb128 0x49
+ 2087 0093 13       		.uleb128 0x13
+ 2088 0094 3A       		.uleb128 0x3a
+ 2089 0095 0B       		.uleb128 0xb
+ 2090 0096 3B       		.uleb128 0x3b
+ 2091 0097 0B       		.uleb128 0xb
+ 2092 0098 01       		.uleb128 0x1
+ 2093 0099 13       		.uleb128 0x13
+ 2094 009a 00       		.byte	0
+ 2095 009b 00       		.byte	0
+ 2096 009c 0D       		.uleb128 0xd
+ 2097 009d 04       		.uleb128 0x4
+ 2098 009e 01       		.byte	0x1
+ 2099 009f 03       		.uleb128 0x3
+ 2100 00a0 0E       		.uleb128 0xe
+ 2101 00a1 0B       		.uleb128 0xb
+ 2102 00a2 0B       		.uleb128 0xb
+ 2103 00a3 49       		.uleb128 0x49
+ 2104 00a4 13       		.uleb128 0x13
+ 2105 00a5 3A       		.uleb128 0x3a
+ 2106 00a6 0B       		.uleb128 0xb
+ 2107 00a7 3B       		.uleb128 0x3b
+ 2108 00a8 0B       		.uleb128 0xb
+ 2109 00a9 01       		.uleb128 0x1
+ 2110 00aa 13       		.uleb128 0x13
+ 2111 00ab 00       		.byte	0
+ 2112 00ac 00       		.byte	0
+ 2113 00ad 0E       		.uleb128 0xe
+ 2114 00ae 13       		.uleb128 0x13
+ 2115 00af 01       		.byte	0x1
+ 2116 00b0 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 45
+
+
+ 2117 00b1 0B       		.uleb128 0xb
+ 2118 00b2 3A       		.uleb128 0x3a
+ 2119 00b3 0B       		.uleb128 0xb
+ 2120 00b4 3B       		.uleb128 0x3b
+ 2121 00b5 0B       		.uleb128 0xb
+ 2122 00b6 01       		.uleb128 0x1
+ 2123 00b7 13       		.uleb128 0x13
+ 2124 00b8 00       		.byte	0
+ 2125 00b9 00       		.byte	0
+ 2126 00ba 0F       		.uleb128 0xf
+ 2127 00bb 2E       		.uleb128 0x2e
+ 2128 00bc 00       		.byte	0
+ 2129 00bd 3F       		.uleb128 0x3f
+ 2130 00be 19       		.uleb128 0x19
+ 2131 00bf 03       		.uleb128 0x3
+ 2132 00c0 0E       		.uleb128 0xe
+ 2133 00c1 3A       		.uleb128 0x3a
+ 2134 00c2 0B       		.uleb128 0xb
+ 2135 00c3 3B       		.uleb128 0x3b
+ 2136 00c4 0B       		.uleb128 0xb
+ 2137 00c5 11       		.uleb128 0x11
+ 2138 00c6 01       		.uleb128 0x1
+ 2139 00c7 12       		.uleb128 0x12
+ 2140 00c8 06       		.uleb128 0x6
+ 2141 00c9 40       		.uleb128 0x40
+ 2142 00ca 18       		.uleb128 0x18
+ 2143 00cb 9742     		.uleb128 0x2117
+ 2144 00cd 19       		.uleb128 0x19
+ 2145 00ce 00       		.byte	0
+ 2146 00cf 00       		.byte	0
+ 2147 00d0 10       		.uleb128 0x10
+ 2148 00d1 2E       		.uleb128 0x2e
+ 2149 00d2 01       		.byte	0x1
+ 2150 00d3 3F       		.uleb128 0x3f
+ 2151 00d4 19       		.uleb128 0x19
+ 2152 00d5 03       		.uleb128 0x3
+ 2153 00d6 0E       		.uleb128 0xe
+ 2154 00d7 3A       		.uleb128 0x3a
+ 2155 00d8 0B       		.uleb128 0xb
+ 2156 00d9 3B       		.uleb128 0x3b
+ 2157 00da 0B       		.uleb128 0xb
+ 2158 00db 27       		.uleb128 0x27
+ 2159 00dc 19       		.uleb128 0x19
+ 2160 00dd 11       		.uleb128 0x11
+ 2161 00de 01       		.uleb128 0x1
+ 2162 00df 12       		.uleb128 0x12
+ 2163 00e0 06       		.uleb128 0x6
+ 2164 00e1 40       		.uleb128 0x40
+ 2165 00e2 18       		.uleb128 0x18
+ 2166 00e3 9742     		.uleb128 0x2117
+ 2167 00e5 19       		.uleb128 0x19
+ 2168 00e6 01       		.uleb128 0x1
+ 2169 00e7 13       		.uleb128 0x13
+ 2170 00e8 00       		.byte	0
+ 2171 00e9 00       		.byte	0
+ 2172 00ea 11       		.uleb128 0x11
+ 2173 00eb 05       		.uleb128 0x5
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 46
+
+
+ 2174 00ec 00       		.byte	0
+ 2175 00ed 03       		.uleb128 0x3
+ 2176 00ee 0E       		.uleb128 0xe
+ 2177 00ef 3A       		.uleb128 0x3a
+ 2178 00f0 0B       		.uleb128 0xb
+ 2179 00f1 3B       		.uleb128 0x3b
+ 2180 00f2 0B       		.uleb128 0xb
+ 2181 00f3 49       		.uleb128 0x49
+ 2182 00f4 13       		.uleb128 0x13
+ 2183 00f5 02       		.uleb128 0x2
+ 2184 00f6 17       		.uleb128 0x17
+ 2185 00f7 00       		.byte	0
+ 2186 00f8 00       		.byte	0
+ 2187 00f9 12       		.uleb128 0x12
+ 2188 00fa 898201   		.uleb128 0x4109
+ 2189 00fd 01       		.byte	0x1
+ 2190 00fe 11       		.uleb128 0x11
+ 2191 00ff 01       		.uleb128 0x1
+ 2192 0100 31       		.uleb128 0x31
+ 2193 0101 13       		.uleb128 0x13
+ 2194 0102 01       		.uleb128 0x1
+ 2195 0103 13       		.uleb128 0x13
+ 2196 0104 00       		.byte	0
+ 2197 0105 00       		.byte	0
+ 2198 0106 13       		.uleb128 0x13
+ 2199 0107 8A8201   		.uleb128 0x410a
+ 2200 010a 00       		.byte	0
+ 2201 010b 02       		.uleb128 0x2
+ 2202 010c 18       		.uleb128 0x18
+ 2203 010d 9142     		.uleb128 0x2111
+ 2204 010f 18       		.uleb128 0x18
+ 2205 0110 00       		.byte	0
+ 2206 0111 00       		.byte	0
+ 2207 0112 14       		.uleb128 0x14
+ 2208 0113 898201   		.uleb128 0x4109
+ 2209 0116 00       		.byte	0
+ 2210 0117 11       		.uleb128 0x11
+ 2211 0118 01       		.uleb128 0x1
+ 2212 0119 31       		.uleb128 0x31
+ 2213 011a 13       		.uleb128 0x13
+ 2214 011b 00       		.byte	0
+ 2215 011c 00       		.byte	0
+ 2216 011d 15       		.uleb128 0x15
+ 2217 011e 2E       		.uleb128 0x2e
+ 2218 011f 01       		.byte	0x1
+ 2219 0120 3F       		.uleb128 0x3f
+ 2220 0121 19       		.uleb128 0x19
+ 2221 0122 03       		.uleb128 0x3
+ 2222 0123 0E       		.uleb128 0xe
+ 2223 0124 3A       		.uleb128 0x3a
+ 2224 0125 0B       		.uleb128 0xb
+ 2225 0126 3B       		.uleb128 0x3b
+ 2226 0127 0B       		.uleb128 0xb
+ 2227 0128 11       		.uleb128 0x11
+ 2228 0129 01       		.uleb128 0x1
+ 2229 012a 12       		.uleb128 0x12
+ 2230 012b 06       		.uleb128 0x6
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 47
+
+
+ 2231 012c 40       		.uleb128 0x40
+ 2232 012d 18       		.uleb128 0x18
+ 2233 012e 9742     		.uleb128 0x2117
+ 2234 0130 19       		.uleb128 0x19
+ 2235 0131 01       		.uleb128 0x1
+ 2236 0132 13       		.uleb128 0x13
+ 2237 0133 00       		.byte	0
+ 2238 0134 00       		.byte	0
+ 2239 0135 16       		.uleb128 0x16
+ 2240 0136 0B       		.uleb128 0xb
+ 2241 0137 01       		.byte	0x1
+ 2242 0138 11       		.uleb128 0x11
+ 2243 0139 01       		.uleb128 0x1
+ 2244 013a 12       		.uleb128 0x12
+ 2245 013b 06       		.uleb128 0x6
+ 2246 013c 01       		.uleb128 0x1
+ 2247 013d 13       		.uleb128 0x13
+ 2248 013e 00       		.byte	0
+ 2249 013f 00       		.byte	0
+ 2250 0140 17       		.uleb128 0x17
+ 2251 0141 34       		.uleb128 0x34
+ 2252 0142 00       		.byte	0
+ 2253 0143 03       		.uleb128 0x3
+ 2254 0144 08       		.uleb128 0x8
+ 2255 0145 3A       		.uleb128 0x3a
+ 2256 0146 0B       		.uleb128 0xb
+ 2257 0147 3B       		.uleb128 0x3b
+ 2258 0148 0B       		.uleb128 0xb
+ 2259 0149 49       		.uleb128 0x49
+ 2260 014a 13       		.uleb128 0x13
+ 2261 014b 02       		.uleb128 0x2
+ 2262 014c 17       		.uleb128 0x17
+ 2263 014d 00       		.byte	0
+ 2264 014e 00       		.byte	0
+ 2265 014f 18       		.uleb128 0x18
+ 2266 0150 898201   		.uleb128 0x4109
+ 2267 0153 01       		.byte	0x1
+ 2268 0154 11       		.uleb128 0x11
+ 2269 0155 01       		.uleb128 0x1
+ 2270 0156 31       		.uleb128 0x31
+ 2271 0157 13       		.uleb128 0x13
+ 2272 0158 00       		.byte	0
+ 2273 0159 00       		.byte	0
+ 2274 015a 19       		.uleb128 0x19
+ 2275 015b 2E       		.uleb128 0x2e
+ 2276 015c 01       		.byte	0x1
+ 2277 015d 3F       		.uleb128 0x3f
+ 2278 015e 19       		.uleb128 0x19
+ 2279 015f 03       		.uleb128 0x3
+ 2280 0160 0E       		.uleb128 0xe
+ 2281 0161 3A       		.uleb128 0x3a
+ 2282 0162 0B       		.uleb128 0xb
+ 2283 0163 3B       		.uleb128 0x3b
+ 2284 0164 0B       		.uleb128 0xb
+ 2285 0165 49       		.uleb128 0x49
+ 2286 0166 13       		.uleb128 0x13
+ 2287 0167 11       		.uleb128 0x11
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 48
+
+
+ 2288 0168 01       		.uleb128 0x1
+ 2289 0169 12       		.uleb128 0x12
+ 2290 016a 06       		.uleb128 0x6
+ 2291 016b 40       		.uleb128 0x40
+ 2292 016c 18       		.uleb128 0x18
+ 2293 016d 9742     		.uleb128 0x2117
+ 2294 016f 19       		.uleb128 0x19
+ 2295 0170 01       		.uleb128 0x1
+ 2296 0171 13       		.uleb128 0x13
+ 2297 0172 00       		.byte	0
+ 2298 0173 00       		.byte	0
+ 2299 0174 1A       		.uleb128 0x1a
+ 2300 0175 2E       		.uleb128 0x2e
+ 2301 0176 00       		.byte	0
+ 2302 0177 3F       		.uleb128 0x3f
+ 2303 0178 19       		.uleb128 0x19
+ 2304 0179 03       		.uleb128 0x3
+ 2305 017a 0E       		.uleb128 0xe
+ 2306 017b 3A       		.uleb128 0x3a
+ 2307 017c 0B       		.uleb128 0xb
+ 2308 017d 3B       		.uleb128 0x3b
+ 2309 017e 05       		.uleb128 0x5
+ 2310 017f 11       		.uleb128 0x11
+ 2311 0180 01       		.uleb128 0x1
+ 2312 0181 12       		.uleb128 0x12
+ 2313 0182 06       		.uleb128 0x6
+ 2314 0183 40       		.uleb128 0x40
+ 2315 0184 18       		.uleb128 0x18
+ 2316 0185 9742     		.uleb128 0x2117
+ 2317 0187 19       		.uleb128 0x19
+ 2318 0188 00       		.byte	0
+ 2319 0189 00       		.byte	0
+ 2320 018a 1B       		.uleb128 0x1b
+ 2321 018b 2E       		.uleb128 0x2e
+ 2322 018c 00       		.byte	0
+ 2323 018d 3F       		.uleb128 0x3f
+ 2324 018e 19       		.uleb128 0x19
+ 2325 018f 03       		.uleb128 0x3
+ 2326 0190 0E       		.uleb128 0xe
+ 2327 0191 3A       		.uleb128 0x3a
+ 2328 0192 0B       		.uleb128 0xb
+ 2329 0193 3B       		.uleb128 0x3b
+ 2330 0194 05       		.uleb128 0x5
+ 2331 0195 49       		.uleb128 0x49
+ 2332 0196 13       		.uleb128 0x13
+ 2333 0197 11       		.uleb128 0x11
+ 2334 0198 01       		.uleb128 0x1
+ 2335 0199 12       		.uleb128 0x12
+ 2336 019a 06       		.uleb128 0x6
+ 2337 019b 40       		.uleb128 0x40
+ 2338 019c 18       		.uleb128 0x18
+ 2339 019d 9742     		.uleb128 0x2117
+ 2340 019f 19       		.uleb128 0x19
+ 2341 01a0 00       		.byte	0
+ 2342 01a1 00       		.byte	0
+ 2343 01a2 1C       		.uleb128 0x1c
+ 2344 01a3 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 49
+
+
+ 2345 01a4 01       		.byte	0x1
+ 2346 01a5 3F       		.uleb128 0x3f
+ 2347 01a6 19       		.uleb128 0x19
+ 2348 01a7 03       		.uleb128 0x3
+ 2349 01a8 0E       		.uleb128 0xe
+ 2350 01a9 3A       		.uleb128 0x3a
+ 2351 01aa 0B       		.uleb128 0xb
+ 2352 01ab 3B       		.uleb128 0x3b
+ 2353 01ac 0B       		.uleb128 0xb
+ 2354 01ad 27       		.uleb128 0x27
+ 2355 01ae 19       		.uleb128 0x19
+ 2356 01af 49       		.uleb128 0x49
+ 2357 01b0 13       		.uleb128 0x13
+ 2358 01b1 11       		.uleb128 0x11
+ 2359 01b2 01       		.uleb128 0x1
+ 2360 01b3 12       		.uleb128 0x12
+ 2361 01b4 06       		.uleb128 0x6
+ 2362 01b5 40       		.uleb128 0x40
+ 2363 01b6 18       		.uleb128 0x18
+ 2364 01b7 9742     		.uleb128 0x2117
+ 2365 01b9 19       		.uleb128 0x19
+ 2366 01ba 01       		.uleb128 0x1
+ 2367 01bb 13       		.uleb128 0x13
+ 2368 01bc 00       		.byte	0
+ 2369 01bd 00       		.byte	0
+ 2370 01be 1D       		.uleb128 0x1d
+ 2371 01bf 2E       		.uleb128 0x2e
+ 2372 01c0 01       		.byte	0x1
+ 2373 01c1 3F       		.uleb128 0x3f
+ 2374 01c2 19       		.uleb128 0x19
+ 2375 01c3 03       		.uleb128 0x3
+ 2376 01c4 0E       		.uleb128 0xe
+ 2377 01c5 3A       		.uleb128 0x3a
+ 2378 01c6 0B       		.uleb128 0xb
+ 2379 01c7 3B       		.uleb128 0x3b
+ 2380 01c8 05       		.uleb128 0x5
+ 2381 01c9 27       		.uleb128 0x27
+ 2382 01ca 19       		.uleb128 0x19
+ 2383 01cb 11       		.uleb128 0x11
+ 2384 01cc 01       		.uleb128 0x1
+ 2385 01cd 12       		.uleb128 0x12
+ 2386 01ce 06       		.uleb128 0x6
+ 2387 01cf 40       		.uleb128 0x40
+ 2388 01d0 18       		.uleb128 0x18
+ 2389 01d1 9742     		.uleb128 0x2117
+ 2390 01d3 19       		.uleb128 0x19
+ 2391 01d4 01       		.uleb128 0x1
+ 2392 01d5 13       		.uleb128 0x13
+ 2393 01d6 00       		.byte	0
+ 2394 01d7 00       		.byte	0
+ 2395 01d8 1E       		.uleb128 0x1e
+ 2396 01d9 05       		.uleb128 0x5
+ 2397 01da 00       		.byte	0
+ 2398 01db 03       		.uleb128 0x3
+ 2399 01dc 08       		.uleb128 0x8
+ 2400 01dd 3A       		.uleb128 0x3a
+ 2401 01de 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 50
+
+
+ 2402 01df 3B       		.uleb128 0x3b
+ 2403 01e0 05       		.uleb128 0x5
+ 2404 01e1 49       		.uleb128 0x49
+ 2405 01e2 13       		.uleb128 0x13
+ 2406 01e3 02       		.uleb128 0x2
+ 2407 01e4 17       		.uleb128 0x17
+ 2408 01e5 00       		.byte	0
+ 2409 01e6 00       		.byte	0
+ 2410 01e7 1F       		.uleb128 0x1f
+ 2411 01e8 05       		.uleb128 0x5
+ 2412 01e9 00       		.byte	0
+ 2413 01ea 03       		.uleb128 0x3
+ 2414 01eb 0E       		.uleb128 0xe
+ 2415 01ec 3A       		.uleb128 0x3a
+ 2416 01ed 0B       		.uleb128 0xb
+ 2417 01ee 3B       		.uleb128 0x3b
+ 2418 01ef 05       		.uleb128 0x5
+ 2419 01f0 49       		.uleb128 0x49
+ 2420 01f1 13       		.uleb128 0x13
+ 2421 01f2 02       		.uleb128 0x2
+ 2422 01f3 17       		.uleb128 0x17
+ 2423 01f4 00       		.byte	0
+ 2424 01f5 00       		.byte	0
+ 2425 01f6 20       		.uleb128 0x20
+ 2426 01f7 34       		.uleb128 0x34
+ 2427 01f8 00       		.byte	0
+ 2428 01f9 03       		.uleb128 0x3
+ 2429 01fa 0E       		.uleb128 0xe
+ 2430 01fb 3A       		.uleb128 0x3a
+ 2431 01fc 0B       		.uleb128 0xb
+ 2432 01fd 3B       		.uleb128 0x3b
+ 2433 01fe 05       		.uleb128 0x5
+ 2434 01ff 49       		.uleb128 0x49
+ 2435 0200 13       		.uleb128 0x13
+ 2436 0201 02       		.uleb128 0x2
+ 2437 0202 17       		.uleb128 0x17
+ 2438 0203 00       		.byte	0
+ 2439 0204 00       		.byte	0
+ 2440 0205 21       		.uleb128 0x21
+ 2441 0206 34       		.uleb128 0x34
+ 2442 0207 00       		.byte	0
+ 2443 0208 03       		.uleb128 0x3
+ 2444 0209 0E       		.uleb128 0xe
+ 2445 020a 3A       		.uleb128 0x3a
+ 2446 020b 0B       		.uleb128 0xb
+ 2447 020c 3B       		.uleb128 0x3b
+ 2448 020d 0B       		.uleb128 0xb
+ 2449 020e 49       		.uleb128 0x49
+ 2450 020f 13       		.uleb128 0x13
+ 2451 0210 02       		.uleb128 0x2
+ 2452 0211 18       		.uleb128 0x18
+ 2453 0212 00       		.byte	0
+ 2454 0213 00       		.byte	0
+ 2455 0214 22       		.uleb128 0x22
+ 2456 0215 34       		.uleb128 0x34
+ 2457 0216 00       		.byte	0
+ 2458 0217 03       		.uleb128 0x3
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 51
+
+
+ 2459 0218 0E       		.uleb128 0xe
+ 2460 0219 3A       		.uleb128 0x3a
+ 2461 021a 0B       		.uleb128 0xb
+ 2462 021b 3B       		.uleb128 0x3b
+ 2463 021c 0B       		.uleb128 0xb
+ 2464 021d 49       		.uleb128 0x49
+ 2465 021e 13       		.uleb128 0x13
+ 2466 021f 3F       		.uleb128 0x3f
+ 2467 0220 19       		.uleb128 0x19
+ 2468 0221 3C       		.uleb128 0x3c
+ 2469 0222 19       		.uleb128 0x19
+ 2470 0223 00       		.byte	0
+ 2471 0224 00       		.byte	0
+ 2472 0225 23       		.uleb128 0x23
+ 2473 0226 26       		.uleb128 0x26
+ 2474 0227 00       		.byte	0
+ 2475 0228 49       		.uleb128 0x49
+ 2476 0229 13       		.uleb128 0x13
+ 2477 022a 00       		.byte	0
+ 2478 022b 00       		.byte	0
+ 2479 022c 24       		.uleb128 0x24
+ 2480 022d 34       		.uleb128 0x34
+ 2481 022e 00       		.byte	0
+ 2482 022f 03       		.uleb128 0x3
+ 2483 0230 0E       		.uleb128 0xe
+ 2484 0231 3A       		.uleb128 0x3a
+ 2485 0232 0B       		.uleb128 0xb
+ 2486 0233 3B       		.uleb128 0x3b
+ 2487 0234 05       		.uleb128 0x5
+ 2488 0235 49       		.uleb128 0x49
+ 2489 0236 13       		.uleb128 0x13
+ 2490 0237 3F       		.uleb128 0x3f
+ 2491 0238 19       		.uleb128 0x19
+ 2492 0239 3C       		.uleb128 0x3c
+ 2493 023a 19       		.uleb128 0x19
+ 2494 023b 00       		.byte	0
+ 2495 023c 00       		.byte	0
+ 2496 023d 25       		.uleb128 0x25
+ 2497 023e 35       		.uleb128 0x35
+ 2498 023f 00       		.byte	0
+ 2499 0240 49       		.uleb128 0x49
+ 2500 0241 13       		.uleb128 0x13
+ 2501 0242 00       		.byte	0
+ 2502 0243 00       		.byte	0
+ 2503 0244 26       		.uleb128 0x26
+ 2504 0245 01       		.uleb128 0x1
+ 2505 0246 01       		.byte	0x1
+ 2506 0247 49       		.uleb128 0x49
+ 2507 0248 13       		.uleb128 0x13
+ 2508 0249 01       		.uleb128 0x1
+ 2509 024a 13       		.uleb128 0x13
+ 2510 024b 00       		.byte	0
+ 2511 024c 00       		.byte	0
+ 2512 024d 27       		.uleb128 0x27
+ 2513 024e 21       		.uleb128 0x21
+ 2514 024f 00       		.byte	0
+ 2515 0250 00       		.byte	0
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 52
+
+
+ 2516 0251 00       		.byte	0
+ 2517 0252 28       		.uleb128 0x28
+ 2518 0253 0D       		.uleb128 0xd
+ 2519 0254 00       		.byte	0
+ 2520 0255 03       		.uleb128 0x3
+ 2521 0256 08       		.uleb128 0x8
+ 2522 0257 3A       		.uleb128 0x3a
+ 2523 0258 0B       		.uleb128 0xb
+ 2524 0259 3B       		.uleb128 0x3b
+ 2525 025a 0B       		.uleb128 0xb
+ 2526 025b 49       		.uleb128 0x49
+ 2527 025c 13       		.uleb128 0x13
+ 2528 025d 38       		.uleb128 0x38
+ 2529 025e 0B       		.uleb128 0xb
+ 2530 025f 00       		.byte	0
+ 2531 0260 00       		.byte	0
+ 2532 0261 29       		.uleb128 0x29
+ 2533 0262 2E       		.uleb128 0x2e
+ 2534 0263 00       		.byte	0
+ 2535 0264 3F       		.uleb128 0x3f
+ 2536 0265 19       		.uleb128 0x19
+ 2537 0266 3C       		.uleb128 0x3c
+ 2538 0267 19       		.uleb128 0x19
+ 2539 0268 6E       		.uleb128 0x6e
+ 2540 0269 0E       		.uleb128 0xe
+ 2541 026a 03       		.uleb128 0x3
+ 2542 026b 0E       		.uleb128 0xe
+ 2543 026c 3A       		.uleb128 0x3a
+ 2544 026d 0B       		.uleb128 0xb
+ 2545 026e 3B       		.uleb128 0x3b
+ 2546 026f 0B       		.uleb128 0xb
+ 2547 0270 00       		.byte	0
+ 2548 0271 00       		.byte	0
+ 2549 0272 00       		.byte	0
+ 2550              		.section	.debug_loc,"",%progbits
+ 2551              	.Ldebug_loc0:
+ 2552              	.LLST0:
+ 2553 0000 00000000 		.4byte	.LVL0
+ 2554 0004 05000000 		.4byte	.LVL1-1
+ 2555 0008 0100     		.2byte	0x1
+ 2556 000a 50       		.byte	0x50
+ 2557 000b 05000000 		.4byte	.LVL1-1
+ 2558 000f 40000000 		.4byte	.LFE118
+ 2559 0013 0400     		.2byte	0x4
+ 2560 0015 F3       		.byte	0xf3
+ 2561 0016 01       		.uleb128 0x1
+ 2562 0017 50       		.byte	0x50
+ 2563 0018 9F       		.byte	0x9f
+ 2564 0019 00000000 		.4byte	0
+ 2565 001d 00000000 		.4byte	0
+ 2566              	.LLST1:
+ 2567 0021 00000000 		.4byte	.LVL5
+ 2568 0025 05000000 		.4byte	.LVL6-1
+ 2569 0029 0100     		.2byte	0x1
+ 2570 002b 50       		.byte	0x50
+ 2571 002c 05000000 		.4byte	.LVL6-1
+ 2572 0030 40000000 		.4byte	.LFE119
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 53
+
+
+ 2573 0034 0400     		.2byte	0x4
+ 2574 0036 F3       		.byte	0xf3
+ 2575 0037 01       		.uleb128 0x1
+ 2576 0038 50       		.byte	0x50
+ 2577 0039 9F       		.byte	0x9f
+ 2578 003a 00000000 		.4byte	0
+ 2579 003e 00000000 		.4byte	0
+ 2580              	.LLST2:
+ 2581 0042 08000000 		.4byte	.LVL15
+ 2582 0046 0C000000 		.4byte	.LVL16
+ 2583 004a 0200     		.2byte	0x2
+ 2584 004c 30       		.byte	0x30
+ 2585 004d 9F       		.byte	0x9f
+ 2586 004e 0C000000 		.4byte	.LVL16
+ 2587 0052 34000000 		.4byte	.LVL21
+ 2588 0056 0100     		.2byte	0x1
+ 2589 0058 54       		.byte	0x54
+ 2590 0059 36000000 		.4byte	.LVL22
+ 2591 005d 40000000 		.4byte	.LVL23
+ 2592 0061 0100     		.2byte	0x1
+ 2593 0063 54       		.byte	0x54
+ 2594 0064 00000000 		.4byte	0
+ 2595 0068 00000000 		.4byte	0
+ 2596              	.LLST3:
+ 2597 006c 00000000 		.4byte	.LVL27
+ 2598 0070 1D000000 		.4byte	.LVL28-1
+ 2599 0074 0100     		.2byte	0x1
+ 2600 0076 50       		.byte	0x50
+ 2601 0077 1D000000 		.4byte	.LVL28-1
+ 2602 007b 24000000 		.4byte	.LVL30
+ 2603 007f 0100     		.2byte	0x1
+ 2604 0081 54       		.byte	0x54
+ 2605 0082 24000000 		.4byte	.LVL30
+ 2606 0086 2D000000 		.4byte	.LVL31-1
+ 2607 008a 0100     		.2byte	0x1
+ 2608 008c 50       		.byte	0x50
+ 2609 008d 2D000000 		.4byte	.LVL31-1
+ 2610 0091 34000000 		.4byte	.LVL33
+ 2611 0095 0100     		.2byte	0x1
+ 2612 0097 54       		.byte	0x54
+ 2613 0098 34000000 		.4byte	.LVL33
+ 2614 009c 3D000000 		.4byte	.LVL34-1
+ 2615 00a0 0100     		.2byte	0x1
+ 2616 00a2 50       		.byte	0x50
+ 2617 00a3 3D000000 		.4byte	.LVL34-1
+ 2618 00a7 4A000000 		.4byte	.LVL36
+ 2619 00ab 0100     		.2byte	0x1
+ 2620 00ad 54       		.byte	0x54
+ 2621 00ae 4A000000 		.4byte	.LVL36
+ 2622 00b2 4C000000 		.4byte	.LVL37
+ 2623 00b6 0100     		.2byte	0x1
+ 2624 00b8 50       		.byte	0x50
+ 2625 00b9 4C000000 		.4byte	.LVL37
+ 2626 00bd A2000000 		.4byte	.LVL44
+ 2627 00c1 0100     		.2byte	0x1
+ 2628 00c3 54       		.byte	0x54
+ 2629 00c4 A2000000 		.4byte	.LVL44
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 54
+
+
+ 2630 00c8 C6000000 		.4byte	.LVL51
+ 2631 00cc 0400     		.2byte	0x4
+ 2632 00ce F3       		.byte	0xf3
+ 2633 00cf 01       		.uleb128 0x1
+ 2634 00d0 50       		.byte	0x50
+ 2635 00d1 9F       		.byte	0x9f
+ 2636 00d2 C6000000 		.4byte	.LVL51
+ 2637 00d6 CF000000 		.4byte	.LVL52-1
+ 2638 00da 0100     		.2byte	0x1
+ 2639 00dc 50       		.byte	0x50
+ 2640 00dd CF000000 		.4byte	.LVL52-1
+ 2641 00e1 D8000000 		.4byte	.LVL53
+ 2642 00e5 0100     		.2byte	0x1
+ 2643 00e7 54       		.byte	0x54
+ 2644 00e8 D8000000 		.4byte	.LVL53
+ 2645 00ec E1000000 		.4byte	.LVL54-1
+ 2646 00f0 0100     		.2byte	0x1
+ 2647 00f2 50       		.byte	0x50
+ 2648 00f3 E1000000 		.4byte	.LVL54-1
+ 2649 00f7 E8000000 		.4byte	.LVL55
+ 2650 00fb 0100     		.2byte	0x1
+ 2651 00fd 54       		.byte	0x54
+ 2652 00fe E8000000 		.4byte	.LVL55
+ 2653 0102 F0000000 		.4byte	.LFE115
+ 2654 0106 0400     		.2byte	0x4
+ 2655 0108 F3       		.byte	0xf3
+ 2656 0109 01       		.uleb128 0x1
+ 2657 010a 50       		.byte	0x50
+ 2658 010b 9F       		.byte	0x9f
+ 2659 010c 00000000 		.4byte	0
+ 2660 0110 00000000 		.4byte	0
+ 2661              	.LLST4:
+ 2662 0114 00000000 		.4byte	.LVL56
+ 2663 0118 04000000 		.4byte	.LVL57
+ 2664 011c 0100     		.2byte	0x1
+ 2665 011e 50       		.byte	0x50
+ 2666 011f 04000000 		.4byte	.LVL57
+ 2667 0123 46000000 		.4byte	.LVL67
+ 2668 0127 0300     		.2byte	0x3
+ 2669 0129 70       		.byte	0x70
+ 2670 012a 01       		.sleb128 1
+ 2671 012b 9F       		.byte	0x9f
+ 2672 012c 46000000 		.4byte	.LVL67
+ 2673 0130 94000000 		.4byte	.LFE127
+ 2674 0134 0400     		.2byte	0x4
+ 2675 0136 F3       		.byte	0xf3
+ 2676 0137 01       		.uleb128 0x1
+ 2677 0138 50       		.byte	0x50
+ 2678 0139 9F       		.byte	0x9f
+ 2679 013a 00000000 		.4byte	0
+ 2680 013e 00000000 		.4byte	0
+ 2681              	.LLST5:
+ 2682 0142 00000000 		.4byte	.LVL56
+ 2683 0146 49000000 		.4byte	.LVL68-1
+ 2684 014a 0100     		.2byte	0x1
+ 2685 014c 51       		.byte	0x51
+ 2686 014d 49000000 		.4byte	.LVL68-1
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 55
+
+
+ 2687 0151 94000000 		.4byte	.LFE127
+ 2688 0155 0400     		.2byte	0x4
+ 2689 0157 F3       		.byte	0xf3
+ 2690 0158 01       		.uleb128 0x1
+ 2691 0159 51       		.byte	0x51
+ 2692 015a 9F       		.byte	0x9f
+ 2693 015b 00000000 		.4byte	0
+ 2694 015f 00000000 		.4byte	0
+ 2695              	.LLST6:
+ 2696 0163 3E000000 		.4byte	.LVL64
+ 2697 0167 42000000 		.4byte	.LVL65
+ 2698 016b 0600     		.2byte	0x6
+ 2699 016d 03       		.byte	0x3
+ 2700 016e 80000000 		.4byte	.LC12
+ 2701 0172 9F       		.byte	0x9f
+ 2702 0173 44000000 		.4byte	.LVL66
+ 2703 0177 64000000 		.4byte	.LVL73
+ 2704 017b 0100     		.2byte	0x1
+ 2705 017d 55       		.byte	0x55
+ 2706 017e 00000000 		.4byte	0
+ 2707 0182 00000000 		.4byte	0
+ 2708              	.LLST7:
+ 2709 0186 20000000 		.4byte	.LVL58
+ 2710 018a 24000000 		.4byte	.LVL59
+ 2711 018e 0600     		.2byte	0x6
+ 2712 0190 03       		.byte	0x3
+ 2713 0191 38000000 		.4byte	.LC6
+ 2714 0195 9F       		.byte	0x9f
+ 2715 0196 24000000 		.4byte	.LVL59
+ 2716 019a 28000000 		.4byte	.LVL60
+ 2717 019e 0600     		.2byte	0x6
+ 2718 01a0 03       		.byte	0x3
+ 2719 01a1 44000000 		.4byte	.LC7
+ 2720 01a5 9F       		.byte	0x9f
+ 2721 01a6 28000000 		.4byte	.LVL60
+ 2722 01aa 2C000000 		.4byte	.LVL61
+ 2723 01ae 0600     		.2byte	0x6
+ 2724 01b0 03       		.byte	0x3
+ 2725 01b1 50000000 		.4byte	.LC8
+ 2726 01b5 9F       		.byte	0x9f
+ 2727 01b6 2C000000 		.4byte	.LVL61
+ 2728 01ba 30000000 		.4byte	.LVL62
+ 2729 01be 0600     		.2byte	0x6
+ 2730 01c0 03       		.byte	0x3
+ 2731 01c1 5C000000 		.4byte	.LC9
+ 2732 01c5 9F       		.byte	0x9f
+ 2733 01c6 32000000 		.4byte	.LVL63
+ 2734 01ca 64000000 		.4byte	.LVL73
+ 2735 01ce 0100     		.2byte	0x1
+ 2736 01d0 54       		.byte	0x54
+ 2737 01d1 00000000 		.4byte	0
+ 2738 01d5 00000000 		.4byte	0
+ 2739              		.section	.debug_aranges,"",%progbits
+ 2740 0000 84000000 		.4byte	0x84
+ 2741 0004 0200     		.2byte	0x2
+ 2742 0006 00000000 		.4byte	.Ldebug_info0
+ 2743 000a 04       		.byte	0x4
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 56
+
+
+ 2744 000b 00       		.byte	0
+ 2745 000c 0000     		.2byte	0
+ 2746 000e 0000     		.2byte	0
+ 2747 0010 00000000 		.4byte	.LFB116
+ 2748 0014 1C000000 		.4byte	.LFE116-.LFB116
+ 2749 0018 00000000 		.4byte	.LFB117
+ 2750 001c 1C000000 		.4byte	.LFE117-.LFB117
+ 2751 0020 00000000 		.4byte	.LFB118
+ 2752 0024 40000000 		.4byte	.LFE118-.LFB118
+ 2753 0028 00000000 		.4byte	.LFB119
+ 2754 002c 40000000 		.4byte	.LFE119-.LFB119
+ 2755 0030 00000000 		.4byte	.LFB120
+ 2756 0034 28000000 		.4byte	.LFE120-.LFB120
+ 2757 0038 00000000 		.4byte	.LFB121
+ 2758 003c 08000000 		.4byte	.LFE121-.LFB121
+ 2759 0040 00000000 		.4byte	.LFB122
+ 2760 0044 08000000 		.4byte	.LFE122-.LFB122
+ 2761 0048 00000000 		.4byte	.LFB123
+ 2762 004c 08000000 		.4byte	.LFE123-.LFB123
+ 2763 0050 00000000 		.4byte	.LFB124
+ 2764 0054 58000000 		.4byte	.LFE124-.LFB124
+ 2765 0058 00000000 		.4byte	.LFB114
+ 2766 005c 50000000 		.4byte	.LFE114-.LFB114
+ 2767 0060 00000000 		.4byte	.LFB125
+ 2768 0064 10000000 		.4byte	.LFE125-.LFB125
+ 2769 0068 00000000 		.4byte	.LFB126
+ 2770 006c 10000000 		.4byte	.LFE126-.LFB126
+ 2771 0070 00000000 		.4byte	.LFB115
+ 2772 0074 F0000000 		.4byte	.LFE115-.LFB115
+ 2773 0078 00000000 		.4byte	.LFB127
+ 2774 007c 94000000 		.4byte	.LFE127-.LFB127
+ 2775 0080 00000000 		.4byte	0
+ 2776 0084 00000000 		.4byte	0
+ 2777              		.section	.debug_ranges,"",%progbits
+ 2778              	.Ldebug_ranges0:
+ 2779 0000 00000000 		.4byte	.LFB116
+ 2780 0004 1C000000 		.4byte	.LFE116
+ 2781 0008 00000000 		.4byte	.LFB117
+ 2782 000c 1C000000 		.4byte	.LFE117
+ 2783 0010 00000000 		.4byte	.LFB118
+ 2784 0014 40000000 		.4byte	.LFE118
+ 2785 0018 00000000 		.4byte	.LFB119
+ 2786 001c 40000000 		.4byte	.LFE119
+ 2787 0020 00000000 		.4byte	.LFB120
+ 2788 0024 28000000 		.4byte	.LFE120
+ 2789 0028 00000000 		.4byte	.LFB121
+ 2790 002c 08000000 		.4byte	.LFE121
+ 2791 0030 00000000 		.4byte	.LFB122
+ 2792 0034 08000000 		.4byte	.LFE122
+ 2793 0038 00000000 		.4byte	.LFB123
+ 2794 003c 08000000 		.4byte	.LFE123
+ 2795 0040 00000000 		.4byte	.LFB124
+ 2796 0044 58000000 		.4byte	.LFE124
+ 2797 0048 00000000 		.4byte	.LFB114
+ 2798 004c 50000000 		.4byte	.LFE114
+ 2799 0050 00000000 		.4byte	.LFB125
+ 2800 0054 10000000 		.4byte	.LFE125
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 57
+
+
+ 2801 0058 00000000 		.4byte	.LFB126
+ 2802 005c 10000000 		.4byte	.LFE126
+ 2803 0060 00000000 		.4byte	.LFB115
+ 2804 0064 F0000000 		.4byte	.LFE115
+ 2805 0068 00000000 		.4byte	.LFB127
+ 2806 006c 94000000 		.4byte	.LFE127
+ 2807 0070 00000000 		.4byte	0
+ 2808 0074 00000000 		.4byte	0
+ 2809              		.section	.debug_line,"",%progbits
+ 2810              	.Ldebug_line0:
+ 2811 0000 07040000 		.section	.debug_str,"MS",%progbits,1
+ 2811      0200A102 
+ 2811      00000201 
+ 2811      FB0E0D00 
+ 2811      01010101 
+ 2812              	.LASF73:
+ 2813 0000 6D5F6E6F 		.ascii	"m_noSongs\000"
+ 2813      536F6E67 
+ 2813      7300
+ 2814              	.LASF114:
+ 2815 000a 534F554E 		.ascii	"SOUND_SetSong\000"
+ 2815      445F5365 
+ 2815      74536F6E 
+ 2815      6700
+ 2816              	.LASF48:
+ 2817 0018 52435F45 		.ascii	"RC_ERROR_NOT_MATCH\000"
+ 2817      52524F52 
+ 2817      5F4E4F54 
+ 2817      5F4D4154 
+ 2817      434800
+ 2818              	.LASF70:
+ 2819 002b 4D503353 		.ascii	"MP3STATE_ISPAUSING\000"
+ 2819      54415445 
+ 2819      5F495350 
+ 2819      41555349 
+ 2819      4E4700
+ 2820              	.LASF44:
+ 2821 003e 52435F45 		.ascii	"RC_ERROR_WRITE_ONLY\000"
+ 2821      52524F52 
+ 2821      5F575249 
+ 2821      54455F4F 
+ 2821      4E4C5900 
+ 2822              	.LASF26:
+ 2823 0052 4576656E 		.ascii	"EventMaskType\000"
+ 2823      744D6173 
+ 2823      6B547970 
+ 2823      6500
+ 2824              	.LASF85:
+ 2825 0060 4D50335F 		.ascii	"MP3__resumeSong\000"
+ 2825      5F726573 
+ 2825      756D6553 
+ 2825      6F6E6700 
+ 2826              	.LASF59:
+ 2827 0070 534F554E 		.ascii	"SOUND_Record_t\000"
+ 2827      445F5265 
+ 2827      636F7264 
+ 2827      5F7400
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 58
+
+
+ 2828              	.LASF122:
+ 2829 007f 73536F75 		.ascii	"sSoundRecourd\000"
+ 2829      6E645265 
+ 2829      636F7572 
+ 2829      6400
+ 2830              	.LASF55:
+ 2831 008d 6D5F7469 		.ascii	"m_title\000"
+ 2831      746C6500 
+ 2832              	.LASF12:
+ 2833 0095 756E7369 		.ascii	"unsigned int\000"
+ 2833      676E6564 
+ 2833      20696E74 
+ 2833      00
+ 2834              	.LASF32:
+ 2835 00a2 52435F45 		.ascii	"RC_ERROR_ZERO\000"
+ 2835      52524F52 
+ 2835      5F5A4552 
+ 2835      4F00
+ 2836              	.LASF91:
+ 2837 00b0 73746174 		.ascii	"stateStr\000"
+ 2837      65537472 
+ 2837      00
+ 2838              	.LASF6:
+ 2839 00b9 5F5F696E 		.ascii	"__int32_t\000"
+ 2839      7433325F 
+ 2839      7400
+ 2840              	.LASF31:
+ 2841 00c3 52435F45 		.ascii	"RC_ERROR_NULL\000"
+ 2841      52524F52 
+ 2841      5F4E554C 
+ 2841      4C00
+ 2842              	.LASF40:
+ 2843 00d1 52435F45 		.ascii	"RC_ERROR_TIME_OUT\000"
+ 2843      52524F52 
+ 2843      5F54494D 
+ 2843      455F4F55 
+ 2843      5400
+ 2844              	.LASF52:
+ 2845 00e3 52435F45 		.ascii	"RC_ERROR_INVALID_STATE\000"
+ 2845      52524F52 
+ 2845      5F494E56 
+ 2845      414C4944 
+ 2845      5F535441 
+ 2846              	.LASF118:
+ 2847 00fa 42555454 		.ascii	"BUTTON_IsPressed\000"
+ 2847      4F4E5F49 
+ 2847      73507265 
+ 2847      73736564 
+ 2847      00
+ 2848              	.LASF24:
+ 2849 010b 45455F46 		.ascii	"EE_FREG\000"
+ 2849      52454700 
+ 2850              	.LASF116:
+ 2851 0113 534F554E 		.ascii	"SOUND_StopPlay\000"
+ 2851      445F5374 
+ 2851      6F70506C 
+ 2851      617900
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 59
+
+
+ 2852              	.LASF113:
+ 2853 0122 4D50335F 		.ascii	"MP3__decreaseSmartVolume\000"
+ 2853      5F646563 
+ 2853      72656173 
+ 2853      65536D61 
+ 2853      7274566F 
+ 2854              	.LASF86:
+ 2855 013b 4D50335F 		.ascii	"MP3__showSong\000"
+ 2855      5F73686F 
+ 2855      77536F6E 
+ 2855      6700
+ 2856              	.LASF16:
+ 2857 0149 75696E74 		.ascii	"uint32_t\000"
+ 2857      33325F74 
+ 2857      00
+ 2858              	.LASF30:
+ 2859 0152 52435F45 		.ascii	"RC_ERROR\000"
+ 2859      52524F52 
+ 2859      00
+ 2860              	.LASF47:
+ 2861 015b 52435F45 		.ascii	"RC_ERROR_WRITE_FAILS\000"
+ 2861      52524F52 
+ 2861      5F575249 
+ 2861      54455F46 
+ 2861      41494C53 
+ 2862              	.LASF77:
+ 2863 0170 4D50335F 		.ascii	"MP3__nextSong\000"
+ 2863      5F6E6578 
+ 2863      74536F6E 
+ 2863      6700
+ 2864              	.LASF17:
+ 2865 017e 666C6F61 		.ascii	"float\000"
+ 2865      7400
+ 2866              	.LASF82:
+ 2867 0184 4D50335F 		.ascii	"MP3__playSong\000"
+ 2867      5F706C61 
+ 2867      79536F6E 
+ 2867      6700
+ 2868              	.LASF63:
+ 2869 0192 42555454 		.ascii	"BUTTON_1\000"
+ 2869      4F4E5F31 
+ 2869      00
+ 2870              	.LASF64:
+ 2871 019b 42555454 		.ascii	"BUTTON_2\000"
+ 2871      4F4E5F32 
+ 2871      00
+ 2872              	.LASF65:
+ 2873 01a4 42555454 		.ascii	"BUTTON_3\000"
+ 2873      4F4E5F33 
+ 2873      00
+ 2874              	.LASF66:
+ 2875 01ad 42555454 		.ascii	"BUTTON_4\000"
+ 2875      4F4E5F34 
+ 2875      00
+ 2876              	.LASF41:
+ 2877 01b6 52435F45 		.ascii	"RC_ERROR_OPEN\000"
+ 2877      52524F52 
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 60
+
+
+ 2877      5F4F5045 
+ 2877      4E00
+ 2878              	.LASF11:
+ 2879 01c4 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2879      206C6F6E 
+ 2879      6720756E 
+ 2879      7369676E 
+ 2879      65642069 
+ 2880              	.LASF56:
+ 2881 01db 6D5F6C65 		.ascii	"m_length\000"
+ 2881      6E677468 
+ 2881      00
+ 2882              	.LASF92:
+ 2883 01e4 6576656E 		.ascii	"eventStr\000"
+ 2883      74537472 
+ 2883      00
+ 2884              	.LASF102:
+ 2885 01ed 5F5F7A65 		.ascii	"__zero_table_t\000"
+ 2885      726F5F74 
+ 2885      61626C65 
+ 2885      5F7400
+ 2886              	.LASF4:
+ 2887 01fc 5F5F7569 		.ascii	"__uint16_t\000"
+ 2887      6E743136 
+ 2887      5F7400
+ 2888              	.LASF58:
+ 2889 0207 6D5F6461 		.ascii	"m_data\000"
+ 2889      746100
+ 2890              	.LASF71:
+ 2891 020e 4D50335F 		.ascii	"MP3__State_t\000"
+ 2891      5F537461 
+ 2891      74655F74 
+ 2891      00
+ 2892              	.LASF106:
+ 2893 021b 534F554E 		.ascii	"SOUND_Records\000"
+ 2893      445F5265 
+ 2893      636F7264 
+ 2893      7300
+ 2894              	.LASF25:
+ 2895 0229 45455F54 		.ascii	"EE_TID\000"
+ 2895      494400
+ 2896              	.LASF121:
+ 2897 0230 443A5C48 		.ascii	"D:\\H_da\\Winter Semester\\MM03 Advanced Microcontr"
+ 2897      5F64615C 
+ 2897      57696E74 
+ 2897      65722053 
+ 2897      656D6573 
+ 2898 0260 6F6C6C65 		.ascii	"oller Systems and Embedded Operating Systems\\Lectu"
+ 2898      72205379 
+ 2898      7374656D 
+ 2898      7320616E 
+ 2898      6420456D 
+ 2899 0292 72652050 		.ascii	"re Prof. Fromm\\workspace\\workspace_psoc\\Smart_Vo"
+ 2899      726F662E 
+ 2899      2046726F 
+ 2899      6D6D5C77 
+ 2899      6F726B73 
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 61
+
+
+ 2900 02c2 6C756D65 		.ascii	"lume\\Smart_Volume.cydsn\000"
+ 2900      5C536D61 
+ 2900      72745F56 
+ 2900      6F6C756D 
+ 2900      652E6379 
+ 2901              	.LASF112:
+ 2902 02da 534F554E 		.ascii	"SOUND_SetVolume\000"
+ 2902      445F5365 
+ 2902      74566F6C 
+ 2902      756D6500 
+ 2903              	.LASF96:
+ 2904 02ea 45455F41 		.ascii	"EE_ApplicationMode\000"
+ 2904      70706C69 
+ 2904      63617469 
+ 2904      6F6E4D6F 
+ 2904      646500
+ 2905              	.LASF123:
+ 2906 02fd 4D50335F 		.ascii	"MP3__songEnded\000"
+ 2906      5F736F6E 
+ 2906      67456E64 
+ 2906      656400
+ 2907              	.LASF83:
+ 2908 030c 4D50335F 		.ascii	"MP3__stopSong\000"
+ 2908      5F73746F 
+ 2908      70536F6E 
+ 2908      6700
+ 2909              	.LASF62:
+ 2910 031a 65427574 		.ascii	"eButton\000"
+ 2910      746F6E00 
+ 2911              	.LASF119:
+ 2912 0322 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2912      43313120 
+ 2912      352E342E 
+ 2912      31203230 
+ 2912      31363036 
+ 2913 0355 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 2913      20726576 
+ 2913      6973696F 
+ 2913      6E203233 
+ 2913      37373135 
+ 2914 0388 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 2914      66756E63 
+ 2914      74696F6E 
+ 2914      2D736563 
+ 2914      74696F6E 
+ 2915              	.LASF42:
+ 2916 03b0 52435F45 		.ascii	"RC_ERROR_CHECKSUM\000"
+ 2916      52524F52 
+ 2916      5F434845 
+ 2916      434B5355 
+ 2916      4D00
+ 2917              	.LASF80:
+ 2918 03c2 4D50335F 		.ascii	"MP3__decreaseVolume\000"
+ 2918      5F646563 
+ 2918      72656173 
+ 2918      65566F6C 
+ 2918      756D6500 
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 62
+
+
+ 2919              	.LASF19:
+ 2920 03d6 63686172 		.ascii	"char\000"
+ 2920      00
+ 2921              	.LASF29:
+ 2922 03db 52435F53 		.ascii	"RC_SUCCESS\000"
+ 2922      55434345 
+ 2922      535300
+ 2923              	.LASF28:
+ 2924 03e6 626F6F6C 		.ascii	"boolean_t\000"
+ 2924      65616E5F 
+ 2924      7400
+ 2925              	.LASF76:
+ 2926 03f0 6D5F7265 		.ascii	"m_remainingPlayTime\000"
+ 2926      6D61696E 
+ 2926      696E6750 
+ 2926      6C617954 
+ 2926      696D6500 
+ 2927              	.LASF50:
+ 2928 0404 52435F45 		.ascii	"RC_ERROR_BAD_DATA\000"
+ 2928      52524F52 
+ 2928      5F424144 
+ 2928      5F444154 
+ 2928      4100
+ 2929              	.LASF13:
+ 2930 0416 75696E74 		.ascii	"uint8_t\000"
+ 2930      385F7400 
+ 2931              	.LASF93:
+ 2932 041e 4D50335F 		.ascii	"MP3__player\000"
+ 2932      5F706C61 
+ 2932      79657200 
+ 2933              	.LASF117:
+ 2934 042a 55415254 		.ascii	"UART_LOG_PutString\000"
+ 2934      5F4C4F47 
+ 2934      5F507574 
+ 2934      53747269 
+ 2934      6E6700
+ 2935              	.LASF57:
+ 2936 043d 6D5F7369 		.ascii	"m_size\000"
+ 2936      7A6500
+ 2937              	.LASF10:
+ 2938 0444 6C6F6E67 		.ascii	"long long int\000"
+ 2938      206C6F6E 
+ 2938      6720696E 
+ 2938      7400
+ 2939              	.LASF101:
+ 2940 0452 5F5F636F 		.ascii	"__copy_table_end__\000"
+ 2940      70795F74 
+ 2940      61626C65 
+ 2940      5F656E64 
+ 2940      5F5F00
+ 2941              	.LASF51:
+ 2942 0465 52435F45 		.ascii	"RC_ERROR_CANCELED\000"
+ 2942      52524F52 
+ 2942      5F43414E 
+ 2942      43454C45 
+ 2942      4400
+ 2943              	.LASF103:
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 63
+
+
+ 2944 0477 5F5F7A65 		.ascii	"__zero_table_start__\000"
+ 2944      726F5F74 
+ 2944      61626C65 
+ 2944      5F737461 
+ 2944      72745F5F 
+ 2945              	.LASF87:
+ 2946 048c 4D50335F 		.ascii	"MP3_Init\000"
+ 2946      496E6974 
+ 2946      00
+ 2947              	.LASF107:
+ 2948 0495 534F554E 		.ascii	"SOUND_NoOfRecords\000"
+ 2948      445F4E6F 
+ 2948      4F665265 
+ 2948      636F7264 
+ 2948      7300
+ 2949              	.LASF100:
+ 2950 04a7 5F5F636F 		.ascii	"__copy_table_start__\000"
+ 2950      70795F74 
+ 2950      61626C65 
+ 2950      5F737461 
+ 2950      72745F5F 
+ 2951              	.LASF36:
+ 2952 04bc 52435F45 		.ascii	"RC_ERROR_UNDERRUN\000"
+ 2952      52524F52 
+ 2952      5F554E44 
+ 2952      45525255 
+ 2952      4E00
+ 2953              	.LASF33:
+ 2954 04ce 52435F45 		.ascii	"RC_ERROR_MEMORY\000"
+ 2954      52524F52 
+ 2954      5F4D454D 
+ 2954      4F525900 
+ 2955              	.LASF60:
+ 2956 04de 53455645 		.ascii	"SEVEN_0\000"
+ 2956      4E5F3000 
+ 2957              	.LASF61:
+ 2958 04e6 53455645 		.ascii	"SEVEN_1\000"
+ 2958      4E5F3100 
+ 2959              	.LASF37:
+ 2960 04ee 52435F45 		.ascii	"RC_ERROR_BUFFER_FULL\000"
+ 2960      52524F52 
+ 2960      5F425546 
+ 2960      4645525F 
+ 2960      46554C4C 
+ 2961              	.LASF20:
+ 2962 0503 6C6F6E67 		.ascii	"long double\000"
+ 2962      20646F75 
+ 2962      626C6500 
+ 2963              	.LASF14:
+ 2964 050f 75696E74 		.ascii	"uint16_t\000"
+ 2964      31365F74 
+ 2964      00
+ 2965              	.LASF69:
+ 2966 0518 4D503353 		.ascii	"MP3STATE_ISPLAYING\000"
+ 2966      54415445 
+ 2966      5F495350 
+ 2966      4C415949 
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 64
+
+
+ 2966      4E4700
+ 2967              	.LASF22:
+ 2968 052b 45455F55 		.ascii	"EE_UINT32\000"
+ 2968      494E5433 
+ 2968      3200
+ 2969              	.LASF43:
+ 2970 0535 52435F45 		.ascii	"RC_ERROR_READ_ONLY\000"
+ 2970      52524F52 
+ 2970      5F524541 
+ 2970      445F4F4E 
+ 2970      4C5900
+ 2971              	.LASF39:
+ 2972 0548 52435F45 		.ascii	"RC_ERROR_BUSY\000"
+ 2972      52524F52 
+ 2972      5F425553 
+ 2972      5900
+ 2973              	.LASF49:
+ 2974 0556 52435F45 		.ascii	"RC_ERROR_BAD_PARAM\000"
+ 2974      52524F52 
+ 2974      5F424144 
+ 2974      5F504152 
+ 2974      414D00
+ 2975              	.LASF68:
+ 2976 0569 4D503353 		.ascii	"MP3STATE_ISSTOPPED\000"
+ 2976      54415445 
+ 2976      5F495353 
+ 2976      544F5050 
+ 2976      454400
+ 2977              	.LASF2:
+ 2978 057c 73686F72 		.ascii	"short int\000"
+ 2978      7420696E 
+ 2978      7400
+ 2979              	.LASF7:
+ 2980 0586 6C6F6E67 		.ascii	"long int\000"
+ 2980      20696E74 
+ 2980      00
+ 2981              	.LASF109:
+ 2982 058f 776C656E 		.ascii	"wlen\000"
+ 2982      00
+ 2983              	.LASF105:
+ 2984 0594 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2984      52784275 
+ 2984      66666572 
+ 2984      00
+ 2985              	.LASF88:
+ 2986 05a1 4D50335F 		.ascii	"MP3__showRemainingPlaytime\000"
+ 2986      5F73686F 
+ 2986      7752656D 
+ 2986      61696E69 
+ 2986      6E67506C 
+ 2987              	.LASF110:
+ 2988 05bc 4D50335F 		.ascii	"MP3__increaseSmartVolume\000"
+ 2988      5F696E63 
+ 2988      72656173 
+ 2988      65536D61 
+ 2988      7274566F 
+ 2989              	.LASF84:
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 65
+
+
+ 2990 05d5 4D50335F 		.ascii	"MP3__pauseSong\000"
+ 2990      5F706175 
+ 2990      7365536F 
+ 2990      6E6700
+ 2991              	.LASF79:
+ 2992 05e4 4D50335F 		.ascii	"MP3__increaseVolume\000"
+ 2992      5F696E63 
+ 2992      72656173 
+ 2992      65566F6C 
+ 2992      756D6500 
+ 2993              	.LASF104:
+ 2994 05f8 5F5F7A65 		.ascii	"__zero_table_end__\000"
+ 2994      726F5F74 
+ 2994      61626C65 
+ 2994      5F656E64 
+ 2994      5F5F00
+ 2995              	.LASF124:
+ 2996 060b 4D50335F 		.ascii	"MP3_ProcessEvent\000"
+ 2996      50726F63 
+ 2996      65737345 
+ 2996      76656E74 
+ 2996      00
+ 2997              	.LASF45:
+ 2998 061c 52435F45 		.ascii	"RC_ERROR_INVALID\000"
+ 2998      52524F52 
+ 2998      5F494E56 
+ 2998      414C4944 
+ 2998      00
+ 2999              	.LASF3:
+ 3000 062d 5F5F7569 		.ascii	"__uint8_t\000"
+ 3000      6E74385F 
+ 3000      7400
+ 3001              	.LASF67:
+ 3002 0637 654D5033 		.ascii	"eMP3__State\000"
+ 3002      5F5F5374 
+ 3002      61746500 
+ 3003              	.LASF72:
+ 3004 0643 6D5F7374 		.ascii	"m_state\000"
+ 3004      61746500 
+ 3005              	.LASF98:
+ 3006 064b 45455F49 		.ascii	"EE_IRQ_nesting_level\000"
+ 3006      52515F6E 
+ 3006      65737469 
+ 3006      6E675F6C 
+ 3006      6576656C 
+ 3007              	.LASF75:
+ 3008 0660 6D5F766F 		.ascii	"m_volume\000"
+ 3008      6C756D65 
+ 3008      00
+ 3009              	.LASF46:
+ 3010 0669 52435F45 		.ascii	"RC_ERROR_READ_FAILS\000"
+ 3010      52524F52 
+ 3010      5F524541 
+ 3010      445F4641 
+ 3010      494C5300 
+ 3011              	.LASF23:
+ 3012 067d 45455F55 		.ascii	"EE_UREG\000"
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 66
+
+
+ 3012      52454700 
+ 3013              	.LASF21:
+ 3014 0685 45455F49 		.ascii	"EE_INT32\000"
+ 3014      4E543332 
+ 3014      00
+ 3015              	.LASF27:
+ 3016 068e 73697A65 		.ascii	"sizetype\000"
+ 3016      74797065 
+ 3016      00
+ 3017              	.LASF9:
+ 3018 0697 6C6F6E67 		.ascii	"long unsigned int\000"
+ 3018      20756E73 
+ 3018      69676E65 
+ 3018      6420696E 
+ 3018      7400
+ 3019              	.LASF115:
+ 3020 06a9 534F554E 		.ascii	"SOUND_StartPlay\000"
+ 3020      445F5374 
+ 3020      61727450 
+ 3020      6C617900 
+ 3021              	.LASF54:
+ 3022 06b9 52435F74 		.ascii	"RC_t\000"
+ 3022      00
+ 3023              	.LASF15:
+ 3024 06be 696E7433 		.ascii	"int32_t\000"
+ 3024      325F7400 
+ 3025              	.LASF35:
+ 3026 06c6 52435F45 		.ascii	"RC_ERROR_OVERRUN\000"
+ 3026      52524F52 
+ 3026      5F4F5645 
+ 3026      5252554E 
+ 3026      00
+ 3027              	.LASF1:
+ 3028 06d7 756E7369 		.ascii	"unsigned char\000"
+ 3028      676E6564 
+ 3028      20636861 
+ 3028      7200
+ 3029              	.LASF8:
+ 3030 06e5 5F5F7569 		.ascii	"__uint32_t\000"
+ 3030      6E743332 
+ 3030      5F7400
+ 3031              	.LASF38:
+ 3032 06f0 52435F45 		.ascii	"RC_ERROR_BUFFER_EMTPY\000"
+ 3032      52524F52 
+ 3032      5F425546 
+ 3032      4645525F 
+ 3032      454D5450 
+ 3033              	.LASF97:
+ 3034 0706 45455F73 		.ascii	"EE_std_endcycle_next_tid\000"
+ 3034      74645F65 
+ 3034      6E646379 
+ 3034      636C655F 
+ 3034      6E657874 
+ 3035              	.LASF99:
+ 3036 071f 5F5F636F 		.ascii	"__copy_table_t\000"
+ 3036      70795F74 
+ 3036      61626C65 
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 67
+
+
+ 3036      5F7400
+ 3037              	.LASF53:
+ 3038 072e 52435F45 		.ascii	"RC_ERROR_UNKNOWN\000"
+ 3038      52524F52 
+ 3038      5F554E4B 
+ 3038      4E4F574E 
+ 3038      00
+ 3039              	.LASF90:
+ 3040 073f 73746174 		.ascii	"state\000"
+ 3040      6500
+ 3041              	.LASF81:
+ 3042 0745 6E657874 		.ascii	"nextEvent\000"
+ 3042      4576656E 
+ 3042      7400
+ 3043              	.LASF120:
+ 3044 074f 736F7572 		.ascii	"source\\asw\\mp3.c\000"
+ 3044      63655C61 
+ 3044      73775C6D 
+ 3044      70332E63 
+ 3044      00
+ 3045              	.LASF74:
+ 3046 0760 6D5F6375 		.ascii	"m_currentSong\000"
+ 3046      7272656E 
+ 3046      74536F6E 
+ 3046      6700
+ 3047              	.LASF95:
+ 3048 076e 45455F6F 		.ascii	"EE_oo_IRQ_suspend_status\000"
+ 3048      6F5F4952 
+ 3048      515F7375 
+ 3048      7370656E 
+ 3048      645F7374 
+ 3049              	.LASF94:
+ 3050 0787 45455F6F 		.ascii	"EE_oo_IRQ_disable_count\000"
+ 3050      6F5F4952 
+ 3050      515F6469 
+ 3050      7361626C 
+ 3050      655F636F 
+ 3051              	.LASF0:
+ 3052 079f 7369676E 		.ascii	"signed char\000"
+ 3052      65642063 
+ 3052      68617200 
+ 3053              	.LASF111:
+ 3054 07ab 53455645 		.ascii	"SEVEN_Set\000"
+ 3054      4E5F5365 
+ 3054      7400
+ 3055              	.LASF5:
+ 3056 07b5 73686F72 		.ascii	"short unsigned int\000"
+ 3056      7420756E 
+ 3056      7369676E 
+ 3056      65642069 
+ 3056      6E7400
+ 3057              	.LASF89:
+ 3058 07c8 4D50335F 		.ascii	"MP3__showEventAndState\000"
+ 3058      5F73686F 
+ 3058      77457665 
+ 3058      6E74416E 
+ 3058      64537461 
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\ccjmivOS.s 			page 68
+
+
+ 3059              	.LASF18:
+ 3060 07df 646F7562 		.ascii	"double\000"
+ 3060      6C6500
+ 3061              	.LASF108:
+ 3062 07e6 64657374 		.ascii	"dest\000"
+ 3062      00
+ 3063              	.LASF78:
+ 3064 07eb 4D50335F 		.ascii	"MP3__prevSong\000"
+ 3064      5F707265 
+ 3064      76536F6E 
+ 3064      6700
+ 3065              	.LASF34:
+ 3066 07f9 52435F45 		.ascii	"RC_ERROR_RANGE\000"
+ 3066      52524F52 
+ 3066      5F52414E 
+ 3066      474500
+ 3067              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

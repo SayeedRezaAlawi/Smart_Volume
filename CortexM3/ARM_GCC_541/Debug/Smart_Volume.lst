@@ -1,0 +1,2149 @@
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"Smart_Volume.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.MP3__increaseSmartVolume,"ax",%progbits
+  20              		.align	2
+  21              		.global	MP3__increaseSmartVolume
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	MP3__increaseSmartVolume, %function
+  25              	MP3__increaseSmartVolume:
+  26              	.LFB114:
+  27              		.file 1 "source\\asw\\Smart_Volume.c"
+   1:source\asw/Smart_Volume.c **** /**
+   2:source\asw/Smart_Volume.c **** * \file Smart_Volume.c
+   3:source\asw/Smart_Volume.c **** * \author Sayeed Reza Alawi
+   4:source\asw/Smart_Volume.c **** * \date 
+   5:source\asw/Smart_Volume.c **** *
+   6:source\asw/Smart_Volume.c **** * \brief Sound driver
+   7:source\asw/Smart_Volume.c **** *
+   8:source\asw/Smart_Volume.c **** * \copyright Copyright ©2016
+   9:source\asw/Smart_Volume.c **** * Department of electrical engineering and information technology, Hochschule Darmstadt - Universit
+  10:source\asw/Smart_Volume.c **** * Permission to use, copy, modify, and distribute this software and its documentation for education
+  11:source\asw/Smart_Volume.c **** * (unless permitted by h_da) and official h_da projects, is hereby granted for enrolled students of
+  12:source\asw/Smart_Volume.c **** * this paragraph and the following paragraph appear in all copies, modifications, and distributions
+  13:source\asw/Smart_Volume.c **** * Contact Prof.Dr.-Ing. Peter Fromm, peter.fromm@h-da.de, Birkenweg 8 64295 Darmstadt - GERMANY for
+  14:source\asw/Smart_Volume.c **** *
+  15:source\asw/Smart_Volume.c **** * \warning This software is a PROTOTYPE version and is not designed or intended for use in producti
+  16:source\asw/Smart_Volume.c **** * The user represents and warrants that it will NOT use or redistribute the Software for such purpo
+  17:source\asw/Smart_Volume.c **** * This prototype is for research purposes only. This software is provided "AS IS," without a warran
+  18:source\asw/Smart_Volume.c **** */
+  19:source\asw/Smart_Volume.c **** 
+  20:source\asw/Smart_Volume.c **** /*****************************************************************************/
+  21:source\asw/Smart_Volume.c **** /* Include files                                                             */
+  22:source\asw/Smart_Volume.c **** /*****************************************************************************/
+  23:source\asw/Smart_Volume.c **** #include "Smart_Volume.h"
+  24:source\asw/Smart_Volume.c **** #include "project.h"
+  25:source\asw/Smart_Volume.c **** 
+  26:source\asw/Smart_Volume.c **** /*****************************************************************************/
+  27:source\asw/Smart_Volume.c **** /* Local pre-processor symbols/macros ('#define')                            */
+  28:source\asw/Smart_Volume.c **** /*****************************************************************************/
+  29:source\asw/Smart_Volume.c **** 
+  30:source\asw/Smart_Volume.c **** /*****************************************************************************/
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 2
+
+
+  31:source\asw/Smart_Volume.c **** /* Global variable definitions (declared in header file with 'extern')       */
+  32:source\asw/Smart_Volume.c **** /*****************************************************************************/
+  33:source\asw/Smart_Volume.c **** 
+  34:source\asw/Smart_Volume.c **** /*****************************************************************************/
+  35:source\asw/Smart_Volume.c **** /* Local type definitions ('typedef')                                        */
+  36:source\asw/Smart_Volume.c **** /*****************************************************************************/
+  37:source\asw/Smart_Volume.c **** 
+  38:source\asw/Smart_Volume.c **** /*****************************************************************************/
+  39:source\asw/Smart_Volume.c **** /* Local variable definitions ('static')                                     */
+  40:source\asw/Smart_Volume.c **** /*****************************************************************************/
+  41:source\asw/Smart_Volume.c **** static uint8_t m_volume=0;
+  42:source\asw/Smart_Volume.c **** 
+  43:source\asw/Smart_Volume.c **** 
+  44:source\asw/Smart_Volume.c **** /*****************************************************************************/
+  45:source\asw/Smart_Volume.c **** /* Local function prototypes ('static')                                      */
+  46:source\asw/Smart_Volume.c **** /*****************************************************************************/
+  47:source\asw/Smart_Volume.c **** 
+  48:source\asw/Smart_Volume.c **** 
+  49:source\asw/Smart_Volume.c **** /*****************************************************************************/
+  50:source\asw/Smart_Volume.c **** /* Function implementation - global ('extern') and local ('static')          */
+  51:source\asw/Smart_Volume.c **** /*****************************************************************************/
+  52:source\asw/Smart_Volume.c **** 
+  53:source\asw/Smart_Volume.c **** /**
+  54:source\asw/Smart_Volume.c ****  * increasing the volume based on different events.
+  55:source\asw/Smart_Volume.c ****  * /return volume value.
+  56:source\asw/Smart_Volume.c ****  */
+  57:source\asw/Smart_Volume.c **** uint8_t MP3__increaseSmartVolume(EventMaskType nextEvent)
+  58:source\asw/Smart_Volume.c **** {
+  28              		.loc 1 58 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              	.LVL0:
+  33 0000 08B5     		push	{r3, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 3, -8
+  36              		.cfi_offset 14, -4
+  59:source\asw/Smart_Volume.c ****     static VOLUME__IncreamentState_t increament_volume_state= VOLUME__NormalIncreament;
+  60:source\asw/Smart_Volume.c ****     if((nextEvent & ev_3000ms))
+  37              		.loc 1 60 0
+  38 0002 10F4807F 		tst	r0, #256
+  39 0006 2AD0     		beq	.L2
+  61:source\asw/Smart_Volume.c ****     {
+  62:source\asw/Smart_Volume.c ****         SetRelAlarm(alrm_3000ms,3000,3000);
+  40              		.loc 1 62 0
+  41 0008 40F6B832 		movw	r2, #3000
+  42 000c 1146     		mov	r1, r2
+  43 000e 0320     		movs	r0, #3
+  44              	.LVL1:
+  45 0010 FFF7FEFF 		bl	EE_oo_SetRelAlarm
+  46              	.LVL2:
+  63:source\asw/Smart_Volume.c ****         if(increament_volume_state == VOLUME__NormalIncreament)
+  47              		.loc 1 63 0
+  48 0014 404B     		ldr	r3, .L14
+  49 0016 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  50 0018 4BB9     		cbnz	r3, .L3
+  64:source\asw/Smart_Volume.c ****         {
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 3
+
+
+  65:source\asw/Smart_Volume.c ****             SetRelAlarm(alrm_500ms,500,500);
+  51              		.loc 1 65 0
+  52 001a 4FF4FA72 		mov	r2, #500
+  53 001e 1146     		mov	r1, r2
+  54 0020 0020     		movs	r0, #0
+  55 0022 FFF7FEFF 		bl	EE_oo_SetRelAlarm
+  56              	.LVL3:
+  66:source\asw/Smart_Volume.c ****             increament_volume_state= VOLUME__FastIncreament; 
+  57              		.loc 1 66 0
+  58 0026 0122     		movs	r2, #1
+  59 0028 3B4B     		ldr	r3, .L14
+  60 002a 1A70     		strb	r2, [r3]
+  61 002c 09E0     		b	.L4
+  62              	.L3:
+  67:source\asw/Smart_Volume.c ****         }
+  68:source\asw/Smart_Volume.c ****         
+  69:source\asw/Smart_Volume.c ****         else if(increament_volume_state == VOLUME__FastIncreament)
+  63              		.loc 1 69 0
+  64 002e 012B     		cmp	r3, #1
+  65 0030 07D1     		bne	.L4
+  70:source\asw/Smart_Volume.c ****         {
+  71:source\asw/Smart_Volume.c ****             SetRelAlarm(alrm_100ms,100,100);
+  66              		.loc 1 71 0
+  67 0032 6422     		movs	r2, #100
+  68 0034 1146     		mov	r1, r2
+  69 0036 0120     		movs	r0, #1
+  70 0038 FFF7FEFF 		bl	EE_oo_SetRelAlarm
+  71              	.LVL4:
+  72:source\asw/Smart_Volume.c ****             increament_volume_state= VOLUME__VeryFastIncreament; 
+  72              		.loc 1 72 0
+  73 003c 0222     		movs	r2, #2
+  74 003e 364B     		ldr	r3, .L14
+  75 0040 1A70     		strb	r2, [r3]
+  76              	.L4:
+  73:source\asw/Smart_Volume.c ****         }
+  74:source\asw/Smart_Volume.c ****         if (m_volume < MP3__MAXVOLUME) 
+  77              		.loc 1 74 0
+  78 0042 354B     		ldr	r3, .L14
+  79 0044 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+  80 0046 622B     		cmp	r3, #98
+  81 0048 03D8     		bhi	.L5
+  75:source\asw/Smart_Volume.c ****         {
+  76:source\asw/Smart_Volume.c ****         m_volume++;
+  82              		.loc 1 76 0
+  83 004a 0133     		adds	r3, r3, #1
+  84 004c 324A     		ldr	r2, .L14
+  85 004e 5370     		strb	r3, [r2, #1]
+  86 0050 5FE0     		b	.L6
+  87              	.L5:
+  77:source\asw/Smart_Volume.c ****         }
+  78:source\asw/Smart_Volume.c ****         else if (m_volume == MP3__MAXVOLUME)
+  88              		.loc 1 78 0
+  89 0052 632B     		cmp	r3, #99
+  90 0054 5DD1     		bne	.L6
+  79:source\asw/Smart_Volume.c ****         {
+  80:source\asw/Smart_Volume.c ****             increament_volume_state = VOLUME__NormalIncreament;  
+  91              		.loc 1 80 0
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 4
+
+
+  92 0056 0022     		movs	r2, #0
+  93 0058 2F4B     		ldr	r3, .L14
+  94 005a 1A70     		strb	r2, [r3]
+  95 005c 59E0     		b	.L6
+  96              	.LVL5:
+  97              	.L2:
+  81:source\asw/Smart_Volume.c ****         }        
+  82:source\asw/Smart_Volume.c ****     }
+  83:source\asw/Smart_Volume.c ****     else if((increament_volume_state == VOLUME__FastIncreament) && (nextEvent &  ev_500ms))
+  98              		.loc 1 83 0
+  99 005e 2E4B     		ldr	r3, .L14
+ 100 0060 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 101 0062 012B     		cmp	r3, #1
+ 102 0064 10D1     		bne	.L7
+ 103              		.loc 1 83 0 is_stmt 0 discriminator 1
+ 104 0066 10F0200F 		tst	r0, #32
+ 105 006a 0DD0     		beq	.L7
+  84:source\asw/Smart_Volume.c ****     {
+  85:source\asw/Smart_Volume.c ****         if (m_volume < MP3__MAXVOLUME)
+ 106              		.loc 1 85 0 is_stmt 1
+ 107 006c 2A4B     		ldr	r3, .L14
+ 108 006e 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 109 0070 622B     		cmp	r3, #98
+ 110 0072 03D8     		bhi	.L8
+  86:source\asw/Smart_Volume.c ****         {
+  87:source\asw/Smart_Volume.c ****         m_volume++;
+ 111              		.loc 1 87 0
+ 112 0074 0133     		adds	r3, r3, #1
+ 113 0076 284A     		ldr	r2, .L14
+ 114 0078 5370     		strb	r3, [r2, #1]
+ 115 007a 4AE0     		b	.L6
+ 116              	.L8:
+  88:source\asw/Smart_Volume.c ****         }
+  89:source\asw/Smart_Volume.c ****         else if (m_volume == MP3__MAXVOLUME)
+ 117              		.loc 1 89 0
+ 118 007c 632B     		cmp	r3, #99
+ 119 007e 48D1     		bne	.L6
+  90:source\asw/Smart_Volume.c ****         {
+  91:source\asw/Smart_Volume.c ****             increament_volume_state = VOLUME__NormalIncreament;  
+ 120              		.loc 1 91 0
+ 121 0080 0022     		movs	r2, #0
+ 122 0082 254B     		ldr	r3, .L14
+ 123 0084 1A70     		strb	r2, [r3]
+ 124 0086 44E0     		b	.L6
+ 125              	.L7:
+  92:source\asw/Smart_Volume.c ****         }
+  93:source\asw/Smart_Volume.c ****     }
+  94:source\asw/Smart_Volume.c ****     else if((increament_volume_state == VOLUME__VeryFastIncreament) &&  (nextEvent & ev_100ms))
+ 126              		.loc 1 94 0
+ 127 0088 022B     		cmp	r3, #2
+ 128 008a 10D1     		bne	.L9
+ 129              		.loc 1 94 0 is_stmt 0 discriminator 1
+ 130 008c 10F0400F 		tst	r0, #64
+ 131 0090 0DD0     		beq	.L9
+  95:source\asw/Smart_Volume.c ****     {
+  96:source\asw/Smart_Volume.c ****         if (m_volume < MP3__MAXVOLUME)
+ 132              		.loc 1 96 0 is_stmt 1
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 5
+
+
+ 133 0092 214B     		ldr	r3, .L14
+ 134 0094 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 135 0096 622B     		cmp	r3, #98
+ 136 0098 03D8     		bhi	.L10
+  97:source\asw/Smart_Volume.c ****         {
+  98:source\asw/Smart_Volume.c ****         m_volume++;
+ 137              		.loc 1 98 0
+ 138 009a 0133     		adds	r3, r3, #1
+ 139 009c 1E4A     		ldr	r2, .L14
+ 140 009e 5370     		strb	r3, [r2, #1]
+ 141 00a0 37E0     		b	.L6
+ 142              	.L10:
+  99:source\asw/Smart_Volume.c ****         }
+ 100:source\asw/Smart_Volume.c ****         else if (m_volume == MP3__MAXVOLUME)
+ 143              		.loc 1 100 0
+ 144 00a2 632B     		cmp	r3, #99
+ 145 00a4 35D1     		bne	.L6
+ 101:source\asw/Smart_Volume.c ****         {
+ 102:source\asw/Smart_Volume.c ****             increament_volume_state = VOLUME__NormalIncreament;  
+ 146              		.loc 1 102 0
+ 147 00a6 0022     		movs	r2, #0
+ 148 00a8 1B4B     		ldr	r3, .L14
+ 149 00aa 1A70     		strb	r2, [r3]
+ 150 00ac 31E0     		b	.L6
+ 151              	.L9:
+ 103:source\asw/Smart_Volume.c ****         }
+ 104:source\asw/Smart_Volume.c ****     }
+ 105:source\asw/Smart_Volume.c ****      else if(nextEvent &  ev_1000ms)
+ 152              		.loc 1 105 0
+ 153 00ae 10F0800F 		tst	r0, #128
+ 154 00b2 19D0     		beq	.L11
+ 106:source\asw/Smart_Volume.c ****     {
+ 107:source\asw/Smart_Volume.c ****         SetRelAlarm(alrm_1000ms,1000,1000);
+ 155              		.loc 1 107 0
+ 156 00b4 4FF47A72 		mov	r2, #1000
+ 157 00b8 1146     		mov	r1, r2
+ 158 00ba 0220     		movs	r0, #2
+ 159              	.LVL6:
+ 160 00bc FFF7FEFF 		bl	EE_oo_SetRelAlarm
+ 161              	.LVL7:
+ 108:source\asw/Smart_Volume.c ****         SetRelAlarm(alrm_3000ms,3000,0);
+ 162              		.loc 1 108 0
+ 163 00c0 0022     		movs	r2, #0
+ 164 00c2 40F6B831 		movw	r1, #3000
+ 165 00c6 0320     		movs	r0, #3
+ 166 00c8 FFF7FEFF 		bl	EE_oo_SetRelAlarm
+ 167              	.LVL8:
+ 109:source\asw/Smart_Volume.c ****         if (m_volume < MP3__MAXVOLUME)
+ 168              		.loc 1 109 0
+ 169 00cc 124B     		ldr	r3, .L14
+ 170 00ce 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 171 00d0 622B     		cmp	r3, #98
+ 172 00d2 03D8     		bhi	.L12
+ 110:source\asw/Smart_Volume.c ****         {
+ 111:source\asw/Smart_Volume.c ****         m_volume++;
+ 173              		.loc 1 111 0
+ 174 00d4 0133     		adds	r3, r3, #1
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 6
+
+
+ 175 00d6 104A     		ldr	r2, .L14
+ 176 00d8 5370     		strb	r3, [r2, #1]
+ 177 00da 1AE0     		b	.L6
+ 178              	.L12:
+ 112:source\asw/Smart_Volume.c ****         }
+ 113:source\asw/Smart_Volume.c ****         else if (m_volume == MP3__MAXVOLUME)
+ 179              		.loc 1 113 0
+ 180 00dc 632B     		cmp	r3, #99
+ 181 00de 18D1     		bne	.L6
+ 114:source\asw/Smart_Volume.c ****         {
+ 115:source\asw/Smart_Volume.c ****             increament_volume_state = VOLUME__NormalIncreament;  
+ 182              		.loc 1 115 0
+ 183 00e0 0022     		movs	r2, #0
+ 184 00e2 0D4B     		ldr	r3, .L14
+ 185 00e4 1A70     		strb	r2, [r3]
+ 186 00e6 14E0     		b	.L6
+ 187              	.LVL9:
+ 188              	.L11:
+ 116:source\asw/Smart_Volume.c ****         }
+ 117:source\asw/Smart_Volume.c ****     }
+ 118:source\asw/Smart_Volume.c ****     else if(nextEvent &  ev_Button1)
+ 189              		.loc 1 118 0
+ 190 00e8 10F0010F 		tst	r0, #1
+ 191 00ec 11D0     		beq	.L6
+ 119:source\asw/Smart_Volume.c ****     {
+ 120:source\asw/Smart_Volume.c ****         increament_volume_state = VOLUME__NormalIncreament;
+ 192              		.loc 1 120 0
+ 193 00ee 0A4B     		ldr	r3, .L14
+ 194 00f0 0022     		movs	r2, #0
+ 195 00f2 1A70     		strb	r2, [r3]
+ 121:source\asw/Smart_Volume.c ****         if (m_volume < MP3__MAXVOLUME)
+ 196              		.loc 1 121 0
+ 197 00f4 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 198 00f6 622B     		cmp	r3, #98
+ 199 00f8 0BD8     		bhi	.L6
+ 122:source\asw/Smart_Volume.c ****         {
+ 123:source\asw/Smart_Volume.c ****         m_volume++;
+ 200              		.loc 1 123 0
+ 201 00fa 0133     		adds	r3, r3, #1
+ 202 00fc 064A     		ldr	r2, .L14
+ 203 00fe 5370     		strb	r3, [r2, #1]
+ 124:source\asw/Smart_Volume.c ****         CancelAlarm(alrm_1000ms);
+ 204              		.loc 1 124 0
+ 205 0100 0220     		movs	r0, #2
+ 206              	.LVL10:
+ 207 0102 FFF7FEFF 		bl	EE_oo_CancelAlarm
+ 208              	.LVL11:
+ 125:source\asw/Smart_Volume.c ****         SetRelAlarm(alrm_1000ms,1000,0);
+ 209              		.loc 1 125 0
+ 210 0106 0022     		movs	r2, #0
+ 211 0108 4FF47A71 		mov	r1, #1000
+ 212 010c 0220     		movs	r0, #2
+ 213 010e FFF7FEFF 		bl	EE_oo_SetRelAlarm
+ 214              	.LVL12:
+ 215              	.L6:
+ 126:source\asw/Smart_Volume.c ****         }
+ 127:source\asw/Smart_Volume.c ****         else if (m_volume == MP3__MAXVOLUME)
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 7
+
+
+ 128:source\asw/Smart_Volume.c ****         {
+ 129:source\asw/Smart_Volume.c ****             increament_volume_state = VOLUME__NormalIncreament;  
+ 130:source\asw/Smart_Volume.c ****         }
+ 131:source\asw/Smart_Volume.c ****     }
+ 132:source\asw/Smart_Volume.c ****     return m_volume;
+ 133:source\asw/Smart_Volume.c **** }
+ 216              		.loc 1 133 0
+ 217 0112 014B     		ldr	r3, .L14
+ 218 0114 5878     		ldrb	r0, [r3, #1]	@ zero_extendqisi2
+ 219 0116 08BD     		pop	{r3, pc}
+ 220              	.L15:
+ 221              		.align	2
+ 222              	.L14:
+ 223 0118 00000000 		.word	.LANCHOR0
+ 224              		.cfi_endproc
+ 225              	.LFE114:
+ 226              		.size	MP3__increaseSmartVolume, .-MP3__increaseSmartVolume
+ 227              		.section	.text.MP3__decreaseSmartVolume,"ax",%progbits
+ 228              		.align	2
+ 229              		.global	MP3__decreaseSmartVolume
+ 230              		.thumb
+ 231              		.thumb_func
+ 232              		.type	MP3__decreaseSmartVolume, %function
+ 233              	MP3__decreaseSmartVolume:
+ 234              	.LFB115:
+ 134:source\asw/Smart_Volume.c **** 
+ 135:source\asw/Smart_Volume.c **** /**
+ 136:source\asw/Smart_Volume.c ****  * decreasing the volume based on different events.
+ 137:source\asw/Smart_Volume.c ****  * /return volume value
+ 138:source\asw/Smart_Volume.c ****  */
+ 139:source\asw/Smart_Volume.c **** uint8_t MP3__decreaseSmartVolume(EventMaskType nextEvent)
+ 140:source\asw/Smart_Volume.c **** {
+ 235              		.loc 1 140 0
+ 236              		.cfi_startproc
+ 237              		@ args = 0, pretend = 0, frame = 0
+ 238              		@ frame_needed = 0, uses_anonymous_args = 0
+ 239              	.LVL13:
+ 240 0000 08B5     		push	{r3, lr}
+ 241              		.cfi_def_cfa_offset 8
+ 242              		.cfi_offset 3, -8
+ 243              		.cfi_offset 14, -4
+ 141:source\asw/Smart_Volume.c ****     static VOLUME__DecreamentState_t decreament_volume_state= VOLUME__NormalDecreament;
+ 142:source\asw/Smart_Volume.c ****     if((nextEvent & ev_3000ms))
+ 244              		.loc 1 142 0
+ 245 0002 10F4807F 		tst	r0, #256
+ 246 0006 29D0     		beq	.L17
+ 143:source\asw/Smart_Volume.c ****     {
+ 144:source\asw/Smart_Volume.c ****         SetRelAlarm(alrm_3000ms,3000,3000);
+ 247              		.loc 1 144 0
+ 248 0008 40F6B832 		movw	r2, #3000
+ 249 000c 1146     		mov	r1, r2
+ 250 000e 0320     		movs	r0, #3
+ 251              	.LVL14:
+ 252 0010 FFF7FEFF 		bl	EE_oo_SetRelAlarm
+ 253              	.LVL15:
+ 145:source\asw/Smart_Volume.c ****         if(decreament_volume_state == VOLUME__NormalDecreament)
+ 254              		.loc 1 145 0
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 8
+
+
+ 255 0014 3D4B     		ldr	r3, .L29
+ 256 0016 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 257 0018 4BB9     		cbnz	r3, .L18
+ 146:source\asw/Smart_Volume.c ****         {
+ 147:source\asw/Smart_Volume.c ****             SetRelAlarm(alrm_500ms,500,500);
+ 258              		.loc 1 147 0
+ 259 001a 4FF4FA72 		mov	r2, #500
+ 260 001e 1146     		mov	r1, r2
+ 261 0020 0020     		movs	r0, #0
+ 262 0022 FFF7FEFF 		bl	EE_oo_SetRelAlarm
+ 263              	.LVL16:
+ 148:source\asw/Smart_Volume.c ****             decreament_volume_state= VOLUME__FastDecreament; 
+ 264              		.loc 1 148 0
+ 265 0026 0122     		movs	r2, #1
+ 266 0028 384B     		ldr	r3, .L29
+ 267 002a 9A70     		strb	r2, [r3, #2]
+ 268 002c 09E0     		b	.L19
+ 269              	.L18:
+ 149:source\asw/Smart_Volume.c ****         }
+ 150:source\asw/Smart_Volume.c ****         
+ 151:source\asw/Smart_Volume.c ****         else if(decreament_volume_state == VOLUME__FastDecreament)
+ 270              		.loc 1 151 0
+ 271 002e 012B     		cmp	r3, #1
+ 272 0030 07D1     		bne	.L19
+ 152:source\asw/Smart_Volume.c ****         {
+ 153:source\asw/Smart_Volume.c ****             SetRelAlarm(alrm_100ms,100,100);
+ 273              		.loc 1 153 0
+ 274 0032 6422     		movs	r2, #100
+ 275 0034 1146     		mov	r1, r2
+ 276 0036 0120     		movs	r0, #1
+ 277 0038 FFF7FEFF 		bl	EE_oo_SetRelAlarm
+ 278              	.LVL17:
+ 154:source\asw/Smart_Volume.c ****             decreament_volume_state= VOLUME__VeryFastDecreament; 
+ 279              		.loc 1 154 0
+ 280 003c 0222     		movs	r2, #2
+ 281 003e 334B     		ldr	r3, .L29
+ 282 0040 9A70     		strb	r2, [r3, #2]
+ 283              	.L19:
+ 155:source\asw/Smart_Volume.c ****         }
+ 156:source\asw/Smart_Volume.c ****         if (m_volume > 0) 
+ 284              		.loc 1 156 0
+ 285 0042 324B     		ldr	r3, .L29
+ 286 0044 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 287 0046 1BB1     		cbz	r3, .L20
+ 157:source\asw/Smart_Volume.c ****         {
+ 158:source\asw/Smart_Volume.c ****         m_volume--;
+ 288              		.loc 1 158 0
+ 289 0048 013B     		subs	r3, r3, #1
+ 290 004a 304A     		ldr	r2, .L29
+ 291 004c 5370     		strb	r3, [r2, #1]
+ 292 004e 59E0     		b	.L21
+ 293              	.L20:
+ 159:source\asw/Smart_Volume.c ****         }
+ 160:source\asw/Smart_Volume.c ****         else if (m_volume == 0)
+ 294              		.loc 1 160 0
+ 295 0050 002B     		cmp	r3, #0
+ 296 0052 57D1     		bne	.L21
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 9
+
+
+ 161:source\asw/Smart_Volume.c ****         {
+ 162:source\asw/Smart_Volume.c ****             decreament_volume_state = VOLUME__NormalDecreament;  
+ 297              		.loc 1 162 0
+ 298 0054 0022     		movs	r2, #0
+ 299 0056 2D4B     		ldr	r3, .L29
+ 300 0058 9A70     		strb	r2, [r3, #2]
+ 301 005a 53E0     		b	.L21
+ 302              	.LVL18:
+ 303              	.L17:
+ 163:source\asw/Smart_Volume.c ****         }        
+ 164:source\asw/Smart_Volume.c ****     }
+ 165:source\asw/Smart_Volume.c ****     else if((decreament_volume_state == VOLUME__FastDecreament) && (nextEvent &  ev_500ms))
+ 304              		.loc 1 165 0
+ 305 005c 2B4B     		ldr	r3, .L29
+ 306 005e 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 307 0060 012B     		cmp	r3, #1
+ 308 0062 0FD1     		bne	.L22
+ 309              		.loc 1 165 0 is_stmt 0 discriminator 1
+ 310 0064 10F0200F 		tst	r0, #32
+ 311 0068 0CD0     		beq	.L22
+ 166:source\asw/Smart_Volume.c ****     {
+ 167:source\asw/Smart_Volume.c ****         if (m_volume > 0)
+ 312              		.loc 1 167 0 is_stmt 1
+ 313 006a 284B     		ldr	r3, .L29
+ 314 006c 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 315 006e 1BB1     		cbz	r3, .L23
+ 168:source\asw/Smart_Volume.c ****         {
+ 169:source\asw/Smart_Volume.c ****         m_volume--;
+ 316              		.loc 1 169 0
+ 317 0070 013B     		subs	r3, r3, #1
+ 318 0072 264A     		ldr	r2, .L29
+ 319 0074 5370     		strb	r3, [r2, #1]
+ 320 0076 45E0     		b	.L21
+ 321              	.L23:
+ 170:source\asw/Smart_Volume.c ****         }
+ 171:source\asw/Smart_Volume.c ****         else if (m_volume == 0)
+ 322              		.loc 1 171 0
+ 323 0078 002B     		cmp	r3, #0
+ 324 007a 43D1     		bne	.L21
+ 172:source\asw/Smart_Volume.c ****         {
+ 173:source\asw/Smart_Volume.c ****             decreament_volume_state = VOLUME__NormalDecreament; 
+ 325              		.loc 1 173 0
+ 326 007c 0022     		movs	r2, #0
+ 327 007e 234B     		ldr	r3, .L29
+ 328 0080 9A70     		strb	r2, [r3, #2]
+ 329 0082 3FE0     		b	.L21
+ 330              	.L22:
+ 174:source\asw/Smart_Volume.c ****         }
+ 175:source\asw/Smart_Volume.c ****     }
+ 176:source\asw/Smart_Volume.c ****     else if((decreament_volume_state == VOLUME__VeryFastDecreament) &&  (nextEvent & ev_100ms))
+ 331              		.loc 1 176 0
+ 332 0084 022B     		cmp	r3, #2
+ 333 0086 0ED1     		bne	.L24
+ 334              		.loc 1 176 0 is_stmt 0 discriminator 1
+ 335 0088 10F0400F 		tst	r0, #64
+ 336 008c 0BD0     		beq	.L24
+ 177:source\asw/Smart_Volume.c ****     {
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 10
+
+
+ 178:source\asw/Smart_Volume.c ****         if (m_volume > 0)
+ 337              		.loc 1 178 0 is_stmt 1
+ 338 008e 1F4B     		ldr	r3, .L29
+ 339 0090 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 340 0092 1BB1     		cbz	r3, .L25
+ 179:source\asw/Smart_Volume.c ****         {
+ 180:source\asw/Smart_Volume.c ****         m_volume--;
+ 341              		.loc 1 180 0
+ 342 0094 013B     		subs	r3, r3, #1
+ 343 0096 1D4A     		ldr	r2, .L29
+ 344 0098 5370     		strb	r3, [r2, #1]
+ 345 009a 33E0     		b	.L21
+ 346              	.L25:
+ 181:source\asw/Smart_Volume.c ****         }
+ 182:source\asw/Smart_Volume.c ****         else if (m_volume == 0)
+ 347              		.loc 1 182 0
+ 348 009c 93BB     		cbnz	r3, .L21
+ 183:source\asw/Smart_Volume.c ****         {
+ 184:source\asw/Smart_Volume.c ****             decreament_volume_state = VOLUME__NormalDecreament; 
+ 349              		.loc 1 184 0
+ 350 009e 0022     		movs	r2, #0
+ 351 00a0 1A4B     		ldr	r3, .L29
+ 352 00a2 9A70     		strb	r2, [r3, #2]
+ 353 00a4 2EE0     		b	.L21
+ 354              	.L24:
+ 185:source\asw/Smart_Volume.c ****         }
+ 186:source\asw/Smart_Volume.c ****     }
+ 187:source\asw/Smart_Volume.c ****      else if(nextEvent &  ev_1000ms)
+ 355              		.loc 1 187 0
+ 356 00a6 10F0800F 		tst	r0, #128
+ 357 00aa 17D0     		beq	.L26
+ 188:source\asw/Smart_Volume.c ****     {
+ 189:source\asw/Smart_Volume.c ****         SetRelAlarm(alrm_1000ms,1000,1000);
+ 358              		.loc 1 189 0
+ 359 00ac 4FF47A72 		mov	r2, #1000
+ 360 00b0 1146     		mov	r1, r2
+ 361 00b2 0220     		movs	r0, #2
+ 362              	.LVL19:
+ 363 00b4 FFF7FEFF 		bl	EE_oo_SetRelAlarm
+ 364              	.LVL20:
+ 190:source\asw/Smart_Volume.c ****         SetRelAlarm(alrm_3000ms,3000,0);
+ 365              		.loc 1 190 0
+ 366 00b8 0022     		movs	r2, #0
+ 367 00ba 40F6B831 		movw	r1, #3000
+ 368 00be 0320     		movs	r0, #3
+ 369 00c0 FFF7FEFF 		bl	EE_oo_SetRelAlarm
+ 370              	.LVL21:
+ 191:source\asw/Smart_Volume.c ****         if (m_volume > 0)
+ 371              		.loc 1 191 0
+ 372 00c4 114B     		ldr	r3, .L29
+ 373 00c6 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 374 00c8 1BB1     		cbz	r3, .L27
+ 192:source\asw/Smart_Volume.c ****         {
+ 193:source\asw/Smart_Volume.c ****         m_volume--;
+ 375              		.loc 1 193 0
+ 376 00ca 013B     		subs	r3, r3, #1
+ 377 00cc 0F4A     		ldr	r2, .L29
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 11
+
+
+ 378 00ce 5370     		strb	r3, [r2, #1]
+ 379 00d0 18E0     		b	.L21
+ 380              	.L27:
+ 194:source\asw/Smart_Volume.c ****         }
+ 195:source\asw/Smart_Volume.c ****         else if (m_volume == 0)
+ 381              		.loc 1 195 0
+ 382 00d2 BBB9     		cbnz	r3, .L21
+ 196:source\asw/Smart_Volume.c ****         {
+ 197:source\asw/Smart_Volume.c ****             decreament_volume_state = VOLUME__NormalDecreament; 
+ 383              		.loc 1 197 0
+ 384 00d4 0022     		movs	r2, #0
+ 385 00d6 0D4B     		ldr	r3, .L29
+ 386 00d8 9A70     		strb	r2, [r3, #2]
+ 387 00da 13E0     		b	.L21
+ 388              	.LVL22:
+ 389              	.L26:
+ 198:source\asw/Smart_Volume.c ****         }
+ 199:source\asw/Smart_Volume.c ****     }
+ 200:source\asw/Smart_Volume.c ****     else if(nextEvent &  ev_Button2)
+ 390              		.loc 1 200 0
+ 391 00dc 10F0020F 		tst	r0, #2
+ 392 00e0 10D0     		beq	.L21
+ 201:source\asw/Smart_Volume.c ****     {
+ 202:source\asw/Smart_Volume.c ****         decreament_volume_state = VOLUME__NormalDecreament;
+ 393              		.loc 1 202 0
+ 394 00e2 0A4B     		ldr	r3, .L29
+ 395 00e4 0022     		movs	r2, #0
+ 396 00e6 9A70     		strb	r2, [r3, #2]
+ 203:source\asw/Smart_Volume.c ****         if (m_volume > 0)
+ 397              		.loc 1 203 0
+ 398 00e8 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 399 00ea 5BB1     		cbz	r3, .L21
+ 204:source\asw/Smart_Volume.c ****         {
+ 205:source\asw/Smart_Volume.c ****         m_volume--;
+ 400              		.loc 1 205 0
+ 401 00ec 013B     		subs	r3, r3, #1
+ 402 00ee 074A     		ldr	r2, .L29
+ 403 00f0 5370     		strb	r3, [r2, #1]
+ 206:source\asw/Smart_Volume.c ****         CancelAlarm(alrm_1000ms);
+ 404              		.loc 1 206 0
+ 405 00f2 0220     		movs	r0, #2
+ 406              	.LVL23:
+ 407 00f4 FFF7FEFF 		bl	EE_oo_CancelAlarm
+ 408              	.LVL24:
+ 207:source\asw/Smart_Volume.c ****         SetRelAlarm(alrm_1000ms,1000,0);
+ 409              		.loc 1 207 0
+ 410 00f8 0022     		movs	r2, #0
+ 411 00fa 4FF47A71 		mov	r1, #1000
+ 412 00fe 0220     		movs	r0, #2
+ 413 0100 FFF7FEFF 		bl	EE_oo_SetRelAlarm
+ 414              	.LVL25:
+ 415              	.L21:
+ 208:source\asw/Smart_Volume.c ****         }
+ 209:source\asw/Smart_Volume.c ****         else if (m_volume == 0)
+ 210:source\asw/Smart_Volume.c ****         {
+ 211:source\asw/Smart_Volume.c ****             decreament_volume_state = VOLUME__NormalDecreament; 
+ 212:source\asw/Smart_Volume.c ****         }
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 12
+
+
+ 213:source\asw/Smart_Volume.c ****     }
+ 214:source\asw/Smart_Volume.c ****     return m_volume;
+ 215:source\asw/Smart_Volume.c **** }...
+ 416              		.loc 1 215 0
+ 417 0104 014B     		ldr	r3, .L29
+ 418 0106 5878     		ldrb	r0, [r3, #1]	@ zero_extendqisi2
+ 419 0108 08BD     		pop	{r3, pc}
+ 420              	.L30:
+ 421 010a 00BF     		.align	2
+ 422              	.L29:
+ 423 010c 00000000 		.word	.LANCHOR0
+ 424              		.cfi_endproc
+ 425              	.LFE115:
+ 426              		.size	MP3__decreaseSmartVolume, .-MP3__decreaseSmartVolume
+ 427              		.bss
+ 428              		.set	.LANCHOR0,. + 0
+ 429              		.type	increament_volume_state.6818, %object
+ 430              		.size	increament_volume_state.6818, 1
+ 431              	increament_volume_state.6818:
+ 432 0000 00       		.space	1
+ 433              		.type	m_volume, %object
+ 434              		.size	m_volume, 1
+ 435              	m_volume:
+ 436 0001 00       		.space	1
+ 437              		.type	decreament_volume_state.6822, %object
+ 438              		.size	decreament_volume_state.6822, 1
+ 439              	decreament_volume_state.6822:
+ 440 0002 00       		.space	1
+ 441              		.text
+ 442              	.Letext0:
+ 443              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 444              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 445              		.file 4 "Generated_Source\\PSoC5/SimpleSystem_common_ee_types.inc"
+ 446              		.file 5 "Generated_Source\\PSoC5/SimpleSystem_cortex_mx_ee_cpu.inc"
+ 447              		.file 6 "Generated_Source\\PSoC5/SimpleSystem_ee_oo_common.inc"
+ 448              		.file 7 "source\\asw\\Smart_Volume.h"
+ 449              		.file 8 "Generated_Source\\PSoC5/SimpleSystem_ee_oo_intfunc.inc"
+ 450              		.file 9 "Generated_Source\\PSoC5/SimpleSystem_cortex_mx_ee_context.inc"
+ 451              		.file 10 "Generated_Source\\PSoC5/SimpleSystem_common_ee_primitives.inc"
+ 452              		.file 11 "Generated_Source\\PSoC5/cmsis_gcc.h"
+ 453              		.file 12 "Generated_Source\\PSoC5/core_cm3.h"
+ 454              		.file 13 "Generated_Source\\PSoC5/SimpleSystem_ee_oo_kernel.inc"
+ 455              		.section	.debug_info,"",%progbits
+ 456              	.Ldebug_info0:
+ 457 0000 9A040000 		.4byte	0x49a
+ 458 0004 0400     		.2byte	0x4
+ 459 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 460 000a 04       		.byte	0x4
+ 461 000b 01       		.uleb128 0x1
+ 462 000c FE000000 		.4byte	.LASF58
+ 463 0010 0C       		.byte	0xc
+ 464 0011 94030000 		.4byte	.LASF59
+ 465 0015 F0030000 		.4byte	.LASF60
+ 466 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 467 001d 00000000 		.4byte	0
+ 468 0021 00000000 		.4byte	.Ldebug_line0
+ 469 0025 02       		.uleb128 0x2
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 13
+
+
+ 470 0026 01       		.byte	0x1
+ 471 0027 06       		.byte	0x6
+ 472 0028 D9020000 		.4byte	.LASF0
+ 473 002c 03       		.uleb128 0x3
+ 474 002d 44000000 		.4byte	.LASF4
+ 475 0031 02       		.byte	0x2
+ 476 0032 1D       		.byte	0x1d
+ 477 0033 37000000 		.4byte	0x37
+ 478 0037 02       		.uleb128 0x2
+ 479 0038 01       		.byte	0x1
+ 480 0039 08       		.byte	0x8
+ 481 003a F0000000 		.4byte	.LASF1
+ 482 003e 02       		.uleb128 0x2
+ 483 003f 02       		.byte	0x2
+ 484 0040 05       		.byte	0x5
+ 485 0041 72030000 		.4byte	.LASF2
+ 486 0045 02       		.uleb128 0x2
+ 487 0046 02       		.byte	0x2
+ 488 0047 07       		.byte	0x7
+ 489 0048 75000000 		.4byte	.LASF3
+ 490 004c 03       		.uleb128 0x3
+ 491 004d 5D000000 		.4byte	.LASF5
+ 492 0051 02       		.byte	0x2
+ 493 0052 3F       		.byte	0x3f
+ 494 0053 57000000 		.4byte	0x57
+ 495 0057 02       		.uleb128 0x2
+ 496 0058 04       		.byte	0x4
+ 497 0059 05       		.byte	0x5
+ 498 005a F4010000 		.4byte	.LASF6
+ 499 005e 03       		.uleb128 0x3
+ 500 005f 11020000 		.4byte	.LASF7
+ 501 0063 02       		.byte	0x2
+ 502 0064 41       		.byte	0x41
+ 503 0065 69000000 		.4byte	0x69
+ 504 0069 02       		.uleb128 0x2
+ 505 006a 04       		.byte	0x4
+ 506 006b 07       		.byte	0x7
+ 507 006c A8010000 		.4byte	.LASF8
+ 508 0070 02       		.uleb128 0x2
+ 509 0071 08       		.byte	0x8
+ 510 0072 05       		.byte	0x5
+ 511 0073 F6020000 		.4byte	.LASF9
+ 512 0077 02       		.uleb128 0x2
+ 513 0078 08       		.byte	0x8
+ 514 0079 07       		.byte	0x7
+ 515 007a 8C020000 		.4byte	.LASF10
+ 516 007e 04       		.uleb128 0x4
+ 517 007f 04       		.byte	0x4
+ 518 0080 05       		.byte	0x5
+ 519 0081 696E7400 		.ascii	"int\000"
+ 520 0085 02       		.uleb128 0x2
+ 521 0086 04       		.byte	0x4
+ 522 0087 07       		.byte	0x7
+ 523 0088 6D020000 		.4byte	.LASF11
+ 524 008c 03       		.uleb128 0x3
+ 525 008d A3020000 		.4byte	.LASF12
+ 526 0091 03       		.byte	0x3
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 14
+
+
+ 527 0092 18       		.byte	0x18
+ 528 0093 2C000000 		.4byte	0x2c
+ 529 0097 03       		.uleb128 0x3
+ 530 0098 E5020000 		.4byte	.LASF13
+ 531 009c 03       		.byte	0x3
+ 532 009d 2C       		.byte	0x2c
+ 533 009e 4C000000 		.4byte	0x4c
+ 534 00a2 03       		.uleb128 0x3
+ 535 00a3 AE030000 		.4byte	.LASF14
+ 536 00a7 03       		.byte	0x3
+ 537 00a8 30       		.byte	0x30
+ 538 00a9 5E000000 		.4byte	0x5e
+ 539 00ad 02       		.uleb128 0x2
+ 540 00ae 04       		.byte	0x4
+ 541 00af 04       		.byte	0x4
+ 542 00b0 D1000000 		.4byte	.LASF15
+ 543 00b4 02       		.uleb128 0x2
+ 544 00b5 08       		.byte	0x8
+ 545 00b6 04       		.byte	0x4
+ 546 00b7 0A020000 		.4byte	.LASF16
+ 547 00bb 02       		.uleb128 0x2
+ 548 00bc 01       		.byte	0x1
+ 549 00bd 08       		.byte	0x8
+ 550 00be 04030000 		.4byte	.LASF17
+ 551 00c2 02       		.uleb128 0x2
+ 552 00c3 08       		.byte	0x8
+ 553 00c4 04       		.byte	0x4
+ 554 00c5 CC030000 		.4byte	.LASF18
+ 555 00c9 03       		.uleb128 0x3
+ 556 00ca 9F010000 		.4byte	.LASF19
+ 557 00ce 04       		.byte	0x4
+ 558 00cf 53       		.byte	0x53
+ 559 00d0 7E000000 		.4byte	0x7e
+ 560 00d4 03       		.uleb128 0x3
+ 561 00d5 82020000 		.4byte	.LASF20
+ 562 00d9 04       		.byte	0x4
+ 563 00da 54       		.byte	0x54
+ 564 00db 85000000 		.4byte	0x85
+ 565 00df 03       		.uleb128 0x3
+ 566 00e0 35030000 		.4byte	.LASF21
+ 567 00e4 05       		.byte	0x5
+ 568 00e5 4D       		.byte	0x4d
+ 569 00e6 D4000000 		.4byte	0xd4
+ 570 00ea 03       		.uleb128 0x3
+ 571 00eb 7A020000 		.4byte	.LASF22
+ 572 00ef 05       		.byte	0x5
+ 573 00f0 4F       		.byte	0x4f
+ 574 00f1 D4000000 		.4byte	0xd4
+ 575 00f5 03       		.uleb128 0x3
+ 576 00f6 CA000000 		.4byte	.LASF23
+ 577 00fa 05       		.byte	0x5
+ 578 00fb 78       		.byte	0x78
+ 579 00fc C9000000 		.4byte	0xc9
+ 580 0100 05       		.uleb128 0x5
+ 581 0101 67000000 		.4byte	.LASF24
+ 582 0105 06       		.byte	0x6
+ 583 0106 2302     		.2byte	0x223
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 15
+
+
+ 584 0108 DF000000 		.4byte	0xdf
+ 585 010c 02       		.uleb128 0x2
+ 586 010d 04       		.byte	0x4
+ 587 010e 07       		.byte	0x7
+ 588 010f ED020000 		.4byte	.LASF25
+ 589 0113 06       		.uleb128 0x6
+ 590 0114 D8030000 		.4byte	.LASF30
+ 591 0118 01       		.byte	0x1
+ 592 0119 37000000 		.4byte	0x37
+ 593 011d 07       		.byte	0x7
+ 594 011e 5A       		.byte	0x5a
+ 595 011f 36010000 		.4byte	0x136
+ 596 0123 07       		.uleb128 0x7
+ 597 0124 BA010000 		.4byte	.LASF26
+ 598 0128 00       		.byte	0
+ 599 0129 07       		.uleb128 0x7
+ 600 012a 35020000 		.4byte	.LASF27
+ 601 012e 01       		.byte	0x1
+ 602 012f 07       		.uleb128 0x7
+ 603 0130 AB020000 		.4byte	.LASF28
+ 604 0134 02       		.byte	0x2
+ 605 0135 00       		.byte	0
+ 606 0136 03       		.uleb128 0x3
+ 607 0137 1B030000 		.4byte	.LASF29
+ 608 013b 07       		.byte	0x7
+ 609 013c 5F       		.byte	0x5f
+ 610 013d 13010000 		.4byte	0x113
+ 611 0141 06       		.uleb128 0x6
+ 612 0142 2C000000 		.4byte	.LASF31
+ 613 0146 01       		.byte	0x1
+ 614 0147 37000000 		.4byte	0x37
+ 615 014b 07       		.byte	0x7
+ 616 014c 61       		.byte	0x61
+ 617 014d 64010000 		.4byte	0x164
+ 618 0151 07       		.uleb128 0x7
+ 619 0152 1C020000 		.4byte	.LASF32
+ 620 0156 00       		.byte	0
+ 621 0157 07       		.uleb128 0x7
+ 622 0158 DD010000 		.4byte	.LASF33
+ 623 015c 01       		.byte	0x1
+ 624 015d 07       		.uleb128 0x7
+ 625 015e 52030000 		.4byte	.LASF34
+ 626 0162 02       		.byte	0x2
+ 627 0163 00       		.byte	0
+ 628 0164 03       		.uleb128 0x3
+ 629 0165 88000000 		.4byte	.LASF35
+ 630 0169 07       		.byte	0x7
+ 631 016a 66       		.byte	0x66
+ 632 016b 41010000 		.4byte	0x141
+ 633 016f 08       		.uleb128 0x8
+ 634 0170 DE040000 		.4byte	.LASF36
+ 635 0174 01       		.byte	0x1
+ 636 0175 39       		.byte	0x39
+ 637 0176 8C000000 		.4byte	0x8c
+ 638 017a 00000000 		.4byte	.LFB114
+ 639 017e 1C010000 		.4byte	.LFE114-.LFB114
+ 640 0182 01       		.uleb128 0x1
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 16
+
+
+ 641 0183 9C       		.byte	0x9c
+ 642 0184 78020000 		.4byte	0x278
+ 643 0188 09       		.uleb128 0x9
+ 644 0189 D3010000 		.4byte	.LASF38
+ 645 018d 01       		.byte	0x1
+ 646 018e 39       		.byte	0x39
+ 647 018f 00010000 		.4byte	0x100
+ 648 0193 00000000 		.4byte	.LLST0
+ 649 0197 0A       		.uleb128 0xa
+ 650 0198 55020000 		.4byte	.LASF39
+ 651 019c 01       		.byte	0x1
+ 652 019d 3B       		.byte	0x3b
+ 653 019e 36010000 		.4byte	0x136
+ 654 01a2 05       		.uleb128 0x5
+ 655 01a3 03       		.byte	0x3
+ 656 01a4 00000000 		.4byte	increament_volume_state.6818
+ 657 01a8 0B       		.uleb128 0xb
+ 658 01a9 14000000 		.4byte	.LVL2
+ 659 01ad 85040000 		.4byte	0x485
+ 660 01b1 C9010000 		.4byte	0x1c9
+ 661 01b5 0C       		.uleb128 0xc
+ 662 01b6 01       		.uleb128 0x1
+ 663 01b7 50       		.byte	0x50
+ 664 01b8 01       		.uleb128 0x1
+ 665 01b9 33       		.byte	0x33
+ 666 01ba 0C       		.uleb128 0xc
+ 667 01bb 01       		.uleb128 0x1
+ 668 01bc 51       		.byte	0x51
+ 669 01bd 03       		.uleb128 0x3
+ 670 01be 0A       		.byte	0xa
+ 671 01bf B80B     		.2byte	0xbb8
+ 672 01c1 0C       		.uleb128 0xc
+ 673 01c2 01       		.uleb128 0x1
+ 674 01c3 52       		.byte	0x52
+ 675 01c4 03       		.uleb128 0x3
+ 676 01c5 0A       		.byte	0xa
+ 677 01c6 B80B     		.2byte	0xbb8
+ 678 01c8 00       		.byte	0
+ 679 01c9 0B       		.uleb128 0xb
+ 680 01ca 26000000 		.4byte	.LVL3
+ 681 01ce 85040000 		.4byte	0x485
+ 682 01d2 EA010000 		.4byte	0x1ea
+ 683 01d6 0C       		.uleb128 0xc
+ 684 01d7 01       		.uleb128 0x1
+ 685 01d8 50       		.byte	0x50
+ 686 01d9 01       		.uleb128 0x1
+ 687 01da 30       		.byte	0x30
+ 688 01db 0C       		.uleb128 0xc
+ 689 01dc 01       		.uleb128 0x1
+ 690 01dd 51       		.byte	0x51
+ 691 01de 03       		.uleb128 0x3
+ 692 01df 0A       		.byte	0xa
+ 693 01e0 F401     		.2byte	0x1f4
+ 694 01e2 0C       		.uleb128 0xc
+ 695 01e3 01       		.uleb128 0x1
+ 696 01e4 52       		.byte	0x52
+ 697 01e5 03       		.uleb128 0x3
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 17
+
+
+ 698 01e6 0A       		.byte	0xa
+ 699 01e7 F401     		.2byte	0x1f4
+ 700 01e9 00       		.byte	0
+ 701 01ea 0B       		.uleb128 0xb
+ 702 01eb 3C000000 		.4byte	.LVL4
+ 703 01ef 85040000 		.4byte	0x485
+ 704 01f3 09020000 		.4byte	0x209
+ 705 01f7 0C       		.uleb128 0xc
+ 706 01f8 01       		.uleb128 0x1
+ 707 01f9 50       		.byte	0x50
+ 708 01fa 01       		.uleb128 0x1
+ 709 01fb 31       		.byte	0x31
+ 710 01fc 0C       		.uleb128 0xc
+ 711 01fd 01       		.uleb128 0x1
+ 712 01fe 51       		.byte	0x51
+ 713 01ff 02       		.uleb128 0x2
+ 714 0200 08       		.byte	0x8
+ 715 0201 64       		.byte	0x64
+ 716 0202 0C       		.uleb128 0xc
+ 717 0203 01       		.uleb128 0x1
+ 718 0204 52       		.byte	0x52
+ 719 0205 02       		.uleb128 0x2
+ 720 0206 08       		.byte	0x8
+ 721 0207 64       		.byte	0x64
+ 722 0208 00       		.byte	0
+ 723 0209 0B       		.uleb128 0xb
+ 724 020a C0000000 		.4byte	.LVL7
+ 725 020e 85040000 		.4byte	0x485
+ 726 0212 2A020000 		.4byte	0x22a
+ 727 0216 0C       		.uleb128 0xc
+ 728 0217 01       		.uleb128 0x1
+ 729 0218 50       		.byte	0x50
+ 730 0219 01       		.uleb128 0x1
+ 731 021a 32       		.byte	0x32
+ 732 021b 0C       		.uleb128 0xc
+ 733 021c 01       		.uleb128 0x1
+ 734 021d 51       		.byte	0x51
+ 735 021e 03       		.uleb128 0x3
+ 736 021f 0A       		.byte	0xa
+ 737 0220 E803     		.2byte	0x3e8
+ 738 0222 0C       		.uleb128 0xc
+ 739 0223 01       		.uleb128 0x1
+ 740 0224 52       		.byte	0x52
+ 741 0225 03       		.uleb128 0x3
+ 742 0226 0A       		.byte	0xa
+ 743 0227 E803     		.2byte	0x3e8
+ 744 0229 00       		.byte	0
+ 745 022a 0B       		.uleb128 0xb
+ 746 022b CC000000 		.4byte	.LVL8
+ 747 022f 85040000 		.4byte	0x485
+ 748 0233 49020000 		.4byte	0x249
+ 749 0237 0C       		.uleb128 0xc
+ 750 0238 01       		.uleb128 0x1
+ 751 0239 50       		.byte	0x50
+ 752 023a 01       		.uleb128 0x1
+ 753 023b 33       		.byte	0x33
+ 754 023c 0C       		.uleb128 0xc
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 18
+
+
+ 755 023d 01       		.uleb128 0x1
+ 756 023e 51       		.byte	0x51
+ 757 023f 03       		.uleb128 0x3
+ 758 0240 0A       		.byte	0xa
+ 759 0241 B80B     		.2byte	0xbb8
+ 760 0243 0C       		.uleb128 0xc
+ 761 0244 01       		.uleb128 0x1
+ 762 0245 52       		.byte	0x52
+ 763 0246 01       		.uleb128 0x1
+ 764 0247 30       		.byte	0x30
+ 765 0248 00       		.byte	0
+ 766 0249 0B       		.uleb128 0xb
+ 767 024a 06010000 		.4byte	.LVL11
+ 768 024e 91040000 		.4byte	0x491
+ 769 0252 5C020000 		.4byte	0x25c
+ 770 0256 0C       		.uleb128 0xc
+ 771 0257 01       		.uleb128 0x1
+ 772 0258 50       		.byte	0x50
+ 773 0259 01       		.uleb128 0x1
+ 774 025a 32       		.byte	0x32
+ 775 025b 00       		.byte	0
+ 776 025c 0D       		.uleb128 0xd
+ 777 025d 12010000 		.4byte	.LVL12
+ 778 0261 85040000 		.4byte	0x485
+ 779 0265 0C       		.uleb128 0xc
+ 780 0266 01       		.uleb128 0x1
+ 781 0267 50       		.byte	0x50
+ 782 0268 01       		.uleb128 0x1
+ 783 0269 32       		.byte	0x32
+ 784 026a 0C       		.uleb128 0xc
+ 785 026b 01       		.uleb128 0x1
+ 786 026c 51       		.byte	0x51
+ 787 026d 03       		.uleb128 0x3
+ 788 026e 0A       		.byte	0xa
+ 789 026f E803     		.2byte	0x3e8
+ 790 0271 0C       		.uleb128 0xc
+ 791 0272 01       		.uleb128 0x1
+ 792 0273 52       		.byte	0x52
+ 793 0274 01       		.uleb128 0x1
+ 794 0275 30       		.byte	0x30
+ 795 0276 00       		.byte	0
+ 796 0277 00       		.byte	0
+ 797 0278 08       		.uleb128 0x8
+ 798 0279 D7000000 		.4byte	.LASF37
+ 799 027d 01       		.byte	0x1
+ 800 027e 8B       		.byte	0x8b
+ 801 027f 8C000000 		.4byte	0x8c
+ 802 0283 00000000 		.4byte	.LFB115
+ 803 0287 10010000 		.4byte	.LFE115-.LFB115
+ 804 028b 01       		.uleb128 0x1
+ 805 028c 9C       		.byte	0x9c
+ 806 028d 81030000 		.4byte	0x381
+ 807 0291 09       		.uleb128 0x9
+ 808 0292 D3010000 		.4byte	.LASF38
+ 809 0296 01       		.byte	0x1
+ 810 0297 8B       		.byte	0x8b
+ 811 0298 00010000 		.4byte	0x100
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 19
+
+
+ 812 029c 53000000 		.4byte	.LLST1
+ 813 02a0 0A       		.uleb128 0xa
+ 814 02a1 C1040000 		.4byte	.LASF40
+ 815 02a5 01       		.byte	0x1
+ 816 02a6 8D       		.byte	0x8d
+ 817 02a7 64010000 		.4byte	0x164
+ 818 02ab 05       		.uleb128 0x5
+ 819 02ac 03       		.byte	0x3
+ 820 02ad 02000000 		.4byte	decreament_volume_state.6822
+ 821 02b1 0B       		.uleb128 0xb
+ 822 02b2 14000000 		.4byte	.LVL15
+ 823 02b6 85040000 		.4byte	0x485
+ 824 02ba D2020000 		.4byte	0x2d2
+ 825 02be 0C       		.uleb128 0xc
+ 826 02bf 01       		.uleb128 0x1
+ 827 02c0 50       		.byte	0x50
+ 828 02c1 01       		.uleb128 0x1
+ 829 02c2 33       		.byte	0x33
+ 830 02c3 0C       		.uleb128 0xc
+ 831 02c4 01       		.uleb128 0x1
+ 832 02c5 51       		.byte	0x51
+ 833 02c6 03       		.uleb128 0x3
+ 834 02c7 0A       		.byte	0xa
+ 835 02c8 B80B     		.2byte	0xbb8
+ 836 02ca 0C       		.uleb128 0xc
+ 837 02cb 01       		.uleb128 0x1
+ 838 02cc 52       		.byte	0x52
+ 839 02cd 03       		.uleb128 0x3
+ 840 02ce 0A       		.byte	0xa
+ 841 02cf B80B     		.2byte	0xbb8
+ 842 02d1 00       		.byte	0
+ 843 02d2 0B       		.uleb128 0xb
+ 844 02d3 26000000 		.4byte	.LVL16
+ 845 02d7 85040000 		.4byte	0x485
+ 846 02db F3020000 		.4byte	0x2f3
+ 847 02df 0C       		.uleb128 0xc
+ 848 02e0 01       		.uleb128 0x1
+ 849 02e1 50       		.byte	0x50
+ 850 02e2 01       		.uleb128 0x1
+ 851 02e3 30       		.byte	0x30
+ 852 02e4 0C       		.uleb128 0xc
+ 853 02e5 01       		.uleb128 0x1
+ 854 02e6 51       		.byte	0x51
+ 855 02e7 03       		.uleb128 0x3
+ 856 02e8 0A       		.byte	0xa
+ 857 02e9 F401     		.2byte	0x1f4
+ 858 02eb 0C       		.uleb128 0xc
+ 859 02ec 01       		.uleb128 0x1
+ 860 02ed 52       		.byte	0x52
+ 861 02ee 03       		.uleb128 0x3
+ 862 02ef 0A       		.byte	0xa
+ 863 02f0 F401     		.2byte	0x1f4
+ 864 02f2 00       		.byte	0
+ 865 02f3 0B       		.uleb128 0xb
+ 866 02f4 3C000000 		.4byte	.LVL17
+ 867 02f8 85040000 		.4byte	0x485
+ 868 02fc 12030000 		.4byte	0x312
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 20
+
+
+ 869 0300 0C       		.uleb128 0xc
+ 870 0301 01       		.uleb128 0x1
+ 871 0302 50       		.byte	0x50
+ 872 0303 01       		.uleb128 0x1
+ 873 0304 31       		.byte	0x31
+ 874 0305 0C       		.uleb128 0xc
+ 875 0306 01       		.uleb128 0x1
+ 876 0307 51       		.byte	0x51
+ 877 0308 02       		.uleb128 0x2
+ 878 0309 08       		.byte	0x8
+ 879 030a 64       		.byte	0x64
+ 880 030b 0C       		.uleb128 0xc
+ 881 030c 01       		.uleb128 0x1
+ 882 030d 52       		.byte	0x52
+ 883 030e 02       		.uleb128 0x2
+ 884 030f 08       		.byte	0x8
+ 885 0310 64       		.byte	0x64
+ 886 0311 00       		.byte	0
+ 887 0312 0B       		.uleb128 0xb
+ 888 0313 B8000000 		.4byte	.LVL20
+ 889 0317 85040000 		.4byte	0x485
+ 890 031b 33030000 		.4byte	0x333
+ 891 031f 0C       		.uleb128 0xc
+ 892 0320 01       		.uleb128 0x1
+ 893 0321 50       		.byte	0x50
+ 894 0322 01       		.uleb128 0x1
+ 895 0323 32       		.byte	0x32
+ 896 0324 0C       		.uleb128 0xc
+ 897 0325 01       		.uleb128 0x1
+ 898 0326 51       		.byte	0x51
+ 899 0327 03       		.uleb128 0x3
+ 900 0328 0A       		.byte	0xa
+ 901 0329 E803     		.2byte	0x3e8
+ 902 032b 0C       		.uleb128 0xc
+ 903 032c 01       		.uleb128 0x1
+ 904 032d 52       		.byte	0x52
+ 905 032e 03       		.uleb128 0x3
+ 906 032f 0A       		.byte	0xa
+ 907 0330 E803     		.2byte	0x3e8
+ 908 0332 00       		.byte	0
+ 909 0333 0B       		.uleb128 0xb
+ 910 0334 C4000000 		.4byte	.LVL21
+ 911 0338 85040000 		.4byte	0x485
+ 912 033c 52030000 		.4byte	0x352
+ 913 0340 0C       		.uleb128 0xc
+ 914 0341 01       		.uleb128 0x1
+ 915 0342 50       		.byte	0x50
+ 916 0343 01       		.uleb128 0x1
+ 917 0344 33       		.byte	0x33
+ 918 0345 0C       		.uleb128 0xc
+ 919 0346 01       		.uleb128 0x1
+ 920 0347 51       		.byte	0x51
+ 921 0348 03       		.uleb128 0x3
+ 922 0349 0A       		.byte	0xa
+ 923 034a B80B     		.2byte	0xbb8
+ 924 034c 0C       		.uleb128 0xc
+ 925 034d 01       		.uleb128 0x1
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 21
+
+
+ 926 034e 52       		.byte	0x52
+ 927 034f 01       		.uleb128 0x1
+ 928 0350 30       		.byte	0x30
+ 929 0351 00       		.byte	0
+ 930 0352 0B       		.uleb128 0xb
+ 931 0353 F8000000 		.4byte	.LVL24
+ 932 0357 91040000 		.4byte	0x491
+ 933 035b 65030000 		.4byte	0x365
+ 934 035f 0C       		.uleb128 0xc
+ 935 0360 01       		.uleb128 0x1
+ 936 0361 50       		.byte	0x50
+ 937 0362 01       		.uleb128 0x1
+ 938 0363 32       		.byte	0x32
+ 939 0364 00       		.byte	0
+ 940 0365 0D       		.uleb128 0xd
+ 941 0366 04010000 		.4byte	.LVL25
+ 942 036a 85040000 		.4byte	0x485
+ 943 036e 0C       		.uleb128 0xc
+ 944 036f 01       		.uleb128 0x1
+ 945 0370 50       		.byte	0x50
+ 946 0371 01       		.uleb128 0x1
+ 947 0372 32       		.byte	0x32
+ 948 0373 0C       		.uleb128 0xc
+ 949 0374 01       		.uleb128 0x1
+ 950 0375 51       		.byte	0x51
+ 951 0376 03       		.uleb128 0x3
+ 952 0377 0A       		.byte	0xa
+ 953 0378 E803     		.2byte	0x3e8
+ 954 037a 0C       		.uleb128 0xc
+ 955 037b 01       		.uleb128 0x1
+ 956 037c 52       		.byte	0x52
+ 957 037d 01       		.uleb128 0x1
+ 958 037e 30       		.byte	0x30
+ 959 037f 00       		.byte	0
+ 960 0380 00       		.byte	0
+ 961 0381 0A       		.uleb128 0xa
+ 962 0382 4C020000 		.4byte	.LASF41
+ 963 0386 01       		.byte	0x1
+ 964 0387 29       		.byte	0x29
+ 965 0388 8C000000 		.4byte	0x8c
+ 966 038c 05       		.uleb128 0x5
+ 967 038d 03       		.byte	0x3
+ 968 038e 01000000 		.4byte	m_volume
+ 969 0392 0E       		.uleb128 0xe
+ 970 0393 7C030000 		.4byte	.LASF42
+ 971 0397 08       		.byte	0x8
+ 972 0398 40       		.byte	0x40
+ 973 0399 DF000000 		.4byte	0xdf
+ 974 039d 0E       		.uleb128 0xe
+ 975 039e B1000000 		.4byte	.LASF43
+ 976 03a2 08       		.byte	0x8
+ 977 03a3 47       		.byte	0x47
+ 978 03a4 EA000000 		.4byte	0xea
+ 979 03a8 0E       		.uleb128 0xe
+ 980 03a9 C6020000 		.4byte	.LASF44
+ 981 03ad 08       		.byte	0x8
+ 982 03ae 4A       		.byte	0x4a
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 22
+
+
+ 983 03af DF000000 		.4byte	0xdf
+ 984 03b3 0E       		.uleb128 0xe
+ 985 03b4 00000000 		.4byte	.LASF45
+ 986 03b8 09       		.byte	0x9
+ 987 03b9 48       		.byte	0x48
+ 988 03ba F5000000 		.4byte	0xf5
+ 989 03be 0E       		.uleb128 0xe
+ 990 03bf 3D030000 		.4byte	.LASF46
+ 991 03c3 0A       		.byte	0xa
+ 992 03c4 44       		.byte	0x44
+ 993 03c5 DF000000 		.4byte	0xdf
+ 994 03c9 03       		.uleb128 0x3
+ 995 03ca 4E000000 		.4byte	.LASF47
+ 996 03ce 0B       		.byte	0xb
+ 997 03cf 8B       		.byte	0x8b
+ 998 03d0 58040000 		.4byte	0x458
+ 999 03d4 0F       		.uleb128 0xf
+ 1000 03d5 04       		.byte	0x4
+ 1001 03d6 DA030000 		.4byte	0x3da
+ 1002 03da 10       		.uleb128 0x10
+ 1003 03db A2000000 		.4byte	0xa2
+ 1004 03df 0F       		.uleb128 0xf
+ 1005 03e0 04       		.byte	0x4
+ 1006 03e1 A2000000 		.4byte	0xa2
+ 1007 03e5 0E       		.uleb128 0xe
+ 1008 03e6 B7030000 		.4byte	.LASF48
+ 1009 03ea 0B       		.byte	0xb
+ 1010 03eb 92       		.byte	0x92
+ 1011 03ec F0030000 		.4byte	0x3f0
+ 1012 03f0 10       		.uleb128 0x10
+ 1013 03f1 C9030000 		.4byte	0x3c9
+ 1014 03f5 0E       		.uleb128 0xe
+ 1015 03f6 8C010000 		.4byte	.LASF49
+ 1016 03fa 0B       		.byte	0xb
+ 1017 03fb 93       		.byte	0x93
+ 1018 03fc F0030000 		.4byte	0x3f0
+ 1019 0400 03       		.uleb128 0x3
+ 1020 0401 A2000000 		.4byte	.LASF50
+ 1021 0405 0B       		.byte	0xb
+ 1022 0406 90       		.byte	0x90
+ 1023 0407 37040000 		.4byte	0x437
+ 1024 040b 0E       		.uleb128 0xe
+ 1025 040c AC040000 		.4byte	.LASF51
+ 1026 0410 0B       		.byte	0xb
+ 1027 0411 94       		.byte	0x94
+ 1028 0412 16040000 		.4byte	0x416
+ 1029 0416 10       		.uleb128 0x10
+ 1030 0417 00040000 		.4byte	0x400
+ 1031 041b 0E       		.uleb128 0xe
+ 1032 041c 19000000 		.4byte	.LASF52
+ 1033 0420 0B       		.byte	0xb
+ 1034 0421 95       		.byte	0x95
+ 1035 0422 16040000 		.4byte	0x416
+ 1036 0426 11       		.uleb128 0x11
+ 1037 0427 FD010000 		.4byte	.LASF53
+ 1038 042b 0C       		.byte	0xc
+ 1039 042c 1207     		.2byte	0x712
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 23
+
+
+ 1040 042e 32040000 		.4byte	0x432
+ 1041 0432 12       		.uleb128 0x12
+ 1042 0433 97000000 		.4byte	0x97
+ 1043 0437 13       		.uleb128 0x13
+ 1044 0438 08       		.byte	0x8
+ 1045 0439 0B       		.byte	0xb
+ 1046 043a 8D       		.byte	0x8d
+ 1047 043b 58040000 		.4byte	0x458
+ 1048 043f 14       		.uleb128 0x14
+ 1049 0440 D9040000 		.4byte	.LASF54
+ 1050 0444 0B       		.byte	0xb
+ 1051 0445 8E       		.byte	0x8e
+ 1052 0446 DF030000 		.4byte	0x3df
+ 1053 044a 00       		.byte	0
+ 1054 044b 14       		.uleb128 0x14
+ 1055 044c 6D030000 		.4byte	.LASF55
+ 1056 0450 0B       		.byte	0xb
+ 1057 0451 8F       		.byte	0x8f
+ 1058 0452 A2000000 		.4byte	0xa2
+ 1059 0456 04       		.byte	0x4
+ 1060 0457 00       		.byte	0
+ 1061 0458 13       		.uleb128 0x13
+ 1062 0459 0C       		.byte	0xc
+ 1063 045a 0B       		.byte	0xb
+ 1064 045b 87       		.byte	0x87
+ 1065 045c 85040000 		.4byte	0x485
+ 1066 0460 15       		.uleb128 0x15
+ 1067 0461 73726300 		.ascii	"src\000"
+ 1068 0465 0B       		.byte	0xb
+ 1069 0466 88       		.byte	0x88
+ 1070 0467 D4030000 		.4byte	0x3d4
+ 1071 046b 00       		.byte	0
+ 1072 046c 14       		.uleb128 0x14
+ 1073 046d D9040000 		.4byte	.LASF54
+ 1074 0471 0B       		.byte	0xb
+ 1075 0472 89       		.byte	0x89
+ 1076 0473 DF030000 		.4byte	0x3df
+ 1077 0477 04       		.byte	0x4
+ 1078 0478 14       		.uleb128 0x14
+ 1079 0479 6D030000 		.4byte	.LASF55
+ 1080 047d 0B       		.byte	0xb
+ 1081 047e 8A       		.byte	0x8a
+ 1082 047f A2000000 		.4byte	0xa2
+ 1083 0483 08       		.byte	0x8
+ 1084 0484 00       		.byte	0
+ 1085 0485 16       		.uleb128 0x16
+ 1086 0486 9A040000 		.4byte	.LASF56
+ 1087 048a 9A040000 		.4byte	.LASF56
+ 1088 048e 0D       		.byte	0xd
+ 1089 048f EF01     		.2byte	0x1ef
+ 1090 0491 16       		.uleb128 0x16
+ 1091 0492 09030000 		.4byte	.LASF57
+ 1092 0496 09030000 		.4byte	.LASF57
+ 1093 049a 0D       		.byte	0xd
+ 1094 049b F901     		.2byte	0x1f9
+ 1095 049d 00       		.byte	0
+ 1096              		.section	.debug_abbrev,"",%progbits
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 24
+
+
+ 1097              	.Ldebug_abbrev0:
+ 1098 0000 01       		.uleb128 0x1
+ 1099 0001 11       		.uleb128 0x11
+ 1100 0002 01       		.byte	0x1
+ 1101 0003 25       		.uleb128 0x25
+ 1102 0004 0E       		.uleb128 0xe
+ 1103 0005 13       		.uleb128 0x13
+ 1104 0006 0B       		.uleb128 0xb
+ 1105 0007 03       		.uleb128 0x3
+ 1106 0008 0E       		.uleb128 0xe
+ 1107 0009 1B       		.uleb128 0x1b
+ 1108 000a 0E       		.uleb128 0xe
+ 1109 000b 55       		.uleb128 0x55
+ 1110 000c 17       		.uleb128 0x17
+ 1111 000d 11       		.uleb128 0x11
+ 1112 000e 01       		.uleb128 0x1
+ 1113 000f 10       		.uleb128 0x10
+ 1114 0010 17       		.uleb128 0x17
+ 1115 0011 00       		.byte	0
+ 1116 0012 00       		.byte	0
+ 1117 0013 02       		.uleb128 0x2
+ 1118 0014 24       		.uleb128 0x24
+ 1119 0015 00       		.byte	0
+ 1120 0016 0B       		.uleb128 0xb
+ 1121 0017 0B       		.uleb128 0xb
+ 1122 0018 3E       		.uleb128 0x3e
+ 1123 0019 0B       		.uleb128 0xb
+ 1124 001a 03       		.uleb128 0x3
+ 1125 001b 0E       		.uleb128 0xe
+ 1126 001c 00       		.byte	0
+ 1127 001d 00       		.byte	0
+ 1128 001e 03       		.uleb128 0x3
+ 1129 001f 16       		.uleb128 0x16
+ 1130 0020 00       		.byte	0
+ 1131 0021 03       		.uleb128 0x3
+ 1132 0022 0E       		.uleb128 0xe
+ 1133 0023 3A       		.uleb128 0x3a
+ 1134 0024 0B       		.uleb128 0xb
+ 1135 0025 3B       		.uleb128 0x3b
+ 1136 0026 0B       		.uleb128 0xb
+ 1137 0027 49       		.uleb128 0x49
+ 1138 0028 13       		.uleb128 0x13
+ 1139 0029 00       		.byte	0
+ 1140 002a 00       		.byte	0
+ 1141 002b 04       		.uleb128 0x4
+ 1142 002c 24       		.uleb128 0x24
+ 1143 002d 00       		.byte	0
+ 1144 002e 0B       		.uleb128 0xb
+ 1145 002f 0B       		.uleb128 0xb
+ 1146 0030 3E       		.uleb128 0x3e
+ 1147 0031 0B       		.uleb128 0xb
+ 1148 0032 03       		.uleb128 0x3
+ 1149 0033 08       		.uleb128 0x8
+ 1150 0034 00       		.byte	0
+ 1151 0035 00       		.byte	0
+ 1152 0036 05       		.uleb128 0x5
+ 1153 0037 16       		.uleb128 0x16
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 25
+
+
+ 1154 0038 00       		.byte	0
+ 1155 0039 03       		.uleb128 0x3
+ 1156 003a 0E       		.uleb128 0xe
+ 1157 003b 3A       		.uleb128 0x3a
+ 1158 003c 0B       		.uleb128 0xb
+ 1159 003d 3B       		.uleb128 0x3b
+ 1160 003e 05       		.uleb128 0x5
+ 1161 003f 49       		.uleb128 0x49
+ 1162 0040 13       		.uleb128 0x13
+ 1163 0041 00       		.byte	0
+ 1164 0042 00       		.byte	0
+ 1165 0043 06       		.uleb128 0x6
+ 1166 0044 04       		.uleb128 0x4
+ 1167 0045 01       		.byte	0x1
+ 1168 0046 03       		.uleb128 0x3
+ 1169 0047 0E       		.uleb128 0xe
+ 1170 0048 0B       		.uleb128 0xb
+ 1171 0049 0B       		.uleb128 0xb
+ 1172 004a 49       		.uleb128 0x49
+ 1173 004b 13       		.uleb128 0x13
+ 1174 004c 3A       		.uleb128 0x3a
+ 1175 004d 0B       		.uleb128 0xb
+ 1176 004e 3B       		.uleb128 0x3b
+ 1177 004f 0B       		.uleb128 0xb
+ 1178 0050 01       		.uleb128 0x1
+ 1179 0051 13       		.uleb128 0x13
+ 1180 0052 00       		.byte	0
+ 1181 0053 00       		.byte	0
+ 1182 0054 07       		.uleb128 0x7
+ 1183 0055 28       		.uleb128 0x28
+ 1184 0056 00       		.byte	0
+ 1185 0057 03       		.uleb128 0x3
+ 1186 0058 0E       		.uleb128 0xe
+ 1187 0059 1C       		.uleb128 0x1c
+ 1188 005a 0B       		.uleb128 0xb
+ 1189 005b 00       		.byte	0
+ 1190 005c 00       		.byte	0
+ 1191 005d 08       		.uleb128 0x8
+ 1192 005e 2E       		.uleb128 0x2e
+ 1193 005f 01       		.byte	0x1
+ 1194 0060 3F       		.uleb128 0x3f
+ 1195 0061 19       		.uleb128 0x19
+ 1196 0062 03       		.uleb128 0x3
+ 1197 0063 0E       		.uleb128 0xe
+ 1198 0064 3A       		.uleb128 0x3a
+ 1199 0065 0B       		.uleb128 0xb
+ 1200 0066 3B       		.uleb128 0x3b
+ 1201 0067 0B       		.uleb128 0xb
+ 1202 0068 27       		.uleb128 0x27
+ 1203 0069 19       		.uleb128 0x19
+ 1204 006a 49       		.uleb128 0x49
+ 1205 006b 13       		.uleb128 0x13
+ 1206 006c 11       		.uleb128 0x11
+ 1207 006d 01       		.uleb128 0x1
+ 1208 006e 12       		.uleb128 0x12
+ 1209 006f 06       		.uleb128 0x6
+ 1210 0070 40       		.uleb128 0x40
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 26
+
+
+ 1211 0071 18       		.uleb128 0x18
+ 1212 0072 9742     		.uleb128 0x2117
+ 1213 0074 19       		.uleb128 0x19
+ 1214 0075 01       		.uleb128 0x1
+ 1215 0076 13       		.uleb128 0x13
+ 1216 0077 00       		.byte	0
+ 1217 0078 00       		.byte	0
+ 1218 0079 09       		.uleb128 0x9
+ 1219 007a 05       		.uleb128 0x5
+ 1220 007b 00       		.byte	0
+ 1221 007c 03       		.uleb128 0x3
+ 1222 007d 0E       		.uleb128 0xe
+ 1223 007e 3A       		.uleb128 0x3a
+ 1224 007f 0B       		.uleb128 0xb
+ 1225 0080 3B       		.uleb128 0x3b
+ 1226 0081 0B       		.uleb128 0xb
+ 1227 0082 49       		.uleb128 0x49
+ 1228 0083 13       		.uleb128 0x13
+ 1229 0084 02       		.uleb128 0x2
+ 1230 0085 17       		.uleb128 0x17
+ 1231 0086 00       		.byte	0
+ 1232 0087 00       		.byte	0
+ 1233 0088 0A       		.uleb128 0xa
+ 1234 0089 34       		.uleb128 0x34
+ 1235 008a 00       		.byte	0
+ 1236 008b 03       		.uleb128 0x3
+ 1237 008c 0E       		.uleb128 0xe
+ 1238 008d 3A       		.uleb128 0x3a
+ 1239 008e 0B       		.uleb128 0xb
+ 1240 008f 3B       		.uleb128 0x3b
+ 1241 0090 0B       		.uleb128 0xb
+ 1242 0091 49       		.uleb128 0x49
+ 1243 0092 13       		.uleb128 0x13
+ 1244 0093 02       		.uleb128 0x2
+ 1245 0094 18       		.uleb128 0x18
+ 1246 0095 00       		.byte	0
+ 1247 0096 00       		.byte	0
+ 1248 0097 0B       		.uleb128 0xb
+ 1249 0098 898201   		.uleb128 0x4109
+ 1250 009b 01       		.byte	0x1
+ 1251 009c 11       		.uleb128 0x11
+ 1252 009d 01       		.uleb128 0x1
+ 1253 009e 31       		.uleb128 0x31
+ 1254 009f 13       		.uleb128 0x13
+ 1255 00a0 01       		.uleb128 0x1
+ 1256 00a1 13       		.uleb128 0x13
+ 1257 00a2 00       		.byte	0
+ 1258 00a3 00       		.byte	0
+ 1259 00a4 0C       		.uleb128 0xc
+ 1260 00a5 8A8201   		.uleb128 0x410a
+ 1261 00a8 00       		.byte	0
+ 1262 00a9 02       		.uleb128 0x2
+ 1263 00aa 18       		.uleb128 0x18
+ 1264 00ab 9142     		.uleb128 0x2111
+ 1265 00ad 18       		.uleb128 0x18
+ 1266 00ae 00       		.byte	0
+ 1267 00af 00       		.byte	0
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 27
+
+
+ 1268 00b0 0D       		.uleb128 0xd
+ 1269 00b1 898201   		.uleb128 0x4109
+ 1270 00b4 01       		.byte	0x1
+ 1271 00b5 11       		.uleb128 0x11
+ 1272 00b6 01       		.uleb128 0x1
+ 1273 00b7 31       		.uleb128 0x31
+ 1274 00b8 13       		.uleb128 0x13
+ 1275 00b9 00       		.byte	0
+ 1276 00ba 00       		.byte	0
+ 1277 00bb 0E       		.uleb128 0xe
+ 1278 00bc 34       		.uleb128 0x34
+ 1279 00bd 00       		.byte	0
+ 1280 00be 03       		.uleb128 0x3
+ 1281 00bf 0E       		.uleb128 0xe
+ 1282 00c0 3A       		.uleb128 0x3a
+ 1283 00c1 0B       		.uleb128 0xb
+ 1284 00c2 3B       		.uleb128 0x3b
+ 1285 00c3 0B       		.uleb128 0xb
+ 1286 00c4 49       		.uleb128 0x49
+ 1287 00c5 13       		.uleb128 0x13
+ 1288 00c6 3F       		.uleb128 0x3f
+ 1289 00c7 19       		.uleb128 0x19
+ 1290 00c8 3C       		.uleb128 0x3c
+ 1291 00c9 19       		.uleb128 0x19
+ 1292 00ca 00       		.byte	0
+ 1293 00cb 00       		.byte	0
+ 1294 00cc 0F       		.uleb128 0xf
+ 1295 00cd 0F       		.uleb128 0xf
+ 1296 00ce 00       		.byte	0
+ 1297 00cf 0B       		.uleb128 0xb
+ 1298 00d0 0B       		.uleb128 0xb
+ 1299 00d1 49       		.uleb128 0x49
+ 1300 00d2 13       		.uleb128 0x13
+ 1301 00d3 00       		.byte	0
+ 1302 00d4 00       		.byte	0
+ 1303 00d5 10       		.uleb128 0x10
+ 1304 00d6 26       		.uleb128 0x26
+ 1305 00d7 00       		.byte	0
+ 1306 00d8 49       		.uleb128 0x49
+ 1307 00d9 13       		.uleb128 0x13
+ 1308 00da 00       		.byte	0
+ 1309 00db 00       		.byte	0
+ 1310 00dc 11       		.uleb128 0x11
+ 1311 00dd 34       		.uleb128 0x34
+ 1312 00de 00       		.byte	0
+ 1313 00df 03       		.uleb128 0x3
+ 1314 00e0 0E       		.uleb128 0xe
+ 1315 00e1 3A       		.uleb128 0x3a
+ 1316 00e2 0B       		.uleb128 0xb
+ 1317 00e3 3B       		.uleb128 0x3b
+ 1318 00e4 05       		.uleb128 0x5
+ 1319 00e5 49       		.uleb128 0x49
+ 1320 00e6 13       		.uleb128 0x13
+ 1321 00e7 3F       		.uleb128 0x3f
+ 1322 00e8 19       		.uleb128 0x19
+ 1323 00e9 3C       		.uleb128 0x3c
+ 1324 00ea 19       		.uleb128 0x19
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 28
+
+
+ 1325 00eb 00       		.byte	0
+ 1326 00ec 00       		.byte	0
+ 1327 00ed 12       		.uleb128 0x12
+ 1328 00ee 35       		.uleb128 0x35
+ 1329 00ef 00       		.byte	0
+ 1330 00f0 49       		.uleb128 0x49
+ 1331 00f1 13       		.uleb128 0x13
+ 1332 00f2 00       		.byte	0
+ 1333 00f3 00       		.byte	0
+ 1334 00f4 13       		.uleb128 0x13
+ 1335 00f5 13       		.uleb128 0x13
+ 1336 00f6 01       		.byte	0x1
+ 1337 00f7 0B       		.uleb128 0xb
+ 1338 00f8 0B       		.uleb128 0xb
+ 1339 00f9 3A       		.uleb128 0x3a
+ 1340 00fa 0B       		.uleb128 0xb
+ 1341 00fb 3B       		.uleb128 0x3b
+ 1342 00fc 0B       		.uleb128 0xb
+ 1343 00fd 01       		.uleb128 0x1
+ 1344 00fe 13       		.uleb128 0x13
+ 1345 00ff 00       		.byte	0
+ 1346 0100 00       		.byte	0
+ 1347 0101 14       		.uleb128 0x14
+ 1348 0102 0D       		.uleb128 0xd
+ 1349 0103 00       		.byte	0
+ 1350 0104 03       		.uleb128 0x3
+ 1351 0105 0E       		.uleb128 0xe
+ 1352 0106 3A       		.uleb128 0x3a
+ 1353 0107 0B       		.uleb128 0xb
+ 1354 0108 3B       		.uleb128 0x3b
+ 1355 0109 0B       		.uleb128 0xb
+ 1356 010a 49       		.uleb128 0x49
+ 1357 010b 13       		.uleb128 0x13
+ 1358 010c 38       		.uleb128 0x38
+ 1359 010d 0B       		.uleb128 0xb
+ 1360 010e 00       		.byte	0
+ 1361 010f 00       		.byte	0
+ 1362 0110 15       		.uleb128 0x15
+ 1363 0111 0D       		.uleb128 0xd
+ 1364 0112 00       		.byte	0
+ 1365 0113 03       		.uleb128 0x3
+ 1366 0114 08       		.uleb128 0x8
+ 1367 0115 3A       		.uleb128 0x3a
+ 1368 0116 0B       		.uleb128 0xb
+ 1369 0117 3B       		.uleb128 0x3b
+ 1370 0118 0B       		.uleb128 0xb
+ 1371 0119 49       		.uleb128 0x49
+ 1372 011a 13       		.uleb128 0x13
+ 1373 011b 38       		.uleb128 0x38
+ 1374 011c 0B       		.uleb128 0xb
+ 1375 011d 00       		.byte	0
+ 1376 011e 00       		.byte	0
+ 1377 011f 16       		.uleb128 0x16
+ 1378 0120 2E       		.uleb128 0x2e
+ 1379 0121 00       		.byte	0
+ 1380 0122 3F       		.uleb128 0x3f
+ 1381 0123 19       		.uleb128 0x19
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 29
+
+
+ 1382 0124 3C       		.uleb128 0x3c
+ 1383 0125 19       		.uleb128 0x19
+ 1384 0126 6E       		.uleb128 0x6e
+ 1385 0127 0E       		.uleb128 0xe
+ 1386 0128 03       		.uleb128 0x3
+ 1387 0129 0E       		.uleb128 0xe
+ 1388 012a 3A       		.uleb128 0x3a
+ 1389 012b 0B       		.uleb128 0xb
+ 1390 012c 3B       		.uleb128 0x3b
+ 1391 012d 05       		.uleb128 0x5
+ 1392 012e 00       		.byte	0
+ 1393 012f 00       		.byte	0
+ 1394 0130 00       		.byte	0
+ 1395              		.section	.debug_loc,"",%progbits
+ 1396              	.Ldebug_loc0:
+ 1397              	.LLST0:
+ 1398 0000 00000000 		.4byte	.LVL0
+ 1399 0004 10000000 		.4byte	.LVL1
+ 1400 0008 0100     		.2byte	0x1
+ 1401 000a 50       		.byte	0x50
+ 1402 000b 10000000 		.4byte	.LVL1
+ 1403 000f 5E000000 		.4byte	.LVL5
+ 1404 0013 0400     		.2byte	0x4
+ 1405 0015 F3       		.byte	0xf3
+ 1406 0016 01       		.uleb128 0x1
+ 1407 0017 50       		.byte	0x50
+ 1408 0018 9F       		.byte	0x9f
+ 1409 0019 5E000000 		.4byte	.LVL5
+ 1410 001d BC000000 		.4byte	.LVL6
+ 1411 0021 0100     		.2byte	0x1
+ 1412 0023 50       		.byte	0x50
+ 1413 0024 BC000000 		.4byte	.LVL6
+ 1414 0028 E8000000 		.4byte	.LVL9
+ 1415 002c 0400     		.2byte	0x4
+ 1416 002e F3       		.byte	0xf3
+ 1417 002f 01       		.uleb128 0x1
+ 1418 0030 50       		.byte	0x50
+ 1419 0031 9F       		.byte	0x9f
+ 1420 0032 E8000000 		.4byte	.LVL9
+ 1421 0036 02010000 		.4byte	.LVL10
+ 1422 003a 0100     		.2byte	0x1
+ 1423 003c 50       		.byte	0x50
+ 1424 003d 02010000 		.4byte	.LVL10
+ 1425 0041 1C010000 		.4byte	.LFE114
+ 1426 0045 0400     		.2byte	0x4
+ 1427 0047 F3       		.byte	0xf3
+ 1428 0048 01       		.uleb128 0x1
+ 1429 0049 50       		.byte	0x50
+ 1430 004a 9F       		.byte	0x9f
+ 1431 004b 00000000 		.4byte	0
+ 1432 004f 00000000 		.4byte	0
+ 1433              	.LLST1:
+ 1434 0053 00000000 		.4byte	.LVL13
+ 1435 0057 10000000 		.4byte	.LVL14
+ 1436 005b 0100     		.2byte	0x1
+ 1437 005d 50       		.byte	0x50
+ 1438 005e 10000000 		.4byte	.LVL14
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 30
+
+
+ 1439 0062 5C000000 		.4byte	.LVL18
+ 1440 0066 0400     		.2byte	0x4
+ 1441 0068 F3       		.byte	0xf3
+ 1442 0069 01       		.uleb128 0x1
+ 1443 006a 50       		.byte	0x50
+ 1444 006b 9F       		.byte	0x9f
+ 1445 006c 5C000000 		.4byte	.LVL18
+ 1446 0070 B4000000 		.4byte	.LVL19
+ 1447 0074 0100     		.2byte	0x1
+ 1448 0076 50       		.byte	0x50
+ 1449 0077 B4000000 		.4byte	.LVL19
+ 1450 007b DC000000 		.4byte	.LVL22
+ 1451 007f 0400     		.2byte	0x4
+ 1452 0081 F3       		.byte	0xf3
+ 1453 0082 01       		.uleb128 0x1
+ 1454 0083 50       		.byte	0x50
+ 1455 0084 9F       		.byte	0x9f
+ 1456 0085 DC000000 		.4byte	.LVL22
+ 1457 0089 F4000000 		.4byte	.LVL23
+ 1458 008d 0100     		.2byte	0x1
+ 1459 008f 50       		.byte	0x50
+ 1460 0090 F4000000 		.4byte	.LVL23
+ 1461 0094 10010000 		.4byte	.LFE115
+ 1462 0098 0400     		.2byte	0x4
+ 1463 009a F3       		.byte	0xf3
+ 1464 009b 01       		.uleb128 0x1
+ 1465 009c 50       		.byte	0x50
+ 1466 009d 9F       		.byte	0x9f
+ 1467 009e 00000000 		.4byte	0
+ 1468 00a2 00000000 		.4byte	0
+ 1469              		.section	.debug_aranges,"",%progbits
+ 1470 0000 24000000 		.4byte	0x24
+ 1471 0004 0200     		.2byte	0x2
+ 1472 0006 00000000 		.4byte	.Ldebug_info0
+ 1473 000a 04       		.byte	0x4
+ 1474 000b 00       		.byte	0
+ 1475 000c 0000     		.2byte	0
+ 1476 000e 0000     		.2byte	0
+ 1477 0010 00000000 		.4byte	.LFB114
+ 1478 0014 1C010000 		.4byte	.LFE114-.LFB114
+ 1479 0018 00000000 		.4byte	.LFB115
+ 1480 001c 10010000 		.4byte	.LFE115-.LFB115
+ 1481 0020 00000000 		.4byte	0
+ 1482 0024 00000000 		.4byte	0
+ 1483              		.section	.debug_ranges,"",%progbits
+ 1484              	.Ldebug_ranges0:
+ 1485 0000 00000000 		.4byte	.LFB114
+ 1486 0004 1C010000 		.4byte	.LFE114
+ 1487 0008 00000000 		.4byte	.LFB115
+ 1488 000c 10010000 		.4byte	.LFE115
+ 1489 0010 00000000 		.4byte	0
+ 1490 0014 00000000 		.4byte	0
+ 1491              		.section	.debug_line,"",%progbits
+ 1492              	.Ldebug_line0:
+ 1493 0000 FB020000 		.section	.debug_str,"MS",%progbits,1
+ 1493      02007202 
+ 1493      00000201 
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 31
+
+
+ 1493      FB0E0D00 
+ 1493      01010101 
+ 1494              	.LASF45:
+ 1495 0000 45455F73 		.ascii	"EE_std_endcycle_next_tid\000"
+ 1495      74645F65 
+ 1495      6E646379 
+ 1495      636C655F 
+ 1495      6E657874 
+ 1496              	.LASF52:
+ 1497 0019 5F5F7A65 		.ascii	"__zero_table_end__\000"
+ 1497      726F5F74 
+ 1497      61626C65 
+ 1497      5F656E64 
+ 1497      5F5F00
+ 1498              	.LASF31:
+ 1499 002c 564F4C55 		.ascii	"VOLUME__DecreamentState\000"
+ 1499      4D455F5F 
+ 1499      44656372 
+ 1499      65616D65 
+ 1499      6E745374 
+ 1500              	.LASF4:
+ 1501 0044 5F5F7569 		.ascii	"__uint8_t\000"
+ 1501      6E74385F 
+ 1501      7400
+ 1502              	.LASF47:
+ 1503 004e 5F5F636F 		.ascii	"__copy_table_t\000"
+ 1503      70795F74 
+ 1503      61626C65 
+ 1503      5F7400
+ 1504              	.LASF5:
+ 1505 005d 5F5F696E 		.ascii	"__int32_t\000"
+ 1505      7433325F 
+ 1505      7400
+ 1506              	.LASF24:
+ 1507 0067 4576656E 		.ascii	"EventMaskType\000"
+ 1507      744D6173 
+ 1507      6B547970 
+ 1507      6500
+ 1508              	.LASF3:
+ 1509 0075 73686F72 		.ascii	"short unsigned int\000"
+ 1509      7420756E 
+ 1509      7369676E 
+ 1509      65642069 
+ 1509      6E7400
+ 1510              	.LASF35:
+ 1511 0088 564F4C55 		.ascii	"VOLUME__DecreamentState_t\000"
+ 1511      4D455F5F 
+ 1511      44656372 
+ 1511      65616D65 
+ 1511      6E745374 
+ 1512              	.LASF50:
+ 1513 00a2 5F5F7A65 		.ascii	"__zero_table_t\000"
+ 1513      726F5F74 
+ 1513      61626C65 
+ 1513      5F7400
+ 1514              	.LASF43:
+ 1515 00b1 45455F6F 		.ascii	"EE_oo_IRQ_suspend_status\000"
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 32
+
+
+ 1515      6F5F4952 
+ 1515      515F7375 
+ 1515      7370656E 
+ 1515      645F7374 
+ 1516              	.LASF23:
+ 1517 00ca 45455F54 		.ascii	"EE_TID\000"
+ 1517      494400
+ 1518              	.LASF15:
+ 1519 00d1 666C6F61 		.ascii	"float\000"
+ 1519      7400
+ 1520              	.LASF37:
+ 1521 00d7 4D50335F 		.ascii	"MP3__decreaseSmartVolume\000"
+ 1521      5F646563 
+ 1521      72656173 
+ 1521      65536D61 
+ 1521      7274566F 
+ 1522              	.LASF1:
+ 1523 00f0 756E7369 		.ascii	"unsigned char\000"
+ 1523      676E6564 
+ 1523      20636861 
+ 1523      7200
+ 1524              	.LASF58:
+ 1525 00fe 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1525      43313120 
+ 1525      352E342E 
+ 1525      31203230 
+ 1525      31363036 
+ 1526 0131 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1526      20726576 
+ 1526      6973696F 
+ 1526      6E203233 
+ 1526      37373135 
+ 1527 0164 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1527      66756E63 
+ 1527      74696F6E 
+ 1527      2D736563 
+ 1527      74696F6E 
+ 1528              	.LASF49:
+ 1529 018c 5F5F636F 		.ascii	"__copy_table_end__\000"
+ 1529      70795F74 
+ 1529      61626C65 
+ 1529      5F656E64 
+ 1529      5F5F00
+ 1530              	.LASF19:
+ 1531 019f 45455F49 		.ascii	"EE_INT32\000"
+ 1531      4E543332 
+ 1531      00
+ 1532              	.LASF8:
+ 1533 01a8 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1533      20756E73 
+ 1533      69676E65 
+ 1533      6420696E 
+ 1533      7400
+ 1534              	.LASF26:
+ 1535 01ba 564F4C55 		.ascii	"VOLUME__NormalIncreament\000"
+ 1535      4D455F5F 
+ 1535      4E6F726D 
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 33
+
+
+ 1535      616C496E 
+ 1535      63726561 
+ 1536              	.LASF38:
+ 1537 01d3 6E657874 		.ascii	"nextEvent\000"
+ 1537      4576656E 
+ 1537      7400
+ 1538              	.LASF33:
+ 1539 01dd 564F4C55 		.ascii	"VOLUME__FastDecreament\000"
+ 1539      4D455F5F 
+ 1539      46617374 
+ 1539      44656372 
+ 1539      65616D65 
+ 1540              	.LASF6:
+ 1541 01f4 6C6F6E67 		.ascii	"long int\000"
+ 1541      20696E74 
+ 1541      00
+ 1542              	.LASF53:
+ 1543 01fd 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1543      52784275 
+ 1543      66666572 
+ 1543      00
+ 1544              	.LASF16:
+ 1545 020a 646F7562 		.ascii	"double\000"
+ 1545      6C6500
+ 1546              	.LASF7:
+ 1547 0211 5F5F7569 		.ascii	"__uint32_t\000"
+ 1547      6E743332 
+ 1547      5F7400
+ 1548              	.LASF32:
+ 1549 021c 564F4C55 		.ascii	"VOLUME__NormalDecreament\000"
+ 1549      4D455F5F 
+ 1549      4E6F726D 
+ 1549      616C4465 
+ 1549      63726561 
+ 1550              	.LASF27:
+ 1551 0235 564F4C55 		.ascii	"VOLUME__FastIncreament\000"
+ 1551      4D455F5F 
+ 1551      46617374 
+ 1551      496E6372 
+ 1551      65616D65 
+ 1552              	.LASF41:
+ 1553 024c 6D5F766F 		.ascii	"m_volume\000"
+ 1553      6C756D65 
+ 1553      00
+ 1554              	.LASF39:
+ 1555 0255 696E6372 		.ascii	"increament_volume_state\000"
+ 1555      65616D65 
+ 1555      6E745F76 
+ 1555      6F6C756D 
+ 1555      655F7374 
+ 1556              	.LASF11:
+ 1557 026d 756E7369 		.ascii	"unsigned int\000"
+ 1557      676E6564 
+ 1557      20696E74 
+ 1557      00
+ 1558              	.LASF22:
+ 1559 027a 45455F46 		.ascii	"EE_FREG\000"
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 34
+
+
+ 1559      52454700 
+ 1560              	.LASF20:
+ 1561 0282 45455F55 		.ascii	"EE_UINT32\000"
+ 1561      494E5433 
+ 1561      3200
+ 1562              	.LASF10:
+ 1563 028c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1563      206C6F6E 
+ 1563      6720756E 
+ 1563      7369676E 
+ 1563      65642069 
+ 1564              	.LASF12:
+ 1565 02a3 75696E74 		.ascii	"uint8_t\000"
+ 1565      385F7400 
+ 1566              	.LASF28:
+ 1567 02ab 564F4C55 		.ascii	"VOLUME__VeryFastIncreament\000"
+ 1567      4D455F5F 
+ 1567      56657279 
+ 1567      46617374 
+ 1567      496E6372 
+ 1568              	.LASF44:
+ 1569 02c6 45455F41 		.ascii	"EE_ApplicationMode\000"
+ 1569      70706C69 
+ 1569      63617469 
+ 1569      6F6E4D6F 
+ 1569      646500
+ 1570              	.LASF0:
+ 1571 02d9 7369676E 		.ascii	"signed char\000"
+ 1571      65642063 
+ 1571      68617200 
+ 1572              	.LASF13:
+ 1573 02e5 696E7433 		.ascii	"int32_t\000"
+ 1573      325F7400 
+ 1574              	.LASF25:
+ 1575 02ed 73697A65 		.ascii	"sizetype\000"
+ 1575      74797065 
+ 1575      00
+ 1576              	.LASF9:
+ 1577 02f6 6C6F6E67 		.ascii	"long long int\000"
+ 1577      206C6F6E 
+ 1577      6720696E 
+ 1577      7400
+ 1578              	.LASF17:
+ 1579 0304 63686172 		.ascii	"char\000"
+ 1579      00
+ 1580              	.LASF57:
+ 1581 0309 45455F6F 		.ascii	"EE_oo_CancelAlarm\000"
+ 1581      6F5F4361 
+ 1581      6E63656C 
+ 1581      416C6172 
+ 1581      6D00
+ 1582              	.LASF29:
+ 1583 031b 564F4C55 		.ascii	"VOLUME__IncreamentState_t\000"
+ 1583      4D455F5F 
+ 1583      496E6372 
+ 1583      65616D65 
+ 1583      6E745374 
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 35
+
+
+ 1584              	.LASF21:
+ 1585 0335 45455F55 		.ascii	"EE_UREG\000"
+ 1585      52454700 
+ 1586              	.LASF46:
+ 1587 033d 45455F49 		.ascii	"EE_IRQ_nesting_level\000"
+ 1587      52515F6E 
+ 1587      65737469 
+ 1587      6E675F6C 
+ 1587      6576656C 
+ 1588              	.LASF34:
+ 1589 0352 564F4C55 		.ascii	"VOLUME__VeryFastDecreament\000"
+ 1589      4D455F5F 
+ 1589      56657279 
+ 1589      46617374 
+ 1589      44656372 
+ 1590              	.LASF55:
+ 1591 036d 776C656E 		.ascii	"wlen\000"
+ 1591      00
+ 1592              	.LASF2:
+ 1593 0372 73686F72 		.ascii	"short int\000"
+ 1593      7420696E 
+ 1593      7400
+ 1594              	.LASF42:
+ 1595 037c 45455F6F 		.ascii	"EE_oo_IRQ_disable_count\000"
+ 1595      6F5F4952 
+ 1595      515F6469 
+ 1595      7361626C 
+ 1595      655F636F 
+ 1596              	.LASF59:
+ 1597 0394 736F7572 		.ascii	"source\\asw\\Smart_Volume.c\000"
+ 1597      63655C61 
+ 1597      73775C53 
+ 1597      6D617274 
+ 1597      5F566F6C 
+ 1598              	.LASF14:
+ 1599 03ae 75696E74 		.ascii	"uint32_t\000"
+ 1599      33325F74 
+ 1599      00
+ 1600              	.LASF48:
+ 1601 03b7 5F5F636F 		.ascii	"__copy_table_start__\000"
+ 1601      70795F74 
+ 1601      61626C65 
+ 1601      5F737461 
+ 1601      72745F5F 
+ 1602              	.LASF18:
+ 1603 03cc 6C6F6E67 		.ascii	"long double\000"
+ 1603      20646F75 
+ 1603      626C6500 
+ 1604              	.LASF30:
+ 1605 03d8 564F4C55 		.ascii	"VOLUME__IncreamentState\000"
+ 1605      4D455F5F 
+ 1605      496E6372 
+ 1605      65616D65 
+ 1605      6E745374 
+ 1606              	.LASF60:
+ 1607 03f0 443A5C48 		.ascii	"D:\\H_da\\Winter Semester\\MM03 Advanced Microcontr"
+ 1607      5F64615C 
+ARM GAS  C:\Users\Reza\AppData\Local\Temp\cctB4AOj.s 			page 36
+
+
+ 1607      57696E74 
+ 1607      65722053 
+ 1607      656D6573 
+ 1608 0420 6F6C6C65 		.ascii	"oller Systems and Embedded Operating Systems\\Lectu"
+ 1608      72205379 
+ 1608      7374656D 
+ 1608      7320616E 
+ 1608      6420456D 
+ 1609 0452 72652050 		.ascii	"re Prof. Fromm\\workspace\\workspace_psoc\\Smart_Vo"
+ 1609      726F662E 
+ 1609      2046726F 
+ 1609      6D6D5C77 
+ 1609      6F726B73 
+ 1610 0482 6C756D65 		.ascii	"lume\\Smart_Volume.cydsn\000"
+ 1610      5C536D61 
+ 1610      72745F56 
+ 1610      6F6C756D 
+ 1610      652E6379 
+ 1611              	.LASF56:
+ 1612 049a 45455F6F 		.ascii	"EE_oo_SetRelAlarm\000"
+ 1612      6F5F5365 
+ 1612      7452656C 
+ 1612      416C6172 
+ 1612      6D00
+ 1613              	.LASF51:
+ 1614 04ac 5F5F7A65 		.ascii	"__zero_table_start__\000"
+ 1614      726F5F74 
+ 1614      61626C65 
+ 1614      5F737461 
+ 1614      72745F5F 
+ 1615              	.LASF40:
+ 1616 04c1 64656372 		.ascii	"decreament_volume_state\000"
+ 1616      65616D65 
+ 1616      6E745F76 
+ 1616      6F6C756D 
+ 1616      655F7374 
+ 1617              	.LASF54:
+ 1618 04d9 64657374 		.ascii	"dest\000"
+ 1618      00
+ 1619              	.LASF36:
+ 1620 04de 4D50335F 		.ascii	"MP3__increaseSmartVolume\000"
+ 1620      5F696E63 
+ 1620      72656173 
+ 1620      65536D61 
+ 1620      7274566F 
+ 1621              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
